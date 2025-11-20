@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-11-20T08:29:50+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">8holic</title><subtitle>The main hub by 8holic (Real name Bryan) to create a hub to link all existing projects and files.</subtitle><entry><title type="html">First Post!</title><link href="http://localhost:4000/blog/thoughts/2025/11/19/first-post.html" rel="alternate" type="text/html" title="First Post!" /><published>2025-11-19T00:00:00+01:00</published><updated>2025-11-19T00:00:00+01:00</updated><id>http://localhost:4000/blog/thoughts/2025/11/19/first-post</id><content type="html" xml:base="http://localhost:4000/blog/thoughts/2025/11/19/first-post.html"><![CDATA[<p>Hello! This is the first ever post. I am writing as 8Holic</p>
+
+<p>Initally I wanted a hub page to link all my different projects, however I learnt of Jekyll and decide to learn how it works. As a side effect this blog is created.</p>
+
+<p>For the time being I don’t have much to link yet, through the objective is the following
+-The Home page,which will consist exerpts of the other part<br />
+-The about page<br />
+-The blog page<br />
+-All projects link<br />
+The projects should include both python and terminal line games to downloadable programs.</p>
+
+<p>Here is to hoping this blog survives!</p>]]></content><author><name></name></author><category term="blog" /><category term="thoughts" /><summary type="html"><![CDATA[Hello! This is the first ever post. I am writing as 8Holic]]></summary></entry></feed>
