@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Virtual Records
+permalink: /vrecords/
 ---
 <h1>Virtual Records</h1>
 <ul>
