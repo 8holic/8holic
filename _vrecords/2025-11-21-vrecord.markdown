@@ -1,0 +1,10 @@
+---
+layout: post
+title: "Starting the Virutal Record"
+date: 2025-11-19
+categories: [project]
+description: "Where I establish the purpose of Virtual Records"
+
+---
+The virtual record will be where I keep records of "digital things". I believe that memories form in the digital realm is just as important, through it is highly likely this will include records of video games and intresting memories.
+

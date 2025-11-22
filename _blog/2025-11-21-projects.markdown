@@ -1,0 +1,12 @@
+---
+layout: post
+title: "Starting the Blog Tab"
+date: 2025-11-19
+categories: [Blog]
+description: "Where I establish the purpose of Blog"
+
+---
+Hello! This is the first ever post. I am writing as 8Holic.
+# Motivation
+Over here is where everything goes, where I will be posting about my life in general. As well as thoughts. This is NOT intended as a professional or portfolio site, through I might create one in the future.
+

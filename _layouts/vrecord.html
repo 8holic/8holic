@@ -1,0 +1,14 @@
+---
+layout: default
+---
+
+<article class="record">
+  <h1>{{ page.title }}</h1>
+  <p class="record-date">{{ page.date | date: "%b %-d, %Y" }}</p>
+
+  {% if page.image %}
+    <img src="{{ record.image | relative_url }}" alt="{{ record.title }}">
+  {% endif %}
+
+  {{ content }}
+</article>

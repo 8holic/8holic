@@ -1,1 +1,13 @@
 theme: null
+
+collections:
+  blog:
+    output: true
+    permalink: /blog/:title/
+  vrecords:
+    output: true
+    permalink: /vrecords/:title/
+  projects:
+    output: true
+    permalink: /projects/:title/
+
