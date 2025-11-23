@@ -11,7 +11,7 @@ permalink: /blog/
 <ul>
   {% for post in sorted %}
     <li>
-      <a href="{{ post.url }}">{{ post.title }}</a> - {{ post.date | date: "%Y-%m-%d" }}<br>
+      <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a> - {{ post.date | date: "%Y-%m-%d" }}<br>
       <small>{{ post.description | default: post.excerpt | strip_html | truncate: 120 }}</small>
     </li>
   {% endfor %}

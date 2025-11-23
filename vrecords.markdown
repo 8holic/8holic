@@ -11,7 +11,7 @@ permalink: /vrecords/
 <ul>
   {% for record in sorted %}
     <li>
-      <a href="{{ record.url }}">{{ record.title }}</a> - {{ record.date | date: "%Y-%m-%d" }}<br>
+      <a href="{{ site.baseurl }}{{ record.url }}">{{ record.title }}</a> - {{ record.date | date: "%Y-%m-%d" }}<br>
       <small>{{ record.description | default: record.excerpt | strip_html | truncate: 120 }}</small>
     </li>
   {% endfor %}
