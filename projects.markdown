@@ -11,7 +11,7 @@ permalink: /projects/
 <ul>
   {% for project in sorted %}
     <li>
-      <a href="{{ site.baseurl }}{{ project.url }}">{{ project.title }}</a> - {{ project.date | date: "%Y-%m-%d" }}<br>
+      <a href="{{ project.url | relative_url }}">{{ project.title }}</a> - {{ project.date | date: "%Y-%m-%d" }}<br>
       <small>{{ project.description | default: project.excerpt | strip_html | truncate: 120 }}</small>
     </li>
   {% endfor %}

@@ -9,8 +9,8 @@ location: "Fuenlabrada, Community of Madrid"
 ---
 
 
-<img src="/assets/images/blog/2025-11-23-christmas.jpeg" 
-     alt="Christmas decoration in Fuenlabrada" 
+<img src="{{ '/assets/images/blog/2025-11-23-christmas.jpeg' | relative_url }}"
+     alt="Christmas decoration in Fuenlabrada"
      class="responsive-image">
 
 ## Preface
