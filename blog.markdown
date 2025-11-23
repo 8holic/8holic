@@ -3,7 +3,7 @@ layout: default
 title: Blog
 permalink: /blog/
 ---
-<h1>Blog</h1>
+<h1>Blogs</h1>
 <ul>
   {% for post in site.blog %}
     <li>
