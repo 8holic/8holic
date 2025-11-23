@@ -3,9 +3,13 @@ layout: default
 title: Projects
 permalink: /projects/
 ---
+
 <h1>Projects</h1>
+
+{% assign sorted = site.projects | sort: "date" | reverse %}
+
 <ul>
-  {% for project in site.projects %}
+  {% for project in sorted %}
     <li>
       <a href="{{ project.url }}">{{ project.title }}</a> - {{ project.date | date: "%Y-%m-%d" }}<br>
       <small>{{ project.description | default: project.excerpt | strip_html | truncate: 120 }}</small>

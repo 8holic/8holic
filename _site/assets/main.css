@@ -48,3 +48,9 @@ footer {
   margin-top: 0.4rem;
   font-size: 15px;
 }
+
+.responsive-image {
+    max-width: 100%;
+    height: auto;
+    width: auto;
+}
