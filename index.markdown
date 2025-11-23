@@ -8,7 +8,7 @@ title: Home
 {% assign latest_blog = site.blog | sort: 'date' | last %}
 {% if latest_blog %}
   <div>
-    <a href="{{ latest_blog.url }}">{{ latest_blog.title }}</a> - {{ latest_blog.date | date: "%Y-%m-%d" }}<br>
+    <a href="{{ latest_blog.url | relative_url  }}">{{ latest_blog.title }}</a> - {{ latest_blog.date | date: "%Y-%m-%d" }}<br>
     <small>{{ latest_blog.description | default: latest_blog.excerpt | strip_html | truncate: 120 }}</small>
   </div>
 {% else %}
@@ -19,7 +19,7 @@ title: Home
 {% assign latest_vrecord = site.vrecords | sort: 'date' | last %}
 {% if latest_vrecord %}
   <div>
-    <a href="{{ latest_vrecord.url }}">{{ latest_vrecord.title }}</a> - {{ latest_vrecord.date | date: "%Y-%m-%d" }}<br>
+    <a href="{{ latest_vrecord.url | relative_url  }}">{{ latest_vrecord.title }}</a> - {{ latest_vrecord.date | date: "%Y-%m-%d" }}<br>
     <small>{{ latest_vrecord.description | default: latest_vrecord.excerpt | strip_html | truncate: 120 }}</small>
   </div>
 {% else %}
@@ -30,7 +30,7 @@ title: Home
 {% assign latest_project = site.projects | sort: 'date' | last %}
 {% if latest_project %}
   <div>
-    <a href="{{ latest_project.url }}">{{ latest_project.title }}</a> - {{ latest_project.date | date: "%Y-%m-%d" }}<br>
+    <a href="{{ latest_project.url | relative_url  }}">{{ latest_project.title }}</a> - {{ latest_project.date | date: "%Y-%m-%d" }}<br>
     <small>{{ latest_project.description | default: latest_project.excerpt | strip_html | truncate: 120 }}</small>
   </div>
 {% else %}
