@@ -17,21 +17,25 @@ C the Captain<br>
 J the Security Officer<br>
 
 # Prologue
-I am but a lowly mechanic, stuck listening to the same hum of various submarine hull. Life is plain but boring, days bled into one another, how long has it been since I was in one of these submarines?
+I am but a lowly mechanic, stuck listening to the same hum of various submarine hull. Life is plain but boring, days bled into one another, how long has it been since I was in one of those vessels?
 
 One day I was approached by C, he walks around in a expensive peacoat and a revolver. Where he brought me and a electrician and a security officer to a corner, and showed us an relic. Some ancident thing that pulse with a strange overworldly light. Then he shared with us his vision of escaping this godforsaken planet, where we head to where no man has been before. 
 
-I look at our fellow crewmate, D stood in a relaxed slouch, his eyes alert and tracing the wiring around us, whereas J stood upright like a parade rest, projecting an image of professionalism that he clearly wish he was.
-It must be C charisma, but I were sold. He had already bought a submarine, the kind popular among upstarts and idiots. Apparently I am feeling stupid today, leaving my fate in the hands of two barely experienced member and a greenhorn.
+At that moment his words touched my heart, and without knowing the others, I agreed and onboard the submarine I went.
 
-We start the mission like any upstart would, the most exciting of adventures, delivering shit from point A to point B. Can't go anywhere with no money anyway. It has been so long that I have forgotten my talents, but C reassure us that we will get there in no time.
+The first few missions are simple mining and discovery mission, many people needs their goods from point A to point B. As the mechanic I get to walk around the ship until things go to hell, C is busy with the brand new touchscreen nagivation system, while D is underneath us managing the reactor. I walk pass J, concentrated into the periscope looking above the submarine.
 
-Not even the third mission is when something went really wrong, since well I don't have much to do when everything is fine, I get to walk around the submarine. J is busy looking into the periscope, C is using that fancy touchscreen to pilot the submarine while D is dealing with the reactor underneath us.
+A single mistake, that is all it took for things to go to hell.
+"4 O Clock contact!"
+I walk into the gunnery room to see that J is busy fiddling the top gun, trying to get it to aim down. Taking control over the bottom gun, I landed a few hits before I witness the monster breach a hole into a submarine. At the very instant I hear the gushing of water, and I put on a diving suit while J mimiced what I did. Moments later, the monster swim into the gunnery room. Grabbing a wrench from my toolbelt, I bashed the injured monster sending it flinging in the water. 
 
-"Contact at 4 o Clock!"
+Once I fixed the hull breach with the welding torch, the ballast tanks started working. Where the water clear I saw that C is left with his torso, D didn't stand a chance,being the closest to the breach. It is no time to mourn, as I pick up a screwdriver and start fiddling with the wiring, the submarine started to move up. I climbed up and see J fiddling with the controls like he is being guided.
 
-I heard over the radio, any competent gunner would be calling out to the captain, but our gunner is trying to navigate our gun to aim at 4 o Clock, by the time I get over to the gun the monster, a Mud raptor, has beached a hull and gotten into the submarine. I pushed a diving suit and J started putting it on, as I head to the gunnery room I see the mud raptor, with J in its jaws, swim inside. C tried to pull out his revolver, but the barotrauma causes him to implode. I pulled out a diving knife and shove it inside the monster. I take a welding touch and seal the hull of the submarine; J took control of the control of the submarine and docked at the station. Well, it is not like I am out of money to go home.
+Before I could head over, he docked the submarine,where a strange light glows across the submarine. I see C and D being magically reformed at the nagivation room.
+"..."
+They glance at me, all of us staring at each other.
+"So, those voices in my head guiding me, it was the two of you?"
+This is the only possible explination, someone who never driven a submarine before can complete the docking protocol.
+"Well we found we can kinda wander around the submarine and talk to you guys"
 
-When we land, I saw the strange light mends the corpse of C and D, then they start to become one again. When they came to, they remembered that they died, but not what happen next. I have no idea what happened, but I am sure this isn’t normal. I went to the arms dealer and got a revolver, usually mechanics don't carry one, but it is now evident that I need one. I returned just in time to see that C has gotten us a brand-new submarine, it is apparently better as he once heard in a magazine. Well, if they are immortal surely there can't be any harm sticking to them a while more, right?
-
-Part 2 Link->TBA
+After a while we establish that nobody know what is going on, through I am not keen on testing C "relic revival theory". I headed up the station and bought a revolver, clearly I am going to need it. Meanwhile C went ahead and bought a new submarine for the crew, I am sure it comes with the skills to not die as well. Regardless it seems I will be here for a while.
