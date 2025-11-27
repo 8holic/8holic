@@ -1,20 +1,13 @@
 ---
 layout: post
-title: "A very barotraumatic adventure"
+title: "A descend-> Log 1"
 date: 2025-11-23
 categories: [barotrauma,journey]
 topic: "Video game:Barotrauma | Journey"
 description: "Prologue of the adventure"
 
 ---
-To briefly introduce barotrauma is a 2D survival side scrolling game, that takes place in a Submarine. 
 
-Characters<br>
-============<br>
-H the Mechanic<br>
-D the Electrician<br>
-C the Captain<br>
-J the Security Officer<br>
 
 # Prologue
 I am but a lowly mechanic, stuck listening to the same hum of various submarine hull. Life is plain but boring, days bled into one another, how long has it been since I was in one of those vessels?
@@ -39,3 +32,13 @@ This is the only possible explination, someone who never driven a submarine befo
 "Well we found we can kinda wander around the submarine and talk to you guys"
 
 After a while we establish that nobody know what is going on, through I am not keen on testing C "relic revival theory". I headed up the station and bought a revolver, clearly I am going to need it. Meanwhile C went ahead and bought a new submarine for the crew, I am sure it comes with the skills to not die as well. Regardless it seems I will be here for a while.
+
+Authors note:<br>
+To briefly introduce barotrauma is a 2D survival side scrolling game, that takes place in a Submarine. 
+
+Characters<br>
+============<br>
+H the Mechanic<br>
+D the Electrician<br>
+C the Captain<br>
+J the Security Officer<br>
