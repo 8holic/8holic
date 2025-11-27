@@ -8,30 +8,49 @@ description: "Prologue of the adventure"
 
 ---
 
+# Log 1
 
-# Prologue
-I am but a lowly mechanic, stuck listening to the same hum of various submarine hull. Life is plain but boring, days bled into one another, how long has it been since I was in one of those vessels?
+Depth: -1100 meter
+Vessel: Dugong
 
-One day I was approached by C, he walks around in a expensive peacoat and a revolver. Where he brought me and a electrician and a security officer to a corner, and showed us an relic. Some ancident thing that pulse with a strange overworldly light. Then he shared with us his vision of escaping this godforsaken planet, where we head to where no man has been before. 
+Half the crew died the very first time a monster breach our hull. Well someone screw up I think, apologies I am still trying to process what happened.
 
-At that moment his words touched my heart, and without knowing the others, I agreed and onboard the submarine I went.
+It all started one day where a overly excited Captain approach me, claiming to have found an artifacts and we are fated to be together. Now artifacts are something of a rarity, and I couldn't pass up on a chance.
 
-The first few missions are simple mining and discovery mission, many people needs their goods from point A to point B. As the mechanic I get to walk around the ship until things go to hell, C is busy with the brand new touchscreen nagivation system, while D is underneath us managing the reactor. I walk pass J, concentrated into the periscope looking above the submarine.
+I walked into a room with the Captain, where a Security Officer and an Electrician are here as well. There, the box open and a strange marble clock. Just then, the clock moved and strike 12. At that instant the alien artifact glows brightly and when we came to it vanished.
 
-A single mistake, that is all it took for things to go to hell.
-"4 O Clock contact!"
-I walk into the gunnery room to see that J is busy fiddling the top gun, trying to get it to aim down. Taking control over the bottom gun, I landed a few hits before I witness the monster breach a hole into a submarine. At the very instant I hear the gushing of water, and I put on a diving suit while J mimiced what I did. Moments later, the monster swim into the gunnery room. Grabbing a wrench from my toolbelt, I bashed the injured monster sending it flinging in the water. 
+"You are hearing this right! This is magic!"
 
-Once I fixed the hull breach with the welding torch, the ballast tanks started working. Where the water clear I saw that C is left with his torso, D didn't stand a chance,being the closest to the breach. It is no time to mourn, as I pick up a screwdriver and start fiddling with the wiring, the submarine started to move up. I climbed up and see J fiddling with the controls like he is being guided.
+"Errr...what is going on!? Captain?"
 
-Before I could head over, he docked the submarine,where a strange light glows across the submarine. I see C and D being magically reformed at the nagivation room.
-"..."
-They glance at me, all of us staring at each other.
-"So, those voices in my head guiding me, it was the two of you?"
-This is the only possible explination, someone who never driven a submarine before can complete the docking protocol.
-"Well we found we can kinda wander around the submarine and talk to you guys"
+"Is this supposed to happen? This is my first time seeing one"
 
-After a while we establish that nobody know what is going on, through I am not keen on testing C "relic revival theory". I headed up the station and bought a revolver, clearly I am going to need it. Meanwhile C went ahead and bought a new submarine for the crew, I am sure it comes with the skills to not die as well. Regardless it seems I will be here for a while.
+I look at the fidgeting Security next to the curious Electrician. the captain is over the moon here.
+
+"Y'all know I have been all the way to the great void, didn't see anything like this"
+
+"Then this is an adventure lets go!"
+
+That is how I found myself the mechanic of the Dugong. We started with some simple transport missions to accumlate some capital. We are in the Cold Carvens, one of the few places on this godforsaken planet that is blooming with life.
+
+"Enemy at 5 O' Clock!"
+
+"I don't see anyone! Captain"
+
+We were attacked by some aquatic life, I rushed to the gunnery room where the Security Officer is manning the top gun, I snatched the periscope attached to the bottom gun and see the enemy. Regrettably I landed two to three hits before it makes a hole in the hull.
+
+"Hull Breach guys! Put on the suit!"
+
+I put on a diving suit and the Security Officer follow suit. Carrying a wrench, I open the door leading to the captain quarters, just in time to see the monster chewing on the electrician corpse. Upon seeing us the monster woobled towards us, using my wrench I press into an open wound, bashing the monster into the ground where it thankfully passed on.
+
+Grabbing a welding gun as I done many times before, I sealed the breached hull in the reactor room, the electrician never stood a chance. As the water drained I walk past the captain, who is now half of what he use to be.
+
+I set the submarine to pilot and head off to repair the submarine, the Security Officer stared at the screen, standing next to the Captain torso. The instant we docked automatically, a strange light form inside the submarine,there it stood, the Captain and Electrician. They move more sluggishly than they did before but they are definetly alive, right beside their corpse.
+
+As the captain declare that the fates won't let us die until the dream is true, I am off to get some Rum. I will either wake up soon or we are stuck on this journey to hell together.
+
+Signed
+Holic
 
 Authors note:<br>
 To briefly introduce barotrauma is a 2D survival side scrolling game, that takes place in a Submarine. 
