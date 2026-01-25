@@ -19,15 +19,7 @@ As a student I had cup noodle frequently, Japanese cup noodles are always more e
 1. Place the instant noodle as well as the ingreidents
 2. Lid sealers are used that press a foil that stick to the cup.
 
-<img src="{{ '/assets/images/2025_05_15B2.jpg' | relative_url }}" 
-     alt="Ikeda Memorial Park" 
-     class="blog-image">
-
 Very near to the cup noodle factory, this park exist. I decided to pay it a visit as there isnt much time. I thought it was beautiful, I visited the remnants of a castle and had a view of the city. This spot was far away from the city, suprising I notice there was a wheelchair friendly features at this park.
-
-<img src="{{ '/assets/images/2025_05_15B3.jpg' | relative_url }}" 
-     alt="Takoyaki, near Glico Running Man" 
-     class="blog-image">
 
 I walked around Dotonbori, it was really crowded. I visited a few stores and had aomse Takoyaki and it is better than anything in Singapore. Suprising they have a Chinese menu as well, through it did not help because I cannot read Chinese.
 

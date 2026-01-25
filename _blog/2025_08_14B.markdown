@@ -20,59 +20,28 @@ As a student heading for exchange, I decided to do a trip in europe since I have
 ## First impressions
 Upon arrival the first thing I noticed is that the buildings seems older. There isn't lots of skyscraper, most buildings are quite old
 
-<img src="{{ '/assets/images/2025-08-14B2.jpg' | relative_url }}" 
-     alt="First View of Milan" 
-     class="blog-image">
-
 ## Duomo di Milano
 Milan's Cathedral was the first location I visited, it looks pretty old. I really enjoyed looking at the various status around it, going inside I see the pillars and decorations. It is the first time I am seeing such a detailed cathedral. 
 
-<img src="{{ '/assets/images/2025-08-14B3.jpg' | relative_url }}" 
-     alt="Inside Cathedral" 
-     class="blog-image">
-
 The interior is very spacious. I sat down and just enjoyed the enviroment, it is very quiet.
 
-<img src="{{ '/assets/images/2025-08-14B4.jpg' | relative_url }}" 
-     alt="Selfi at the top" 
-     class="blog-image">
-
-<img src="{{ '/assets/images/2025-08-14B5.jpg' | relative_url }}" 
-     alt="Cathedral Roofotp" 
-     class="blog-image">
 I climbed to the rooftop,it was a tough climb. A few hundred steps, I didn't take the elevator. The view of the city is nice, it feels like a older city.
 
 ## Wandering Around
-<img src="{{ '/assets/images/2025-08-14B6.jpg' | relative_url }}" 
-     alt="A figure of the city" 
+<img src="{{ '/assets/images/2025-08-14B2.jpg' | relative_url }}" 
+     alt="First View of Milan" 
      class="blog-image">
 I came across this layout of the city, and it is suprising. I have never seen this before, it feels intresting to see these maps and think of why they were built in the past
-
-<img src="{{ '/assets/images/2025-08-14B7.jpg' | relative_url }}" 
-     alt="A water fountain" 
-     class="blog-image">
 
 The next thing I noticed is the existance of these water fountain. In Singapore these are rare and inconvenient, I cannot believe that these are just out here. I drank a bit and the water was really refreshing.
 
 ## Museo del Duomo di Milano
 
-<img src="{{ '/assets/images/2025-08-14B8.jpg' | relative_url }}" 
-     alt="Galileo Clock" 
-     class="blog-image">
-
 In the museum they talk about the history of the cathedral, it is quite intesting. I saw how they built the cathedral up over time. I went to a few museum so I am just going to group them together, the above image is that of a clock. It has always just worked I have never thought about how such a simple clock works all the time.
-
-<img src="{{ '/assets/images/2025-08-14B9.jpg' | relative_url }}" 
-     alt="Underground catatombs" 
-     class="blog-image">
 
 This was a pretty creepy underground area, It was an intresting experience walking underground.
 
 ## Final thoughts
-
-<img src="{{ '/assets/images/2025-08-14B10.jpg' | relative_url }}" 
-     alt="Underground catatombs" 
-     class="blog-image">
 
 The first day impression started with a robbery on the train, but overall it was pretty exciting. I felt thrusted in a foreign world, everything is new and exciting.
 

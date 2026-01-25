@@ -9,7 +9,7 @@ location: "Osaka, Japan"
 ---
 # Day 3 Standout
 
-<img src="{{ '/assets/images/2025_05_17 (1).jpg' | relative_url }}" 
+<img src="{{ '/assets/images/2025_05_17B1.jpg' | relative_url }}" 
      alt="Rainy Osaka" 
      class="blog-image">
 
@@ -17,15 +17,7 @@ Day 3 starts with a rainy day, where I make some changes to my plans instead. It
 
 # Osaka Aquarium and car museum
 
-<img src="{{ '/assets/images/2025_05_17 (2).jpg' | relative_url }}" 
-     alt="Aquarium Penguin" 
-     class="blog-image">
-
 The first location I visited was Osaka Aquarium, I have seen it in an anime before so I was kinda curious.
-
-<img src="{{ '/assets/images/2025_05_17 (3).jpg' | relative_url }}" 
-     alt="Aquarium Seal" 
-     class="blog-image">
 
 Overall the aquarium was really nice, I paid extra to enter the feeding area. The caretakers are very knowledgeable and speak some english.
 Q:All these animals how do they coexist in the same tent
@@ -35,26 +27,11 @@ A:Yes, the animals recognize the divers as a food provider.
 I also see a few of the divers feeding them and a trainer. The backstage experience is worth the cost if I want to ask questions. Unfortunately I am not a big marine entuaist so I don't have much to ask, however if someone is really curious this is worth the cost.
 The rest of the place is well maintained and the envrioment looks exciting. I will go again in the future.
 
-<img src="{{ '/assets/images/2025_05_17 (3.5).jpg' | relative_url }}" 
-     alt="Car Museum" 
-     class="blog-image">
-A playground on the way to the car museum
-<img src="{{ '/assets/images/2025_05_17 (4).jpg' | relative_url }}" 
-     alt="Car Museum" 
-     class="blog-image">
 Looking at the map I noticed a old car museum, the Glion Museum. I do like cars, my dad like cars, it is located at this factory like place. I had to do a double take to ensure I arrived at the right location.
-
-<img src="{{ '/assets/images/2025_05_17 (5).jpg' | relative_url }}" 
-     alt="Car Museum 2" 
-     class="blog-image">
 
 The entire place consist of many cars, from the start of transport with horses, to the old cars. Most of the description are in japanese, but it looks pretty nice. It is a small nice museum for an hour or two.
 
 # Umeda Sky
-
-<img src="{{ '/assets/images/2025_05_17 (6).jpg' | relative_url }}" 
-     alt="Umeda Sky" 
-     class="blog-image">
 
 A view of Osaka from Umeda Sky has two distinctive side, one side where the river is visible while the other side is more modern. It was included in the Osaka card and it is worth the short time to have a nice view of Osaka.
 There was also an art museum nearby.

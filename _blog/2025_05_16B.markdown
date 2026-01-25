@@ -19,15 +19,7 @@ As a student I had cup noodle frequently, Japanese cup noodles are always more e
 1. Place the instant noodle as well as the ingreidents
 2. Lid sealers are used that press a foil that stick to the cup.
 
-<img src="{{ '/assets/images/2025_05_16B2.jpg' | relative_url }}" 
-     alt="Figure Museum" 
-     class="blog-image">
-
 As someone who collect figures in Singapore, I was suprised to see such a museum, and of course I have to visit. I saw various figures and learn abit about its history, and saw the different type of figure from the older type to the more modern figures. At the start it is anime figures, later on it is also really cool to see the diorama with Godzilla and friends at the end. It is a pretty neat small museum part of Osaka Castle
-
-<img src="{{ '/assets/images/2025_05_16B3.jpg' | relative_url }}" 
-     alt="River View of Osaka Castle" 
-     class="blog-image">
 
 I have always been interested in castles and stuff, so visiting the castle was a dream come true. Unfortuantely the interior of the castle is basically a museum, I was hoping to see a preserved castle.
 
@@ -35,13 +27,13 @@ However, the display are rich with history. Through I don't really remember what
 
 A fun fact they told us during the river ride is that one of the stones is called the "demon face", where it is placed to ward off evil. I can see the stone while on the river. It is amazing how this castle survived the second world war, there is even a dispaly of a burn damage from an american bomb.
 
-<img src="{{ '/assets/images/2025_05_16B4.jpg' | relative_url }}" 
-     alt="Model of Osaka Castle" 
-     class="blog-image">
-
 When leaving for the World Expo I saw that there is this model of Osaka Castle and the surrounding. Really liked this. I learnt quite a bit about Osaka Castle and the history of Japan. The parks are also great.
 
 # Osaka World Expo
+
+<img src="{{ '/assets/images/2025_05_16B2.jpg' | relative_url }}" 
+     alt="Figure Museum" 
+     class="blog-image">
 
 The highlight of the day is the 2025 Osaka World Expo. I heard my professor mention this and I knew I wanted to see this. It feels amazing to attend something that started in 1897 and is still alive, many nation come across the world to exhibit their nation here.
 
@@ -49,67 +41,27 @@ I booked a night ticket as I thought that it will be less crowded, and easier to
 
 ## Malaysia Pavilion
 
-<img src="{{ '/assets/images/2025_05_16B5.jpg' | relative_url }}" 
-     alt="Inside Malaysia Pavilion" 
-     class="blog-image">
-
 The first Pavilion I visit is that of Malaysia, it has some nice exhibit and life size figures depicting a Malay market. The above image is that of the goals to have a smart city. I wish my neighbors a success.
-
-<img src="{{ '/assets/images/2025_05_16B6.jpg' | relative_url }}" 
-     alt="Singapore Pavilion" 
-     class="blog-image">
 
 As the pavilion that informed me of this event I had to visit my home nation Pavilion. It takes the form of a big red dot, honestly visually it looks unique, and it is better than some nations which are a literal box.
 
-<img src="{{ '/assets/images/2025_05_16B7.jpg' | relative_url }}" 
-     alt="Inside Singapore Pavilion" 
-     class="blog-image">
-
 Honestly the Singapore Pavilion is very generic, maybe because I am from Singapore but I don't really remember anything intresting. Will avoid this in the future.
-
-<img src="{{ '/assets/images/2025_05_16B8.jpg' | relative_url }}" 
-     alt="Inside Japan Pavilion" 
-     class="blog-image">
 
 The first thing in the Japanese Pavilion is that of their recycling efforts, and a timestamp of the various decay of their biodegradable material. This was an intresting choice and while I heard of it, seeing how it degenerate slowly is intresting.
 
-<img src="{{ '/assets/images/2025_05_16B9.jpg' | relative_url }}" 
-     alt="Ceneter of Japan Pavilion" 
-     class="blog-image">
-
 The center of the pavilion marks two queue, one where you can touch a meteorite and the other where you go your way. Of course I went with the queue, not everyday a meteorite shows up. Standing at this circular spot,it is very peaceful and I was able to take in the scenery(becaues my phone data is limited I didn't use it)
 
-<img src="{{ '/assets/images/2025_05_16B10.jpg' | relative_url }}" 
-     alt="Inside Japan Pavilion Enviroment" 
-     class="blog-image">
-
 Next there are some depicting the animal products, it really makes me think how much water we use to raise certain product. I am more appericate of the meat product and water usage. I also now understand why were meat a luxury product, in the past animals must be hard to raise. From this I will try not to waste food.
-
-<img src="{{ '/assets/images/2025_05_16B11.jpg' | relative_url }}" 
-     alt="Inside Japan Pavilion DNA Final Room" 
-     class="blog-image">
 
 The final room is a mirror room of DNA strains, it was an intresting display and the chaos that results in humans. It is visually stunning and I stayed a bit.
 
 Overall I really enjoyed the Japan Pavilion, there is a clear focus on enviromentalism, which is an important topic, and Japan effort towards this. I guess it makes sense Japan will not be advertising themself since this takes place in Japan, so it is nice to see the nation commitment.
-
-<img src="{{ '/assets/images/2025_05_16B12.jpg' | relative_url }}" 
-     alt="Brazil Pavilion?" 
-     class="blog-image">
 
 This was an intresting pavilion which I suspect is the Brazil pavilion. It features inflatable trees made of recycable material and changing color, it feels like an abstract art piece. At the back a single movie is looping talking about the country. I suspect this is Brazil? Through I am not very sure.
 
 I stayed through and sitting in this enviroment also helps me take in the enviroment. Despite being on a rush to get to places, I find myself taking time to rest. This was an intrestng pavilion.
 
 Additional Pavilion I visit was Bangladesh before I climb to the circular wooden circle that define the expo.
-
-<img src="{{ '/assets/images/2025_05_16B13.jpg' | relative_url }}" 
-     alt="Ending show" 
-     class="blog-image">
-
-<img src="{{ '/assets/images/2025_05_16B14.jpg' | relative_url }}" 
-     alt="Ending show" 
-     class="blog-image">
 
 At the end I was present as the place close, there was a drone show. Pictures cannot do it justice, but it depicts unity and values. Viewing the pavilion downstairs looks beautiful
 
