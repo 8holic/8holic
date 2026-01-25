@@ -8,7 +8,8 @@ location: "Singapore, Singapore"
 
 ---
 ## Pre Exchange Experience - Italy Tourism
-![A pre flight image]({{ site.baseurl }}/blog/images/25-01-25B1.jpg)
+![A pre flight image](assets/images/25-01-25B1.jpg)
 
 Before heading to Spain, I decided I want to expose myself a bit to other parts of the world. I like pizza and pasta, and Italy has both.
+So I booked a roughly 11 days trip across Italy, landing in Milan, and going through Venice, Florence then Rome. Before finally heading to Madrid Spain.
 
