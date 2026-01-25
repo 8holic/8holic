@@ -57,6 +57,6 @@ footer {
 
 .blog-image {
     max-width: 100%;
-    height: auto;
-    width: 800px; /* or 50% for responsive */
+    height: 500px;
+    width: auto; /* or 50% for responsive */
 }
