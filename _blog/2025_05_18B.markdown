@@ -1,0 +1,51 @@
+---
+layout: post
+title: "Osaka, Japan Day 3"
+date: 2025_05_16
+categories: [Blog]
+description: "Osaka Aquarium and Osaka Tower"
+location: "Osaka, Japan"
+
+---
+# Day 4 Standout
+
+<img src="{{ '/assets/images/2025_05_18 (1).jpg' | relative_url }}" 
+     alt="Rainy Osaka" 
+     class="blog-image">
+
+<img src="{{ '/assets/images/2025_05_18 (2).jpg' | relative_url }}" 
+     alt="Rainy Osaka" 
+     class="blog-image">
+
+<img src="{{ '/assets/images/2025_05_18 (3).jpg' | relative_url }}" 
+     alt="Rainy Osaka" 
+     class="blog-image">
+
+<img src="{{ '/assets/images/2025_05_18 (4).jpg' | relative_url }}" 
+     alt="Rainy Osaka" 
+     class="blog-image">
+
+<img src="{{ '/assets/images/2025_05_18 (5).jpg' | relative_url }}" 
+     alt="Rainy Osaka" 
+     class="blog-image">
+
+<img src="{{ '/assets/images/2025_05_18 (6).jpg' | relative_url }}" 
+     alt="Rainy Osaka" 
+     class="blog-image">
+
+<img src="{{ '/assets/images/2025_05_18 (7).jpg' | relative_url }}" 
+     alt="Rainy Osaka" 
+     class="blog-image">
+
+<img src="{{ '/assets/images/2025_05_18 (7.5).jpg' | relative_url }}" 
+     alt="Rainy Osaka" 
+     class="blog-image">
+
+
+<img src="{{ '/assets/images/2025_05_18 (8).jpg' | relative_url }}" 
+     alt="Rainy Osaka" 
+     class="blog-image">
+
+<img src="{{ '/assets/images/2025_05_18 (9).jpg' | relative_url }}" 
+     alt="Rainy Osaka" 
+     class="blog-image">
