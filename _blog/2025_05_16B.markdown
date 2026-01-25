@@ -107,6 +107,10 @@ Additional Pavilion I visit was Bangladesh before I climb to the circular wooden
      alt="Ending show" 
      class="blog-image">
 
+<img src="{{ '/assets/images/2025_05_16B14.jpg' | relative_url }}" 
+     alt="Ending show" 
+     class="blog-image">
+
 At the end I was present as the place close, there was a drone show. Pictures cannot do it justice, but it depicts unity and values. Viewing the pavilion downstairs looks beautiful
 
 # Day 2 Reflection
