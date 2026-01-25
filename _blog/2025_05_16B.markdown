@@ -1,0 +1,39 @@
+---
+layout: post
+title: "Osaka, Japan Tourism"
+date: 2025_05_16
+categories: [Blog]
+description: "Writing of the roughly 1 week tri[]"
+location: "Osaka, Japan"
+
+---
+# Day 2 Standout
+Today was a busy day, in the morning I will be visiting Osaka Castle, while in the evening and night I am visiting the Osaka World Expo. My professor did mention this and shown a few videos, since then I have been curious about it.
+
+## Osaka Castle
+<img src="{{ '/assets/images/2025_05_16B1.jpg' | relative_url }}" 
+     alt="First sight of Osaka Castle" 
+     class="blog-image">
+
+As a student I had cup noodle frequently, Japanese cup noodles are always more expensive and considered prenium. So of course I had to visit the cup noodles. Over here I even get to make a cup noodle. Seeing the full process is intresting. The process is roughly as following:
+1. Place the instant noodle as well as the ingreidents
+2. Lid sealers are used that press a foil that stick to the cup.
+
+<img src="{{ '/assets/images/2025_05_16B2.jpg' | relative_url }}" 
+     alt="Figure Museum" 
+     class="blog-image">
+
+<img src="{{ '/assets/images/2025_05_16B3.jpg' | relative_url }}" 
+     alt="River View of Osaka Castle" 
+     class="blog-image">
+
+Write about the demon face or something
+
+<img src="{{ '/assets/images/2025_05_16B4.jpg' | relative_url }}" 
+     alt="Model of Osaka Castle" 
+     class="blog-image">
+
+## Osaka World Expo
+
+# Day 1 Reflection
+Day 1 marks when I settle down, I stayed at a hostel where we each have our own room and a shared common area. I visited a few places and enjoyed myself.

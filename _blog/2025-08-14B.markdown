@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "A Year End Reflection"
+title: "Pre Exchange Experience"
 date: 2025_08_14
 categories: [Blog]
-description: "Pre-Exchange"
-location: "Singapore, Singapore"
+description: " Italy Tourism Day 1"
+location: "Milan, Italy"
 
 ---
 # Pre Exchange Experience - Italy Tourism Day 1
@@ -75,3 +75,5 @@ This was a pretty creepy underground area, It was an intresting experience walki
      class="blog-image">
 
 The first day impression started with a robbery on the train, but overall it was pretty exciting. I felt thrusted in a foreign world, everything is new and exciting.
+
+Through the most challanging part was when the hotel cancel on me as i board the flight, booking on the plane causes me a bit of anxiety but it is good it works out.
