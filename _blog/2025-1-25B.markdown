@@ -8,7 +8,7 @@ location: "Singapore, Singapore"
 
 ---
 ## Pre Exchange Experience - Italy Tourism
-![A pre flight image]({{ site.baseurl }}/assets/images/blog/25-01-25B1.jpg)
+![A pre flight image]({{ site.baseurl }}/blog/images/25-01-25B1.jpg)
 
 Before heading to Spain, I decided I want to expose myself a bit to other parts of the world. I like pizza and pasta, and Italy has both.
 
