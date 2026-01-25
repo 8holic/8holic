@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "Osaka, Japan Tourism"
+title: "Osaka, Japan Day 2"
 date: 2025_05_16
 categories: [Blog]
-description: "Writing of the roughly 1 week tri[]"
+description: "Osaka Castle and World Expo"
 location: "Osaka, Japan"
 
 ---
