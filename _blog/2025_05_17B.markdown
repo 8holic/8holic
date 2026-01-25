@@ -1,0 +1,43 @@
+---
+layout: post
+title: "Osaka, Japan Day 3"
+date: 2025_05_16
+categories: [Blog]
+description: "Osaka Aquarium and Osaka Tower"
+location: "Osaka, Japan"
+
+---
+# Day 3 Standout
+
+
+<img src="{{ '/assets/images/2025_05_17 (1).jpg' | relative_url }}" 
+     alt="Rainy Osaka" 
+     class="blog-image">
+
+<img src="{{ '/assets/images/2025_05_17 (2).jpg' | relative_url }}" 
+     alt="Aquarium Penguin" 
+     class="blog-image">
+
+<img src="{{ '/assets/images/2025_05_17 (3).jpg' | relative_url }}" 
+     alt="Aquarium Seal" 
+     class="blog-image">
+
+<img src="{{ '/assets/images/2025_05_17 (4).jpg' | relative_url }}" 
+     alt="Car Museum" 
+     class="blog-image">
+
+<img src="{{ '/assets/images/2025_05_17 (5).jpg' | relative_url }}" 
+     alt="Car Museum 2" 
+     class="blog-image">
+
+<img src="{{ '/assets/images/2025_05_17 (6).jpg' | relative_url }}" 
+     alt="Umeda Sky" 
+     class="blog-image">
+
+<img src="{{ '/assets/images/2025_05_17 (7).jpg' | relative_url }}" 
+     alt="Nearby Art Museum" 
+     class="blog-image">
+
+<img src="{{ '/assets/images/2025_05_17 (8).jpg' | relative_url }}" 
+     alt="Dinner KFC" 
+     class="blog-image">
