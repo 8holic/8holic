@@ -5,8 +5,9 @@ date: 2025_05_20
 categories: [Blog]
 description: "Midnight Shrine Visit and Kyoto"
 location: "Osaka, Japan"
-
+image_dir: /assets/images/2025_05_20B/
 ---
-<img src="{{ '/assets\images\2025_05_20B\Slide1.JPG' | relative_url }}" 
+
+<img src="{{ page.image_dir | relative_url }}Slide1.JPG">
      alt="Midnight Shrine" 
      class="blog-image">

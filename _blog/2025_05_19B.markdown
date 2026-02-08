@@ -7,7 +7,7 @@ description: "Nara Park and Ikoma Sanjo Amusement Park"
 location: "Osaka, Japan"
 
 ---
-# Kyoto 2 Day trip
+# Kyoto 5 Day trip
 <img src="{{ '/assets/images/2025_05_19B1.JPG' | relative_url }}" 
      alt="Rainy Osaka" 
      class="blog-image">
