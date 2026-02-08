@@ -7,3 +7,6 @@ description: "Midnight Shrine Visit and Kyoto"
 location: "Osaka, Japan"
 
 ---
+<img src="{{ '/assets\images\2025_05_20B\Slide1.JPG' | relative_url }}" 
+     alt="Nara" 
+     class="blog-image">
