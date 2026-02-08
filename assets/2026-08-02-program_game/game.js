@@ -502,14 +502,13 @@ window.initProgrammingGame = function() {
             state.programSequence = [];
             renderGrid();
             updateProgramDisplay();
-
-            // Re-enable run button
+            
+            // Re-enable the run button after reset
             runBtn.disabled = false;
             runBtn.style.opacity = '1';
             runBtn.style.cursor = 'pointer';
         });
-
-        
+                
         // Clear Button - Clear program only
         const clearBtn = document.createElement('button');
         clearBtn.textContent = 'Clear Program';
@@ -519,17 +518,26 @@ window.initProgrammingGame = function() {
         clearBtn.style.border = 'none';
         clearBtn.style.borderRadius = '6px';
         clearBtn.style.cursor = 'pointer';
-        
+
         clearBtn.addEventListener('click', () => {
             state.programSequence = [];
-            updateProgramDisplay();
-
-            // Re-enable run button when program is cleared
+            // Get the drop zone and update its display
+            const dropZone = document.getElementById('programDropZone');
+            if (dropZone) {
+                // Clear the drop zone and show placeholder
+                dropZone.innerHTML = '';
+                const placeholder = document.createElement('div');
+                placeholder.textContent = 'Drop commands here...';
+                placeholder.style.color = '#999';
+                placeholder.style.width = '100%';
+                placeholder.style.textAlign = 'center';
+                placeholder.style.padding = '20px';
+                dropZone.appendChild(placeholder);
+            }
+            // Also re-enable the run button since we're clearing the program
             runBtn.disabled = false;
             runBtn.style.opacity = '1';
-            runBtn.style.cursor = 'pointer';
         });
-
                 
         controls.appendChild(runBtn);
         controls.appendChild(resetBtn);
