@@ -1,23 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Programming Puzzle Game</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programming Puzzle Game</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="game.css">
 </head>
 <body>
+    <!-- Main game container - everything will be built here by JavaScript -->
+    <div id="game-root"></div>
 
-<!-- Instructions -->
-<div class="pg-instructions" style="max-width: 600px; margin: 30px auto; font-family: sans-serif;">
-    <h4>How to Play</h4>
-    <ul>
-        <li>Click stage buttons to select a stage</li>
-        <li>Use the blocks to create a program sequence</li>
-        <li>Run or step through your program to move the character</li>
-        <li>Collect coins and reach the castle to complete the stage</li>
-    </ul>
-</div>
-
-<script src="game.js"></script>
+    <script src="game.js"></script>
+    <script>
+        // Initialize the game when DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            // The game will build everything itself
+            if(window.initProgrammingGame) {
+                window.initProgrammingGame();
+            }
+        });
+    </script>
 </body>
 </html>
