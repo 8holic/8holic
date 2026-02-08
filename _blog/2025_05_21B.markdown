@@ -7,3 +7,10 @@ description: "Tomogashma Island"
 location: "Osaka, Japan"
 
 ---
+<img src="{{ '/assets/images/2025_05_20B1.JPG' | relative_url }}" 
+     alt="Boat" 
+     class="blog-image">
+
+     So firstly I went and climb the world shortest mountain, it was a pretty cute park all in all. I also went for the boat ride which I didn't get to do previously because of poor weather.
+
+     The boat goes around the bay of Osaka and a lot of facotry stuff,also saw a giant ikea.

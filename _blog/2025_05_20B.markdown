@@ -8,6 +8,7 @@ location: "Osaka, Japan"
 image_dir: /assets/images/2025_05_20B/
 ---
 
-<img src="{{ page.image_dir | relative_url }}Slide1.JPG">
+<img src="{{ page.image_dir | relative_url }}Slide1.JPG"
+     class="blog-image">
      alt="Midnight Shrine" 
      class="blog-image">
