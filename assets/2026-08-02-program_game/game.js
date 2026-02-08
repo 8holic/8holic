@@ -6,9 +6,9 @@ window.initProgrammingGame = function() {
             name: "Stage 1",
             gridSize: 5,
             character: { x: 0, y: 0, direction: 'right' },
-            obstacles: [ { x: 2, y: 0 } , { x:2 , y:4} ],
-            coins: [ { x: 1, y: 1 } ],
-            endPoint: { x: 4, y: 4 }
+            obstacles: [ { x: 4, y: 5 },{ x:2 , y:4} ],
+            coins: [ { x: 3, y: 4 } ],
+            endPoint: { x: 4, y: 2 }
         },
         {
             name: "Stage 2",
@@ -663,7 +663,16 @@ function renderStageView() {
     controlsContainer.style.backgroundColor = '#f8fafc';
     rightPanel.appendChild(controlsContainer);
     
+    // Game instructions
 
+    instructions.style.fontSize = '14px';
+    instructions.style.color = '#4a5568';
+    rightPanel.appendChild(instructions);
+    
+    gameInterface.appendChild(leftPanel);   // Grid goes first (top)
+    gameInterface.appendChild(rightPanel);  // Programming goes second (below)
+    gameContainer.appendChild(gameInterface);
+    
     // Initial render of all components
     renderGrid();
     renderCodePalette();
