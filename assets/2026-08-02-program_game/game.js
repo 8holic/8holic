@@ -6,9 +6,9 @@ window.initProgrammingGame = function() {
             name: "Stage 1",
             gridSize: 5,
             character: { x: 0, y: 0, direction: 'right' },
-            obstacles: [ { x: 2, y: 1 }, { x: 1, y: 3 } ],
-            coins: [ { x: 4, y: 0 }, { x: 3, y: 3 } ],
-            endPoint: { x: 4, y: 4 }
+            obstacles: [ { x: 4, y: 5 },{ x:2 , y:4} ],
+            coins: [ { x: 3, y: 4 } ],
+            endPoint: { x: 4, y: 2 }
         },
         {
             name: "Stage 2",
@@ -546,159 +546,158 @@ window.initProgrammingGame = function() {
         controlsContainer.appendChild(controls);
     }
 
-    // Render Stage View
-    function renderStageView() {
-        gameContainer.innerHTML = '';
-        state.currentView = 'stage';
-        
-        // Back button container
-        const backContainer = document.createElement('div');
-        backContainer.style.width = '100%';
-        backContainer.style.display = 'flex';
-        backContainer.style.justifyContent = 'space-between';
-        backContainer.style.alignItems = 'center';
-        backContainer.style.marginBottom = '20px';
-        
-        // Back button
-        const backButton = document.createElement('button');
-        backButton.textContent = '← Back to Stage Select';
-        backButton.style.padding = '8px 16px';
-        backButton.style.border = 'none';
-        backButton.style.borderRadius = '6px';
+// Render Stage View
+function renderStageView() {
+    gameContainer.innerHTML = '';
+    state.currentView = 'stage';
+    
+    // Back button container
+    const backContainer = document.createElement('div');
+    backContainer.style.width = '100%';
+    backContainer.style.display = 'flex';
+    backContainer.style.justifyContent = 'space-between';
+    backContainer.style.alignItems = 'center';
+    backContainer.style.marginBottom = '20px';
+    
+    // Back button
+    const backButton = document.createElement('button');
+    backButton.textContent = '← Back to Stage Select';
+    backButton.style.padding = '8px 16px';
+    backButton.style.border = 'none';
+    backButton.style.borderRadius = '6px';
+    backButton.style.background = '#4a5568';
+    backButton.style.color = 'white';
+    backButton.style.cursor = 'pointer';
+    
+    backButton.addEventListener('click', renderStageSelectView);
+    backButton.addEventListener('mouseenter', () => {
+        backButton.style.background = '#2d3748';
+    });
+    backButton.addEventListener('mouseleave', () => {
         backButton.style.background = '#4a5568';
-        backButton.style.color = 'white';
-        backButton.style.cursor = 'pointer';
+    });
+    
+    // Stage title
+    const stageTitle = document.createElement('h2');
+    stageTitle.textContent = `${stages[state.currentStageIndex].name}`;
+    stageTitle.style.margin = '0';
+    
+    backContainer.appendChild(backButton);
+    backContainer.appendChild(stageTitle);
+    gameContainer.appendChild(backContainer);
+    
+    // Game status
+    const statusDiv = document.createElement('div');
+    statusDiv.id = 'gameStatus';
+    statusDiv.style.marginBottom = '20px';
+    statusDiv.style.textAlign = 'center';
+    statusDiv.style.padding = '10px';
+    statusDiv.style.backgroundColor = '#f7fafc';
+    statusDiv.style.borderRadius = '6px';
+    statusDiv.style.border = '1px solid #e2e8f0';
+    gameContainer.appendChild(statusDiv);
+    
+    // Update status function
+    function updateStatus() {
+        const stage = state.stageState;
+        const coinsLeft = stage.coins.length;
+        const totalCoins = stages[state.currentStageIndex].coins.length;
         
-        backButton.addEventListener('click', renderStageSelectView);
-        backButton.addEventListener('mouseenter', () => {
-            backButton.style.background = '#2d3748';
-        });
-        backButton.addEventListener('mouseleave', () => {
-            backButton.style.background = '#4a5568';
-        });
-        
-        // Stage title
-        const stageTitle = document.createElement('h2');
-        stageTitle.textContent = `${stages[state.currentStageIndex].name}`;
-        stageTitle.style.margin = '0';
-        
-        backContainer.appendChild(backButton);
-        backContainer.appendChild(stageTitle);
-        gameContainer.appendChild(backContainer);
-        
-        // Game status
-        const statusDiv = document.createElement('div');
-        statusDiv.id = 'gameStatus';
-        statusDiv.style.marginBottom = '20px';
-        statusDiv.style.textAlign = 'center';
-        statusDiv.style.padding = '10px';
-        statusDiv.style.backgroundColor = '#f7fafc';
-        statusDiv.style.borderRadius = '6px';
-        statusDiv.style.border = '1px solid #e2e8f0';
-        gameContainer.appendChild(statusDiv);
-        
-        // Update status function
-        function updateStatus() {
-            const stage = state.stageState;
-            const coinsLeft = stage.coins.length;
-            const totalCoins = stages[state.currentStageIndex].coins.length;
-            
-            statusDiv.innerHTML = `
-                <div><strong>Coins Collected:</strong> ${totalCoins - coinsLeft}/${totalCoins}</div>
-                <div><strong>Position:</strong> (${stage.character.x}, ${stage.character.y})</div>
-                <div><strong>Direction:</strong> ${stage.character.direction}</div>
-            `;
-        }
-        
-        // Main game interface container
-        const gameInterface = document.createElement('div');
-        gameInterface.style.display = 'flex';
-        gameInterface.style.gap = '40px';
-        gameInterface.style.width = '100%';
-        gameInterface.style.maxWidth = '900px';
-        
-        // Left side: Grid
-        const leftPanel = document.createElement('div');
-        leftPanel.style.flex = '1';
-        
-        const gridTitle = document.createElement('h3');
-        gridTitle.textContent = 'Game Grid:';
-        gridTitle.style.marginBottom = '10px';
-        leftPanel.appendChild(gridTitle);
-        
-        const gridContainer = document.createElement('div');
-        gridContainer.id = 'gridContainer';
-        leftPanel.appendChild(gridContainer);
-        
-        // Right side: Programming interface
-        const rightPanel = document.createElement('div');
-        rightPanel.style.flex = '1';
-        rightPanel.style.display = 'flex';
-        rightPanel.style.flexDirection = 'column';
-        rightPanel.style.gap = '20px';
-        
-        // Code palette
-        const paletteContainer = document.createElement('div');
-        paletteContainer.id = 'paletteContainer';
-        paletteContainer.style.border = '1px solid #e2e8f0';
-        paletteContainer.style.borderRadius = '8px';
-        paletteContainer.style.padding = '15px';
-        paletteContainer.style.backgroundColor = '#f8fafc';
-        rightPanel.appendChild(paletteContainer);
-        
-        // Program area
-        const programContainer = document.createElement('div');
-        programContainer.id = 'programContainer';
-        programContainer.style.border = '1px solid #e2e8f0';
-        programContainer.style.borderRadius = '8px';
-        programContainer.style.padding = '15px';
-        programContainer.style.backgroundColor = '#f8fafc';
-        rightPanel.appendChild(programContainer);
-        
-        // Controls
-        const controlsContainer = document.createElement('div');
-        controlsContainer.id = 'controlsContainer';
-        controlsContainer.style.border = '1px solid #e2e8f0';
-        controlsContainer.style.borderRadius = '8px';
-        controlsContainer.style.padding = '15px';
-        controlsContainer.style.backgroundColor = '#f8fafc';
-        rightPanel.appendChild(controlsContainer);
-        
-        // Game instructions
-        const instructions = document.createElement('div');
-        instructions.innerHTML = `
-            <h4>How to Play:</h4>
-            <ol style="margin: 10px 0; padding-left: 20px; font-size: 14px;">
-                <li>Drag "Move" and "Turn" commands to the program area</li>
-                <li>Arrange them in the order you want to execute</li>
-                <li>Click "Step" to execute one command at a time</li>
-                <li>Click "Run" to execute all commands automatically</li>
-                <li>Collect all coins (🪙) and reach the castle (🏰) to win!</li>
-                <li>Avoid obstacles (🌳) and don't go out of bounds</li>
-            </ol>
+        statusDiv.innerHTML = `
+            <div><strong>Coins Collected:</strong> ${totalCoins - coinsLeft}/${totalCoins}</div>
+            <div><strong>Position:</strong> (${stage.character.x}, ${stage.character.y})</div>
+            <div><strong>Direction:</strong> ${stage.character.direction}</div>
         `;
-        instructions.style.fontSize = '14px';
-        instructions.style.color = '#4a5568';
-        rightPanel.appendChild(instructions);
-        
-        gameInterface.appendChild(leftPanel);
-        gameInterface.appendChild(rightPanel);
-        gameContainer.appendChild(gameInterface);
-        
-        // Initial render of all components
-        renderGrid();
-        renderCodePalette();
-        renderProgramArea();
-        renderControls();
-        updateStatus();
-        
-        // Update status whenever grid is rendered
-        const originalRenderGrid = renderGrid;
-        renderGrid = function() {
-            originalRenderGrid();
-            updateStatus();
-        };
     }
+    
+    // Main game interface container - CHANGED THIS PART
+    const gameInterface = document.createElement('div');
+    gameInterface.style.display = 'flex';
+    gameInterface.style.flexDirection = 'column';  // ← CHANGED from row to column
+    gameInterface.style.gap = '40px';
+    gameInterface.style.width = '100%';
+    gameInterface.style.maxWidth = '900px';
+    
+    // Grid section
+    const leftPanel = document.createElement('div');
+    
+    const gridTitle = document.createElement('h3');
+    gridTitle.textContent = 'Game Grid:';
+    gridTitle.style.marginBottom = '10px';
+    leftPanel.appendChild(gridTitle);
+    
+    const gridContainer = document.createElement('div');
+    gridContainer.id = 'gridContainer';
+    leftPanel.appendChild(gridContainer);
+    
+    // Programming interface section
+    const rightPanel = document.createElement('div');
+    rightPanel.style.display = 'flex';
+    rightPanel.style.flexDirection = 'column';
+    rightPanel.style.gap = '20px';
+    
+    // Code palette
+    const paletteContainer = document.createElement('div');
+    paletteContainer.id = 'paletteContainer';
+    paletteContainer.style.border = '1px solid #e2e8f0';
+    paletteContainer.style.borderRadius = '8px';
+    paletteContainer.style.padding = '15px';
+    paletteContainer.style.backgroundColor = '#f8fafc';
+    rightPanel.appendChild(paletteContainer);
+    
+    // Program area
+    const programContainer = document.createElement('div');
+    programContainer.id = 'programContainer';
+    programContainer.style.border = '1px solid #e2e8f0';
+    programContainer.style.borderRadius = '8px';
+    programContainer.style.padding = '15px';
+    programContainer.style.backgroundColor = '#f8fafc';
+    rightPanel.appendChild(programContainer);
+    
+    // Controls
+    const controlsContainer = document.createElement('div');
+    controlsContainer.id = 'controlsContainer';
+    controlsContainer.style.border = '1px solid #e2e8f0';
+    controlsContainer.style.borderRadius = '8px';
+    controlsContainer.style.padding = '15px';
+    controlsContainer.style.backgroundColor = '#f8fafc';
+    rightPanel.appendChild(controlsContainer);
+    
+    // Game instructions
+    const instructions = document.createElement('div');
+    instructions.innerHTML = `
+        <h4>How to Play:</h4>
+        <ol style="margin: 10px 0; padding-left: 20px; font-size: 14px;">
+            <li>Drag "Move" and "Turn" commands to the program area</li>
+            <li>Arrange them in the order you want to execute</li>
+            <li>Click "Step" to execute one command at a time</li>
+            <li>Click "Run" to execute all commands automatically</li>
+            <li>Collect all coins (🪙) and reach the castle (🏰) to win!</li>
+            <li>Avoid obstacles (🌳) and don't go out of bounds</li>
+        </ol>
+    `;
+    instructions.style.fontSize = '14px';
+    instructions.style.color = '#4a5568';
+    rightPanel.appendChild(instructions);
+    
+    gameInterface.appendChild(leftPanel);   // Grid goes first (top)
+    gameInterface.appendChild(rightPanel);  // Programming goes second (below)
+    gameContainer.appendChild(gameInterface);
+    
+    // Initial render of all components
+    renderGrid();
+    renderCodePalette();
+    renderProgramArea();
+    renderControls();
+    updateStatus();
+    
+    // Update status whenever grid is rendered
+    const originalRenderGrid = renderGrid;
+    renderGrid = function() {
+        originalRenderGrid();
+        updateStatus();
+    };
+}
 
     // ------------------- INITIAL RENDER -------------------
     renderStageSelectView();
