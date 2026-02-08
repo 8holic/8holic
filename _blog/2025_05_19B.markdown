@@ -8,28 +8,22 @@ location: "Osaka, Japan"
 
 ---
 # Kyoto 2 Day trip
-<img src="{{ '/assets/images/2025_05_18B1.jpg' | relative_url }}" 
+<img src="{{ '/assets/images/2025_05_19B1.JPG' | relative_url }}" 
      alt="Rainy Osaka" 
-     class="blog-image">
-<img src="{{ '/assets/images/2025_05_19B1.jpg' | relative_url }}" 
-     alt="Rainy Osaka" 
-     class="blog-image">
-<img src="{{ 'assets\images\2025_05_19B1.jpg' | relative_url }}"
-     alt="Preparation" 
      class="blog-image">
 
 I had something intresting from the supermarket, fried noodles on bread. Like hot dog. Looks weird but it taste ok, probabl wont eat again in the future
 
 This time I am visiting Ikoma Sanjo Amusement Park, before going to Nara. I saw this location and was interested in visiting it.
 
-<img src="{{ '/assets/images/2025_05_19B2.jpg' | relative_url }}" 
+<img src="{{ '/assets/images/2025_05_19B2.JPG' | relative_url }}" 
      alt="Ikoma Sanjo Amusement Park" 
      class="blog-image">
 
 Ikoma Sanjo Amusement Park is free to enter, where I pay for the rides I took. Being located at the top of the mountain also means there is some nice sights.
 
 
-<img src="{{ '/assets/images/2025_05_19B3.jpg' | relative_url }}" 
+<img src="{{ '/assets/images/2025_05_19B3.JPG' | relative_url }}" 
      alt="White house" 
      class="blog-image">
 
@@ -40,7 +34,7 @@ The founding myth is depicted with a bridge, also certain rooms are tilted a few
 It felt like a intresting view of america. I also took a few rides, one was a looping airplane. The view of the city was really nice, since it is located between Nara and Osaka
 
 
-<img src="{{ '/assets/images/2025_05_19B4.jpg' | relative_url }}" 
+<img src="{{ '/assets/images/2025_05_19B4.JPG' | relative_url }}" 
      alt="Nara" 
      class="blog-image">
 
@@ -48,7 +42,7 @@ The hike down was non eventful, I saw a few shrines through. A sign promise a pa
 
 Nara is known for its deers, through I wasn't prepared for how hostile they are. I got some deer biscuit, and some deer just arrive and rip the entire package. They ended up on the floor and I got a sight of the deer competing to eat it.
 
-<img src="{{ '/assets/images/2025_05_19B5.jpg' | relative_url }}" 
+<img src="{{ '/assets/images/2025_05_19B5.JPG' | relative_url }}" 
      alt="Rainy Osaka" 
      class="blog-image">
 
