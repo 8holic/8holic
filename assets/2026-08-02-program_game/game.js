@@ -454,8 +454,8 @@ window.initProgrammingGame = function() {
         runBtn.style.cursor = 'pointer';
         
         runBtn.addEventListener('click', async () => {
-            // Disable buttons during execution
-            [runBtn, stepBtn, resetBtn, clearBtn].forEach(btn => {
+            // Disable all buttons during execution
+            [runBtn, resetBtn, clearBtn].forEach(btn => {
                 btn.disabled = true;
                 btn.style.opacity = '0.5';
             });
@@ -478,36 +478,14 @@ window.initProgrammingGame = function() {
                 await new Promise(resolve => setTimeout(resolve, 500));
             }
             
-            // Re-enable buttons
-            [runBtn, stepBtn, resetBtn, clearBtn].forEach(btn => {
+            // After execution, only re-enable reset and clear buttons
+            // Run button stays disabled
+            [resetBtn, clearBtn].forEach(btn => {
                 btn.disabled = false;
                 btn.style.opacity = '1';
             });
         });
         
-        // Step Button - Execute next command only
-        const stepBtn = document.createElement('button');
-        stepBtn.textContent = 'Step';
-        stepBtn.style.padding = '10px 20px';
-        stepBtn.style.backgroundColor = '#4299e1';
-        stepBtn.style.color = 'white';
-        stepBtn.style.border = 'none';
-        stepBtn.style.borderRadius = '6px';
-        stepBtn.style.cursor = 'pointer';
-        
-        stepBtn.addEventListener('click', () => {
-            if (state.programSequence.length > 0) {
-                const nextCommand = state.programSequence[0];
-                executeCommand(nextCommand);
-                state.programSequence.shift(); // Remove executed command
-                renderGrid();
-                updateProgramDisplay();
-                
-                if (checkWinCondition()) {
-                    alert('🎉 Congratulations! You completed the stage!');
-                }
-            }
-        });
         
         // Reset Button - Reset to initial state
         const resetBtn = document.createElement('button');
@@ -524,6 +502,11 @@ window.initProgrammingGame = function() {
             state.programSequence = [];
             renderGrid();
             updateProgramDisplay();
+            
+            // Re-enable the run button after reset
+            runBtn.disabled = false;
+            runBtn.style.opacity = '1';
+            runBtn.style.cursor = 'pointer';
         });
         
         // Clear Button - Clear program only
@@ -540,9 +523,8 @@ window.initProgrammingGame = function() {
             state.programSequence = [];
             updateProgramDisplay();
         });
-        
+                
         controls.appendChild(runBtn);
-        controls.appendChild(stepBtn);
         controls.appendChild(resetBtn);
         controls.appendChild(clearBtn);
         controlsContainer.appendChild(controls);
