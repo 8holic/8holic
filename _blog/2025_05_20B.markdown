@@ -3,7 +3,7 @@ layout: post
 title: "Osaka, Japan Day 6"
 date: 2025_05_20
 categories: [Blog]
-description: "Tomogashma Island"
+description: "Midnight Shrine Visit and Kyoto"
 location: "Osaka, Japan"
 
 ---
