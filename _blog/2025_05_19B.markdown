@@ -1,0 +1,54 @@
+---
+layout: post
+title: "Osaka, Japan Day 5"
+date: 2025_05_19
+categories: [Blog]
+description: "Tomogashma Island"
+location: "Osaka, Japan"
+
+---
+<img src="{{ '/assets/images/2025_05_19B (1).jpg' | relative_url }}" 
+     alt="Preparation" 
+     class="blog-image">
+
+I had something intresting from the supermarket, fried noodles on bread. Like hot dog. Looks weird but it taste ok, probabl wont eat again in the future
+
+This time I am visiting Ikoma Sanjo Amusement Park, before going to Nara. I saw this location and was interested in visiting it.
+
+<img src="{{ '/assets/images/2025_05_19B (2).jpg' | relative_url }}" 
+     alt="Ikoma Sanjo Amusement Park" 
+     class="blog-image">
+
+Ikoma Sanjo Amusement Park is free to enter, where I pay for the rides I took. Being located at the top of the mountain also means there is some nice sights.
+
+
+<img src="{{ '/assets/images/2025_05_19B (3).jpg' | relative_url }}" 
+     alt="White house" 
+     class="blog-image">
+
+One cuorsity is the "White house". When I went initally there wasn't anyone, so I wandered around a bit before returning. The white house in question consist of various part of american history, starting with all the past president.
+
+The founding myth is depicted with a bridge, also certain rooms are tilted a few degrees. Afterwards they depict the steam age with a vaccum cleaner in the background, and a train, the side simulating a train ride. Near the end the moon landing was depicited with a lego toy on a string.
+
+It felt like a intresting view of america. I also took a few rides, one was a looping airplane. The view of the city was really nice, since it is located between Nara and Osaka
+
+
+<img src="{{ '/assets/images/2025_05_19B (4).jpg' | relative_url }}" 
+     alt="Nara" 
+     class="blog-image">
+
+The hike down was non eventful, I saw a few shrines through. A sign promise a path to a waterfall, however the mountain was really steep so I did not bother. The numbers of stairs is just absurd.
+
+Nara is known for its deers, through I wasn't prepared for how hostile they are. I got some deer biscuit, and some deer just arrive and rip the entire package. They ended up on the floor and I got a sight of the deer competing to eat it.
+
+<img src="{{ '/assets/images/2025_05_19B (5).jpg' | relative_url }}" 
+     alt="Rainy Osaka" 
+     class="blog-image">
+
+# Day 4 reflection
+
+So for Day 4 I am actually staying in kyoto, that was the plan. Dinner was nice. Through tonight isnt ending very early...
+
+
+
+

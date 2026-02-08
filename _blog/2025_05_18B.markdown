@@ -1,10 +1,34 @@
 ---
 layout: post
-title: "Osaka, Japan Day 3"
-date: 2025_05_16
+title: "Osaka, Japan Day 4"
+date: 2025_05_18
 categories: [Blog]
-description: "Osaka Aquarium and Osaka Tower"
+description: "Tomogashma Island"
 location: "Osaka, Japan"
 
 ---
-# Day 4 Standout
+# Trip to Wakayama
+<img src="{{ '/assets/images/2025_05_18B1.jpg' | relative_url }}" 
+     alt="Rainy Osaka" 
+     class="blog-image">
+
+On day 4, with the great weather, I decided its time to push the button. Tomogashima Island ahve been of interest since I saw it in some anime, also abandoned places are kinda my thing so I went ahead with this. I booked a ferry at 0900, so I got up early, ate the cup noodles I made a few days ago and too the train.
+
+There is a convenient train towards Kada town, where I have to walk to the harbor. It feels like a quiet Japanese town, very different from the Osaka city
+
+During the morning, the ship was delayed and potentially cancelled. I was worried but an hour later it was fine and the boat went ahead.
+
+# Trip AT the island
+<img src="{{ '/assets/images/2025_05_18B2.jpg' | relative_url }}" 
+     alt="Tomogashima Island" 
+     class="blog-image">
+
+The island I visit was a former world war 2 defense port. There is no local population, I went past a few abandoned buildings. I met a new friend over here, we still talk occasionally. It was an exciting hike, through the right side is sealed off for safety reason. I walked most of the island.
+
+<img src="{{ '/assets/images/2025_05_18B3.jpg' | relative_url }}" 
+     alt="Leaving the island" 
+     class="blog-image">
+I actually miss the ferry back, it was kinda too full. I spoke to my new friends and they are much older than me. I guess most people my age don't have the money or the recklessness to commit to a solo trip. Through I panic for a moment I did learn to go with the flow.
+
+# Day 3 reflection
+Since those two is of privacy minded I can't put this online.
