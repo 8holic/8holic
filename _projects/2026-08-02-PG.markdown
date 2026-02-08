@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "Starting the Project Tab"
-date: 2025-11-19
+title: "Simple Coding Game"
+date: 2026-02-08
 categories: [project]
 description: "Simple coding game
-permalink: /programming-game/
+
 ---
 # Programming Puzzle Game
 

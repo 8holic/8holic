@@ -7,7 +7,7 @@ description: "Kada Town"
 location: "Osaka, Japan"
 
 ---
-<img src="{{ '/assets/images/2025_05_21B1.JPG' | relative_url }}" 
+<img src="{{ '/assets/images/2025_05_21B1.jpg' | relative_url }}" 
      alt="Boat" 
      class="blog-image">
 
