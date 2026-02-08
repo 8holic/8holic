@@ -30,13 +30,17 @@ window.initProgrammingGame = function() {
 
     // ------------------- STATE -------------------
     let state = {
-        stageIndex: null,
-        programSequence: [],
+        currentView: 'stageSelect', // 'stageSelect' or 'stage'
+        currentStageIndex: null
     };
 
-    // ------------------- CREATE CONTAINERS -------------------
+    // ------------------- CREATE MAIN CONTAINER -------------------
     const body = document.body;
-
+    
+    // Clear any existing game
+    const existingGame = document.getElementById('programming-game');
+    if (existingGame) existingGame.remove();
+    
     // Container for entire game
     const gameContainer = document.createElement('div');
     gameContainer.id = 'programming-game';
@@ -44,234 +48,151 @@ window.initProgrammingGame = function() {
     gameContainer.style.flexDirection = 'column';
     gameContainer.style.alignItems = 'center';
     gameContainer.style.gap = '20px';
+    gameContainer.style.padding = '20px';
     body.appendChild(gameContainer);
 
-    // Stage select
-    const stageSelectEl = document.createElement('div');
-    stageSelectEl.id = 'stageSelect';
-    stageSelectEl.style.display = 'flex';
-    stageSelectEl.style.gap = '10px';
-    gameContainer.appendChild(stageSelectEl);
+    // ------------------- VIEW RENDER FUNCTIONS -------------------
 
-    // Grid
-    const gridEl = document.createElement('div');
-    gridEl.id = 'grid';
-    gridEl.style.display = 'grid';
-    gridEl.style.gridGap = '2px';
-    gameContainer.appendChild(gridEl);
-
-    // Code palette
-    const codePalette = document.createElement('div');
-    codePalette.id = 'codePalette';
-    codePalette.style.display = 'flex';
-    codePalette.style.gap = '10px';
-    gameContainer.appendChild(codePalette);
-
-    // Program area
-    const programArea = document.createElement('div');
-    programArea.id = 'programArea';
-    programArea.style.display = 'flex';
-    programArea.style.gap = '5px';
-    programArea.style.minHeight = '50px';
-    programArea.style.border = '1px solid #ccc';
-    programArea.style.padding = '5px';
-    gameContainer.appendChild(programArea);
-
-    // Program controls
-    const programControls = document.createElement('div');
-    programControls.id = 'programControls';
-    programControls.style.display = 'flex';
-    programControls.style.gap = '10px';
-    gameContainer.appendChild(programControls);
-
-    const runProgramBtn = document.createElement('button');
-    runProgramBtn.textContent = 'Run';
-    programControls.appendChild(runProgramBtn);
-
-    const stepProgramBtn = document.createElement('button');
-    stepProgramBtn.textContent = 'Step';
-    programControls.appendChild(stepProgramBtn);
-
-    const resetProgramBtn = document.createElement('button');
-    resetProgramBtn.textContent = 'Reset';
-    programControls.appendChild(resetProgramBtn);
-
-    const clearProgramBtn = document.createElement('button');
-    clearProgramBtn.textContent = 'Clear';
-    programControls.appendChild(clearProgramBtn);
-
-    // ------------------- RENDER FUNCTIONS -------------------
-
-    // 1️⃣ Stage Select Buttons
-    function renderStageSelect() {
-        stageSelectEl.innerHTML = '';
-        stages.forEach((stage, i) => {
-            const btn = document.createElement('button');
-            btn.textContent = stage.name;
-            btn.style.padding = '5px 10px';
-            btn.style.cursor = 'pointer';
-            if (i === state.stageIndex) btn.style.background = '#38a169';
-            btn.addEventListener('click', () => {
-                state.stageIndex = i;
-                state.programSequence = [];
-                renderStageSelect();
-                renderGrid();
-                renderProgramSequence();
+    // Render Stage Select View
+    function renderStageSelectView() {
+        gameContainer.innerHTML = '';
+        state.currentView = 'stageSelect';
+        
+        // Title
+        const title = document.createElement('h1');
+        title.textContent = 'Select a Stage';
+        title.style.marginBottom = '20px';
+        gameContainer.appendChild(title);
+        
+        // Scrollable stage list container
+        const stageListContainer = document.createElement('div');
+        stageListContainer.style.width = '300px';
+        stageListContainer.style.maxHeight = '400px';
+        stageListContainer.style.overflowY = 'auto';
+        stageListContainer.style.border = '1px solid #ccc';
+        stageListContainer.style.borderRadius = '8px';
+        stageListContainer.style.padding = '10px';
+        stageListContainer.style.display = 'flex';
+        stageListContainer.style.flexDirection = 'column';
+        stageListContainer.style.gap = '10px';
+        gameContainer.appendChild(stageListContainer);
+        
+        // Create stage buttons
+        stages.forEach((stage, index) => {
+            const stageButton = document.createElement('button');
+            stageButton.textContent = `${stage.name} (${stage.gridSize}×${stage.gridSize})`;
+            stageButton.style.width = '100%';
+            stageButton.style.padding = '12px';
+            stageButton.style.border = 'none';
+            stageButton.style.borderRadius = '6px';
+            stageButton.style.background = '#38a169';
+            stageButton.style.color = 'white';
+            stageButton.style.cursor = 'pointer';
+            stageButton.style.fontSize = '16px';
+            stageButton.style.textAlign = 'left';
+            stageButton.style.display = 'flex';
+            stageButton.style.justifyContent = 'space-between';
+            stageButton.style.alignItems = 'center';
+            
+            // Stage info
+            const info = document.createElement('span');
+            info.textContent = `${stage.coins.length} coins`;
+            info.style.fontSize = '14px';
+            info.style.opacity = '0.8';
+            stageButton.appendChild(info);
+            
+            stageButton.addEventListener('click', () => {
+                state.currentStageIndex = index;
+                renderStageView();
             });
-            stageSelectEl.appendChild(btn);
-        });
-    }
-
-    // 2️⃣ Grid Rendering
-    function renderGrid() {
-        gridEl.innerHTML = '';
-
-        if (state.stageIndex === null) {
-            gridEl.textContent = 'Select a Stage';
-            gridEl.style.display = 'flex';
-            gridEl.style.justifyContent = 'center';
-            gridEl.style.alignItems = 'center';
-            gridEl.style.minHeight = '100px';
-            return;
-        }
-
-        const stage = stages[state.stageIndex];
-        const size = stage.gridSize;
-
-        gridEl.style.gridTemplateColumns = `repeat(${size}, 50px)`;
-        gridEl.style.gridTemplateRows = `repeat(${size}, 50px)`;
-
-        function getCellContent(x, y) {
-            const char = stage.character;
-            if (char.x === x && char.y === y) {
-                switch(char.direction){
-                    case 'up': return '⬆️';
-                    case 'down': return '⬇️';
-                    case 'left': return '⬅️';
-                    case 'right': return '➡️';
-                }
-            }
-            for (let obs of stage.obstacles) if (obs.x===x && obs.y===y) return '🌳';
-            for (let coin of stage.coins) if (coin.x===x && coin.y===y) return '🪙';
-            if (stage.endPoint.x===x && stage.endPoint.y===y) return '🏰';
-            return '';
-        }
-
-        for (let y=0; y<size; y++){
-            for (let x=0; x<size; x++){
-                const cell = document.createElement('div');
-                cell.style.width = '50px';
-                cell.style.height = '50px';
-                cell.style.display = 'flex';
-                cell.style.justifyContent = 'center';
-                cell.style.alignItems = 'center';
-                cell.style.border = '1px solid #ccc';
-                cell.textContent = getCellContent(x,y);
-                gridEl.appendChild(cell);
-            }
-        }
-    }
-
-    // 3️⃣ Code Palette
-    function renderCodePalette() {
-        codePalette.innerHTML = '';
-        const blocks = [
-            { name: 'Move', action: 'move' },
-            { name: 'Turn ⟳', action: 'turn' }
-        ];
-        blocks.forEach(block=>{
-            const btn = document.createElement('button');
-            btn.textContent = block.name;
-            btn.style.cursor='pointer';
-            btn.addEventListener('click', ()=>{
-                state.programSequence.push(block.action);
-                renderProgramSequence();
+            
+            stageButton.addEventListener('mouseenter', () => {
+                stageButton.style.background = '#2f855a';
             });
-            codePalette.appendChild(btn);
+            
+            stageButton.addEventListener('mouseleave', () => {
+                stageButton.style.background = '#38a169';
+            });
+            
+            stageListContainer.appendChild(stageButton);
         });
     }
 
-    // 4️⃣ Program Sequence Display
-    function renderProgramSequence() {
-        programArea.innerHTML = '';
-        state.programSequence.forEach(cmd=>{
-            const stepEl = document.createElement('div');
-            stepEl.textContent = cmd==='move'?'Move':'Turn ⟳';
-            stepEl.style.padding='5px';
-            stepEl.style.border='1px solid #ccc';
-            stepEl.style.borderRadius='4px';
-            programArea.appendChild(stepEl);
+    // Render Stage View
+    function renderStageView() {
+        gameContainer.innerHTML = '';
+        state.currentView = 'stage';
+        
+        const stage = stages[state.currentStageIndex];
+        
+        // Back button
+        const backButton = document.createElement('button');
+        backButton.textContent = '← Back to Stage Select';
+        backButton.style.padding = '8px 16px';
+        backButton.style.border = 'none';
+        backButton.style.borderRadius = '6px';
+        backButton.style.background = '#4a5568';
+        backButton.style.color = 'white';
+        backButton.style.cursor = 'pointer';
+        backButton.style.marginBottom = '20px';
+        backButton.style.alignSelf = 'flex-start';
+        
+        backButton.addEventListener('click', renderStageSelectView);
+        backButton.addEventListener('mouseenter', () => {
+            backButton.style.background = '#2d3748';
         });
+        backButton.addEventListener('mouseleave', () => {
+            backButton.style.background = '#4a5568';
+        });
+        
+        gameContainer.appendChild(backButton);
+        
+        // Stage title
+        const stageTitle = document.createElement('h2');
+        stageTitle.textContent = stage.name;
+        stageTitle.style.marginBottom = '20px';
+        gameContainer.appendChild(stageTitle);
+        
+        // Grid placeholder (for now)
+        const gridPlaceholder = document.createElement('div');
+        gridPlaceholder.textContent = `Stage ${state.currentStageIndex + 1} - Grid will be implemented in next step`;
+        gridPlaceholder.style.padding = '40px';
+        gridPlaceholder.style.border = '2px dashed #ccc';
+        gridPlaceholder.style.borderRadius = '8px';
+        gridPlaceholder.style.background = '#f7fafc';
+        gridPlaceholder.style.textAlign = 'center';
+        gridPlaceholder.style.width = '300px';
+        gridPlaceholder.style.marginBottom = '20px';
+        gameContainer.appendChild(gridPlaceholder);
+        
+        // Stage info
+        const stageInfo = document.createElement('div');
+        stageInfo.style.textAlign = 'center';
+        stageInfo.style.marginTop = '10px';
+        stageInfo.style.color = '#4a5568';
+        
+        const infoText = document.createElement('p');
+        infoText.textContent = `Grid: ${stage.gridSize}×${stage.gridSize} | Coins: ${stage.coins.length} | Obstacles: ${stage.obstacles.length}`;
+        stageInfo.appendChild(infoText);
+        
+        const startInfo = document.createElement('p');
+        startInfo.textContent = `Start: (${stage.character.x}, ${stage.character.y}) facing ${stage.character.direction}`;
+        startInfo.style.fontSize = '14px';
+        stageInfo.appendChild(startInfo);
+        
+        const endInfo = document.createElement('p');
+        endInfo.textContent = `Goal: Reach (${stage.endPoint.x}, ${stage.endPoint.y})`;
+        endInfo.style.fontSize = '14px';
+        stageInfo.appendChild(endInfo);
+        
+        gameContainer.appendChild(stageInfo);
     }
 
-    // ------------------- PROGRAM CONTROLS -------------------
-    // Clear
-    clearProgramBtn.addEventListener('click', ()=>{
-        state.programSequence=[];
-        renderProgramSequence();
-    });
-
-    // Reset
-    resetProgramBtn.addEventListener('click', ()=>{
-        state.programSequence=[];
-        renderProgramSequence();
-        renderGrid();
-    });
-
-    // Step & Run (simplified)
-    function executeStep() {
-        if(state.stageIndex===null || state.programSequence.length===0) return;
-        const stage = stages[state.stageIndex];
-        const cmd = state.programSequence.shift();
-
-        if(cmd==='turn'){
-            // Always turn right
-            switch(stage.character.direction){
-                case 'up': stage.character.direction='right'; break;
-                case 'right': stage.character.direction='down'; break;
-                case 'down': stage.character.direction='left'; break;
-                case 'left': stage.character.direction='up'; break;
-            }
-        } else if(cmd==='move'){
-            let {x,y,direction} = stage.character;
-            let newX=x, newY=y;
-            switch(direction){
-                case 'up': newY--; break;
-                case 'down': newY++; break;
-                case 'left': newX--; break;
-                case 'right': newX++; break;
-            }
-            // Check boundaries and obstacles
-            if(newX>=0 && newY>=0 && newX<stage.gridSize && newY<stage.gridSize){
-                if(!stage.obstacles.some(o=>o.x===newX && o.y===newY)){
-                    stage.character.x=newX;
-                    stage.character.y=newY;
-                    // Collect coins
-                    stage.coins = stage.coins.filter(c=>!(c.x===newX && c.y===newY));
-                }
-            }
-        }
-
-        renderGrid();
-        renderProgramSequence();
-    }
-
-    stepProgramBtn.addEventListener('click', executeStep);
-
-    runProgramBtn.addEventListener('click', ()=>{
-        while(state.programSequence.length>0){
-            executeStep();
-        }
-    });
-
-    // ------------------- INIT -------------------
-    renderStageSelect();
-    renderGrid();
-    renderCodePalette();
-    renderProgramSequence();
+    // ------------------- INITIAL RENDER -------------------
+    renderStageSelectView();
 };
 
 // ------------------- AUTO INIT -------------------
-document.addEventListener('DOMContentLoaded', ()=>{
-    if(window.initProgrammingGame) window.initProgrammingGame();
+document.addEventListener('DOMContentLoaded', () => {
+    if (window.initProgrammingGame) window.initProgrammingGame();
 });
