@@ -57,6 +57,20 @@
             margin: 10px 0 0;
             opacity: 0.9;
         }
+
+        /* Stage select buttons */
+        .stage-select {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .stage-select button.selected {
+            background: #38a169;
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -68,39 +82,62 @@
         </a>
     </div>
 
-
-    
     <!-- Game title -->
     <div class="game-title">
         <h1>Programming Puzzle Game</h1>
         <p>Teach programming concepts through interactive puzzles</p>
     </div>
-    
-    <!-- Game container (will be populated by JavaScript) -->
-    <div id="programming-game"></div>
-    
+
+    <!-- Stage Select -->
+    <div class="stage-select" id="stageSelect"></div>
+
+    <!-- Game container -->
+    <div class="programming-game pg-container">
+        <div id="grid" class="pg-grid-7x7"></div>
+
+        <!-- Program controls -->
+        <div class="pg-controls">
+            <div class="pg-code-blocks" id="codeBlocks">
+                <button class="pg-code-block" data-action="move">Move</button>
+                <button class="pg-code-block" data-action="left">Turn Left</button>
+                <button class="pg-code-block" data-action="right">Turn Right</button>
+                <button class="pg-code-block" data-action="ifPathAhead">If Path Ahead</button>
+                <button class="pg-code-block" data-action="repeat">Repeat 2x</button>
+            </div>
+            <div class="pg-execution-controls">
+                <button class="pg-btn pg-btn-run" id="runProgram">Run Program</button>
+                <button class="pg-btn pg-btn-step" id="stepProgram">Step</button>
+                <button class="pg-btn pg-btn-reset" id="resetGame">Reset</button>
+                <button class="pg-btn pg-btn-clear" id="clearProgram">Clear</button>
+            </div>
+        </div>
+
+        <!-- Program sequence display -->
+        <div class="pg-program-area">
+            <div class="pg-program-sequence" id="programDisplay"></div>
+        </div>
+    </div>
+
     <!-- Game instructions -->
-    <div style="color: white; max-width: 600px; margin-top: 30px; background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px;">
-        <h3 style="margin-top: 0;"><i class="fas fa-info-circle"></i> How to Play</h3>
-        <ol style="margin-bottom: 0;">
+    <div class="pg-instructions" style="max-width: 600px; margin-top: 30px;">
+        <h4><i class="fas fa-info-circle"></i> How to Play</h4>
+        <ul>
             <li>Click code blocks to build your program</li>
             <li>Program executes commands in order</li>
             <li>Use "Run Program" to execute all at once</li>
             <li>Use "Step" to execute one command at a time</li>
-            <li>Reach the green flag to win!</li>
-        </ol>
+            <li>Collect all coins before reaching the green flag to win!</li>
+        </ul>
     </div>
-    
+
     <!-- Footer -->
     <div style="color: white; margin-top: 40px; text-align: center; font-size: 14px; opacity: 0.7;">
         <p>This game runs entirely in your browser. No data is saved or sent to any server.</p>
     </div>
-    
+
     <!-- Load game scripts -->
-    <script src="blockly.min.js"></script>
     <script src="game.js"></script>
     <script>
-        // Initialize the game when page loads
         document.addEventListener('DOMContentLoaded', function() {
             const gameContainer = document.getElementById('programming-game');
             if (gameContainer && window.initProgrammingGame) {
