@@ -3,7 +3,7 @@ layout: post
 title: "Osaka, Japan Day 8"
 date: 2025_05_22
 categories: [Blog]
-description: "Post Trip Re flection"
+description: "Post Trip Reflection"
 location: "Osaka, Japan"
 
 ---

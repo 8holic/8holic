@@ -3,7 +3,7 @@ layout: post
 title: "Osaka, Japan Day 7"
 date: 2025_05_21
 categories: [Blog]
-description: "Tomogashma Island"
+description: "Kada Town"
 location: "Osaka, Japan"
 
 ---
