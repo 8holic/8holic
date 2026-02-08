@@ -8,7 +8,13 @@ location: "Osaka, Japan"
 
 ---
 # Kyoto 2 Day trip
-<img src="{{ '/assets/images/2025_05_19B1.jpg' | relative_url }}"
+<img src="{{ '/assets/images/2025_05_18B1.jpg' | relative_url }}" 
+     alt="Rainy Osaka" 
+     class="blog-image">
+<img src="{{ '/assets/images/2025_05_19B1.jpg' | relative_url }}" 
+     alt="Rainy Osaka" 
+     class="blog-image">
+<img src="{{ 'assets\images\2025_05_19B1.jpg' | relative_url }}"
      alt="Preparation" 
      class="blog-image">
 
