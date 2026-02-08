@@ -502,12 +502,13 @@ window.initProgrammingGame = function() {
             state.programSequence = [];
             renderGrid();
             updateProgramDisplay();
-            
-            // Re-enable the run button after reset
+
+            // Re-enable run button
             runBtn.disabled = false;
             runBtn.style.opacity = '1';
             runBtn.style.cursor = 'pointer';
         });
+
         
         // Clear Button - Clear program only
         const clearBtn = document.createElement('button');
@@ -522,7 +523,13 @@ window.initProgrammingGame = function() {
         clearBtn.addEventListener('click', () => {
             state.programSequence = [];
             updateProgramDisplay();
+
+            // Re-enable run button when program is cleared
+            runBtn.disabled = false;
+            runBtn.style.opacity = '1';
+            runBtn.style.cursor = 'pointer';
         });
+
                 
         controls.appendChild(runBtn);
         controls.appendChild(resetBtn);
@@ -660,7 +667,6 @@ function renderStageView() {
         <ol style="margin: 10px 0; padding-left: 20px; font-size: 14px;">
             <li>Drag "Move" and "Turn" commands to the program area</li>
             <li>Arrange them in the order you want to execute</li>
-            <li>Click "Step" to execute one command at a time</li>
             <li>Click "Run" to execute all commands automatically</li>
             <li>Collect all coins (🪙) and reach the castle (🏰) to win!</li>
             <li>Avoid obstacles (🌳) and don't go out of bounds</li>
