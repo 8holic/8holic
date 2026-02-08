@@ -9,8 +9,7 @@ categories: [project]
 
 A simple game to teach basic programming concepts.
 
-[Play the game](/assets/2026-08-02-program_game/game.html)
-
+[Play the game!]({{ site.baseurl }}/assets/2026-08-02-program_game/game.html)
 
 ## About This Game
 
