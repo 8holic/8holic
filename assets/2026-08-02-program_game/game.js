@@ -349,7 +349,7 @@ window.initProgrammingGame = function() {
         dropZone.style.display = 'flex';
         dropZone.style.flexWrap = 'column';
         dropZone.style.gap = '5px';
-        dropZone.style.alignContent = 'stretch';
+        dropZone.style.alignContent = 'flex-start';
         
         // Drag over event
         dropZone.addEventListener('dragover', (e) => {
