@@ -1,131 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Programming Puzzle Game</title>
-    <link rel="stylesheet" href="game.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* Basic page styling */
-        body {
-            margin: 0;
-            padding: 20px;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        
-        .back-link {
-            align-self: flex-start;
-            margin-bottom: 20px;
-        }
-        
-        .back-link a {
-            color: white;
-            text-decoration: none;
-            font-size: 14px;
-            padding: 8px 16px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 4px;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: background 0.3s;
-        }
-        
-        .back-link a:hover {
-            background: rgba(255,255,255,0.3);
-        }
-        
-        .game-title {
-            color: white;
-            text-align: center;
-            margin-bottom: 30px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
-        }
-        
-        .game-title h1 {
-            margin: 0;
-            font-size: 2.5em;
-        }
-        
-        .game-title p {
-            margin: 10px 0 0;
-            opacity: 0.9;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Programming Puzzle Game</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="game.css">
+<style>
+    /* Basic page styling */
+    body {
+        margin: 0;
+        padding: 20px;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
-        /* Stage select buttons */
-        .stage-select {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
+    .back-link {
+        align-self: flex-start;
+        margin-bottom: 20px;
+    }
 
-        .stage-select button.selected {
-            background: #38a169;
-            color: white;
-        }
-    </style>
+    .back-link a {
+        color: white;
+        text-decoration: none;
+        font-size: 14px;
+        padding: 8px 16px;
+        background: rgba(255,255,255,0.2);
+        border-radius: 4px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        transition: background 0.3s;
+    }
+
+    .back-link a:hover {
+        background: rgba(255,255,255,0.3);
+    }
+
+    .game-title {
+        color: white;
+        text-align: center;
+        margin-bottom: 30px;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .game-title h1 {
+        margin: 0;
+        font-size: 2.5em;
+    }
+
+    .game-title p {
+        margin: 10px 0 0;
+        opacity: 0.9;
+    }
+
+    /* Stage select buttons */
+    .stage-select {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .stage-select button.selected {
+        background: #38a169;
+        color: white;
+    }
+
+    /* Grid container */
+    #grid {
+        display: grid;
+        margin-top: 20px;
+        min-height: 200px;
+        width: max-content;
+        background: rgba(255,255,255,0.05);
+    }
+
+    #grid div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        border: 1px solid rgba(255,255,255,0.2);
+        width: 50px;
+        height: 50px;
+    }
+</style>
 </head>
 <body>
-    <!-- Back to blog post -->
-    <div class="back-link">
-        <a href="{{ site.baseurl }}/projects/program_game/">
-            <i class="fas fa-arrow-left"></i>
-            Back to Project Details
-        </a>
-    </div>
 
-    <!-- Game title -->
-    <div class="game-title">
-        <h1>Programming Puzzle Game</h1>
-        <p>Teach programming concepts through interactive puzzles</p>
-    </div>
+<div class="back-link">
+    <a href="{{ site.baseurl }}/projects/program_game/">
+        <i class="fas fa-arrow-left"></i>
+        Back to Project Details
+    </a>
+</div>
 
-    <!-- Stage Select -->
-    <div class="stage-select" id="stageSelect"></div>
+<div class="game-title">
+    <h1>Programming Puzzle Game</h1>
+    <p>Teach programming concepts through interactive puzzles</p>
+</div>
 
-    <!-- Game container -->
-    <div id="programming-game">
-        <!-- Stage Select -->
-        <div id="stageSelect"></div>
-    </div>
+<!-- Stage Select -->
+<div class="stage-select" id="stageSelect"></div>
 
-    <!-- Game instructions -->
-    <div class="pg-instructions" style="max-width: 600px; margin-top: 30px;">
-        <h4><i class="fas fa-info-circle"></i> How to Play</h4>
-        <ul>
-            <li>Click code blocks to build your program</li>
-            <li>Program executes commands in order</li>
-            <li>Use "Run Program" to execute all at once</li>
-            <li>Use "Step" to execute one command at a time</li>
-            <li>Collect all coins before reaching the green flag to win!</li>
-        </ul>
-    </div>
+<!-- Game container -->
+<div id="programming-game">
+    <div id="grid"></div>
+</div>
 
-    <!-- Footer -->
-    <div style="color: white; margin-top: 40px; text-align: center; font-size: 14px; opacity: 0.7;">
-        <p>This game runs entirely in your browser. No data is saved or sent to any server.</p>
-    </div>
+<!-- Instructions -->
+<div class="pg-instructions" style="max-width: 600px; margin-top: 30px;">
+    <h4><i class="fas fa-info-circle"></i> How to Play</h4>
+    <ul>
+        <li>Click stage buttons to select a stage</li>
+        <li>Grid will display the stage</li>
+    </ul>
+</div>
 
-    <!-- Load game scripts -->
-    <script src="game.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const gameContainer = document.getElementById('programming-game');
-            if (gameContainer && window.initProgrammingGame) {
-                window.initProgrammingGame(gameContainer);
-            } else {
-                gameContainer.innerHTML = '<div style="color: white; text-align: center; padding: 40px;">Error loading game. Please check console.</div>';
-                console.error('Game initialization failed. initProgrammingGame function not found.');
-            }
-        });
-    </script>
+<!-- Footer -->
+<div style="color: white; margin-top: 40px; text-align: center; font-size: 14px; opacity: 0.7;">
+    <p>This game runs entirely in your browser. No data is saved or sent to any server.</p>
+</div>
+
+<script src="game.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const gameContainer = document.getElementById('programming-game');
+        if(gameContainer && window.initProgrammingGame){
+            window.initProgrammingGame();
+        }
+    });
+</script>
+
 </body>
 </html>
