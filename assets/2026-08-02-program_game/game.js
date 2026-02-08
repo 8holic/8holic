@@ -119,8 +119,71 @@ window.initProgrammingGame = function() {
             }
         }
     }
+    // ------------------- AVAILABLE BLOCKS / PROGRAM AREA -------------------
+
+    // DOM elements
+    const codePalette = document.getElementById('codePalette');
+    const programArea = document.getElementById('programArea');
+    const runProgramBtn = document.getElementById('runProgram');
+    const stepProgramBtn = document.getElementById('stepProgram');
+    const resetProgramBtn = document.getElementById('resetProgram');
+    const clearProgramBtn = document.getElementById('clearProgram');
+
+    // Program sequence state
+    let programSequence = []; // stores 'move' or 'turn'
+
+    // 1️⃣ Render Available Blocks
+    function renderCodePalette() {
+        codePalette.innerHTML = '';
+        const blocks = [
+            { name: 'Move', action: 'move' },
+            { name: 'Turn Right', action: 'turn' }
+        ];
+
+        blocks.forEach(block => {
+            const btn = document.createElement('button');
+            btn.textContent = block.name;
+            btn.className = 'pg-code-block';
+            btn.dataset.action = block.action;
+
+            btn.addEventListener('click', () => {
+                // Add block to sequence
+                programSequence.push(block.action);
+                renderProgramSequence();
+            });
+
+            codePalette.appendChild(btn);
+        });
+    }
+
+    // 2️⃣ Render Program Sequence
+    function renderProgramSequence() {
+        programArea.innerHTML = '';
+        programSequence.forEach(cmd => {
+            const stepEl = document.createElement('div');
+            stepEl.className = 'pg-program-step';
+            stepEl.textContent = cmd === 'move' ? 'Move' : 'Turn ⟳';
+            programArea.appendChild(stepEl);
+        });
+    }
+
+    // 3️⃣ Clear Program
+    clearProgramBtn.addEventListener('click', () => {
+        programSequence = [];
+        renderProgramSequence();
+    });
+
+    // 4️⃣ Reset Stage
+    resetProgramBtn.addEventListener('click', () => {
+        programSequence = [];
+        renderProgramSequence();
+        renderGrid(); // reset character
+    });
 
     // ------------------- INIT -------------------
     renderStageSelect();
     renderGrid();
+    renderCodePalette();
+    renderProgramSequence();
 };
+
