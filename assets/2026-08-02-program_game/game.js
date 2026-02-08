@@ -3,12 +3,12 @@ window.initProgrammingGame = function() {
     // ------------------- CONFIG -------------------
     const stages = [
         {
-            name: "Stage 1",
-            gridSize: 6,
+            name: "The Basics",
+            gridSize: 4,
             character: { x: 0, y: 2, direction: 'right' },
             obstacles: [ { x: 2, y: 2 } ],
             coins: [ { x: 1, y: 0 }, { x: 3, y: 0 } ],
-            endPoint: { x: 3, y: 4 }
+            endPoint: { x: 3, y: 3 }
         },
         {
             name: "Stage 2",
