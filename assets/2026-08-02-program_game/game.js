@@ -455,7 +455,7 @@ window.initProgrammingGame = function() {
         
         runBtn.addEventListener('click', async () => {
             // Disable buttons during execution
-            [runBtn, stepBtn, resetBtn, clearBtn].forEach(btn => {
+            [runBtn, resetBtn, clearBtn].forEach(btn => {
                 btn.disabled = true;
                 btn.style.opacity = '0.5';
             });
@@ -479,35 +479,13 @@ window.initProgrammingGame = function() {
             }
             
             // Re-enable buttons
-            [runBtn, stepBtn, resetBtn, clearBtn].forEach(btn => {
+            [runBtn, resetBtn, clearBtn].forEach(btn => {
                 btn.disabled = false;
                 btn.style.opacity = '1';
             });
         });
         
-        // Step Button - Execute next command only
-        const stepBtn = document.createElement('button');
-        stepBtn.textContent = 'Step';
-        stepBtn.style.padding = '10px 20px';
-        stepBtn.style.backgroundColor = '#4299e1';
-        stepBtn.style.color = 'white';
-        stepBtn.style.border = 'none';
-        stepBtn.style.borderRadius = '6px';
-        stepBtn.style.cursor = 'pointer';
-        
-        stepBtn.addEventListener('click', () => {
-            if (state.programSequence.length > 0) {
-                const nextCommand = state.programSequence[0];
-                executeCommand(nextCommand);
-                state.programSequence.shift(); // Remove executed command
-                renderGrid();
-                updateProgramDisplay();
-                
-                if (checkWinCondition()) {
-                    alert('🎉 Congratulations! You completed the stage!');
-                }
-            }
-        });
+
         
         // Reset Button - Reset to initial state
         const resetBtn = document.createElement('button');
@@ -542,7 +520,6 @@ window.initProgrammingGame = function() {
         });
         
         controls.appendChild(runBtn);
-        controls.appendChild(stepBtn);
         controls.appendChild(resetBtn);
         controls.appendChild(clearBtn);
         controlsContainer.appendChild(controls);
@@ -678,7 +655,6 @@ function renderStageView() {
         <ol style="margin: 10px 0; padding-left: 20px; font-size: 14px;">
             <li>Drag "Move" and "Turn" commands to the program area</li>
             <li>Arrange them in the order you want to execute</li>
-            <li>Click "Step" to execute one command at a time</li>
             <li>Click "Run" to execute all commands automatically</li>
             <li>Collect all coins (🪙) and reach the castle (🏰) to win!</li>
             <li>Avoid obstacles (🌳) and don't go out of bounds</li>
