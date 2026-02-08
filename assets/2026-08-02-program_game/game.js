@@ -454,8 +454,8 @@ window.initProgrammingGame = function() {
         runBtn.style.cursor = 'pointer';
         
         runBtn.addEventListener('click', async () => {
-            // Disable all buttons during execution
-            [runBtn, resetBtn, clearBtn].forEach(btn => {
+            // Disable buttons during execution
+            [runBtn, stepBtn, resetBtn, clearBtn].forEach(btn => {
                 btn.disabled = true;
                 btn.style.opacity = '0.5';
             });
@@ -478,14 +478,36 @@ window.initProgrammingGame = function() {
                 await new Promise(resolve => setTimeout(resolve, 500));
             }
             
-            // After execution, only re-enable reset and clear buttons
-            // Run button stays disabled
-            [resetBtn, clearBtn].forEach(btn => {
+            // Re-enable buttons
+            [runBtn, stepBtn, resetBtn, clearBtn].forEach(btn => {
                 btn.disabled = false;
                 btn.style.opacity = '1';
             });
         });
         
+        // Step Button - Execute next command only
+        const stepBtn = document.createElement('button');
+        stepBtn.textContent = 'Step';
+        stepBtn.style.padding = '10px 20px';
+        stepBtn.style.backgroundColor = '#4299e1';
+        stepBtn.style.color = 'white';
+        stepBtn.style.border = 'none';
+        stepBtn.style.borderRadius = '6px';
+        stepBtn.style.cursor = 'pointer';
+        
+        stepBtn.addEventListener('click', () => {
+            if (state.programSequence.length > 0) {
+                const nextCommand = state.programSequence[0];
+                executeCommand(nextCommand);
+                state.programSequence.shift(); // Remove executed command
+                renderGrid();
+                updateProgramDisplay();
+                
+                if (checkWinCondition()) {
+                    alert('🎉 Congratulations! You completed the stage!');
+                }
+            }
+        });
         
         // Reset Button - Reset to initial state
         const resetBtn = document.createElement('button');
@@ -502,13 +524,8 @@ window.initProgrammingGame = function() {
             state.programSequence = [];
             renderGrid();
             updateProgramDisplay();
-            
-            // Re-enable the run button after reset
-            runBtn.disabled = false;
-            runBtn.style.opacity = '1';
-            runBtn.style.cursor = 'pointer';
         });
-                
+        
         // Clear Button - Clear program only
         const clearBtn = document.createElement('button');
         clearBtn.textContent = 'Clear Program';
@@ -518,28 +535,14 @@ window.initProgrammingGame = function() {
         clearBtn.style.border = 'none';
         clearBtn.style.borderRadius = '6px';
         clearBtn.style.cursor = 'pointer';
-
+        
         clearBtn.addEventListener('click', () => {
             state.programSequence = [];
-            // Get the drop zone and update its display
-            const dropZone = document.getElementById('programDropZone');
-            if (dropZone) {
-                // Clear the drop zone and show placeholder
-                dropZone.innerHTML = '';
-                const placeholder = document.createElement('div');
-                placeholder.textContent = 'Drop commands here...';
-                placeholder.style.color = '#999';
-                placeholder.style.width = '100%';
-                placeholder.style.textAlign = 'center';
-                placeholder.style.padding = '20px';
-                dropZone.appendChild(placeholder);
-            }
-            // Also re-enable the run button since we're clearing the program
-            runBtn.disabled = false;
-            runBtn.style.opacity = '1';
+            updateProgramDisplay();
         });
-                
+        
         controls.appendChild(runBtn);
+        controls.appendChild(stepBtn);
         controls.appendChild(resetBtn);
         controls.appendChild(clearBtn);
         controlsContainer.appendChild(controls);
@@ -675,6 +678,7 @@ function renderStageView() {
         <ol style="margin: 10px 0; padding-left: 20px; font-size: 14px;">
             <li>Drag "Move" and "Turn" commands to the program area</li>
             <li>Arrange them in the order you want to execute</li>
+            <li>Click "Step" to execute one command at a time</li>
             <li>Click "Run" to execute all commands automatically</li>
             <li>Collect all coins (🪙) and reach the castle (🏰) to win!</li>
             <li>Avoid obstacles (🌳) and don't go out of bounds</li>
