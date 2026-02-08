@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programming Puzzle Game</title>
+    <link rel="stylesheet" href="game.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Basic page styling */
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .back-link {
+            align-self: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        .back-link a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            padding: 8px 16px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 4px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.3s;
+        }
+        
+        .back-link a:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        
+        .game-title {
+            color: white;
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .game-title h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        
+        .game-title p {
+            margin: 10px 0 0;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <!-- Back to blog post -->
+    <div class="back-link">
+        <a href="../2026-08-02-PG/">
+            <i class="fas fa-arrow-left"></i>
+            Back to Project Details
+        </a>
+    </div>
+    
+    <!-- Game title -->
+    <div class="game-title">
+        <h1>Programming Puzzle Game</h1>
+        <p>Teach programming concepts through interactive puzzles</p>
+    </div>
+    
+    <!-- Game container (will be populated by JavaScript) -->
+    <div id="programming-game"></div>
+    
+    <!-- Game instructions -->
+    <div style="color: white; max-width: 600px; margin-top: 30px; background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px;">
+        <h3 style="margin-top: 0;"><i class="fas fa-info-circle"></i> How to Play</h3>
+        <ol style="margin-bottom: 0;">
+            <li>Click code blocks to build your program</li>
+            <li>Program executes commands in order</li>
+            <li>Use "Run Program" to execute all at once</li>
+            <li>Use "Step" to execute one command at a time</li>
+            <li>Reach the green flag to win!</li>
+        </ol>
+    </div>
+    
+    <!-- Footer -->
+    <div style="color: white; margin-top: 40px; text-align: center; font-size: 14px; opacity: 0.7;">
+        <p>This game runs entirely in your browser. No data is saved or sent to any server.</p>
+    </div>
+    
+    <!-- Load game scripts -->
+    <script src="game.js"></script>
+    <script>
+        // Initialize the game when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            const gameContainer = document.getElementById('programming-game');
+            if (gameContainer && window.initProgrammingGame) {
+                window.initProgrammingGame(gameContainer);
+            } else {
+                gameContainer.innerHTML = '<div style="color: white; text-align: center; padding: 40px;">Error loading game. Please check console.</div>';
+                console.error('Game initialization failed. initProgrammingGame function not found.');
+            }
+        });
+    </script>
+</body>
+</html>
