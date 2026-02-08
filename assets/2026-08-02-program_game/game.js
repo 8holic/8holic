@@ -5,10 +5,10 @@ window.initProgrammingGame = function() {
         {
             name: "Stage 1",
             gridSize: 5,
-            character: { x: 0, y: 0, direction: 'right' },
-            obstacles: [ { x: 4, y: 5 },{ x:2 , y:4} ],
-            coins: [ { x: 3, y: 4 } ],
-            endPoint: { x: 4, y: 2 }
+            character: { x: 0, y: 2, direction: 'right' },
+            obstacles: [ { x: 2, y: 2 } ],
+            coins: [ { x: 1, y: 0 }, { x: 3, y: 0 } ],
+            endPoint: { x: 3, y: 4 }
         },
         {
             name: "Stage 2",
