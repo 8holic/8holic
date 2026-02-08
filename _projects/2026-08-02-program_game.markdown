@@ -9,7 +9,7 @@ categories: [project]
 
 A simple game to teach basic programming concepts.
 
-[Click here to play the game](/projects/2026-02-08-PG/game.html)
+[Play the game](game.html)
 
 ## About This Game
 
