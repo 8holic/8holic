@@ -343,11 +343,13 @@ window.initProgrammingGame = function() {
         const dropZone = document.createElement('div');
         dropZone.id = 'programDropZone';
         dropZone.style.minHeight = '100px';
+        dropZone.style.maxHeight = '200px'; // ← ADD THIS LINE
+        dropZone.style.overflowY = 'auto';  // ← ADD THIS LINE
         dropZone.style.border = '2px dashed #ccc';
         dropZone.style.borderRadius = '8px';
         dropZone.style.padding = '10px';
         dropZone.style.display = 'flex';
-        dropZone.style.flexWrap = 'column';
+        dropZone.style.flexWrap = 'wrap';
         dropZone.style.gap = '5px';
         dropZone.style.alignContent = 'flex-start';
         
@@ -613,21 +615,27 @@ function renderStageView() {
     // Main game interface container - CHANGED THIS PART
     const gameInterface = document.createElement('div');
     gameInterface.style.display = 'flex';
-    gameInterface.style.flexDirection = 'column';  // ← CHANGED from row to column
+    gameInterface.style.flexDirection = 'column';
     gameInterface.style.gap = '40px';
     gameInterface.style.width = '100%';
     gameInterface.style.maxWidth = '900px';
     
     // Grid section
     const leftPanel = document.createElement('div');
-    
+    leftPanel.style.display = 'flex';              // ← ADD
+    leftPanel.style.flexDirection = 'column';      // ← ADD
+    leftPanel.style.alignItems = 'center';         // ← ADD
+
     const gridTitle = document.createElement('h3');
     gridTitle.textContent = 'Game Grid:';
     gridTitle.style.marginBottom = '10px';
+    gridTitle.style.textAlign = 'center';          // ← ADD
     leftPanel.appendChild(gridTitle);
-    
+
     const gridContainer = document.createElement('div');
     gridContainer.id = 'gridContainer';
+    gridContainer.style.display = 'flex';          // ← ADD
+    gridContainer.style.justifyContent = 'center'; // ← ADD
     leftPanel.appendChild(gridContainer);
     
     // Programming interface section
