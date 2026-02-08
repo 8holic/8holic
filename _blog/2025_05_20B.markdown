@@ -12,3 +12,18 @@ image_dir: /assets/images/2025_05_20B/
      class="blog-image">
      alt="Midnight Shrine" 
      class="blog-image">
+
+At 12am I went to hike the Fushimi Inari Shrine, I heard that this location is very busy in the day. So I decided to visit it at night. It has a completely different atmosphere, a little overworldly.
+
+<img src="{{ page.image_dir | relative_url }}Slide2.JPG"
+     class="blog-image">
+     alt="Midnight Shrine" 
+     class="blog-image">
+In kyoto I went to the train museum, at one segment I can pilot a toy train with a camera front looking. That was really cool
+
+<img src="{{ page.image_dir | relative_url }}Slide3.JPG"
+     class="blog-image">
+     alt="Midnight Shrine" 
+     class="blog-image">
+
+At the end I went and oversee the city, it is very urban. TBH I didn't really feel much, the Hibike collab was nice through. i liked that show. I got a coaster.
