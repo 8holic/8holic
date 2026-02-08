@@ -664,7 +664,18 @@ function renderStageView() {
     rightPanel.appendChild(controlsContainer);
     
     // Game instructions
-
+    const instructions = document.createElement('div');
+    instructions.innerHTML = `
+        <h4>How to Play:</h4>
+        <ol style="margin: 10px 0; padding-left: 20px; font-size: 14px;">
+            <li>Drag "Move" and "Turn" commands to the program area</li>
+            <li>Arrange them in the order you want to execute</li>
+            <li>Click "Step" to execute one command at a time</li>
+            <li>Click "Run" to execute all commands automatically</li>
+            <li>Collect all coins (🪙) and reach the castle (🏰) to win!</li>
+            <li>Avoid obstacles (🌳) and don't go out of bounds</li>
+        </ol>
+    `;
     instructions.style.fontSize = '14px';
     instructions.style.color = '#4a5568';
     rightPanel.appendChild(instructions);
