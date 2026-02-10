@@ -3,8 +3,8 @@ const COLORS = ['🔴', '🟢', '🔵', '🟡', '🟣', '🟠']; // 6 possible c
 const CODE_LENGTH = 4;
 const MAX_ATTEMPTS = 10;
 const FEEDBACK = {
-  CORRECT: '⚫', // Correct color and position
-  PARTIAL: '⚪'  // Correct color, wrong position
+    CORRECT: '⚫', // Correct color and position
+    PARTIAL: '⚪'  // Correct color, wrong position
 };
 
 // Game state
@@ -12,15 +12,10 @@ let secretCode = [];
 let currentAttempt = 0;
 let currentGuess = Array(CODE_LENGTH).fill('');
 let gameEnded = false;
+let startTime = null;
+let timerInterval = null;
 
-// DOM elements - assuming these exist in your HTML
-const gameBoard = document.getElementById('game-board');
-const colorPalette = document.getElementById('color-palette');
-const feedbackArea = document.getElementById('feedback-area');
-const messageArea = document.getElementById('message-area');
-const resetButton = document.getElementById('reset-button');
-
-// Initialize game
+// Initialize game - this runs when page loads
 function initGame() {
     // Generate secret code
     secretCode = Array.from({ length: CODE_LENGTH }, () => 
@@ -30,29 +25,98 @@ function initGame() {
     currentAttempt = 0;
     currentGuess = Array(CODE_LENGTH).fill('');
     gameEnded = false;
+    startTime = Date.now();
     
-    // Clear and setup game board
+    // Clear any existing timer
+    if (timerInterval) {
+        clearInterval(timerInterval);
+    }
+    
+    // Create game container if it doesn't exist
+    const gameContainer = document.getElementById('game-container');
+    if (!gameContainer) return;
+    
+    // Clear container
+    gameContainer.innerHTML = '';
+    
+    // Create message area
+    const messageArea = document.createElement('div');
+    messageArea.id = 'message-area';
+    messageArea.textContent = `Attempt ${currentAttempt + 1}/${MAX_ATTEMPTS}. Select colors!`;
+    gameContainer.appendChild(messageArea);
+    
+    // Create game stats
+    const statsDiv = document.createElement('div');
+    statsDiv.className = 'game-stats';
+    statsDiv.innerHTML = `
+        <div class="stat">
+            <div class="stat-value" id="attempt-counter">0</div>
+            <div class="stat-label">Attempts</div>
+        </div>
+        <div class="stat">
+            <div class="stat-value" id="time-counter">0s</div>
+            <div class="stat-label">Time</div>
+        </div>
+        <div class="stat">
+            <div class="stat-value">${MAX_ATTEMPTS}</div>
+            <div class="stat-label">Max Attempts</div>
+        </div>
+    `;
+    gameContainer.appendChild(statsDiv);
+    
+    // Create game board
+    const gameBoard = document.createElement('div');
+    gameBoard.id = 'game-board';
+    gameContainer.appendChild(gameBoard);
+    
+    // Create feedback area
+    const feedbackArea = document.createElement('div');
+    feedbackArea.id = 'feedback-area';
+    gameContainer.appendChild(feedbackArea);
+    
+    // Create color palette
+    const colorPalette = document.createElement('div');
+    colorPalette.id = 'color-palette';
+    gameContainer.appendChild(colorPalette);
+    
+    // Create reset button
+    const resetButton = document.createElement('button');
+    resetButton.id = 'reset-button';
+    resetButton.innerHTML = '<i class="fas fa-redo"></i> New Game';
+    resetButton.addEventListener('click', initGame);
+    gameContainer.appendChild(resetButton);
+    
+    // Setup game elements
+    setupGameBoard(gameBoard, feedbackArea);
+    setupColorPalette(colorPalette);
+    startTimer();
+    
+    console.log('Secret code (for debugging):', secretCode);
+}
+
+// Setup game board with attempt rows
+function setupGameBoard(gameBoard, feedbackArea) {
     gameBoard.innerHTML = '';
     feedbackArea.innerHTML = '';
-    messageArea.textContent = '';
     
-    // Create attempt rows
     for (let i = 0; i < MAX_ATTEMPTS; i++) {
         const row = document.createElement('div');
         row.className = 'attempt-row';
+        if (i === 0) row.classList.add('current-attempt');
         row.dataset.attempt = i;
         
         // Create guess slots
         for (let j = 0; j < CODE_LENGTH; j++) {
             const slot = document.createElement('div');
-            slot.className = 'guess-slot';
+            slot.className = 'guess-slot empty';
             slot.dataset.position = j;
             slot.dataset.attempt = i;
             slot.textContent = '';
+            slot.addEventListener('click', () => handleSlotClick(j));
             row.appendChild(slot);
         }
         
-        // Create feedback area
+        // Create feedback area for this row
         const feedback = document.createElement('div');
         feedback.className = 'feedback-area';
         feedback.dataset.attempt = i;
@@ -60,42 +124,56 @@ function initGame() {
         
         gameBoard.appendChild(row);
     }
-    
-    // Setup color palette
-    setupColorPalette();
-    
-    // Add reset button listener
-    resetButton.addEventListener('click', resetGame);
-    
-    console.log('Secret code (for debugging):', secretCode);
-    updateMessage(`Attempt ${currentAttempt + 1}/${MAX_ATTEMPTS}. Select colors!`);
 }
 
 // Setup color palette
-function setupColorPalette() {
+function setupColorPalette(colorPalette) {
     colorPalette.innerHTML = '';
     
-    COLORS.forEach(color => {
+    COLORS.forEach((color, index) => {
         const colorBtn = document.createElement('button');
         colorBtn.className = 'color-option';
         colorBtn.textContent = color;
         colorBtn.dataset.color = color;
-        colorBtn.addEventListener('click', () => selectColor(color));
+        colorBtn.title = `Color ${index + 1} (Press ${index + 1})`;
+        colorBtn.addEventListener('click', (e) => selectColor(color, e));
         colorPalette.appendChild(colorBtn);
     });
 }
 
-// Handle color selection
-function selectColor(color) {
+// Handle slot click
+function handleSlotClick(position) {
     if (gameEnded) return;
     
-    // Find first empty slot in current row
-    const currentRow = document.querySelector(`.attempt-row[data-attempt="${currentAttempt}"]`);
-    const emptySlot = currentRow.querySelector('.guess-slot:empty');
+    const selectedColor = document.querySelector('.color-option.selected');
+    if (selectedColor) {
+        const color = selectedColor.dataset.color;
+        placeColor(position, color);
+    }
+}
+
+// Select a color
+function selectColor(color, event) {
+    if (gameEnded) return;
     
-    if (emptySlot) {
-        emptySlot.textContent = color;
-        currentGuess[parseInt(emptySlot.dataset.position)] = color;
+    // Remove selection from all color buttons
+    document.querySelectorAll('.color-option').forEach(btn => {
+        btn.classList.remove('selected');
+    });
+    
+    // Add selection to clicked button
+    event.target.classList.add('selected');
+}
+
+// Place color in slot
+function placeColor(position, color) {
+    const currentRow = document.querySelector(`.attempt-row[data-attempt="${currentAttempt}"]`);
+    const slot = currentRow.querySelector(`.guess-slot[data-position="${position}"]`);
+    
+    if (slot && slot.classList.contains('empty')) {
+        slot.textContent = color;
+        slot.classList.remove('empty');
+        currentGuess[position] = color;
         
         // Auto-submit if row is complete
         if (!currentGuess.includes('')) {
@@ -114,6 +192,7 @@ function submitGuess() {
     // Check win condition
     if (feedback.filter(f => f === FEEDBACK.CORRECT).length === CODE_LENGTH) {
         gameEnded = true;
+        clearInterval(timerInterval);
         updateMessage(`🎉 You won in ${currentAttempt + 1} attempts!`);
         revealSecretCode();
         return;
@@ -123,14 +202,23 @@ function submitGuess() {
     currentAttempt++;
     currentGuess = Array(CODE_LENGTH).fill('');
     
+    // Update current attempt highlighting
+    document.querySelectorAll('.attempt-row').forEach(row => {
+        row.classList.remove('current-attempt');
+    });
+    const nextRow = document.querySelector(`.attempt-row[data-attempt="${currentAttempt}"]`);
+    if (nextRow) nextRow.classList.add('current-attempt');
+    
     // Check lose condition
     if (currentAttempt >= MAX_ATTEMPTS) {
         gameEnded = true;
+        clearInterval(timerInterval);
         updateMessage('💀 Game over! You ran out of attempts.');
         revealSecretCode();
         return;
     }
     
+    updateStats();
     updateMessage(`Attempt ${currentAttempt + 1}/${MAX_ATTEMPTS}. Select colors!`);
 }
 
@@ -183,7 +271,29 @@ function displayFeedback(feedback) {
 
 // Update message display
 function updateMessage(text) {
-    messageArea.textContent = text;
+    const messageArea = document.getElementById('message-area');
+    if (messageArea) {
+        messageArea.textContent = text;
+    }
+}
+
+// Update stats
+function updateStats() {
+    const attemptCounter = document.getElementById('attempt-counter');
+    if (attemptCounter) {
+        attemptCounter.textContent = currentAttempt;
+    }
+}
+
+// Start timer
+function startTimer() {
+    timerInterval = setInterval(() => {
+        const timeCounter = document.getElementById('time-counter');
+        if (timeCounter && startTime) {
+            const elapsed = Math.floor((Date.now() - startTime) / 1000);
+            timeCounter.textContent = `${elapsed}s`;
+        }
+    }, 1000);
 }
 
 // Reveal secret code
@@ -191,18 +301,14 @@ function revealSecretCode() {
     const revealDiv = document.createElement('div');
     revealDiv.className = 'secret-reveal';
     revealDiv.innerHTML = `Secret code was: ${secretCode.join(' ')}`;
-    messageArea.after(revealDiv);
+    
+    const messageArea = document.getElementById('message-area');
+    if (messageArea && messageArea.parentNode) {
+        messageArea.parentNode.insertBefore(revealDiv, messageArea.nextSibling);
+    }
 }
 
-// Reset game
-function resetGame() {
-    initGame();
-}
-
-// Initialize on load
-document.addEventListener('DOMContentLoaded', initGame);
-
-// Optional: Add keyboard shortcuts for accessibility
+// Add keyboard shortcuts
 document.addEventListener('keydown', (e) => {
     if (gameEnded) return;
     
@@ -210,7 +316,23 @@ document.addEventListener('keydown', (e) => {
     if (e.key >= '1' && e.key <= '6') {
         const index = parseInt(e.key) - 1;
         if (index < COLORS.length) {
-            selectColor(COLORS[index]);
+            // Remove previous selection
+            document.querySelectorAll('.color-option').forEach(btn => {
+                btn.classList.remove('selected');
+            });
+            
+            // Select new color
+            const colorBtn = document.querySelectorAll('.color-option')[index];
+            if (colorBtn) {
+                colorBtn.classList.add('selected');
+                // Find first empty slot
+                const currentRow = document.querySelector(`.attempt-row[data-attempt="${currentAttempt}"]`);
+                const emptySlot = currentRow.querySelector('.guess-slot.empty');
+                if (emptySlot) {
+                    const position = parseInt(emptySlot.dataset.position);
+                    placeColor(position, COLORS[index]);
+                }
+            }
         }
     }
     
@@ -221,6 +343,16 @@ document.addEventListener('keydown', (e) => {
     
     // R resets game
     if (e.key === 'r' || e.key === 'R') {
-        resetGame();
+        initGame();
+    }
+    
+    // Escape clears selection
+    if (e.key === 'Escape') {
+        document.querySelectorAll('.color-option').forEach(btn => {
+            btn.classList.remove('selected');
+        });
     }
 });
+
+// Initialize game when page loads
+document.addEventListener('DOMContentLoaded', initGame);
