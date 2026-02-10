@@ -1,27 +1,80 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Learn HTML/CSS/JS Integration</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn HTML, CSS & JS</title>
     <link rel="stylesheet" href="learn.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <div class="container">
-        <h1>HTML/CSS/JS Integration Demo</h1>
-        <div class="emoji-box">
-            <p id="emoji-display">😊</p>
-            <button id="emoji-btn">Generate Random Emoji</button>
+        <header>
+            <h1><i class="fas fa-code"></i> HTML + CSS + JavaScript Demo</h1>
+            <p class="subtitle">See how the three web technologies work together</p>
+        </header>
+
+        <div class="content">
+            <div class="emoji-section">
+                <div class="emoji-display" id="emojiDisplay">😊</div>
+                <p class="emoji-label">Current Emoji</p>
+            </div>
+
+            <div class="controls">
+                <div class="control-group">
+                    <button class="btn" id="emojiBtn">
+                        <i class="fas fa-random"></i> Random Emoji
+                    </button>
+                    <p class="description">
+                        <strong>JavaScript:</strong> Generates a random emoji on each click
+                    </p>
+                </div>
+
+                <div class="control-group">
+                    <button class="btn" id="colorBtn">
+                        <i class="fas fa-palette"></i> Change Background
+                    </button>
+                    <p class="description">
+                        <strong>CSS:</strong> Changes background through 7 rainbow colors
+                    </p>
+                    <div class="color-indicator" id="colorIndicator">Color 1</div>
+                </div>
+
+                <div class="control-group">
+                    <button class="btn" id="fontBtn">
+                        <i class="fas fa-text-height"></i> Increase Font Size
+                    </button>
+                    <p class="description">
+                        <strong>CSS + JS:</strong> Increases font size from 12px to 36px (resets at 36px)
+                    </p>
+                    <div class="size-indicator">Current size: <span id="sizeValue">60</span>px</div>
+                </div>
+            </div>
+
+            <div class="explanation">
+                <h3><i class="fas fa-lightbulb"></i> How It Works:</h3>
+                <div class="columns">
+                    <div class="column">
+                        <h4><i class="fab fa-html5"></i> HTML</h4>
+                        <p>Defines the structure - buttons, text, and containers</p>
+                    </div>
+                    <div class="column">
+                        <h4><i class="fab fa-css3-alt"></i> CSS</h4>
+                        <p>Styles everything - colors, layout, and animations</p>
+                    </div>
+                    <div class="column">
+                        <h4><i class="fab fa-js-square"></i> JavaScript</h4>
+                        <p>Adds interactivity - button clicks and dynamic changes</p>
+                    </div>
+                </div>
+            </div>
         </div>
-        
-        <div class="explanation">
-            <h2>How This Works:</h2>
-            <ul>
-                <li><strong>HTML</strong> provides the structure (button, container)</li>
-                <li><strong>CSS</strong> provides the styling (colors, layout)</li>
-                <li><strong>JavaScript</strong> provides the behavior (click event, random generation)</li>
-            </ul>
-        </div>
+
+        <footer>
+            <p>Click the buttons to see the interaction between all three technologies!</p>
+        </footer>
     </div>
-    
+
     <script src="learn.js"></script>
 </body>
-</html>
+</html> 
