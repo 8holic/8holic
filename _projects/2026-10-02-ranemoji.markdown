@@ -1,0 +1,14 @@
+---
+layout: post
+title: "Emoji generator"
+date: 2026-02-10
+categories: [project]
+---
+
+# Emoji
+A simple random emoji generator
+
+[Play the game!]({{ site.baseurl }}/assets/2026-10-02-ranemoji/learn.html)
+
+## About This Game
+Created to figure out how does javascript, html and css works. Needed this as a reminder

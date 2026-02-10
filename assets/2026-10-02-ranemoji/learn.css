@@ -1,0 +1,78 @@
+/* CSS controls the appearance */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 30px;
+    max-width: 500px;
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.emoji-box {
+    background-color: #f8f9fa;
+    border: 2px solid #dee2e6;
+    border-radius: 8px;
+    padding: 30px;
+    margin-bottom: 30px;
+}
+
+#emoji-display {
+    font-size: 80px;
+    margin: 20px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#emoji-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#emoji-btn:hover {
+    background-color: #45a049;
+}
+
+#emoji-btn:active {
+    transform: scale(0.98);
+}
+
+.explanation {
+    text-align: left;
+    background-color: #e9f7fe;
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 4px solid #2196F3;
+}
+
+.explanation h2 {
+    color: #2196F3;
+    margin-top: 0;
+}
+
+.explanation ul {
+    line-height: 1.6;
+}
