@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Color guessing game
+title: "Color guessing game"
 date: 2026-02-10
 categories: [project]
 ---
