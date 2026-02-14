@@ -350,140 +350,138 @@ window.initProgrammingGame = function() {
         paletteContainer.appendChild(info);
     }
         
-function renderProgramArea() {
-    const programContainer = document.getElementById('programContainer');
-    if (!programContainer) return;
+    function renderProgramArea() {
+        const programContainer = document.getElementById('programContainer');
+        if (!programContainer) return;
 
-    programContainer.innerHTML = '';
+        programContainer.innerHTML = '';
 
-    const title = document.createElement('h3');
-    title.textContent = 'Your Program:';
-    title.style.marginBottom = '10px';
-    programContainer.appendChild(title);
+        const title = document.createElement('h3');
+        title.textContent = 'Your Program:';
+        title.style.marginBottom = '10px';
+        programContainer.appendChild(title);
 
-    // ---- BUTTON BAR for adding commands ----
-    const buttonBar = document.createElement('div');
-    buttonBar.style.display = 'flex';
-    buttonBar.style.gap = '8px';
-    buttonBar.style.marginBottom = '15px';
+        // ---- BUTTON BAR for adding commands ----
+        const buttonBar = document.createElement('div');
+        buttonBar.style.display = 'flex';
+        buttonBar.style.gap = '8px';
+        buttonBar.style.marginBottom = '15px';
 
-    // Move button
-    const moveBtn = document.createElement('button');
-    moveBtn.textContent = 'Move';
-    moveBtn.style.padding = '6px 12px';
-    moveBtn.style.backgroundColor = '#4299e1';
-    moveBtn.style.color = 'white';
-    moveBtn.style.border = 'none';
-    moveBtn.style.borderRadius = '4px';
-    moveBtn.style.cursor = 'pointer';
-    moveBtn.addEventListener('click', () => {
-        state.programSequence.push('move');
-        renderProgramArea();    // refresh the display
-    });
-    buttonBar.appendChild(moveBtn);
-
-    // Turn button
-    const turnBtn = document.createElement('button');
-    turnBtn.textContent = 'Turn ⟳';
-    turnBtn.style.padding = '6px 12px';
-    turnBtn.style.backgroundColor = '#ed8936';
-    turnBtn.style.color = 'white';
-    turnBtn.style.border = 'none';
-    turnBtn.style.borderRadius = '4px';
-    turnBtn.style.cursor = 'pointer';
-    turnBtn.addEventListener('click', () => {
-        state.programSequence.push('turn');
-        renderProgramArea();
-    });
-    buttonBar.appendChild(turnBtn);
-
-    // Repeat button
-    const repeatBtn = document.createElement('button');
-    repeatBtn.textContent = 'Repeat';
-    repeatBtn.style.padding = '6px 12px';
-    repeatBtn.style.backgroundColor = '#9f7aea';
-    repeatBtn.style.color = 'white';
-    repeatBtn.style.border = 'none';
-    repeatBtn.style.borderRadius = '4px';
-    repeatBtn.style.cursor = 'pointer';
-    repeatBtn.addEventListener('click', () => {
-        const times = parseInt(prompt('Repeat how many times?', '2'));
-        if (!isNaN(times) && times > 0) {
-            state.programSequence.push({
-                type: 'repeat',
-                times: times,
-                body: []
-            });
-            renderProgramArea();
-        }
-    });
-    buttonBar.appendChild(repeatBtn);
-
-    programContainer.appendChild(buttonBar);
-
-    // ---- PROGRAM LIST ----
-    const programList = document.createElement('div');
-    programContainer.appendChild(programList);
-
-    function renderCommands(commands, container, depth = 0) {
-        container.innerHTML = '';
-
-        if (commands.length === 0) {
-            const placeholder = document.createElement('div');
-            placeholder.textContent = 'No commands yet...';
-            placeholder.style.color = '#999';
-            placeholder.style.padding = '10px';
-            container.appendChild(placeholder);
-            return;
-        }
-
-        commands.forEach((cmd, index) => {
-            const row = document.createElement('div');
-            row.style.marginLeft = depth * 20 + 'px';
-            row.style.marginBottom = '6px';
-            row.style.padding = '6px';
-            row.style.borderRadius = '4px';
-            row.style.display = 'flex';
-            row.style.alignItems = 'center';
-            row.style.gap = '8px';
-
-            // Simple command
-            if (typeof cmd === 'string') {
-                row.textContent = COMMANDS[cmd]?.name || cmd;
-                row.style.backgroundColor = COMMANDS[cmd]?.color || '#718096';
-                row.style.color = 'white';
-            }
-            // Repeat block (simplified display)
-            else if (cmd.type === 'repeat') {
-                row.textContent = `Repeat ${cmd.times} times`;
-                row.style.backgroundColor = '#9f7aea';
-                row.style.color = 'white';
-                // You could later add a nested list for cmd.body
-            }
-
-            // Remove button
-            const removeBtn = document.createElement('span');
-            removeBtn.textContent = '×';
-            removeBtn.style.marginLeft = 'auto';
-            removeBtn.style.cursor = 'pointer';
-            removeBtn.style.padding = '2px 6px';
-            removeBtn.style.backgroundColor = 'rgba(0,0,0,0.2)';
-            removeBtn.style.borderRadius = '50%';
-            removeBtn.addEventListener('click', () => {
-                commands.splice(index, 1);
-                renderProgramArea();
-            });
-
-            row.appendChild(removeBtn);
-            container.appendChild(row);
+        // Move button
+        const moveBtn = document.createElement('button');
+        moveBtn.textContent = 'Move';
+        moveBtn.style.padding = '6px 12px';
+        moveBtn.style.backgroundColor = '#4299e1';
+        moveBtn.style.color = 'white';
+        moveBtn.style.border = 'none';
+        moveBtn.style.borderRadius = '4px';
+        moveBtn.style.cursor = 'pointer';
+        moveBtn.addEventListener('click', () => {
+            state.programSequence.push('move');
+            renderProgramArea();    // refresh the display
         });
+        buttonBar.appendChild(moveBtn);
+
+        // Turn button
+        const turnBtn = document.createElement('button');
+        turnBtn.textContent = 'Turn ⟳';
+        turnBtn.style.padding = '6px 12px';
+        turnBtn.style.backgroundColor = '#ed8936';
+        turnBtn.style.color = 'white';
+        turnBtn.style.border = 'none';
+        turnBtn.style.borderRadius = '4px';
+        turnBtn.style.cursor = 'pointer';
+        turnBtn.addEventListener('click', () => {
+            state.programSequence.push('turn');
+            renderProgramArea();
+        });
+        buttonBar.appendChild(turnBtn);
+
+        // Repeat button
+        const repeatBtn = document.createElement('button');
+        repeatBtn.textContent = 'Repeat';
+        repeatBtn.style.padding = '6px 12px';
+        repeatBtn.style.backgroundColor = '#9f7aea';
+        repeatBtn.style.color = 'white';
+        repeatBtn.style.border = 'none';
+        repeatBtn.style.borderRadius = '4px';
+        repeatBtn.style.cursor = 'pointer';
+        repeatBtn.addEventListener('click', () => {
+            const times = parseInt(prompt('Repeat how many times?', '2'));
+            if (!isNaN(times) && times > 0) {
+                state.programSequence.push({
+                    type: 'repeat',
+                    times: times,
+                    body: []
+                });
+                renderProgramArea();
+            }
+        });
+        buttonBar.appendChild(repeatBtn);
+
+        programContainer.appendChild(buttonBar);
+
+        // ---- PROGRAM LIST ----
+        const programList = document.createElement('div');
+        programContainer.appendChild(programList);
+
+        function renderCommands(commands, container, depth = 0) {
+            container.innerHTML = '';
+
+            if (commands.length === 0) {
+                const placeholder = document.createElement('div');
+                placeholder.textContent = 'No commands yet...';
+                placeholder.style.color = '#999';
+                placeholder.style.padding = '10px';
+                container.appendChild(placeholder);
+                return;
+            }
+
+            commands.forEach((cmd, index) => {
+                const row = document.createElement('div');
+                row.style.marginLeft = depth * 20 + 'px';
+                row.style.marginBottom = '6px';
+                row.style.padding = '6px';
+                row.style.borderRadius = '4px';
+                row.style.display = 'flex';
+                row.style.alignItems = 'center';
+                row.style.gap = '8px';
+
+                // Simple command
+                if (typeof cmd === 'string') {
+                    row.textContent = COMMANDS[cmd]?.name || cmd;
+                    row.style.backgroundColor = COMMANDS[cmd]?.color || '#718096';
+                    row.style.color = 'white';
+                }
+                // Repeat block (simplified display)
+                else if (cmd.type === 'repeat') {
+                    row.textContent = `Repeat ${cmd.times} times`;
+                    row.style.backgroundColor = '#9f7aea';
+                    row.style.color = 'white';
+                    // You could later add a nested list for cmd.body
+                }
+
+                // Remove button
+                const removeBtn = document.createElement('span');
+                removeBtn.textContent = '×';
+                removeBtn.style.marginLeft = 'auto';
+                removeBtn.style.cursor = 'pointer';
+                removeBtn.style.padding = '2px 6px';
+                removeBtn.style.backgroundColor = 'rgba(0,0,0,0.2)';
+                removeBtn.style.borderRadius = '50%';
+                removeBtn.addEventListener('click', () => {
+                    commands.splice(index, 1);
+                    renderProgramArea();
+                });
+
+                row.appendChild(removeBtn);
+                container.appendChild(row);
+            });
+        }
+
+        renderCommands(state.programSequence, programList);
     }
 
-    renderCommands(state.programSequence, programList);
-}
-
-    renderCommands(state.programSequence, programList);
-}
 
     // Render Control Buttons
     function renderControls() {
@@ -724,7 +722,7 @@ function renderStageView() {
 }
 
     // ------------------- INITIAL RENDER -------------------
-    renderStageSelectView();{
+    renderStageSelectView();
 };
 
 // ------------------- AUTO INIT -------------------
