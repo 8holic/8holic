@@ -36,7 +36,7 @@ window.initProgrammingGame = function() {
         }
     };
 
-    // ------------------- CONFIG -------------------
+    // ------------------- Add Stage -------------------
     const stages = [
         {
             name: "The Basics",
