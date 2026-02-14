@@ -635,13 +635,14 @@ function renderStageView() {
     gameContainer.innerHTML = '';
     state.currentView = 'stage';
     
-    // Back button container
-    const backContainer = document.createElement('div');
-    backContainer.style.width = '100%';
-    backContainer.style.display = 'flex';
-    backContainer.style.justifyContent = 'space-between';
-    backContainer.style.alignItems = 'center';
-    backContainer.style.marginBottom = '20px';
+    // Top bar: back button, stage title, and status all in one line
+    const topBar = document.createElement('div');
+    topBar.style.width = '100%';
+    topBar.style.maxWidth = '900px';
+    topBar.style.margin = '0 auto 20px';
+    topBar.style.display = 'flex';
+    topBar.style.justifyContent = 'space-between';
+    topBar.style.alignItems = 'center';
     
     // Back button
     const backButton = document.createElement('button');
@@ -666,32 +667,29 @@ function renderStageView() {
     stageTitle.textContent = `${stages[state.currentStageIndex].name}`;
     stageTitle.style.margin = '0';
     
-    backContainer.appendChild(backButton);
-    backContainer.appendChild(stageTitle);
-    gameContainer.appendChild(backContainer);
+    // Status info (compact)
+    const statusSpan = document.createElement('div');
+    statusSpan.style.fontWeight = 'bold';
+    statusSpan.style.backgroundColor = '#f7fafc';
+    statusSpan.style.padding = '6px 12px';
+    statusSpan.style.borderRadius = '6px';
+    statusSpan.style.border = '1px solid #e2e8f0';
+    statusSpan.style.fontSize = '14px';
     
-    // Game status
-    const statusDiv = document.createElement('div');
-    statusDiv.id = 'gameStatus';
-    statusDiv.style.marginBottom = '20px';
-    statusDiv.style.textAlign = 'center';
-    statusDiv.style.padding = '10px';
-    statusDiv.style.backgroundColor = '#f7fafc';
-    statusDiv.style.borderRadius = '6px';
-    statusDiv.style.border = '1px solid #e2e8f0';
-    gameContainer.appendChild(statusDiv);
+    topBar.appendChild(backButton);
+    topBar.appendChild(stageTitle);
+    topBar.appendChild(statusSpan);
+    gameContainer.appendChild(topBar);
     
     // Update status function
     function updateStatus() {
         const stage = state.stageState;
         const coinsLeft = stage.coins.length;
         const totalCoins = stages[state.currentStageIndex].coins.length;
-        
-        statusDiv.innerHTML = `
-            <div><strong>Coins Collected:</strong> ${totalCoins - coinsLeft}/${totalCoins}</div>
-            <div><strong>Position:</strong> (${stage.character.x}, ${stage.character.y})</div>
-            <div><strong>Direction:</strong> ${stage.character.direction}</div>
-        `;
+        const statusSpan = document.getElementById('gameStatusCompact');
+        if (statusSpan) {
+            statusSpan.innerHTML = `🪙 ${totalCoins - coinsLeft}/${totalCoins} | (${stage.character.x},${stage.character.y}) ${stage.character.direction}`;
+        }
     }
     
     // Main game interface container - CHANGED THIS PART
