@@ -353,35 +353,78 @@ window.initProgrammingGame = function() {
 function renderProgramArea() {
     const programContainer = document.getElementById('programContainer');
     if (!programContainer) return;
-    
+
     programContainer.innerHTML = '';
-    
+
     const title = document.createElement('h3');
     title.textContent = 'Your Program:';
     title.style.marginBottom = '10px';
     programContainer.appendChild(title);
-    
+
+    // ---- BUTTON BAR for adding commands ----
+    const buttonBar = document.createElement('div');
+    buttonBar.style.display = 'flex';
+    buttonBar.style.gap = '8px';
+    buttonBar.style.marginBottom = '15px';
+
+    // Move button
+    const moveBtn = document.createElement('button');
+    moveBtn.textContent = 'Move';
+    moveBtn.style.padding = '6px 12px';
+    moveBtn.style.backgroundColor = '#4299e1';
+    moveBtn.style.color = 'white';
+    moveBtn.style.border = 'none';
+    moveBtn.style.borderRadius = '4px';
+    moveBtn.style.cursor = 'pointer';
+    moveBtn.addEventListener('click', () => {
+        state.programSequence.push('move');
+        renderProgramArea();    // refresh the display
+    });
+    buttonBar.appendChild(moveBtn);
+
+    // Turn button
+    const turnBtn = document.createElement('button');
+    turnBtn.textContent = 'Turn ⟳';
+    turnBtn.style.padding = '6px 12px';
+    turnBtn.style.backgroundColor = '#ed8936';
+    turnBtn.style.color = 'white';
+    turnBtn.style.border = 'none';
+    turnBtn.style.borderRadius = '4px';
+    turnBtn.style.cursor = 'pointer';
+    turnBtn.addEventListener('click', () => {
+        state.programSequence.push('turn');
+        renderProgramArea();
+    });
+    buttonBar.appendChild(turnBtn);
+
+    // Repeat button
+    const repeatBtn = document.createElement('button');
+    repeatBtn.textContent = 'Repeat';
+    repeatBtn.style.padding = '6px 12px';
+    repeatBtn.style.backgroundColor = '#9f7aea';
+    repeatBtn.style.color = 'white';
+    repeatBtn.style.border = 'none';
+    repeatBtn.style.borderRadius = '4px';
+    repeatBtn.style.cursor = 'pointer';
+    repeatBtn.addEventListener('click', () => {
+        const times = parseInt(prompt('Repeat how many times?', '2'));
+        if (!isNaN(times) && times > 0) {
+            state.programSequence.push({
+                type: 'repeat',
+                times: times,
+                body: []
+            });
+            renderProgramArea();
+        }
+    });
+    buttonBar.appendChild(repeatBtn);
+
+    programContainer.appendChild(buttonBar);
+
+    // ---- PROGRAM LIST ----
     const programList = document.createElement('div');
     programContainer.appendChild(programList);
 
-    // ---------------- ADD COMMAND BUTTON ----------------
-    const addBtn = document.createElement('button');
-    addBtn.textContent = '+ Add Command';
-    addBtn.style.padding = '8px 12px';
-    addBtn.style.marginBottom = '10px';
-    addBtn.style.backgroundColor = '#2b6cb0';
-    addBtn.style.color = 'white';
-    addBtn.style.border = 'none';
-    addBtn.style.borderRadius = '4px';
-    addBtn.style.cursor = 'pointer';
-    
-    addBtn.addEventListener('click', () => {
-        showAddMenu(state.programSequence, renderProgramArea);
-    });
-    
-    programContainer.insertBefore(addBtn, programList);
-
-    // ---------------- RENDER PROGRAM TREE ----------------
     function renderCommands(commands, container, depth = 0) {
         container.innerHTML = '';
 
@@ -404,11 +447,18 @@ function renderProgramArea() {
             row.style.alignItems = 'center';
             row.style.gap = '8px';
 
-            // ----- SIMPLE COMMAND -----
+            // Simple command
             if (typeof cmd === 'string') {
                 row.textContent = COMMANDS[cmd]?.name || cmd;
                 row.style.backgroundColor = COMMANDS[cmd]?.color || '#718096';
                 row.style.color = 'white';
+            }
+            // Repeat block (simplified display)
+            else if (cmd.type === 'repeat') {
+                row.textContent = `Repeat ${cmd.times} times`;
+                row.style.backgroundColor = '#9f7aea';
+                row.style.color = 'white';
+                // You could later add a nested list for cmd.body
             }
 
             // Remove button
@@ -419,7 +469,6 @@ function renderProgramArea() {
             removeBtn.style.padding = '2px 6px';
             removeBtn.style.backgroundColor = 'rgba(0,0,0,0.2)';
             removeBtn.style.borderRadius = '50%';
-
             removeBtn.addEventListener('click', () => {
                 commands.splice(index, 1);
                 renderProgramArea();
@@ -432,31 +481,9 @@ function renderProgramArea() {
 
     renderCommands(state.programSequence, programList);
 }
-    function showAddMenu(targetArray, refresh) {
-        const choice = prompt(
-            "Choose command:\n1 = Move\n2 = Turn\n3 = Repeat"
-        );
 
-        if (choice === '1') {
-            targetArray.push('move');
-        }
-        else if (choice === '2') {
-            targetArray.push('turn');
-        }
-        else if (choice === '3') {
-            const times = parseInt(prompt("Repeat how many times?", "2"));
-            if (!isNaN(times) && times > 0) {
-                targetArray.push({
-                    type: 'repeat',
-                    times: times,
-                    body: []
-                });
-            }
-        }
-
-        refresh();
-    }
-
+    renderCommands(state.programSequence, programList);
+}
 
     // Render Control Buttons
     function renderControls() {
