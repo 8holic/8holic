@@ -163,7 +163,7 @@ window.initProgrammingGame = function() {
             }
         }
 
-        // (For now, ignore repeat blocks)
+        // Ignore any non-string commands (no repeat blocks anymore)
         return false;
     }
 
@@ -342,7 +342,6 @@ window.initProgrammingGame = function() {
         info.innerHTML = `
             <div style="margin-bottom:6px;">🔵 Move</div>
             <div style="margin-bottom:6px;">🟠 Turn ⟳</div>
-            <div style="margin-bottom:6px;">🟣 Repeat</div>
         `;
         info.style.fontSize = '14px';
         info.style.color = '#4a5568';
@@ -397,28 +396,6 @@ window.initProgrammingGame = function() {
         });
         buttonBar.appendChild(turnBtn);
 
-        // Repeat button
-        const repeatBtn = document.createElement('button');
-        repeatBtn.textContent = 'Repeat';
-        repeatBtn.style.padding = '6px 12px';
-        repeatBtn.style.backgroundColor = '#9f7aea';
-        repeatBtn.style.color = 'white';
-        repeatBtn.style.border = 'none';
-        repeatBtn.style.borderRadius = '4px';
-        repeatBtn.style.cursor = 'pointer';
-        repeatBtn.addEventListener('click', () => {
-            const times = parseInt(prompt('Repeat how many times?', '2'));
-            if (!isNaN(times) && times > 0) {
-                state.programSequence.push({
-                    type: 'repeat',
-                    times: times,
-                    body: []
-                });
-                renderProgramArea();
-            }
-        });
-        buttonBar.appendChild(repeatBtn);
-
         programContainer.appendChild(buttonBar);
 
         // ---- PROGRAM LIST ----
@@ -452,13 +429,6 @@ window.initProgrammingGame = function() {
                     row.textContent = COMMANDS[cmd]?.name || cmd;
                     row.style.backgroundColor = COMMANDS[cmd]?.color || '#718096';
                     row.style.color = 'white';
-                }
-                // Repeat block (simplified display)
-                else if (cmd.type === 'repeat') {
-                    row.textContent = `Repeat ${cmd.times} times`;
-                    row.style.backgroundColor = '#9f7aea';
-                    row.style.color = 'white';
-                    // You could later add a nested list for cmd.body
                 }
 
                 // Remove button
