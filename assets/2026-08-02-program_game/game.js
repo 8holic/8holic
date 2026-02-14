@@ -1,3 +1,18 @@
+
+//Move Stage loading
+let stages = []; // Will be loaded from stages.json
+
+async function loadStages() {
+    try {
+        const response = await fetch('stages.json');
+        if (!response.ok) throw new Error("Failed to fetch stages.json");
+        stages = await response.json();
+    } catch (err) {
+        console.error("Error loading stages:", err);
+        alert("Failed to load stages. Make sure stages.json is present.");
+    }
+
+
 // ------------------- INIT FUNCTION -------------------
 window.initProgrammingGame = async function() {
     await loadStages();
@@ -37,19 +52,8 @@ window.initProgrammingGame = async function() {
         }
     };
 
-
-    async function loadStages() {
-        try {
-            const response = await fetch('stages.json');
-            if (!response.ok) throw new Error("Failed to fetch stages.json");
-            stages = await response.json();
-        } catch (err) {
-            console.error("Error loading stages:", err);
-            alert("Failed to load stages. Make sure stages.json is present.");
-        }
     }
-    // Stage Loadng
-    let stages = []; // Will be loaded from stages.json
+
     // ------------------- STATE -------------------
     let state = {
         currentView: 'stageSelect',
