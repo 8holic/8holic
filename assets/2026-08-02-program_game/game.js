@@ -1,21 +1,5 @@
-
-//Move Stage loading
-let stages = []; // Will be loaded from stages.json
-
-async function loadStages() {
-    try {
-        const response = await fetch('stages.json');
-        if (!response.ok) throw new Error("Failed to fetch stages.json");
-        stages = await response.json();
-    } catch (err) {
-        console.error("Error loading stages:", err);
-        alert("Failed to load stages. Make sure stages.json is present.");
-    }
-
-
 // ------------------- INIT FUNCTION -------------------
-window.initProgrammingGame = async function() {
-    await loadStages();
+window.initProgrammingGame = function() {
     // ------------------- COMMAND REGISTRY -------------------
     const COMMANDS = {
         move: {
@@ -52,7 +36,33 @@ window.initProgrammingGame = async function() {
         }
     };
 
-    }
+    // ------------------- CONFIG -------------------
+    const stages = [
+        {
+            name: "The Basics",
+            gridSize: 4,
+            character: { x: 0, y: 2, direction: 'right' },
+            obstacles: [ { x: 2, y: 2 } ],
+            coins: [ { x: 1, y: 0 }, { x: 3, y: 0 } ],
+            endPoint: { x: 3, y: 3 }
+        },
+        {
+            name: "Stage 2",
+            gridSize: 6,
+            character: { x: 0, y: 0, direction: 'down' },
+            obstacles: [ { x: 1, y: 2 }, { x: 4, y: 1 } ],
+            coins: [ { x: 2, y: 4 }, { x: 5, y: 5 } ],
+            endPoint: { x: 5, y: 0 }
+        },
+        {
+            name: "Stage 3",
+            gridSize: 7,
+            character: { x: 0, y: 6, direction: 'up' },
+            obstacles: [ { x: 3, y: 3 }, { x: 5, y: 2 } ],
+            coins: [ { x: 1, y: 1 }, { x: 6, y: 6 }, { x: 4, y: 5 } ],
+            endPoint: { x: 6, y: 0 }
+        }
+    ];
 
     // ------------------- STATE -------------------
     let state = {
@@ -365,7 +375,9 @@ function renderProgramArea() {
     addBtn.style.borderRadius = '4px';
     addBtn.style.cursor = 'pointer';
     
-    renderAddCommandButtons(state.programSequence, renderProgramArea);
+    addBtn.addEventListener('click', () => {
+        showAddMenu(state.programSequence, renderProgramArea);
+    });
     
     programContainer.insertBefore(addBtn, programList);
 
@@ -420,57 +432,30 @@ function renderProgramArea() {
 
     renderCommands(state.programSequence, programList);
 }
+    function showAddMenu(targetArray, refresh) {
+        const choice = prompt(
+            "Choose command:\n1 = Move\n2 = Turn\n3 = Repeat"
+        );
 
-    function renderAddCommandButtons(targetArray, refresh) {
-        const programContainer = document.getElementById('programContainer');
-        if (!programContainer) return;
-
-        // Button container
-        let buttonPanel = document.getElementById('commandButtonPanel');
-        if (!buttonPanel) {
-            buttonPanel = document.createElement('div');
-            buttonPanel.id = 'commandButtonPanel';
-            buttonPanel.style.display = 'flex';
-            buttonPanel.style.gap = '10px';
-            buttonPanel.style.marginBottom = '10px';
-            programContainer.insertBefore(buttonPanel, programContainer.firstChild);
-        } else {
-            buttonPanel.innerHTML = ''; // Clear old buttons
+        if (choice === '1') {
+            targetArray.push('move');
+        }
+        else if (choice === '2') {
+            targetArray.push('turn');
+        }
+        else if (choice === '3') {
+            const times = parseInt(prompt("Repeat how many times?", "2"));
+            if (!isNaN(times) && times > 0) {
+                targetArray.push({
+                    type: 'repeat',
+                    times: times,
+                    body: []
+                });
+            }
         }
 
-        // ----- Move Button -----
-        const moveBtn = document.createElement('button');
-        moveBtn.textContent = 'Move';
-        moveBtn.style.backgroundColor = '#4299e1';
-        moveBtn.style.color = 'white';
-        moveBtn.style.border = 'none';
-        moveBtn.style.borderRadius = '4px';
-        moveBtn.style.padding = '6px 12px';
-        moveBtn.style.cursor = 'pointer';
-        moveBtn.addEventListener('click', () => {
-            targetArray.push('move');
-            refresh();
-        });
-        buttonPanel.appendChild(moveBtn);
-
-        // ----- Turn Button -----
-        const turnBtn = document.createElement('button');
-        turnBtn.textContent = 'Turn ⟳';
-        turnBtn.style.backgroundColor = '#ed8936';
-        turnBtn.style.color = 'white';
-        turnBtn.style.border = 'none';
-        turnBtn.style.borderRadius = '4px';
-        turnBtn.style.padding = '6px 12px';
-        turnBtn.style.cursor = 'pointer';
-        turnBtn.addEventListener('click', () => {
-            targetArray.push('turn');
-            refresh();
-        });
-        buttonPanel.appendChild(turnBtn);
-
-        // (Later we can add If / Else buttons here in same style)
+        refresh();
     }
-
 
 
     // Render Control Buttons
