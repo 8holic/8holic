@@ -16,7 +16,10 @@ window.initProgrammingGame = function() {
 
                 // Collect coin if present
                 collectCoinIfPresent(char.x, char.y, stage);
-
+                // Check for monster after moving
+                if (isMonster(char.x, char.y, stage)) {
+                    throw new Error('You were killed by a monster!');
+                }
                 return true;
             }
         },
@@ -33,6 +36,38 @@ window.initProgrammingGame = function() {
                 }
                 return true;
             }
+        },
+        open: {
+            name: 'Open',
+            color: '#48bb78', // green
+            execute: (stage) => {
+                const char = stage.character;
+                const next = getNextPosition(char);
+                if (!isWithinBounds(next.x, next.y, stage)) return false;
+
+                const doorIndex = stage.doors.findIndex(d => d.x === next.x && d.y === next.y);
+                if (doorIndex !== -1) {
+                    stage.doors.splice(doorIndex, 1);
+                    return true;
+                }
+                return false; // nothing to open
+            }
+        },
+        attack: {
+            name: 'Attack',
+            color: '#f56565', // red
+            execute: (stage) => {
+                const char = stage.character;
+                const next = getNextPosition(char);
+                if (!isWithinBounds(next.x, next.y, stage)) return false;
+
+                const monsterIndex = stage.monsters.findIndex(m => m.x === next.x && m.y === next.y);
+                if (monsterIndex !== -1) {
+                    stage.monsters.splice(monsterIndex, 1);
+                    return true;
+                }
+                return false; // nothing to attack
+            }
         }
     };
 
@@ -43,6 +78,8 @@ window.initProgrammingGame = function() {
             gridSize: 4,
             character: { x: 0, y: 2, direction: 'right' },
             obstacles: [ { x: 2, y: 2 } ],
+            doors: [ { x: 1, y: 1 } ],        // new
+            monsters: [ { x: 2, y: 3 } ],      // new
             coins: [ { x: 1, y: 0 }, { x: 3, y: 0 } ],
             endPoint: { x: 3, y: 3 }
         },
@@ -128,12 +165,21 @@ window.initProgrammingGame = function() {
     function isObstacle(x, y, stage) {
         return stage.obstacles.some(obs => obs.x === x && obs.y === y);
     }
+    function isDoor(x, y, stage) {
+        return stage.doors && stage.doors.some(d => d.x === x && d.y === y);
+    }
+
+    function isMonster(x, y, stage) {
+        return stage.monsters && stage.monsters.some(m => m.x === x && m.y === y);
+    }
 
 
     // Central validation function (used before ANY movement)
     function canMoveTo(x, y, stage) {
         if (!isWithinBounds(x, y, stage)) return false;
         if (isObstacle(x, y, stage)) return false;
+        if (isDoor(x, y, stage)) return false; // doors block until opened
+        // monsters do NOT block movement
         return true;
     }
 
@@ -302,6 +348,9 @@ window.initProgrammingGame = function() {
             if (stage.endPoint.x === x && stage.endPoint.y === y) {
                 return '🏰';
             }
+            if (stage.doors && stage.doors.some(d => d.x === x && d.y === y)) return '🚪';
+
+            if (stage.monsters && stage.monsters.some(m => m.x === x && m.y === y)) return '👾';
             
             return ''; // Empty cell
         }
@@ -340,8 +389,10 @@ window.initProgrammingGame = function() {
         
         const info = document.createElement('div');
         info.innerHTML = `
-            <div style="margin-bottom:6px;">🔵 Move</div>
-            <div style="margin-bottom:6px;">🟠 Turn ⟳</div>
+            <div style="margin-bottom:6px; color:#4299e1;">🔵 Move</div>
+            <div style="margin-bottom:6px; color:#ed8936;">🟠 Turn ⟳</div>
+            <div style="margin-bottom:6px; color:#48bb78;">🟢 Open</div>
+            <div style="margin-bottom:6px; color:#f56565;">🔴 Attack</div>
         `;
         info.style.fontSize = '14px';
         info.style.color = '#4a5568';
@@ -395,6 +446,34 @@ window.initProgrammingGame = function() {
             renderProgramArea();
         });
         buttonBar.appendChild(turnBtn);
+        //Open
+                const openBtn = document.createElement('button');
+        openBtn.textContent = 'Open';
+        openBtn.style.padding = '6px 12px';
+        openBtn.style.backgroundColor = '#48bb78';
+        openBtn.style.color = 'white';
+        openBtn.style.border = 'none';
+        openBtn.style.borderRadius = '4px';
+        openBtn.style.cursor = 'pointer';
+        openBtn.addEventListener('click', () => {
+            state.programSequence.push('open');
+            renderProgramArea();
+        });
+        buttonBar.appendChild(openBtn);
+        //Attack
+        const attackBtn = document.createElement('button');
+        attackBtn.textContent = 'Attack';
+        attackBtn.style.padding = '6px 12px';
+        attackBtn.style.backgroundColor = '#f56565';
+        attackBtn.style.color = 'white';
+        attackBtn.style.border = 'none';
+        attackBtn.style.borderRadius = '4px';
+        attackBtn.style.cursor = 'pointer';
+        attackBtn.addEventListener('click', () => {
+            state.programSequence.push('attack');
+            renderProgramArea();
+        });
+        buttonBar.appendChild(attackBtn);
 
         programContainer.appendChild(buttonBar);
 
@@ -477,35 +556,33 @@ window.initProgrammingGame = function() {
         runBtn.style.cursor = 'pointer';
         
         runBtn.addEventListener('click', async () => {
-            // Disable buttons during execution
             [runBtn, resetBtn, clearBtn].forEach(btn => {
                 btn.disabled = true;
                 btn.style.opacity = '0.5';
             });
-            
-            // Create a copy of program sequence to execute
-            const programToExecute = [...state.programSequence];
-            
-            // Execute each command with delay for visualization
-            for (const command of programToExecute) {
-                executeCommand(command);
-                renderGrid();
-                
-                // Check win condition after each move
-                if (checkWinCondition()) {
-                    alert('🎉 Congratulations! You completed the stage!');
-                    break;
+
+            try {
+                const programToExecute = [...state.programSequence];
+                for (const command of programToExecute) {
+                    try {
+                        executeCommand(command);
+                    } catch (e) {
+                        alert(e.message); // death or other error
+                        break;
+                    }
+                    renderGrid();
+                    if (checkWinCondition()) {
+                        alert('🎉 Congratulations! You completed the stage!');
+                        break;
+                    }
+                    await new Promise(resolve => setTimeout(resolve, 500));
                 }
-                
-                // Wait a bit between commands for visualization
-                await new Promise(resolve => setTimeout(resolve, 500));
+            } finally {
+                [runBtn, resetBtn, clearBtn].forEach(btn => {
+                    btn.disabled = false;
+                    btn.style.opacity = '1';
+                });
             }
-            
-            // Re-enable buttons
-            [runBtn, resetBtn, clearBtn].forEach(btn => {
-                btn.disabled = false;
-                btn.style.opacity = '1';
-            });
         });
         
 
