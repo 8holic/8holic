@@ -1,5 +1,41 @@
 // ------------------- INIT FUNCTION -------------------
 window.initProgrammingGame = function() {
+    // ------------------- COMMAND REGISTRY -------------------
+    const COMMANDS = {
+        move: {
+            name: 'Move',
+            color: '#4299e1', // blue for basic
+            execute: (stage) => {
+                const char = stage.character;
+                const next = getNextPosition(char);
+
+                if (!canMoveTo(next.x, next.y, stage)) return false;
+
+                char.x = next.x;
+                char.y = next.y;
+
+                // Collect coin if present
+                collectCoinIfPresent(char.x, char.y, stage);
+
+                return true;
+            }
+        },
+        turn: {
+            name: 'Turn ⟳',
+            color: '#ed8936', // orange for basic
+            execute: (stage) => {
+                const char = stage.character;
+                switch (char.direction) {
+                    case 'up':    char.direction = 'right'; break;
+                    case 'right': char.direction = 'down'; break;
+                    case 'down':  char.direction = 'left'; break;
+                    case 'left':  char.direction = 'up'; break;
+                }
+                return true;
+            }
+        }
+    };
+
     // ------------------- CONFIG -------------------
     const stages = [
         {
@@ -112,47 +148,25 @@ window.initProgrammingGame = function() {
         }
     }
 
-    // Execute a single command on the stage
     function executeCommand(command) {
         if (!state.stageState) return false;
 
         const stage = state.stageState;
-        const char = stage.character;
 
-        // ---------------- TURN ----------------
-        if (command === 'turn') {
-            switch (char.direction) {
-                case 'up':    char.direction = 'right'; break;
-                case 'right': char.direction = 'down'; break;
-                case 'down':  char.direction = 'left'; break;
-                case 'left':  char.direction = 'up'; break;
-            }
-
-            return true;
-        }
-
-        // ---------------- MOVE ----------------
-        if (command === 'move') {
-
-            const { x: targetX, y: targetY } = getNextPosition(char);
-
-            // Validate BEFORE applying
-            if (!canMoveTo(targetX, targetY, stage)) {
+        // If the command is a string, look it up in registry
+        if (typeof command === 'string') {
+            if (COMMANDS[command]) {
+                return COMMANDS[command].execute(stage);
+            } else {
+                console.warn(`Unknown command: ${command}`);
                 return false;
             }
-
-            // Apply movement
-            char.x = targetX;
-            char.y = targetY;
-
-            // Handle coin collection
-            collectCoinIfPresent(targetX, targetY, stage);
-
-            return true;
         }
 
+        // (For now, ignore repeat blocks)
         return false;
     }
+
 
 
     // Check win condition
@@ -392,40 +406,9 @@ function renderProgramArea() {
 
             // ----- SIMPLE COMMAND -----
             if (typeof cmd === 'string') {
-                row.textContent = cmd === 'move' ? 'Move' : 'Turn ⟳';
-                row.style.backgroundColor = cmd === 'move' ? '#4299e1' : '#ed8936';
+                row.textContent = COMMANDS[cmd]?.name || cmd;
+                row.style.backgroundColor = COMMANDS[cmd]?.color || '#718096';
                 row.style.color = 'white';
-            }
-
-            // ----- REPEAT BLOCK -----
-            if (typeof cmd === 'object' && cmd.type === 'repeat') {
-                row.style.backgroundColor = '#805ad5';
-                row.style.color = 'white';
-                row.style.flexDirection = 'column';
-                row.style.alignItems = 'flex-start';
-
-                const header = document.createElement('div');
-                header.textContent = `Repeat ${cmd.times} times`;
-                header.style.fontWeight = 'bold';
-
-                const innerContainer = document.createElement('div');
-
-                const addInside = document.createElement('button');
-                addInside.textContent = '+ Add Inside';
-                addInside.style.marginTop = '6px';
-                addInside.style.padding = '4px 8px';
-                addInside.style.fontSize = '12px';
-                addInside.style.cursor = 'pointer';
-
-                addInside.addEventListener('click', () => {
-                    showAddMenu(cmd.body, renderProgramArea);
-                });
-
-                row.appendChild(header);
-                row.appendChild(innerContainer);
-                row.appendChild(addInside);
-
-                renderCommands(cmd.body, innerContainer, depth + 1);
             }
 
             // Remove button
@@ -693,22 +676,7 @@ function renderStageView() {
     controlsContainer.style.backgroundColor = '#f8fafc';
     rightPanel.appendChild(controlsContainer);
     
-    // Game instructions
-    const instructions = document.createElement('div');
-    instructions.innerHTML = `
-        <h4>How to Play:</h4>
-        <ol style="margin: 10px 0; padding-left: 20px; font-size: 14px;">
-            <li>Drag "Move" and "Turn" commands to the program area</li>
-            <li>Arrange them in the order you want to execute</li>
-            <li>Click "Run" to execute all commands automatically</li>
-            <li>Collect all coins (🪙) and reach the castle (🏰) to win!</li>
-            <li>Avoid obstacles (🌳) and don't go out of bounds</li>
-        </ol>
-    `;
-    instructions.style.fontSize = '14px';
-    instructions.style.color = '#4a5568';
-    rightPanel.appendChild(instructions);
-    
+
     gameInterface.appendChild(leftPanel);   // Grid goes first (top)
     gameInterface.appendChild(rightPanel);  // Programming goes second (below)
     gameContainer.appendChild(gameInterface);
