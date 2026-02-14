@@ -1,5 +1,6 @@
 // ------------------- INIT FUNCTION -------------------
-window.initProgrammingGame = function() {
+window.initProgrammingGame = async function() {
+    await loadStages();
     // ------------------- COMMAND REGISTRY -------------------
     const COMMANDS = {
         move: {
@@ -35,34 +36,19 @@ window.initProgrammingGame = function() {
             }
         }
     };
+    // Stage Loadng
+    let stages = []; // Will be loaded from stages.json
 
-    // ------------------- CONFIG -------------------
-    const stages = [
-        {
-            name: "The Basics",
-            gridSize: 4,
-            character: { x: 0, y: 2, direction: 'right' },
-            obstacles: [ { x: 2, y: 2 } ],
-            coins: [ { x: 1, y: 0 }, { x: 3, y: 0 } ],
-            endPoint: { x: 3, y: 3 }
-        },
-        {
-            name: "Stage 2",
-            gridSize: 6,
-            character: { x: 0, y: 0, direction: 'down' },
-            obstacles: [ { x: 1, y: 2 }, { x: 4, y: 1 } ],
-            coins: [ { x: 2, y: 4 }, { x: 5, y: 5 } ],
-            endPoint: { x: 5, y: 0 }
-        },
-        {
-            name: "Stage 3",
-            gridSize: 7,
-            character: { x: 0, y: 6, direction: 'up' },
-            obstacles: [ { x: 3, y: 3 }, { x: 5, y: 2 } ],
-            coins: [ { x: 1, y: 1 }, { x: 6, y: 6 }, { x: 4, y: 5 } ],
-            endPoint: { x: 6, y: 0 }
+    async function loadStages() {
+        try {
+            const response = await fetch('stages.json');
+            if (!response.ok) throw new Error("Failed to fetch stages.json");
+            stages = await response.json();
+        } catch (err) {
+            console.error("Error loading stages:", err);
+            alert("Failed to load stages. Make sure stages.json is present.");
         }
-    ];
+    }
 
     // ------------------- STATE -------------------
     let state = {
