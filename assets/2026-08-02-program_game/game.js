@@ -725,7 +725,7 @@ function renderStageView() {
 
     // ------------------- INITIAL RENDER -------------------
     renderStageSelectView();
-};
+;
 
 // ------------------- AUTO INIT -------------------
 document.addEventListener('DOMContentLoaded', () => {
