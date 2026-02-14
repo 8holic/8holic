@@ -18,7 +18,8 @@ window.initProgrammingGame = function() {
                 collectCoinIfPresent(char.x, char.y, stage);
                 // Check for monster after moving
                 if (isMonster(char.x, char.y, stage)) {
-                    throw new Error('You were killed by a monster!');
+                    stage.incapacitated = true;   // set flag, no popup
+                    return false;                 
                 }
                 return true;
             }
@@ -130,7 +131,9 @@ window.initProgrammingGame = function() {
 
     // Deep copy a stage object
     function cloneStage(stage) {
-        return JSON.parse(JSON.stringify(stage));
+        const cloned = JSON.parse(JSON.stringify(stage));
+        cloned.incapacitated = false;   // add flag
+        return cloned;
     }
 
     // ------------------- GAME LOGIC FUNCTIONS -------------------
@@ -535,59 +538,59 @@ window.initProgrammingGame = function() {
         runBtn.style.borderRadius = '6px';
         runBtn.style.cursor = 'pointer';
         
-        runBtn.addEventListener('click', async () => {
-            let crashed = false;
+    runBtn.addEventListener('click', async () => {
+        // Disable all interactive buttons during execution
+        [runBtn, resetBtn, clearBtn].forEach(btn => {
+            btn.disabled = true;
+            btn.style.opacity = '0.5';
+        });
+        document.querySelectorAll('.command-btn').forEach(btn => {
+            btn.disabled = true;
+            btn.style.opacity = '0.5';
+        });
 
-            // Disable all interactive buttons during execution
+        const programToExecute = [...state.programSequence];
+        let stopExecution = false;
+
+        for (const command of programToExecute) {
+            if (stopExecution) break; // stop if already dead
+
+            executeCommand(command);   // may set stage.incapacitated
+
+            renderGrid();
+
+            // Check if player became incapacitated
+            if (state.stageState.incapacitated) {
+                stopExecution = true;
+                // Keep buttons disabled (run/clear/command stay disabled, reset remains disabled for now)
+                // We'll let the finally block handle reset button separately
+            }
+
+            if (checkWinCondition()) {
+                alert('🎉 Congratulations! You completed the stage!');
+                break;
+            }
+
+            await new Promise(resolve => setTimeout(resolve, 500));
+        }
+
+        // After loop: if incapacitated, only reset button should be re‑enabled
+        if (state.stageState.incapacitated) {
+            resetBtn.disabled = false;
+            resetBtn.style.opacity = '1';
+            // run, clear, command buttons stay disabled
+        } else {
+            // Normal completion: re-enable everything
             [runBtn, resetBtn, clearBtn].forEach(btn => {
-                btn.disabled = true;
-                btn.style.opacity = '0.5';
+                btn.disabled = false;
+                btn.style.opacity = '1';
             });
             document.querySelectorAll('.command-btn').forEach(btn => {
-                btn.disabled = true;
-                btn.style.opacity = '0.5';
+                btn.disabled = false;
+                btn.style.opacity = '1';
             });
-
-            try {
-                const programToExecute = [...state.programSequence];
-
-                for (const command of programToExecute) {
-                    try {
-                        executeCommand(command);
-                    } catch (e) {
-                        alert(e.message); // e.g. "You were killed by a monster!"
-                        crashed = true;
-                        break; // stop execution
-                    }
-
-                    renderGrid();
-
-                    if (checkWinCondition()) {
-                        alert('🎉 Congratulations! You completed the stage!');
-                        break;
-                    }
-
-                    await new Promise(resolve => setTimeout(resolve, 500));
-                }
-            } finally {
-                if (!crashed) {
-                    // Normal completion: re-enable everything
-                    [runBtn, resetBtn, clearBtn].forEach(btn => {
-                        btn.disabled = false;
-                        btn.style.opacity = '1';
-                    });
-                    document.querySelectorAll('.command-btn').forEach(btn => {
-                        btn.disabled = false;
-                        btn.style.opacity = '1';
-                    });
-                } else {
-                    // Crash: keep run and clear disabled, but re-enable reset
-                    resetBtn.disabled = false;
-                    resetBtn.style.opacity = '1';
-                    // Command buttons stay disabled
-                }
-            }
-        });
+        }
+    });
         
 
         
@@ -635,14 +638,13 @@ function renderStageView() {
     gameContainer.innerHTML = '';
     state.currentView = 'stage';
     
-    // Top bar: back button, stage title, and status all in one line
-    const topBar = document.createElement('div');
-    topBar.style.width = '100%';
-    topBar.style.maxWidth = '900px';
-    topBar.style.margin = '0 auto 20px';
-    topBar.style.display = 'flex';
-    topBar.style.justifyContent = 'space-between';
-    topBar.style.alignItems = 'center';
+    // Back button container
+    const backContainer = document.createElement('div');
+    backContainer.style.width = '100%';
+    backContainer.style.display = 'flex';
+    backContainer.style.justifyContent = 'space-between';
+    backContainer.style.alignItems = 'center';
+    backContainer.style.marginBottom = '20px';
     
     // Back button
     const backButton = document.createElement('button');
@@ -667,29 +669,38 @@ function renderStageView() {
     stageTitle.textContent = `${stages[state.currentStageIndex].name}`;
     stageTitle.style.margin = '0';
     
-    // Status info (compact)
-    const statusSpan = document.createElement('div');
-    statusSpan.style.fontWeight = 'bold';
-    statusSpan.style.backgroundColor = '#f7fafc';
-    statusSpan.style.padding = '6px 12px';
-    statusSpan.style.borderRadius = '6px';
-    statusSpan.style.border = '1px solid #e2e8f0';
-    statusSpan.style.fontSize = '14px';
+    backContainer.appendChild(backButton);
+    backContainer.appendChild(stageTitle);
+    gameContainer.appendChild(backContainer);
     
-    topBar.appendChild(backButton);
-    topBar.appendChild(stageTitle);
-    topBar.appendChild(statusSpan);
-    gameContainer.appendChild(topBar);
+    // Game status
+    const statusDiv = document.createElement('div');
+    statusDiv.id = 'gameStatus';
+    statusDiv.style.marginBottom = '20px';
+    statusDiv.style.textAlign = 'center';
+    statusDiv.style.padding = '10px';
+    statusDiv.style.backgroundColor = '#f7fafc';
+    statusDiv.style.borderRadius = '6px';
+    statusDiv.style.border = '1px solid #e2e8f0';
+    gameContainer.appendChild(statusDiv);
     
     // Update status function
     function updateStatus() {
         const stage = state.stageState;
         const coinsLeft = stage.coins.length;
         const totalCoins = stages[state.currentStageIndex].coins.length;
-        const statusSpan = document.getElementById('gameStatusCompact');
-        if (statusSpan) {
-            statusSpan.innerHTML = `🪙 ${totalCoins - coinsLeft}/${totalCoins} | (${stage.character.x},${stage.character.y}) ${stage.character.direction}`;
+        
+        let incapacitatedHtml = '';
+        if (stage.incapacitated) {
+            incapacitatedHtml = '<div style="color: red; font-weight: bold;">💀 Incapacitated</div>';
         }
+        
+        statusDiv.innerHTML = `
+            ${incapacitatedHtml}
+            <div><strong>Coins Collected:</strong> ${totalCoins - coinsLeft}/${totalCoins}</div>
+            <div><strong>Position:</strong> (${stage.character.x}, ${stage.character.y})</div>
+            <div><strong>Direction:</strong> ${stage.character.direction}</div>
+        `;
     }
     
     // Main game interface container - CHANGED THIS PART
