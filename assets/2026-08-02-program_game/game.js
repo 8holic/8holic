@@ -603,6 +603,8 @@ window.initProgrammingGame = function() {
         resetBtn.style.cursor = 'pointer';
         
         resetBtn.addEventListener('click', () => {
+            state.stageState = cloneStage(stages[state.currentStageIndex]);
+            state.programSequence = [];
             renderStageView();
         });
         
@@ -724,15 +726,7 @@ function renderStageView() {
     rightPanel.style.flexDirection = 'column';
     rightPanel.style.gap = '20px';
     
-    // Code palette
-    const paletteContainer = document.createElement('div');
-    paletteContainer.id = 'paletteContainer';
-    paletteContainer.style.border = '1px solid #e2e8f0';
-    paletteContainer.style.borderRadius = '8px';
-    paletteContainer.style.padding = '15px';
-    paletteContainer.style.backgroundColor = '#f8fafc';
-    rightPanel.appendChild(paletteContainer);
-    
+
     // Program area
     const programContainer = document.createElement('div');
     programContainer.id = 'programContainer';
