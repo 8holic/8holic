@@ -374,31 +374,6 @@ window.initProgrammingGame = function() {
         
         gridContainer.appendChild(gridEl);
     }
-
-    // Render Code Palette (now just informational)
-    function renderCodePalette() {
-        const paletteContainer = document.getElementById('paletteContainer');
-        if (!paletteContainer) return;
-        
-        paletteContainer.innerHTML = '';
-        
-        const title = document.createElement('h3');
-        title.textContent = 'Available Commands:';
-        title.style.marginBottom = '10px';
-        paletteContainer.appendChild(title);
-        
-        const info = document.createElement('div');
-        info.innerHTML = `
-            <div style="margin-bottom:6px; color:#4299e1;">🔵 Move</div>
-            <div style="margin-bottom:6px; color:#ed8936;">🟠 Turn ⟳</div>
-            <div style="margin-bottom:6px; color:#48bb78;">🟢 Open</div>
-            <div style="margin-bottom:6px; color:#f56565;">🔴 Attack</div>
-        `;
-        info.style.fontSize = '14px';
-        info.style.color = '#4a5568';
-        
-        paletteContainer.appendChild(info);
-    }
         
     function renderProgramArea() {
         const programContainer = document.getElementById('programContainer');
@@ -419,6 +394,7 @@ window.initProgrammingGame = function() {
 
         // Move button
         const moveBtn = document.createElement('button');
+        moveBtn.className = 'command-btn';
         moveBtn.textContent = 'Move';
         moveBtn.style.padding = '6px 12px';
         moveBtn.style.backgroundColor = '#4299e1';
@@ -434,6 +410,7 @@ window.initProgrammingGame = function() {
 
         // Turn button
         const turnBtn = document.createElement('button');
+        turnBtn.className = 'command-btn';
         turnBtn.textContent = 'Turn ⟳';
         turnBtn.style.padding = '6px 12px';
         turnBtn.style.backgroundColor = '#ed8936';
@@ -447,7 +424,8 @@ window.initProgrammingGame = function() {
         });
         buttonBar.appendChild(turnBtn);
         //Open
-                const openBtn = document.createElement('button');
+        const openBtn = document.createElement('button');
+        openBtn.className = 'command-btn';
         openBtn.textContent = 'Open';
         openBtn.style.padding = '6px 12px';
         openBtn.style.backgroundColor = '#48bb78';
@@ -462,6 +440,7 @@ window.initProgrammingGame = function() {
         buttonBar.appendChild(openBtn);
         //Attack
         const attackBtn = document.createElement('button');
+        attackBtn.className = 'command-btn';
         attackBtn.textContent = 'Attack';
         attackBtn.style.padding = '6px 12px';
         attackBtn.style.backgroundColor = '#f56565';
@@ -547,6 +526,7 @@ window.initProgrammingGame = function() {
         
         // Run Button - Execute all commands
         const runBtn = document.createElement('button');
+        runBtn.id = 'runBtn';
         runBtn.textContent = 'Run Program';
         runBtn.style.padding = '10px 20px';
         runBtn.style.backgroundColor = '#38a169';
@@ -556,32 +536,56 @@ window.initProgrammingGame = function() {
         runBtn.style.cursor = 'pointer';
         
         runBtn.addEventListener('click', async () => {
+            let crashed = false;
+
+            // Disable all interactive buttons during execution
             [runBtn, resetBtn, clearBtn].forEach(btn => {
+                btn.disabled = true;
+                btn.style.opacity = '0.5';
+            });
+            document.querySelectorAll('.command-btn').forEach(btn => {
                 btn.disabled = true;
                 btn.style.opacity = '0.5';
             });
 
             try {
                 const programToExecute = [...state.programSequence];
+
                 for (const command of programToExecute) {
                     try {
                         executeCommand(command);
                     } catch (e) {
-                        alert(e.message); // death or other error
-                        break;
+                        alert(e.message); // e.g. "You were killed by a monster!"
+                        crashed = true;
+                        break; // stop execution
                     }
+
                     renderGrid();
+
                     if (checkWinCondition()) {
                         alert('🎉 Congratulations! You completed the stage!');
                         break;
                     }
+
                     await new Promise(resolve => setTimeout(resolve, 500));
                 }
             } finally {
-                [runBtn, resetBtn, clearBtn].forEach(btn => {
-                    btn.disabled = false;
-                    btn.style.opacity = '1';
-                });
+                if (!crashed) {
+                    // Normal completion: re-enable everything
+                    [runBtn, resetBtn, clearBtn].forEach(btn => {
+                        btn.disabled = false;
+                        btn.style.opacity = '1';
+                    });
+                    document.querySelectorAll('.command-btn').forEach(btn => {
+                        btn.disabled = false;
+                        btn.style.opacity = '1';
+                    });
+                } else {
+                    // Crash: keep run and clear disabled, but re-enable reset
+                    resetBtn.disabled = false;
+                    resetBtn.style.opacity = '1';
+                    // Command buttons stay disabled
+                }
             }
         });
         
@@ -589,6 +593,7 @@ window.initProgrammingGame = function() {
         
         // Reset Button - Reset to initial state
         const resetBtn = document.createElement('button');
+        resetBtn.id = 'resetBtn';
         resetBtn.textContent = 'Reset Stage';
         resetBtn.style.padding = '10px 20px';
         resetBtn.style.backgroundColor = '#e53e3e';
@@ -598,14 +603,12 @@ window.initProgrammingGame = function() {
         resetBtn.style.cursor = 'pointer';
         
         resetBtn.addEventListener('click', () => {
-            state.stageState = cloneStage(stages[state.currentStageIndex]);
-            state.programSequence = [];
-            renderGrid();
-            renderProgramArea();
+            renderStageView();
         });
         
         // Clear Button - Clear program only
         const clearBtn = document.createElement('button');
+        clearBtn.id = 'clearBtn';
         clearBtn.textContent = 'Clear Program';
         clearBtn.style.padding = '10px 20px';
         clearBtn.style.backgroundColor = '#a0aec0';
@@ -755,7 +758,6 @@ function renderStageView() {
     
     // Initial render of all components
     renderGrid();
-    renderCodePalette();
     renderProgramArea();
     renderControls();
     updateStatus();
