@@ -361,9 +361,7 @@ function renderProgramArea() {
     addBtn.style.borderRadius = '4px';
     addBtn.style.cursor = 'pointer';
     
-    addBtn.addEventListener('click', () => {
-        showAddMenu(state.programSequence, renderProgramArea);
-    });
+    renderAddCommandButtons(state.programSequence, renderProgramArea);
     
     programContainer.insertBefore(addBtn, programList);
 
@@ -418,30 +416,57 @@ function renderProgramArea() {
 
     renderCommands(state.programSequence, programList);
 }
-    function showAddMenu(targetArray, refresh) {
-        const choice = prompt(
-            "Choose command:\n1 = Move\n2 = Turn\n3 = Repeat"
-        );
 
-        if (choice === '1') {
+    function renderAddCommandButtons(targetArray, refresh) {
+        const programContainer = document.getElementById('programContainer');
+        if (!programContainer) return;
+
+        // Button container
+        let buttonPanel = document.getElementById('commandButtonPanel');
+        if (!buttonPanel) {
+            buttonPanel = document.createElement('div');
+            buttonPanel.id = 'commandButtonPanel';
+            buttonPanel.style.display = 'flex';
+            buttonPanel.style.gap = '10px';
+            buttonPanel.style.marginBottom = '10px';
+            programContainer.insertBefore(buttonPanel, programContainer.firstChild);
+        } else {
+            buttonPanel.innerHTML = ''; // Clear old buttons
+        }
+
+        // ----- Move Button -----
+        const moveBtn = document.createElement('button');
+        moveBtn.textContent = 'Move';
+        moveBtn.style.backgroundColor = '#4299e1';
+        moveBtn.style.color = 'white';
+        moveBtn.style.border = 'none';
+        moveBtn.style.borderRadius = '4px';
+        moveBtn.style.padding = '6px 12px';
+        moveBtn.style.cursor = 'pointer';
+        moveBtn.addEventListener('click', () => {
             targetArray.push('move');
-        }
-        else if (choice === '2') {
-            targetArray.push('turn');
-        }
-        else if (choice === '3') {
-            const times = parseInt(prompt("Repeat how many times?", "2"));
-            if (!isNaN(times) && times > 0) {
-                targetArray.push({
-                    type: 'repeat',
-                    times: times,
-                    body: []
-                });
-            }
-        }
+            refresh();
+        });
+        buttonPanel.appendChild(moveBtn);
 
-        refresh();
+        // ----- Turn Button -----
+        const turnBtn = document.createElement('button');
+        turnBtn.textContent = 'Turn ⟳';
+        turnBtn.style.backgroundColor = '#ed8936';
+        turnBtn.style.color = 'white';
+        turnBtn.style.border = 'none';
+        turnBtn.style.borderRadius = '4px';
+        turnBtn.style.padding = '6px 12px';
+        turnBtn.style.cursor = 'pointer';
+        turnBtn.addEventListener('click', () => {
+            targetArray.push('turn');
+            refresh();
+        });
+        buttonPanel.appendChild(turnBtn);
+
+        // (Later we can add If / Else buttons here in same style)
     }
+
 
 
     // Render Control Buttons
