@@ -36,8 +36,7 @@ window.initProgrammingGame = async function() {
             }
         }
     };
-    // Stage Loadng
-    let stages = []; // Will be loaded from stages.json
+
 
     async function loadStages() {
         try {
@@ -49,7 +48,8 @@ window.initProgrammingGame = async function() {
             alert("Failed to load stages. Make sure stages.json is present.");
         }
     }
-
+    // Stage Loadng
+    let stages = []; // Will be loaded from stages.json
     // ------------------- STATE -------------------
     let state = {
         currentView: 'stageSelect',
