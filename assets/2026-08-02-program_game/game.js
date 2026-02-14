@@ -62,73 +62,114 @@ window.initProgrammingGame = function() {
 
     // ------------------- GAME LOGIC FUNCTIONS -------------------
 
+    // Determine next tile based on direction
+    function getNextPosition(character) {
+        let { x, y, direction } = character;
+
+        switch (direction) {
+            case 'up':    y--; break;
+            case 'down':  y++; break;
+            case 'left':  x--; break;
+            case 'right': x++; break;
+        }
+
+        return { x, y };
+    }
+
+
+    // Check if a tile is inside grid bounds
+    function isWithinBounds(x, y, stage) {
+        return (
+            x >= 0 &&
+            y >= 0 &&
+            x < stage.gridSize &&
+            y < stage.gridSize
+        );
+    }
+
+
+    // Check if a tile contains an obstacle
+    function isObstacle(x, y, stage) {
+        return stage.obstacles.some(obs => obs.x === x && obs.y === y);
+    }
+
+
+    // Central validation function (used before ANY movement)
+    function canMoveTo(x, y, stage) {
+        if (!isWithinBounds(x, y, stage)) return false;
+        if (isObstacle(x, y, stage)) return false;
+        return true;
+    }
+
+    // Handle coin collection
+    function collectCoinIfPresent(x, y, stage) {
+        const coinIndex = stage.coins.findIndex(
+            coin => coin.x === x && coin.y === y
+        );
+
+        if (coinIndex !== -1) {
+            stage.coins.splice(coinIndex, 1);
+        }
+    }
+
     // Execute a single command on the stage
     function executeCommand(command) {
         if (!state.stageState) return false;
-        
+
         const stage = state.stageState;
         const char = stage.character;
-        
+
+        // ---------------- TURN ----------------
         if (command === 'turn') {
-            // Always turn right
-            switch(char.direction) {
-                case 'up': char.direction = 'right'; break;
+            switch (char.direction) {
+                case 'up':    char.direction = 'right'; break;
                 case 'right': char.direction = 'down'; break;
-                case 'down': char.direction = 'left'; break;
-                case 'left': char.direction = 'up'; break;
+                case 'down':  char.direction = 'left'; break;
+                case 'left':  char.direction = 'up'; break;
             }
+
             return true;
         }
-        
+
+        // ---------------- MOVE ----------------
         if (command === 'move') {
-            let newX = char.x;
-            let newY = char.y;
-            
-            // Calculate new position based on direction
-            switch(char.direction) {
-                case 'up': newY--; break;
-                case 'down': newY++; break;
-                case 'left': newX--; break;
-                case 'right': newX++; break;
+
+            const { x: targetX, y: targetY } = getNextPosition(char);
+
+            // Validate BEFORE applying
+            if (!canMoveTo(targetX, targetY, stage)) {
+                return false;
             }
-            
-            // Check boundaries
-            if (newX < 0 || newY < 0 || newX >= stage.gridSize || newY >= stage.gridSize) {
-                return false; // Can't move out of bounds
-            }
-            
-            // Check obstacles
-            if (stage.obstacles.some(obs => obs.x === newX && obs.y === newY)) {
-                return false; // Can't move through obstacles
-            }
-            
-            // Move is valid
-            char.x = newX;
-            char.y = newY;
-            
-            // Collect coin if on coin position
-            const coinIndex = stage.coins.findIndex(coin => coin.x === newX && coin.y === newY);
-            if (coinIndex !== -1) {
-                stage.coins.splice(coinIndex, 1); // Remove collected coin
-            }
-            
+
+            // Apply movement
+            char.x = targetX;
+            char.y = targetY;
+
+            // Handle coin collection
+            collectCoinIfPresent(targetX, targetY, stage);
+
             return true;
         }
-        
+
         return false;
     }
 
+
     // Check win condition
     function checkWinCondition() {
+        if (!state.stageState) return false;
+
         const stage = state.stageState;
         const char = stage.character;
-        
-        // Must have collected all coins AND be at the endpoint
+
         const allCoinsCollected = stage.coins.length === 0;
-        const atEndpoint = char.x === stage.endPoint.x && char.y === stage.endPoint.y;
-        
+        const atEndpoint =
+            char.x === stage.endPoint.x &&
+            char.y === stage.endPoint.y;
+
         return allCoinsCollected && atEndpoint;
     }
+
 
     // ------------------- RENDER FUNCTIONS -------------------
 
@@ -271,164 +312,168 @@ window.initProgrammingGame = function() {
         gridContainer.appendChild(gridEl);
     }
 
-    // Render Code Palette
+    // Render Code Palette (now just informational)
     function renderCodePalette() {
         const paletteContainer = document.getElementById('paletteContainer');
         if (!paletteContainer) return;
         
         paletteContainer.innerHTML = '';
         
-        // Title
         const title = document.createElement('h3');
-        title.textContent = 'Drag Commands:';
+        title.textContent = 'Available Commands:';
         title.style.marginBottom = '10px';
         paletteContainer.appendChild(title);
         
-        // Command blocks
-        const commands = [
-            { name: 'Move', action: 'move', color: '#4299e1' },
-            { name: 'Turn ⟳', action: 'turn', color: '#ed8936' }
-        ];
+        const info = document.createElement('div');
+        info.innerHTML = `
+            <div style="margin-bottom:6px;">🔵 Move</div>
+            <div style="margin-bottom:6px;">🟠 Turn ⟳</div>
+            <div style="margin-bottom:6px;">🟣 Repeat</div>
+        `;
+        info.style.fontSize = '14px';
+        info.style.color = '#4a5568';
         
-        commands.forEach(cmd => {
-            const block = document.createElement('div');
-            block.textContent = cmd.name;
-            block.dataset.action = cmd.action;
-            block.style.padding = '10px';
-            block.style.margin = '5px';
-            block.style.backgroundColor = cmd.color;
-            block.style.color = 'white';
-            block.style.borderRadius = '4px';
-            block.style.cursor = 'grab';
-            block.style.textAlign = 'center';
-            block.style.userSelect = 'none'; // Prevent text selection
-            block.draggable = true;
-            
-            // Drag events
-            block.addEventListener('dragstart', (e) => {
-                e.dataTransfer.setData('text/plain', cmd.action);
-                block.style.opacity = '0.5';
+        paletteContainer.appendChild(info);
+    }
+        
+function renderProgramArea() {
+    const programContainer = document.getElementById('programContainer');
+    if (!programContainer) return;
+    
+    programContainer.innerHTML = '';
+    
+    const title = document.createElement('h3');
+    title.textContent = 'Your Program:';
+    title.style.marginBottom = '10px';
+    programContainer.appendChild(title);
+    
+    const programList = document.createElement('div');
+    programContainer.appendChild(programList);
+
+    // ---------------- ADD COMMAND BUTTON ----------------
+    const addBtn = document.createElement('button');
+    addBtn.textContent = '+ Add Command';
+    addBtn.style.padding = '8px 12px';
+    addBtn.style.marginBottom = '10px';
+    addBtn.style.backgroundColor = '#2b6cb0';
+    addBtn.style.color = 'white';
+    addBtn.style.border = 'none';
+    addBtn.style.borderRadius = '4px';
+    addBtn.style.cursor = 'pointer';
+    
+    addBtn.addEventListener('click', () => {
+        showAddMenu(state.programSequence, renderProgramArea);
+    });
+    
+    programContainer.insertBefore(addBtn, programList);
+
+    // ---------------- RENDER PROGRAM TREE ----------------
+    function renderCommands(commands, container, depth = 0) {
+        container.innerHTML = '';
+
+        if (commands.length === 0) {
+            const placeholder = document.createElement('div');
+            placeholder.textContent = 'No commands yet...';
+            placeholder.style.color = '#999';
+            placeholder.style.padding = '10px';
+            container.appendChild(placeholder);
+            return;
+        }
+
+        commands.forEach((cmd, index) => {
+            const row = document.createElement('div');
+            row.style.marginLeft = depth * 20 + 'px';
+            row.style.marginBottom = '6px';
+            row.style.padding = '6px';
+            row.style.borderRadius = '4px';
+            row.style.display = 'flex';
+            row.style.alignItems = 'center';
+            row.style.gap = '8px';
+
+            // ----- SIMPLE COMMAND -----
+            if (typeof cmd === 'string') {
+                row.textContent = cmd === 'move' ? 'Move' : 'Turn ⟳';
+                row.style.backgroundColor = cmd === 'move' ? '#4299e1' : '#ed8936';
+                row.style.color = 'white';
+            }
+
+            // ----- REPEAT BLOCK -----
+            if (typeof cmd === 'object' && cmd.type === 'repeat') {
+                row.style.backgroundColor = '#805ad5';
+                row.style.color = 'white';
+                row.style.flexDirection = 'column';
+                row.style.alignItems = 'flex-start';
+
+                const header = document.createElement('div');
+                header.textContent = `Repeat ${cmd.times} times`;
+                header.style.fontWeight = 'bold';
+
+                const innerContainer = document.createElement('div');
+
+                const addInside = document.createElement('button');
+                addInside.textContent = '+ Add Inside';
+                addInside.style.marginTop = '6px';
+                addInside.style.padding = '4px 8px';
+                addInside.style.fontSize = '12px';
+                addInside.style.cursor = 'pointer';
+
+                addInside.addEventListener('click', () => {
+                    showAddMenu(cmd.body, renderProgramArea);
+                });
+
+                row.appendChild(header);
+                row.appendChild(innerContainer);
+                row.appendChild(addInside);
+
+                renderCommands(cmd.body, innerContainer, depth + 1);
+            }
+
+            // Remove button
+            const removeBtn = document.createElement('span');
+            removeBtn.textContent = '×';
+            removeBtn.style.marginLeft = 'auto';
+            removeBtn.style.cursor = 'pointer';
+            removeBtn.style.padding = '2px 6px';
+            removeBtn.style.backgroundColor = 'rgba(0,0,0,0.2)';
+            removeBtn.style.borderRadius = '50%';
+
+            removeBtn.addEventListener('click', () => {
+                commands.splice(index, 1);
+                renderProgramArea();
             });
-            
-            block.addEventListener('dragend', () => {
-                block.style.opacity = '1';
-            });
-            
-            paletteContainer.appendChild(block);
+
+            row.appendChild(removeBtn);
+            container.appendChild(row);
         });
-        
-        // Instructions
-        const instructions = document.createElement('p');
-        instructions.textContent = 'Drag commands to the program area below';
-        instructions.style.fontSize = '12px';
-        instructions.style.color = '#666';
-        instructions.style.marginTop = '10px';
-        paletteContainer.appendChild(instructions);
     }
 
-    // Render Program Area
-    function renderProgramArea() {
-        const programContainer = document.getElementById('programContainer');
-        if (!programContainer) return;
-        
-        programContainer.innerHTML = '';
-        
-        // Title
-        const title = document.createElement('h3');
-        title.textContent = 'Your Program:';
-        title.style.marginBottom = '10px';
-        programContainer.appendChild(title);
-        
-        // Drop zone
-        const dropZone = document.createElement('div');
-        dropZone.id = 'programDropZone';
-        dropZone.style.minHeight = '100px';
-        dropZone.style.maxHeight = '200px'; // ← ADD THIS LINE
-        dropZone.style.overflowY = 'auto';  // ← ADD THIS LINE
-        dropZone.style.border = '2px dashed #ccc';
-        dropZone.style.borderRadius = '8px';
-        dropZone.style.padding = '10px';
-        dropZone.style.display = 'flex';
-        dropZone.style.flexWrap = 'wrap';
-        dropZone.style.gap = '5px';
-        dropZone.style.alignContent = 'flex-start';
-        
-        // Drag over event
-        dropZone.addEventListener('dragover', (e) => {
-            e.preventDefault();
-            dropZone.style.borderColor = '#4299e1';
-            dropZone.style.backgroundColor = '#ebf8ff';
-        });
-        
-        // Drag leave event
-        dropZone.addEventListener('dragleave', () => {
-            dropZone.style.borderColor = '#ccc';
-            dropZone.style.backgroundColor = 'white';
-        });
-        
-        // Drop event
-        dropZone.addEventListener('drop', (e) => {
-            e.preventDefault();
-            dropZone.style.borderColor = '#ccc';
-            dropZone.style.backgroundColor = 'white';
-            
-            const action = e.dataTransfer.getData('text/plain');
-            if (action === 'move' || action === 'turn') {
-                state.programSequence.push(action);
-                updateProgramDisplay();
-            }
-        });
-        
-        programContainer.appendChild(dropZone);
-        
-        // Display current program
-        updateProgramDisplay();
-        
-        function updateProgramDisplay() {
-            dropZone.innerHTML = '';
-            
-            if (state.programSequence.length === 0) {
-                const placeholder = document.createElement('div');
-                placeholder.textContent = 'Drop commands here...';
-                placeholder.style.color = '#999';
-                placeholder.style.width = '100%';
-                placeholder.style.textAlign = 'center';
-                placeholder.style.padding = '20px';
-                dropZone.appendChild(placeholder);
-                return;
-            }
-            
-            state.programSequence.forEach((cmd, index) => {
-                const block = document.createElement('div');
-                block.textContent = cmd === 'move' ? 'Move' : 'Turn ⟳';
-                block.style.padding = '8px 12px';
-                block.style.backgroundColor = cmd === 'move' ? '#4299e1' : '#ed8936';
-                block.style.color = 'white';
-                block.style.borderRadius = '4px';
-                block.style.display = 'flex';
-                block.style.alignItems = 'center';
-                block.style.gap = '5px';
-                block.style.cursor = 'pointer';
-                
-                // Remove button (X)
-                const removeBtn = document.createElement('span');
-                removeBtn.textContent = '×';
-                removeBtn.style.cursor = 'pointer';
-                removeBtn.style.padding = '2px 6px';
-                removeBtn.style.borderRadius = '50%';
-                removeBtn.style.backgroundColor = 'rgba(255,255,255,0.3)';
-                removeBtn.style.fontSize = '14px';
-                
-                removeBtn.addEventListener('click', () => {
-                    state.programSequence.splice(index, 1);
-                    updateProgramDisplay();
-                });
-                
-                block.appendChild(removeBtn);
-                dropZone.appendChild(block);
-            });
+    renderCommands(state.programSequence, programList);
+}
+    function showAddMenu(targetArray, refresh) {
+        const choice = prompt(
+            "Choose command:\n1 = Move\n2 = Turn\n3 = Repeat"
+        );
+
+        if (choice === '1') {
+            targetArray.push('move');
         }
+        else if (choice === '2') {
+            targetArray.push('turn');
+        }
+        else if (choice === '3') {
+            const times = parseInt(prompt("Repeat how many times?", "2"));
+            if (!isNaN(times) && times > 0) {
+                targetArray.push({
+                    type: 'repeat',
+                    times: times,
+                    body: []
+                });
+            }
+        }
+
+        refresh();
     }
+
 
     // Render Control Buttons
     function renderControls() {
@@ -501,7 +546,7 @@ window.initProgrammingGame = function() {
             state.stageState = cloneStage(stages[state.currentStageIndex]);
             state.programSequence = [];
             renderGrid();
-            updateProgramDisplay();
+            renderProgramArea();
         });
         
         // Clear Button - Clear program only
@@ -516,7 +561,7 @@ window.initProgrammingGame = function() {
         
         clearBtn.addEventListener('click', () => {
             state.programSequence = [];
-            updateProgramDisplay();
+            renderProgramArea();
         });
         
         controls.appendChild(runBtn);

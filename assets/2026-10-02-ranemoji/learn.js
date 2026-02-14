@@ -12,8 +12,8 @@ let colorIndex = 0;
 
 // Font size
 let fontSize = 12;
-const fontSizeStep = 4;
-const maxFontSize = 36;
+const fontSizeStep = 10;
+const maxFontSize = 72;
 
 // Button 1: Random emoji
 emojiBtn.addEventListener('click', function() {
