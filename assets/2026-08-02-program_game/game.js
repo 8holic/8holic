@@ -775,7 +775,7 @@ window.initProgrammingGame = function() {
         
         resetBtn.addEventListener('click', () => {
             state.stageState = cloneStage(stages[state.currentStageIndex]);
-            state.programSequence = [];
+
             renderStageView();
         });
         
