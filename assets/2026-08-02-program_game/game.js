@@ -569,15 +569,63 @@ window.initProgrammingGame = function() {
                 row.style.display = 'flex';
                 row.style.alignItems = 'center';
                 row.style.gap = '8px';
+                row.style.flexWrap = 'wrap';
 
-                // Simple command
+                // Handle primitive commands (strings)
                 if (typeof cmd === 'string') {
                     row.textContent = COMMANDS[cmd]?.name || cmd;
                     row.style.backgroundColor = COMMANDS[cmd]?.color || '#718096';
                     row.style.color = 'white';
+                    row.style.flex = '1';
+                }
+                // Handle conditional objects
+                else if (typeof cmd === 'object' && cmd !== null) {
+                    row.style.backgroundColor = '#e9d8fd'; // light purple
+
+                    // Type label
+                    const typeSpan = document.createElement('span');
+                    typeSpan.textContent = cmd.type.toUpperCase();
+                    typeSpan.style.fontWeight = 'bold';
+                    typeSpan.style.minWidth = '60px';
+                    row.appendChild(typeSpan);
+
+                    // Condition dropdown (for if and elseif)
+                    if (cmd.type === 'if' || cmd.type === 'elseif') {
+                        const condSelect = document.createElement('select');
+                        condSelect.style.margin = '0 8px';
+                        condSelect.style.padding = '4px';
+                        const conditions = ['monsterInFront', 'doorInFront', 'coinInFront', 'canMoveForward'];
+                        conditions.forEach(cond => {
+                            const opt = document.createElement('option');
+                            opt.value = cond;
+                            opt.textContent = cond.replace(/([A-Z])/g, ' $1').toLowerCase(); // prettify
+                            if (cmd.condition === cond) opt.selected = true;
+                            condSelect.appendChild(opt);
+                        });
+                        condSelect.addEventListener('change', (e) => {
+                            cmd.condition = e.target.value;
+                        });
+                        row.appendChild(condSelect);
+                    }
+
+                    // Action dropdown (for all conditionals)
+                    const actionSelect = document.createElement('select');
+                    actionSelect.style.padding = '4px';
+                    const actions = ['move', 'turn', 'open', 'attack'];
+                    actions.forEach(action => {
+                        const opt = document.createElement('option');
+                        opt.value = action;
+                        opt.textContent = COMMANDS[action]?.name || action;
+                        if (cmd.action === action) opt.selected = true;
+                        actionSelect.appendChild(opt);
+                    });
+                    actionSelect.addEventListener('change', (e) => {
+                        cmd.action = e.target.value;
+                    });
+                    row.appendChild(actionSelect);
                 }
 
-                // Remove button
+                // Remove button (works for both strings and objects)
                 const removeBtn = document.createElement('span');
                 removeBtn.textContent = '×';
                 removeBtn.style.marginLeft = 'auto';
@@ -587,7 +635,7 @@ window.initProgrammingGame = function() {
                 removeBtn.style.borderRadius = '50%';
                 removeBtn.addEventListener('click', () => {
                     commands.splice(index, 1);
-                    renderProgramArea();
+                    renderProgramArea(); // re-render the whole program area
                 });
 
                 row.appendChild(removeBtn);
