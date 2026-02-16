@@ -748,15 +748,10 @@ window.initProgrammingGame = function() {
             resetBtn.style.opacity = '1';
             // run, clear, command buttons stay disabled
         } else {
-            // Normal completion: re-enable everything
-            [runBtn, resetBtn, clearBtn].forEach(btn => {
-                btn.disabled = false;
-                btn.style.opacity = '1';
-            });
-            document.querySelectorAll('.command-btn').forEach(btn => {
-                btn.disabled = false;
-                btn.style.opacity = '1';
-            });
+            // Normal completion (win or not): only reset button is enabled
+            resetBtn.disabled = false;
+            resetBtn.style.opacity = '1';
+            // run, clear, command buttons remain disabled
         }
     });
         
