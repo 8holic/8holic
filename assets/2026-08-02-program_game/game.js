@@ -176,6 +176,31 @@ window.initProgrammingGame = function() {
         return stage.monsters && stage.monsters.some(m => m.x === x && m.y === y);
     }
 
+    function monsterInFront(stage) {
+        const next = getNextPosition(stage.character);
+        return isMonster(next.x, next.y, stage);
+    }
+
+    function doorInFront(stage) {
+        const next = getNextPosition(stage.character);
+        return isDoor(next.x, next.y, stage);
+    }
+
+    function coinInFront(stage) {
+        const next = getNextPosition(stage.character);
+        return stage.coins.some(c => c.x === next.x && c.y === next.y);
+    }
+
+    function canMoveForward(stage) {
+        const next = getNextPosition(stage.character);
+        return canMoveTo(next.x, next.y, stage);
+    }
+    const CONDITION_CHECKS = {
+        monsterInFront,
+        doorInFront,
+        coinInFront,
+        canMoveForward
+    };
 
     // Central validation function (used before ANY movement)
     function canMoveTo(x, y, stage) {
@@ -455,8 +480,68 @@ window.initProgrammingGame = function() {
             state.programSequence.push('attack');
             renderProgramArea();
         });
+        
         buttonBar.appendChild(attackBtn);
 
+        // IF button
+        const ifBtn = document.createElement('button');
+        ifBtn.className = 'command-btn';
+        ifBtn.textContent = 'IF';
+        ifBtn.style.padding = '6px 12px';
+        ifBtn.style.backgroundColor = '#9f7aea';
+        ifBtn.style.color = 'white';
+        ifBtn.style.border = 'none';
+        ifBtn.style.borderRadius = '4px';
+        ifBtn.style.cursor = 'pointer';
+        ifBtn.addEventListener('click', () => {
+            state.programSequence.push({
+                type: 'if',
+                condition: 'monsterInFront',
+                action: 'move'
+            });
+            renderProgramArea();
+        });
+        buttonBar.appendChild(ifBtn);
+
+        // ELSE IF button
+        const elseifBtn = document.createElement('button');
+        elseifBtn.className = 'command-btn';
+        elseifBtn.textContent = 'ELSE IF';
+        elseifBtn.style.padding = '6px 12px';
+        elseifBtn.style.backgroundColor = '#b794f4';
+        elseifBtn.style.color = 'white';
+        elseifBtn.style.border = 'none';
+        elseifBtn.style.borderRadius = '4px';
+        elseifBtn.style.cursor = 'pointer';
+        elseifBtn.addEventListener('click', () => {
+            state.programSequence.push({
+                type: 'elseif',
+                condition: 'monsterInFront',
+                action: 'move'
+            });
+            renderProgramArea();
+        });
+        buttonBar.appendChild(elseifBtn);
+
+        // ELSE button
+        const elseBtn = document.createElement('button');
+        elseBtn.className = 'command-btn';
+        elseBtn.textContent = 'ELSE';
+        elseBtn.style.padding = '6px 12px';
+        elseBtn.style.backgroundColor = '#d6bcfa';
+        elseBtn.style.color = 'white';
+        elseBtn.style.border = 'none';
+        elseBtn.style.borderRadius = '4px';
+        elseBtn.style.cursor = 'pointer';
+        elseBtn.addEventListener('click', () => {
+            state.programSequence.push({
+                type: 'else',
+                action: 'move'
+            });
+            renderProgramArea();
+        });
+        buttonBar.appendChild(elseBtn);
+        //Emd
         programContainer.appendChild(buttonBar);
 
         // ---- PROGRAM LIST ----
@@ -548,23 +633,65 @@ window.initProgrammingGame = function() {
             btn.disabled = true;
             btn.style.opacity = '0.5';
         });
-        //Internal code running logic
+        //Internal code running
         let i = 0;
-        while (i < state.programSequence.length) {
-            const command = state.programSequence[i];
+        let inChain = false;
+        let skipChain = false;
 
-            // Only primitive commands exist; execute them
-            if (typeof command === 'string' && COMMANDS[command]) {
-                executeCommand(command);
+        while (i < state.programSequence.length) {
+            const item = state.programSequence[i];
+
+            if (typeof item === 'string' && COMMANDS[item]) {
+                // primitive command
+                executeCommand(item);
                 renderGrid();
                 await new Promise(resolve => setTimeout(resolve, 500));
-
-                if (state.stageState.incapacitated || checkWinCondition()) {
-                    break;
+                inChain = false; // end of any conditional chain
+                skipChain = false;
+                if (state.stageState.incapacitated || checkWinCondition()) break;
+                i++;
+            } else if (typeof item === 'object' && item !== null) {
+                // conditional
+                if (item.type === 'if') {
+                    inChain = true;
+                    if (CONDITION_CHECKS[item.condition](state.stageState)) {
+                        executeCommand(item.action);
+                        renderGrid();
+                        await new Promise(resolve => setTimeout(resolve, 500));
+                        skipChain = true;
+                        if (state.stageState.incapacitated || checkWinCondition()) break;
+                    } else {
+                        skipChain = false;
+                    }
+                    i++;
+                } else if (item.type === 'elseif') {
+                    if (!inChain) { i++; continue; } // orphaned elseif, skip
+                    if (!skipChain && CONDITION_CHECKS[item.condition](state.stageState)) {
+                        executeCommand(item.action);
+                        renderGrid();
+                        await new Promise(resolve => setTimeout(resolve, 500));
+                        skipChain = true;
+                        if (state.stageState.incapacitated || checkWinCondition()) break;
+                    }
+                    i++;
+                } else if (item.type === 'else') {
+                    if (!inChain) { i++; continue; }
+                    if (!skipChain) {
+                        executeCommand(item.action);
+                        renderGrid();
+                        await new Promise(resolve => setTimeout(resolve, 500));
+                        skipChain = true;
+                        if (state.stageState.incapacitated || checkWinCondition()) break;
+                    }
+                    i++;
+                } else {
+                    // unknown object, skip
+                    i++;
                 }
+            } else {
+                // any other non-string, non-object? (shouldn't happen)
+                i++;
             }
-            // Any other command (none currently) is skipped
-            i++;
         }
 
         // After loop: if incapacitated, only reset button should be re‑enabled
