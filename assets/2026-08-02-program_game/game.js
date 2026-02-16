@@ -202,6 +202,38 @@ window.initProgrammingGame = function() {
         canMoveForward
     };
 
+    function validateProgram(program) {
+    let inChain = false;      // Are we inside an if-elseif-else chain?
+    let seenElse = false;     // Has an 'else' already appeared in the current chain?
+
+    for (let i = 0; i < program.length; i++) {
+        const item = program[i];
+
+        if (typeof item === 'string') {
+            // Primitive command – ends any ongoing chain
+            inChain = false;
+            seenElse = false;
+        } else if (item && typeof item === 'object') {
+            if (item.type === 'if') {
+                inChain = true;
+                seenElse = false;
+            } else if (item.type === 'elseif') {
+                if (!inChain) return "Error: 'ELSE IF' without matching 'IF'";
+                if (seenElse) return "Error: 'ELSE IF' after 'ELSE'";
+            } else if (item.type === 'else') {
+                if (!inChain) return "Error: 'ELSE' without matching 'IF'";
+                if (seenElse) return "Error: Multiple 'ELSE' in same chain";
+                seenElse = true;
+            } else {
+                return `Error: Unknown command type '${item.type}'`; // safety net
+            }
+        } else {
+            return "Error: Invalid command in program"; // safety net
+        }
+    }
+    return null; // valid
+}
+
     // Central validation function (used before ANY movement)
     function canMoveTo(x, y, stage) {
         if (!isWithinBounds(x, y, stage)) return false;
@@ -672,6 +704,16 @@ window.initProgrammingGame = function() {
         runBtn.style.cursor = 'pointer';
         
     runBtn.addEventListener('click', async () => {
+        // --- NEW: Validation before execution ---
+        const errorDiv = document.getElementById('validationError');
+        const validationError = validateProgram(state.programSequence);
+        if (validationError) {
+            if (errorDiv) errorDiv.textContent = validationError;
+            return; // Stop execution
+        } else {
+            if (errorDiv) errorDiv.textContent = ''; // Clear any previous error
+        }
+        // --- End of validation ---
         // Disable all interactive buttons during execution
         [runBtn, resetBtn, clearBtn].forEach(btn => {
             btn.disabled = true;
@@ -846,7 +888,16 @@ function renderStageView() {
     statusDiv.style.borderRadius = '6px';
     statusDiv.style.border = '1px solid #e2e8f0';
     gameContainer.appendChild(statusDiv);
-    
+
+    // Validation error display
+    const errorDiv = document.createElement('div');
+    errorDiv.id = 'validationError';
+    errorDiv.style.marginTop = '10px';
+    errorDiv.style.color = 'red';
+    errorDiv.style.fontWeight = 'bold';
+    errorDiv.style.textAlign = 'center';
+    gameContainer.appendChild(errorDiv);
+        
     // Update status function
     function updateStatus() {
         const stage = state.stageState;
