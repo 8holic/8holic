@@ -548,30 +548,23 @@ window.initProgrammingGame = function() {
             btn.disabled = true;
             btn.style.opacity = '0.5';
         });
+        //Internal code running logic
+        let i = 0;
+        while (i < state.programSequence.length) {
+            const command = state.programSequence[i];
 
-        const programToExecute = [...state.programSequence];
-        let stopExecution = false;
+            // Only primitive commands exist; execute them
+            if (typeof command === 'string' && COMMANDS[command]) {
+                executeCommand(command);
+                renderGrid();
+                await new Promise(resolve => setTimeout(resolve, 500));
 
-        for (const command of programToExecute) {
-            if (stopExecution) break; // stop if already dead
-
-            executeCommand(command);   // may set stage.incapacitated
-
-            renderGrid();
-
-            // Check if player became incapacitated
-            if (state.stageState.incapacitated) {
-                stopExecution = true;
-                // Keep buttons disabled (run/clear/command stay disabled, reset remains disabled for now)
-                // We'll let the finally block handle reset button separately
+                if (state.stageState.incapacitated || checkWinCondition()) {
+                    break;
+                }
             }
-
-            if (checkWinCondition()) {
-                alert('🎉 Congratulations! You completed the stage!');
-                break;
-            }
-
-            await new Promise(resolve => setTimeout(resolve, 500));
+            // Any other command (none currently) is skipped
+            i++;
         }
 
         // After loop: if incapacitated, only reset button should be re‑enabled
