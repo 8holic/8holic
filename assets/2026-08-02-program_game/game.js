@@ -681,57 +681,95 @@ window.initProgrammingGame = function() {
             btn.disabled = true;
             btn.style.opacity = '0.5';
         });
-        //Internal code running
+
+        // --- NEW: Indicator helpers ---
+        function clearIndicators() {
+            document.querySelectorAll('.command-indicator').forEach(el => el.textContent = '');
+        }
+
+        function setIndicator(index, symbol) {
+            const row = document.querySelector(`[data-command-index="${index}"]`);
+            if (row) {
+                const indicator = row.querySelector('.command-indicator');
+                if (indicator) indicator.textContent = symbol;
+            }
+        }
+
+        clearIndicators();  // remove any old red/green
+
+        // Internal code running
         let i = 0;
         let inChain = false;
         let skipChain = false;
 
         while (i < state.programSequence.length) {
+            const currentIndex = i;               // remember this index for possible red later
+            setIndicator(currentIndex, '🟢');     // mark as executing
+
             const item = state.programSequence[i];
+            let shouldStop = false;                // whether to break after this command
 
             if (typeof item === 'string' && COMMANDS[item]) {
                 // primitive command
-                executeCommand(item);
+                const success = executeCommand(item);
                 renderGrid();
                 await new Promise(resolve => setTimeout(resolve, 500));
-                inChain = false; // end of any conditional chain
+                inChain = false;
                 skipChain = false;
-                if (state.stageState.incapacitated || checkWinCondition()) break;
-                i++;
+                if (!success || state.stageState.incapacitated || checkWinCondition()) {
+                    shouldStop = true;
+                }
+                i++;  // move to next command only if we continue
             } else if (typeof item === 'object' && item !== null) {
                 // conditional
                 if (item.type === 'if') {
                     inChain = true;
                     if (CONDITION_CHECKS[item.condition](state.stageState)) {
-                        executeCommand(item.action);
+                        const success = executeCommand(item.action);
                         renderGrid();
                         await new Promise(resolve => setTimeout(resolve, 500));
                         skipChain = true;
-                        if (state.stageState.incapacitated || checkWinCondition()) break;
+                        if (!success || state.stageState.incapacitated || checkWinCondition()) {
+                            shouldStop = true;
+                        }
                     } else {
                         skipChain = false;
                     }
                     i++;
                 } else if (item.type === 'elseif') {
-                    if (!inChain) { i++; continue; } // orphaned elseif, skip
-                    if (!skipChain && CONDITION_CHECKS[item.condition](state.stageState)) {
-                        executeCommand(item.action);
-                        renderGrid();
-                        await new Promise(resolve => setTimeout(resolve, 500));
-                        skipChain = true;
-                        if (state.stageState.incapacitated || checkWinCondition()) break;
+                    if (!inChain) {  // orphaned elseif → stop
+                        shouldStop = true;
+                        // do not increment i (break later)
+                    } else {
+                        if (!skipChain && CONDITION_CHECKS[item.condition](state.stageState)) {
+                            const success = executeCommand(item.action);
+                            renderGrid();
+                            await new Promise(resolve => setTimeout(resolve, 500));
+                            skipChain = true;
+                            if (!success || state.stageState.incapacitated || checkWinCondition()) {
+                                shouldStop = true;
+                            }
+                        }
+                        i++;
                     }
-                    i++;
                 } else if (item.type === 'else') {
-                    if (!inChain) { i++; continue; }
-                    if (!skipChain) {
-                        executeCommand(item.action);
-                        renderGrid();
-                        await new Promise(resolve => setTimeout(resolve, 500));
-                        skipChain = true;
-                        if (state.stageState.incapacitated || checkWinCondition()) break;
+                    if (!inChain) {  // orphaned else → stop
+                        shouldStop = true;
+                    } else {
+                        if (!skipChain) {
+                            const success = executeCommand(item.action);
+                            renderGrid();
+                            await new Promise(resolve => setTimeout(resolve, 500));
+                            skipChain = true;
+                            if (!success || state.stageState.incapacitated || checkWinCondition()) {
+                                shouldStop = true;
+                            }
+                        }
+                        // after else, chain ends
+                        inChain = false;
+                        skipChain = false;
+                        i++;
                     }
-                    i++;
                 } else {
                     // unknown object, skip
                     i++;
@@ -740,7 +778,25 @@ window.initProgrammingGame = function() {
                 // any other non-string, non-object? (shouldn't happen)
                 i++;
             }
+
+            if (shouldStop) {
+                setIndicator(currentIndex, '🔴');  // mark stopping point red
+                break;
+            }
         }
+
+        // After loop: if incapacitated, only reset button should be re‑enabled
+        if (state.stageState.incapacitated) {
+            resetBtn.disabled = false;
+            resetBtn.style.opacity = '1';
+            // run, clear, command buttons stay disabled
+        } else {
+            // Normal completion (win or not): only reset button is enabled
+            resetBtn.disabled = false;
+            resetBtn.style.opacity = '1';
+            // run, clear, command buttons remain disabled
+        }
+    });
 
         // After loop: if incapacitated, only reset button should be re‑enabled
         if (state.stageState.incapacitated) {
