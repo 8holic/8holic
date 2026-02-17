@@ -770,6 +770,35 @@ window.initProgrammingGame = function() {
         clearBtn.style.borderRadius = '6px';
         clearBtn.style.cursor = 'pointer';
         
+        const stopBtn = document.createElement('button');
+        stopBtn.id = 'stopBtn';
+        stopBtn.textContent = '💀 Stop';
+        stopBtn.style.padding = '10px 20px';
+        stopBtn.style.backgroundColor = '#c53030'; // darker red
+        stopBtn.style.color = 'white';
+        stopBtn.style.border = 'none';
+        stopBtn.style.borderRadius = '6px';
+        stopBtn.style.cursor = 'pointer';
+        stopBtn.style.marginLeft = '5px';
+        
+        stopBtn.addEventListener('click', () => {
+            if (!state.stageState) return;
+            state.stageState.incapacitated = true;
+            renderGrid();               // show skull immediately
+            // updateStatus is called inside renderGrid via the overwritten function,
+            // but to be safe, call it directly:
+            const statusDiv = document.getElementById('gameStatus');
+            if (statusDiv) {
+                const coinsLeft = state.stageState.coins.length;
+                const totalCoins = stages[state.currentStageIndex].coins.length;
+                statusDiv.innerHTML = `
+                    <div style="color: red; font-weight: bold;">💀 Incapacitated</div>
+                    <div><strong>Coins Collected:</strong> ${totalCoins - coinsLeft}/${totalCoins}</div>
+                    <div><strong>Position:</strong> (${state.stageState.character.x}, ${state.stageState.character.y})</div>
+                    <div><strong>Direction:</strong> ${state.stageState.character.direction}</div>
+                `;
+            }
+        });
         // Attach listeners after all buttons defined
         runBtn.addEventListener('click', async () => {
             // Validation before execution
@@ -881,6 +910,7 @@ window.initProgrammingGame = function() {
         controls.appendChild(runBtn);
         controls.appendChild(resetBtn);
         controls.appendChild(clearBtn);
+        controls.appendChild(stopBtn);
         controlsContainer.appendChild(controls);
     }    
 
