@@ -579,7 +579,7 @@ window.initProgrammingGame = function() {
         // ---- PROGRAM LIST ----
         const programList = document.createElement('div');
         programContainer.appendChild(programList);
-
+    }
     function renderCommands(commands, container, depth = 0) {
         container.innerHTML = '';
 
@@ -885,4 +885,3 @@ function renderStageView() {
 document.addEventListener('DOMContentLoaded', () => {
     if (window.initProgrammingGame) window.initProgrammingGame();
 });
-}
