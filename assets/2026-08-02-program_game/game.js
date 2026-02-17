@@ -529,7 +529,7 @@ window.initProgrammingGame = function() {
             state.programSequence.push({
                 type: 'if',
                 condition: 'monsterInFront',
-                action: 'move'
+                commands: ['move']   // now an array with one default command
             });
             renderProgramArea();
         });
@@ -549,7 +549,7 @@ window.initProgrammingGame = function() {
             state.programSequence.push({
                 type: 'elseif',
                 condition: 'monsterInFront',
-                action: 'move'
+                action: ['move']
             });
             renderProgramArea();
         });
@@ -568,7 +568,7 @@ window.initProgrammingGame = function() {
         elseBtn.addEventListener('click', () => {
             state.programSequence.push({
                 type: 'else',
-                action: 'move'
+                action: ['move']
             });
             renderProgramArea();
         });
@@ -613,7 +613,7 @@ window.initProgrammingGame = function() {
                 // Handle conditional objects
                 else if (typeof cmd === 'object' && cmd !== null) {
                     row.style.backgroundColor = '#e9d8fd'; // light purple
-
+                    row.style.flexWrap = 'wrap';        
                     // Type label
                     const typeSpan = document.createElement('span');
                     typeSpan.textContent = cmd.type.toUpperCase();
@@ -640,21 +640,54 @@ window.initProgrammingGame = function() {
                         row.appendChild(condSelect);
                     }
 
-                    // Action dropdown (for all conditionals)
-                    const actionSelect = document.createElement('select');
-                    actionSelect.style.padding = '4px';
-                    const actions = ['move', 'turn', 'open', 'attack'];
-                    actions.forEach(action => {
-                        const opt = document.createElement('option');
-                        opt.value = action;
-                        opt.textContent = COMMANDS[action]?.name || action;
-                        if (cmd.action === action) opt.selected = true;
-                        actionSelect.appendChild(opt);
+                    // ADD COMMAND BUTTON (➕)
+                    const addCmdBtn = document.createElement('span');
+                    addCmdBtn.textContent = '➕';
+                    addCmdBtn.style.cursor = 'pointer';
+                    addCmdBtn.style.marginLeft = '8px';
+                    addCmdBtn.style.padding = '2px 6px';
+                    addCmdBtn.style.backgroundColor = '#48bb78';
+                    addCmdBtn.style.color = 'white';
+                    addCmdBtn.style.borderRadius = '4px';
+                    addCmdBtn.style.fontSize = '14px';
+                    addCmdBtn.title = 'Add command to block';
+                    addCmdBtn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        // Add a default 'move' command to the block
+                        if (!cmd.commands) cmd.commands = [];
+                        cmd.commands.push('move');
+                        renderProgramArea(); // re-render the whole program area
                     });
-                    actionSelect.addEventListener('change', (e) => {
-                        cmd.action = e.target.value;
+                    row.appendChild(addCmdBtn);
+
+                    // Remove button (for the conditional itself)
+                    const removeBtn = document.createElement('span');
+                    removeBtn.textContent = '×';
+                    removeBtn.style.marginLeft = 'auto';
+                    removeBtn.style.cursor = 'pointer';
+                    removeBtn.style.padding = '2px 6px';
+                    removeBtn.style.backgroundColor = 'rgba(0,0,0,0.2)';
+                    removeBtn.style.borderRadius = '50%';
+                    removeBtn.addEventListener('click', () => {
+                        commands.splice(index, 1);
+                        renderProgramArea();
                     });
-                    row.appendChild(actionSelect);
+                    row.appendChild(removeBtn);
+
+                    container.appendChild(row);
+
+                    // Now render the commands inside this conditional (if any)
+                    if (cmd.commands && cmd.commands.length > 0) {
+                        // Create a container for the inner commands, indented further
+                        const innerContainer = document.createElement('div');
+                        innerContainer.style.marginLeft = (depth + 1) * 20 + 'px';
+                        innerContainer.style.borderLeft = '2px dotted #ccc';
+                        innerContainer.style.paddingLeft = '10px';
+                        container.appendChild(innerContainer);
+
+                        // Recursively render inner commands (they are primitive strings or nested conditionals)
+                        renderCommands(cmd.commands, innerContainer, depth + 1);
+                    }
                 }
 
                 // Remove button (works for both strings and objects)
