@@ -579,6 +579,7 @@ window.initProgrammingGame = function() {
         // ---- PROGRAM LIST ----
         const programList = document.createElement('div');
         programContainer.appendChild(programList);
+        renderCommands(state.programSequence, programList);    
     }
     function renderCommands(commands, container, depth = 0) {
         container.innerHTML = '';
@@ -726,7 +727,162 @@ window.initProgrammingGame = function() {
             }
         });
     }
-    
+    function renderControls() {
+        const controlsContainer = document.getElementById('controlsContainer');
+        if (!controlsContainer) return;
+        
+        controlsContainer.innerHTML = '';
+        
+        const controls = document.createElement('div');
+        controls.style.display = 'flex';
+        controls.style.gap = '10px';
+        controls.style.flexWrap = 'wrap';
+        controls.style.justifyContent = 'center';
+        
+        // Create buttons first so they are in scope for listeners
+        const runBtn = document.createElement('button');
+        runBtn.id = 'runBtn';
+        runBtn.textContent = 'Run Program';
+        runBtn.style.padding = '10px 20px';
+        runBtn.style.backgroundColor = '#38a169';
+        runBtn.style.color = 'white';
+        runBtn.style.border = 'none';
+        runBtn.style.borderRadius = '6px';
+        runBtn.style.cursor = 'pointer';
+        
+        const resetBtn = document.createElement('button');
+        resetBtn.id = 'resetBtn';
+        resetBtn.textContent = 'Reset Stage';
+        resetBtn.style.padding = '10px 20px';
+        resetBtn.style.backgroundColor = '#e53e3e';
+        resetBtn.style.color = 'white';
+        resetBtn.style.border = 'none';
+        resetBtn.style.borderRadius = '6px';
+        resetBtn.style.cursor = 'pointer';
+        
+        const clearBtn = document.createElement('button');
+        clearBtn.id = 'clearBtn';
+        clearBtn.textContent = 'Clear Program';
+        clearBtn.style.padding = '10px 20px';
+        clearBtn.style.backgroundColor = '#a0aec0';
+        clearBtn.style.color = 'white';
+        clearBtn.style.border = 'none';
+        clearBtn.style.borderRadius = '6px';
+        clearBtn.style.cursor = 'pointer';
+        
+        // Attach listeners after all buttons defined
+        runBtn.addEventListener('click', async () => {
+            // Validation before execution
+            const errorDiv = document.getElementById('validationError');
+            const validationError = validateProgram(state.programSequence);
+            if (validationError) {
+                if (errorDiv) errorDiv.textContent = validationError;
+                return;
+            } else {
+                if (errorDiv) errorDiv.textContent = '';
+            }
+            // Disable all interactive buttons during execution
+            [runBtn, resetBtn, clearBtn].forEach(btn => {
+                btn.disabled = true;
+                btn.style.opacity = '0.5';
+            });
+            document.querySelectorAll('.command-btn').forEach(btn => {
+                btn.disabled = true;
+                btn.style.opacity = '0.5';
+            });
+            // Internal code running
+            let i = 0;
+            let inChain = false;
+            let skipChain = false;
+
+            while (i < state.programSequence.length) {
+                const item = state.programSequence[i];
+
+                if (typeof item === 'string' && COMMANDS[item]) {
+                    // primitive command
+                    executeCommand(item);
+                    renderGrid();
+                    await new Promise(resolve => setTimeout(resolve, 500));
+                    inChain = false;
+                    skipChain = false;
+                    if (state.stageState.incapacitated || checkWinCondition()) break;
+                    i++;
+                } else if (typeof item === 'object' && item !== null) {
+                    // conditional
+                    if (item.type === 'if') {
+                        inChain = true;
+                        if (CONDITION_CHECKS[item.condition](state.stageState)) {
+                            for (let cmd of item.commands) {
+                                executeCommand(cmd);
+                                renderGrid();
+                                await new Promise(resolve => setTimeout(resolve, 500));
+                                if (state.stageState.incapacitated || checkWinCondition()) break;
+                            }
+                            skipChain = true;
+                            if (state.stageState.incapacitated || checkWinCondition()) break;
+                        } else {
+                            skipChain = false;
+                        }
+                        i++;
+                    } else if (item.type === 'elseif') {
+                        if (!inChain) { i++; continue; }
+                        if (!skipChain && CONDITION_CHECKS[item.condition](state.stageState)) {
+                            for (let cmd of item.commands) {
+                                executeCommand(cmd);
+                                renderGrid();
+                                await new Promise(resolve => setTimeout(resolve, 500));
+                                if (state.stageState.incapacitated || checkWinCondition()) break;
+                            }
+                            skipChain = true;
+                            if (state.stageState.incapacitated || checkWinCondition()) break;
+                        }
+                        i++;
+                    } else if (item.type === 'else') {
+                        if (!inChain) { i++; continue; }
+                        if (!skipChain) {
+                            for (let cmd of item.commands) {
+                                executeCommand(cmd);
+                                renderGrid();
+                                await new Promise(resolve => setTimeout(resolve, 500));
+                                if (state.stageState.incapacitated || checkWinCondition()) break;
+                            }
+                            skipChain = true;
+                            if (state.stageState.incapacitated || checkWinCondition()) break;
+                        }
+                        i++;
+                    } else {
+                        i++;
+                    }
+                } else {
+                    i++;
+                }
+            }
+
+            // After loop: if incapacitated, only reset button should be re‑enabled
+            if (state.stageState.incapacitated) {
+                resetBtn.disabled = false;
+                resetBtn.style.opacity = '1';
+            } else {
+                resetBtn.disabled = false;
+                resetBtn.style.opacity = '1';
+            }
+        });
+
+        resetBtn.addEventListener('click', () => {
+            state.stageState = cloneStage(stages[state.currentStageIndex]);
+            renderStageView();
+        });
+        
+        clearBtn.addEventListener('click', () => {
+            state.programSequence = [];
+            renderProgramArea();
+        });
+        
+        controls.appendChild(runBtn);
+        controls.appendChild(resetBtn);
+        controls.appendChild(clearBtn);
+        controlsContainer.appendChild(controls);
+    }    
 
 // Render Stage View
 function renderStageView() {
