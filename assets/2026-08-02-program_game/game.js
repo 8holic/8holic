@@ -726,6 +726,7 @@ window.initProgrammingGame = function() {
             }
         });
     }
+    
 
 // Render Stage View
 function renderStageView() {
@@ -884,3 +885,4 @@ function renderStageView() {
 document.addEventListener('DOMContentLoaded', () => {
     if (window.initProgrammingGame) window.initProgrammingGame();
 });
+}
