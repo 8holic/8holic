@@ -549,7 +549,7 @@ window.initProgrammingGame = function() {
             state.programSequence.push({
                 type: 'elseif',
                 condition: 'monsterInFront',
-                action: ['move']
+                commands: ['move']
             });
             renderProgramArea();
         });
@@ -568,7 +568,7 @@ window.initProgrammingGame = function() {
         elseBtn.addEventListener('click', () => {
             state.programSequence.push({
                 type: 'else',
-                action: ['move']
+                commands: ['move']
             });
             renderProgramArea();
         });
@@ -712,163 +712,151 @@ window.initProgrammingGame = function() {
     }
 
 
-    // Render Control Buttons
-    function renderControls() {
-        const controlsContainer = document.getElementById('controlsContainer');
-        if (!controlsContainer) return;
-        
-        controlsContainer.innerHTML = '';
-        
-        const controls = document.createElement('div');
-        controls.style.display = 'flex';
-        controls.style.gap = '10px';
-        controls.style.flexWrap = 'wrap';
-        controls.style.justifyContent = 'center';
-        
-        // Run Button - Execute all commands
-        const runBtn = document.createElement('button');
-        runBtn.id = 'runBtn';
-        runBtn.textContent = 'Run Program';
-        runBtn.style.padding = '10px 20px';
-        runBtn.style.backgroundColor = '#38a169';
-        runBtn.style.color = 'white';
-        runBtn.style.border = 'none';
-        runBtn.style.borderRadius = '6px';
-        runBtn.style.cursor = 'pointer';
-        
-    runBtn.addEventListener('click', async () => {
-        // --- NEW: Validation before execution ---
-        const errorDiv = document.getElementById('validationError');
-        const validationError = validateProgram(state.programSequence);
-        if (validationError) {
-            if (errorDiv) errorDiv.textContent = validationError;
-            return; // Stop execution
-        } else {
-            if (errorDiv) errorDiv.textContent = ''; // Clear any previous error
+    function renderCommands(commands, container, depth = 0) {
+        container.innerHTML = '';
+
+        if (commands.length === 0) {
+            const placeholder = document.createElement('div');
+            placeholder.textContent = 'No commands yet...';
+            placeholder.style.color = '#999';
+            placeholder.style.padding = '10px';
+            container.appendChild(placeholder);
+            return;
         }
-        // --- End of validation ---
-        // Disable all interactive buttons during execution
-        [runBtn, resetBtn, clearBtn].forEach(btn => {
-            btn.disabled = true;
-            btn.style.opacity = '0.5';
-        });
-        document.querySelectorAll('.command-btn').forEach(btn => {
-            btn.disabled = true;
-            btn.style.opacity = '0.5';
-        });
-        //Internal code running
-        let i = 0;
-        let inChain = false;
-        let skipChain = false;
 
-        while (i < state.programSequence.length) {
-            const item = state.programSequence[i];
+        commands.forEach((cmd, index) => {
+            const row = document.createElement('div');
+            row.style.marginLeft = depth * 20 + 'px';
+            row.style.marginBottom = '6px';
+            row.style.padding = '6px';
+            row.style.borderRadius = '4px';
+            row.style.display = 'flex';
+            row.style.alignItems = 'center';
+            row.style.gap = '8px';
+            row.style.flexWrap = 'wrap';
 
-            if (typeof item === 'string' && COMMANDS[item]) {
-                // primitive command
-                executeCommand(item);
-                renderGrid();
-                await new Promise(resolve => setTimeout(resolve, 500));
-                inChain = false; // end of any conditional chain
-                skipChain = false;
-                if (state.stageState.incapacitated || checkWinCondition()) break;
-                i++;
-            } else if (typeof item === 'object' && item !== null) {
-                // conditional
-                if (item.type === 'if') {
-                    inChain = true;
-                    if (CONDITION_CHECKS[item.condition](state.stageState)) {
-                        executeCommand(item.action);
-                        renderGrid();
-                        await new Promise(resolve => setTimeout(resolve, 500));
-                        skipChain = true;
-                        if (state.stageState.incapacitated || checkWinCondition()) break;
-                    } else {
-                        skipChain = false;
-                    }
-                    i++;
-                } else if (item.type === 'elseif') {
-                    if (!inChain) { i++; continue; } // orphaned elseif, skip
-                    if (!skipChain && CONDITION_CHECKS[item.condition](state.stageState)) {
-                        executeCommand(item.action);
-                        renderGrid();
-                        await new Promise(resolve => setTimeout(resolve, 500));
-                        skipChain = true;
-                        if (state.stageState.incapacitated || checkWinCondition()) break;
-                    }
-                    i++;
-                } else if (item.type === 'else') {
-                    if (!inChain) { i++; continue; }
-                    if (!skipChain) {
-                        executeCommand(item.action);
-                        renderGrid();
-                        await new Promise(resolve => setTimeout(resolve, 500));
-                        skipChain = true;
-                        if (state.stageState.incapacitated || checkWinCondition()) break;
-                    }
-                    i++;
-                } else {
-                    // unknown object, skip
-                    i++;
-                }
-            } else {
-                // any other non-string, non-object? (shouldn't happen)
-                i++;
+            // ---------- Primitive command (string) ----------
+            if (typeof cmd === 'string') {
+                row.style.backgroundColor = COMMANDS[cmd]?.color || '#718096';
+                row.style.color = 'white';
+
+                // Dropdown to change command type
+                const cmdSelect = document.createElement('select');
+                cmdSelect.style.padding = '4px';
+                cmdSelect.style.backgroundColor = 'white';
+                cmdSelect.style.color = 'black';
+                const actions = ['move', 'turn', 'open', 'attack'];
+                actions.forEach(action => {
+                    const opt = document.createElement('option');
+                    opt.value = action;
+                    opt.textContent = COMMANDS[action]?.name || action;
+                    if (cmd === action) opt.selected = true;
+                    cmdSelect.appendChild(opt);
+                });
+                cmdSelect.addEventListener('change', (e) => {
+                    commands[index] = e.target.value;
+                    renderProgramArea(); // re-render to update color etc.
+                });
+                row.appendChild(cmdSelect);
+
+                // Remove button for this primitive command
+                const removeBtn = document.createElement('span');
+                removeBtn.textContent = '×';
+                removeBtn.style.marginLeft = 'auto';
+                removeBtn.style.cursor = 'pointer';
+                removeBtn.style.padding = '2px 6px';
+                removeBtn.style.backgroundColor = 'rgba(0,0,0,0.2)';
+                removeBtn.style.borderRadius = '50%';
+                removeBtn.addEventListener('click', () => {
+                    commands.splice(index, 1);
+                    renderProgramArea();
+                });
+                row.appendChild(removeBtn);
+
+                container.appendChild(row);
             }
-        }
 
-        // After loop: if incapacitated, only reset button should be re‑enabled
-        if (state.stageState.incapacitated) {
-            resetBtn.disabled = false;
-            resetBtn.style.opacity = '1';
-            // run, clear, command buttons stay disabled
-        } else {
-            // Normal completion (win or not): only reset button is enabled
-            resetBtn.disabled = false;
-            resetBtn.style.opacity = '1';
-            // run, clear, command buttons remain disabled
-        }
-    });
-        
+            // ---------- Conditional object ----------
+            else if (typeof cmd === 'object' && cmd !== null) {
+                row.style.backgroundColor = '#e9d8fd';
+                row.style.flexWrap = 'wrap';
 
-        
-        // Reset Button - Reset to initial state
-        const resetBtn = document.createElement('button');
-        resetBtn.id = 'resetBtn';
-        resetBtn.textContent = 'Reset Stage';
-        resetBtn.style.padding = '10px 20px';
-        resetBtn.style.backgroundColor = '#e53e3e';
-        resetBtn.style.color = 'white';
-        resetBtn.style.border = 'none';
-        resetBtn.style.borderRadius = '6px';
-        resetBtn.style.cursor = 'pointer';
-        
-        resetBtn.addEventListener('click', () => {
-            state.stageState = cloneStage(stages[state.currentStageIndex]);
+                // Type label
+                const typeSpan = document.createElement('span');
+                typeSpan.textContent = cmd.type.toUpperCase();
+                typeSpan.style.fontWeight = 'bold';
+                typeSpan.style.minWidth = '60px';
+                row.appendChild(typeSpan);
 
-            renderStageView();
+                // Condition dropdown (if/elseif)
+                if (cmd.type === 'if' || cmd.type === 'elseif') {
+                    const condSelect = document.createElement('select');
+                    condSelect.style.margin = '0 8px';
+                    condSelect.style.padding = '4px';
+                    const conditions = ['monsterInFront', 'doorInFront', 'coinInFront', 'canMoveForward'];
+                    conditions.forEach(cond => {
+                        const opt = document.createElement('option');
+                        opt.value = cond;
+                        opt.textContent = cond.replace(/([A-Z])/g, ' $1').toLowerCase();
+                        if (cmd.condition === cond) opt.selected = true;
+                        condSelect.appendChild(opt);
+                    });
+                    condSelect.addEventListener('change', (e) => {
+                        cmd.condition = e.target.value;
+                    });
+                    row.appendChild(condSelect);
+                }
+
+                // Button to add a new command inside this block
+                const addCmdBtn = document.createElement('span');
+                addCmdBtn.textContent = '➕';
+                addCmdBtn.style.cursor = 'pointer';
+                addCmdBtn.style.marginLeft = '8px';
+                addCmdBtn.style.padding = '2px 6px';
+                addCmdBtn.style.backgroundColor = '#48bb78';
+                addCmdBtn.style.color = 'white';
+                addCmdBtn.style.borderRadius = '4px';
+                addCmdBtn.style.fontSize = '14px';
+                addCmdBtn.title = 'Add command to block';
+                addCmdBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    if (!cmd.commands) cmd.commands = [];
+                    cmd.commands.push('move'); // default, but user can change it via its own dropdown
+                    renderProgramArea();
+                });
+                row.appendChild(addCmdBtn);
+
+                // Remove button for the conditional itself
+                const removeConditionalBtn = document.createElement('span');
+                removeConditionalBtn.textContent = '×';
+                removeConditionalBtn.style.marginLeft = 'auto';
+                removeConditionalBtn.style.cursor = 'pointer';
+                removeConditionalBtn.style.padding = '2px 6px';
+                removeConditionalBtn.style.backgroundColor = 'rgba(0,0,0,0.2)';
+                removeConditionalBtn.style.borderRadius = '50%';
+                removeConditionalBtn.addEventListener('click', () => {
+                    commands.splice(index, 1);
+                    renderProgramArea();
+                });
+                row.appendChild(removeConditionalBtn);
+
+                // Append the conditional row
+                container.appendChild(row);
+
+                // Recursively render inner commands (if any)
+                if (cmd.commands && cmd.commands.length > 0) {
+                    const innerContainer = document.createElement('div');
+                    innerContainer.style.marginLeft = (depth + 1) * 20 + 'px';
+                    innerContainer.style.borderLeft = '2px dotted #ccc';
+                    innerContainer.style.paddingLeft = '10px';
+                    container.appendChild(innerContainer);
+                    renderCommands(cmd.commands, innerContainer, depth + 1);
+                }
+
+                // Important: we already appended the row, so skip the final append for this iteration
+                return;
+            }
         });
-        
-        // Clear Button - Clear program only
-        const clearBtn = document.createElement('button');
-        clearBtn.id = 'clearBtn';
-        clearBtn.textContent = 'Clear Program';
-        clearBtn.style.padding = '10px 20px';
-        clearBtn.style.backgroundColor = '#a0aec0';
-        clearBtn.style.color = 'white';
-        clearBtn.style.border = 'none';
-        clearBtn.style.borderRadius = '6px';
-        clearBtn.style.cursor = 'pointer';
-        
-        clearBtn.addEventListener('click', () => {
-            state.programSequence = [];
-            renderProgramArea();
-        });
-        
-        controls.appendChild(runBtn);
-        controls.appendChild(resetBtn);
-        controls.appendChild(clearBtn);
-        controlsContainer.appendChild(controls);
     }
 
 // Render Stage View
