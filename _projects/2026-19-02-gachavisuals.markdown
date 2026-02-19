@@ -12,9 +12,21 @@ categories: [project]
 # Ideation
 I heard people mention a few stats like certain character having the longest wait, so I was always kinda curious. I decide to take this own to use some of the things I learnt last semester.
 
-# Documentation
+# getting the data point.
 Since I already know there is a data point, I start off by checking robot.txt to make sure that they are ok with it. I noticed they block a lot of AI agents, and some spider. So I decide to use Selenium. The idea I had was that I would first get the URL, then I will run it through to grab certain information.
-Most of the challanges are things I partially remember how to deal with, such as tabs and simillar things. I set my agent to have a 1 second delay on every agent just to ensure I do not DDOS the server by accident.
+Most of the challanges are things I partially remember how to deal with, such as tabs and simillar things. I set my agent to have a 1 second delay on every agent just to ensure I do not DDOS the server by accident. Overall it went pretty ok, but these are the challanges.
+1. Navigating the differnt character
+     This one was pretty ok, I realize very early on that the ID divison goes up by 2 instead of 1 for ID, so I ran two loops, the first loop will run the internal ID, the second loop oversee the entire thing to change character.
+     We get the url here.
+2. Inconsistent format
+     Among the older ID, sometimes the date is just slightly enough that the XPath misses it, I think there is an extra divison somewhere because this is the difference. I end up doing a either/or for certain parameters, however this is not that significant and I corrected some of them manually.
+     For the major one like skills, I use a fuzzy form of searching instead, searching for Skill1 is enough compared to Skill1_0
+3. All the weird characters
+     Something intresting, but excel cried pretty badly when processing korean/japanese/chinese characters. Installed the language pack to make this work out. I also wanted to get the element affilation even through I didn't do anything about it, after looking around I decide that I can simply grab the name of the png, which is usually used to visually tell a reader.
+
+But all in all, the data was relatively easy to get due to the relatively standalized format, it is not super clean like the perfect data my school gave me, but it is a little challanging to get. Most of the challange come from navigating the site.
+
+Cleaning the data was intresting as well, however I will cover this more in the next part.
 
 # Visualizing the data
 I learnt a bit about google data studio, so over here I decide to try my hand. Importing the data isn't too difficult, however I soon realize that this is the hardest segment
