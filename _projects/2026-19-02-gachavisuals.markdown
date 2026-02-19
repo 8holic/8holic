@@ -5,7 +5,7 @@ date: 2026-02-19
 categories: [project]
 ---
 # Visualization
-<img src="{{ '/assets/images/2026-02-16P1.jpg' | relative_url }}" 
+<img src="{{ '/assets/images/2026-02-16P1.png' | relative_url }}" 
      alt="Visualization" 
      class="blog-image">
 
