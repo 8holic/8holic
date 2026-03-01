@@ -994,6 +994,8 @@ function renderStageView() {
         let incapacitatedHtml = '';
         if (stage.incapacitated) {
             incapacitatedHtml = '<div style="color: red; font-weight: bold;">💀 Incapacitated</div>';
+        } else if (checkWinCondition()) {
+            statusHtml = '<div style="color: green; font-weight: bold; font-size: 24px;">🏆 YOU WIN! 🏆</div>';
         }
         
         statusDiv.innerHTML = `
