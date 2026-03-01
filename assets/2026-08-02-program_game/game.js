@@ -997,7 +997,9 @@ function renderStageView() {
         } else if (checkWinCondition()) {
             statusHtml = '<div style="color: green; font-weight: bold; font-size: 24px;">🏆 YOU WIN! 🏆</div>';
         }
-        
+        else{
+        statusHtml = '<div style="color: blue; font-weight: bold;">❤️ Alive</div>';
+        }
         statusDiv.innerHTML = `
             ${incapacitatedHtml}
             <div><strong>Coins Collected:</strong> ${totalCoins - coinsLeft}/${totalCoins}</div>
