@@ -999,7 +999,7 @@ function renderStageView() {
         const coinsLeft = stage.coins.length;
         const totalCoins = stages[state.currentStageIndex].coins.length;
         
-        let incapacitatedHtml = '';
+        let statusMessage  = '';
         if (stage.incapacitated) {
             incapacitatedHtml = '<div style="color: red; font-weight: bold;">💀 Incapacitated</div>';
         } else if (checkWinCondition()) {
@@ -1009,7 +1009,7 @@ function renderStageView() {
         statusHtml = '<div style="color: blue; font-weight: bold;">❤️ Alive</div>';
         }
         statusDiv.innerHTML = `
-            ${incapacitatedHtml}
+            ${statusMessage }
             <div><strong>Coins Collected:</strong> ${totalCoins - coinsLeft}/${totalCoins}</div>
             <div><strong>Position:</strong> (${stage.character.x}, ${stage.character.y})</div>
             <div><strong>Direction:</strong> ${stage.character.direction}</div>
