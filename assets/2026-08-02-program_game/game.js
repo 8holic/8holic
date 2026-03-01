@@ -75,23 +75,34 @@ window.initProgrammingGame = function() {
     // ------------------- Add Stage -------------------
     const stages = [
         {
-            name: "The Basics",
+            name: "walking",
             gridSize: 4,
-            character: { x: 0, y: 2, direction: 'right' },
-            obstacles: [ { x: 2, y: 2 } ],
-            doors: [ { x: 1, y: 1 } ],        // new
-            monsters: [ { x: 2, y: 3 } ],      // new
-            coins: [ { x: 1, y: 0 }, { x: 3, y: 0 } ],
-            endPoint: { x: 3, y: 3 }
+            character: { x: 0, y: 3, direction: 'right' },
+            obstacles: [
+                { x: 1, y: 0 }, { x: 3, y: 0 },
+                { x: 1, y: 1 }, { x: 3, y: 1 },
+                { x: 0, y: 2 }, { x: 1, y: 2 }, { x: 3, y: 2 },
+                { x: 3, y: 3 }
+            ],
+            doors: [],
+            monsters: [],
+            coins: [],
+            endPoint: { x: 2, y: 0 }
         },
         {
-            name: "Stage 2",
-            gridSize: 6,
-            character: { x: 0, y: 0, direction: 'down' },
-            obstacles: [ { x: 1, y: 2 }, { x: 4, y: 1 } ],
-            coins: [ { x: 2, y: 4 }, { x: 5, y: 5 } ],
-            endPoint: { x: 5, y: 0 }
-        },
+            name: "collecting",
+            gridSize: 4,
+            character: { x: 0, y: 0, direction: 'right' },
+            obstacles: [
+                { x: 0, y: 1 }, { x: 1, y: 1 }, { x: 3, y: 1 },
+                { x: 0, y: 2 }, { x: 1, y: 2 }, { x: 3, y: 2 },
+                { x: 3, y: 3 }
+            ],
+            doors: [],
+            monsters: [],
+            coins: [ { x: 3, y: 0 } ],
+            endPoint: { x: 0, y: 3 }
+        }
         {
             name: "Stage 3",
             gridSize: 7,
