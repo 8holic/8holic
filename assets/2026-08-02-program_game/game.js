@@ -587,6 +587,14 @@ window.initProgrammingGame = function() {
         //Emd
         programContainer.appendChild(buttonBar);
 
+        // ---- MODULE COUNT ----
+        const moduleCountDiv = document.createElement('div');
+        moduleCountDiv.style.marginBottom = '10px';
+        moduleCountDiv.style.fontWeight = 'bold';
+        moduleCountDiv.style.color = '#2d3748';
+        moduleCountDiv.textContent = `Modules: ${state.programSequence.length}`;
+        programContainer.appendChild(moduleCountDiv);
+
         // ---- PROGRAM LIST ----
         const programList = document.createElement('div');
         programContainer.appendChild(programList);
