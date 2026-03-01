@@ -102,7 +102,7 @@ window.initProgrammingGame = function() {
             monsters: [],
             coins: [ { x: 3, y: 0 } ],
             endPoint: { x: 0, y: 3 }
-        }
+        },
         {
             name: "Stage 3",
             gridSize: 7,
