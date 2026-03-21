@@ -4,6 +4,7 @@ title: All Posts
 banner_image: /assets/images/posts-banner.jpg
 banner_title: All Posts
 banner_subtitle: ""
+permalink: /posts/
 ---
 {% include banner.html %}
 

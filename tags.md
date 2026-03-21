@@ -4,6 +4,7 @@ title: Tags
 banner_image: /assets/images/tags-banner.jpg
 banner_title: Tags
 banner_subtitle: ""
+permalink: /tags/
 ---
 
 <section class="tag-index">
