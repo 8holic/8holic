@@ -3,33 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ page.title }} | {{ site.title }}</title>
-
-  <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}">
+  <title>{{ page.title | default: site.title }} | {{ site.title }}</title>
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
 </head>
 <body>
 
-<header>
-  <h1>{{ site.title }}</h1>
-  <nav>
-    <a href="{{ '/' | relative_url }}">Home</a>
-    <a href="{{ '/about.html' | relative_url }}">About</a>
-    <a href="{{ '/blog/' | relative_url }}">Blogs</a>
-    <a href="{{ '/vrecords/' | relative_url }}">Virtual Records</a>
-    <a href="{{ '/projects/' | relative_url }}">Projects </a>
-  </nav>
+  <div class="site-wrapper">
+    <!-- Sidebar (off-canvas) -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <button class="close-sidebar" aria-label="Close menu">&times;</button>
+      </div>
+      <div class="sidebar-content">
+        <div class="profile">
+          <!-- Replace with your own image path -->
+          <img src="{{ '/assets/images/profile.jpg' | relative_url }}" alt="Profile Picture" class="profile-img">
+          <h2 class="profile-name">{{ site.author.name | default: site.title }}</h2>
+          <p class="profile-bio">{{ site.author.bio | default: "Your bio here" }}</p>
+        </div>
+        <nav class="sidebar-nav">
+          {% include navigation.html %}
+        </nav>
+      </div>
+    </aside>
 
-</header>
+    <!-- Main content area -->
+    <div class="main-content">
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+      <main>
+        {{ content }}
+      </main>
+      <footer class="site-footer">
+        <p>&copy; {{ site.time | date: '%Y' }} {{ site.title }}</p>
+      </footer>
+    </div>
+  </div>
 
-</header>
-
-<main>
-  {{ content }}
-</main>
-
-<footer>
-  <p>&copy; {{ site.time | date: '%Y' }} {{ site.title }}</p>
-</footer>
-
+  <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
 </body>
 </html>

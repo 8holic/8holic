@@ -1,0 +1,16 @@
+<!-- _includes/banner.html -->
+{% assign img = include.img | default: page.banner_image %}
+{% assign title = include.title | default: page.banner_title | default: page.title %}
+{% assign subtitle = include.subtitle | default: page.banner_subtitle %}
+
+<div class="banner">
+  <img src="{{ img | relative_url }}" alt="Banner">
+  {% if title or subtitle %}
+    <div class="banner-text">
+      <h1>{{ title }}</h1>
+      {% if subtitle %}
+        <p>{{ subtitle }}</p>
+      {% endif %}
+    </div>
+  {% endif %}
+</div>

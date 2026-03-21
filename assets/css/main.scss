@@ -1,0 +1,363 @@
+---
+---
+// ============================================================
+// VARIABLES
+// ============================================================
+$sidebar-width: 280px;
+$breakpoint-md: 768px;
+
+// New color palette (your provided colors)
+$bg-dark: #0a0a1a;          // very dark base (fallback)
+$card-bg: #1e1a2f;          // dark purple-gray for cards
+$sidebar-bg: #392467;       // very dark purple from palette
+$sidebar-text: #f0e6ff;
+$sidebar-hover: #5D3587;    // medium purple
+$accent: #A367B1;           // lighter purple for links, borders
+$accent-light: #FFD1E3;     // pink for special highlights
+$text-light: #f0f0f0;
+$text-muted: #b0b0b0;
+$border-color: #5D3587;
+
+// ============================================================
+// BASE STYLES
+// ============================================================
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  line-height: 1.6;
+  color: $text-light;
+  background: $bg-dark;
+}
+
+.site-wrapper {
+  position: relative;
+  overflow-x: hidden;
+}
+
+// ============================================================
+// SIDEBAR
+// ============================================================
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: $sidebar-width;
+  height: 100%;
+  background: $sidebar-bg;
+  color: $sidebar-text;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  z-index: 1000;
+  overflow-y: auto;
+
+  &.open {
+    transform: translateX(0);
+  }
+
+  .sidebar-header {
+    display: flex;
+    justify-content: flex-end;
+    padding: 1rem;
+  }
+
+  .close-sidebar {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: $sidebar-text;
+    cursor: pointer;
+    &:hover {
+      color: $accent-light;
+    }
+  }
+
+  .sidebar-content {
+    padding: 1rem;
+  }
+
+  .profile {
+    text-align: center;
+    margin-bottom: 2rem;
+
+    .profile-img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+      border: 3px solid $accent;
+    }
+
+    .profile-name {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .profile-bio {
+      font-size: 0.85rem;
+      opacity: 0.8;
+    }
+  }
+
+  .sidebar-nav {
+    ul {
+      list-style: none;
+      padding: 0;
+      li {
+        margin: 1rem 0;
+        a {
+          display: block;
+          padding: 0.5rem;
+          color: $sidebar-text;
+          text-decoration: none;
+          transition: background 0.2s;
+          &:hover {
+            background: $sidebar-hover;
+            border-radius: 4px;
+            color: $accent-light;
+          }
+        }
+      }
+    }
+  }
+}
+
+// ============================================================
+// MAIN CONTENT & LAYOUT
+// ============================================================
+.main-content {
+  transition: margin-left 0.3s ease;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar.open + .main-content {
+  margin-left: $sidebar-width;
+}
+
+@media (max-width: $breakpoint-md) {
+  .sidebar.open + .main-content {
+    margin-left: 0;
+  }
+}
+
+.menu-toggle {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  background: rgba(57, 36, 103, 0.9);  // dark purple with transparency
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 1001;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  color: $accent-light;
+  &:hover {
+    color: $accent;
+  }
+}
+
+main {
+  flex: 1;
+  padding: 0;
+}
+
+.site-footer {
+  text-align: center;
+  padding: 1rem;
+  border-top: 1px solid $border-color;
+  font-size: 0.9rem;
+  color: $text-muted;
+}
+
+// ============================================================
+// BANNER
+// ============================================================
+.banner {
+  position: relative;
+  width: 100%;
+  height: 60vh;
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.banner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.4) 0%,
+    rgba(0, 0, 0, 0) 15%,
+    rgba(0, 0, 0, 0) 85%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
+}
+
+.banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.banner-text {
+  position: absolute;
+  bottom: 20%;
+  left: 5%;
+  max-width: 80%;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  color: white;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+
+.banner-text h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+.banner-text p {
+  font-size: 1.2rem;
+}
+
+.banner-meta {
+  display: inline-block;
+  margin-left: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: normal;
+  opacity: 0.9;
+  > span {
+    margin-right: 1rem;
+  }
+}
+
+// ============================================================
+// HERO SECTION (home page)
+// ============================================================
+.hero {
+  border: 2px solid $border-color;
+  border-radius: 8px;
+  padding: 2rem;
+  margin: 0 10% 2rem 10%; 
+  text-align: left;
+  background: $card-bg;
+  color: $text-light;
+}
+
+// ============================================================
+// RECENT POSTS (listing pages)
+// ============================================================
+.recent-posts {
+  padding: 0 10%;
+  margin: 2rem 0;
+
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: $accent-light;
+  }
+
+  .post-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .post-preview {
+    border: 2px solid $border-color;
+    border-radius: 8px;
+    padding: 1.5rem;
+    background: $card-bg;
+    transition: box-shadow 0.2s ease;
+
+    &:hover {
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+
+    h3 {
+      margin-bottom: 0.5rem;
+      a {
+        color: $text-light;
+        text-decoration: none;
+        &:hover {
+          color: $accent;
+        }
+      }
+    }
+    .post-meta {
+      font-size: 0.85rem;
+      color: $text-muted;
+      margin-bottom: 0.5rem;
+    }
+    p {
+      color: $text-light;
+    }
+  }
+
+  a[href*="/blog/"] {
+    display: inline-block;
+    margin-top: 1rem;
+    color: $accent;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+      color: $accent-light;
+    }
+  }
+}
+
+// ============================================================
+// CARDS & POST PREVIEWS
+// ============================================================
+.card {
+  border: 2px solid $border-color;
+  border-radius: 8px;
+  background: $card-bg;
+  padding: 1.5rem;
+  margin: 0 10% 1.5rem 10%;
+}
+
+.post-preview {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+
+  .post-thumbnail {
+    flex-shrink: 0;
+    width: 100px;
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+      object-fit: cover;
+    }
+  }
+
+  .post-info {
+    flex: 1;
+  }
+}
+
+// ============================================================
+// LINKS INSIDE MAIN CONTENT
+// ============================================================
+.main-content a {
+  color: $accent;
+  &:hover {
+    color: $accent-light;
+  }
+}

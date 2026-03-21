@@ -2,21 +2,39 @@
 layout: default
 ---
 
+{% assign post_date = page.date | date: "%Y-%m-%d" %}
+{% assign featured_image = "/post-photos/" | append: post_date | append: "-featured.jpg" %}
+
+{% if page.featured_image_override %}
+  {% assign featured_image = page.featured_image_override %}
+{% endif %}
+
+<div class="banner">
+  <img src="{{ featured_image | relative_url }}" alt="Banner image">
+  <div class="banner-text">
+    <h1>{{ page.title }}</h1>
+    <div class="banner-meta">
+      {% if page.location %}
+        <span class="location">📍 {{ page.location }}</span>
+      {% endif %}
+      <span class="reading-time">
+        📖 {% assign words = content | number_of_words %}{{ words | divided_by: 180 | plus: 1 }} min read
+      </span>
+    </div>
+  </div>
+</div>
+
 <article class="post">
-  <h1>{{ page.title }}</h1>
-  <p class="post-date">{{ page.date | date: "%b %-d, %Y" }}</p>
-
-  {% if page.location %}
-    <p class="post-meta"><strong>Location:</strong> {{ page.location }}</p>
+  {% if page.tags %}
+    <div class="post-tags card">
+      <strong>Tags:</strong>
+      {% for tag in page.tags %}
+        <a href="{{ '/tags/' | relative_url }}#{{ tag | slugify }}" class="tag">{{ tag }}</a>
+      {% endfor %}
+    </div>
   {% endif %}
 
-  {% if page.topic %}
-    <p class="post-meta"><strong>Topic:</strong> {{ page.topic }}</p>
-  {% endif %}
-
-  {% if page.status %}
-    <p class="post-meta"><strong>Status:</strong> {{ page.status }}</p>
-  {% endif %}
-
-  {{ content }}
+  <div class="post-content card">
+    {{ content }}
+  </div>
 </article>

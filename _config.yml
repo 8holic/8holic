@@ -1,9 +1,9 @@
 theme: null
 
 collections:
-  blog:
+  posts:
     output: true
-    permalink: /blog/:title/
+    permalink: /posts/:title/
   vrecords:
     output: true
     permalink: /vrecords/:title/
@@ -11,3 +11,6 @@ collections:
     output: true
     permalink: /projects/:title/
 
+author:
+  name: Your Name
+  bio: A short bio
