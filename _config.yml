@@ -10,6 +10,7 @@ collections:
   projects:
     output: true
     permalink: /projects/:title/
+baseurl: "/8holic"
 
 author:
   name: Your Name
