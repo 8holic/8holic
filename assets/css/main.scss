@@ -178,6 +178,19 @@ main {
   color: $text-muted;
 }
 
+h1 {
+  border-bottom: 2px solid #ffffff; /* black underline */
+  padding-bottom: 0;        /* space between text and underline */
+  margin-bottom: 1em;            /* space after the header */
+}
+
+h2 {
+
+  padding-bottom: 0;        /* space between text and underline */
+  margin-bottom: 1em;            /* space after the header */
+  margin-top: 1em;
+}
+
 // ============================================================
 // BANNER
 // ============================================================

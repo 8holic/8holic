@@ -9,13 +9,21 @@ tags:
   - osaka
   - reflection
 ---
-# Day 3 Standout
+# Overview
+Today the plan was to visit the Osaka Aquarium, the boat ride and Umeda Sky. After the previous packed day I decide to go for a lighter day.
 
-<img src="{{ '/assets/images/2025_05_17B1.jpg' | relative_url }}" 
-     alt="Rainy Osaka" 
-     class="blog-image">
+# Osaka Aquarium
 
-Day 3 starts with a rainy day, where I make some changes to my plans instead. It was nice to witness the city in a different weather
+## Intent
+So the honest reason was that I haven't really visit many Aquariums so I was curious. I also saw it in an anime
+
+## Experience
+The aquarium
+
+## Memory
+
+## Insight
+
 
 # Osaka Aquarium and car museum
 

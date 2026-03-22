@@ -3,7 +3,7 @@ theme: null
 collections:
   posts:
     output: true
-    permalink: /posts/:title/
+    permalink: /posts/:year/:month/:day/:title/
   vrecords:
     output: true
     permalink: /vrecords/:title/
@@ -13,5 +13,5 @@ collections:
 baseurl: "/8holic"
 
 author:
-  name: Your Name
-  bio: A short bio
+  name: Bryan Ang
+  bio: Student, tech and travel enthuasiast, and aspiring software engineer.

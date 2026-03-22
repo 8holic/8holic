@@ -31,6 +31,10 @@ main { flex: 1; padding: 0; }
 
 .site-footer { text-align: center; padding: 1rem; border-top: 1px solid #5D3587; font-size: 0.9rem; color: #b0b0b0; }
 
+h1 { border-bottom: 2px solid #ffffff; /* black underline */ padding-bottom: 0; /* space between text and underline */ margin-bottom: 1em; /* space after the header */ }
+
+h2 { padding-bottom: 0; /* space between text and underline */ margin-bottom: 1em; /* space after the header */ margin-top: 1em; }
+
 .banner { position: relative; width: 100%; height: 60vh; overflow: hidden; margin-bottom: 2rem; }
 
 .banner::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 15%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0.4) 100%); }
