@@ -9,28 +9,18 @@ tags:
   - wakayama
   - reflection
 ---
-# Trip to Wakayama
-<img src="{{ '/assets/images/2025_05_18B1.jpg' | relative_url }}" 
-     alt="Rainy Osaka" 
-     class="blog-image">
+# Tomogashima Island
 
-On day 4, with the great weather, I decided its time to push the button. Tomogashima Island ahve been of interest since I saw it in some anime, also abandoned places are kinda my thing so I went ahead with this. I booked a ferry at 0900, so I got up early, ate the cup noodles I made a few days ago and too the train.
+## Intent
+As the weather is great, and I am always curious about abandoned places(since they are illegal to visit in Singapore), I decide to pull the trigger for this. I was expecting a hike basically in the wildness
 
-There is a convenient train towards Kada town, where I have to walk to the harbor. It feels like a quiet Japanese town, very different from the Osaka city
+## Experience
+It took 1 hour to get from Osaka to Wakayama,kada Village.At 9am where the ferry is suppose to leave the weather suddendly worsen causing the ferry to halt. However at 1030am all is good so I went ahead. On the island I visited the observatory and it is pretty nice. I also met up with two nice lads and we became acquainted. At the end we missed the initial ferry back so we waited together for an hour for the 4pm ferry.
 
-During the morning, the ship was delayed and potentially cancelled. I was worried but an hour later it was fine and the boat went ahead.
+## Memory
+For a moment I was concern that the trip needs to be cancelled. The intresting things are the world war 2 fort as well as former shophouses in the era. Additionally there was an statue there.
 
-# Trip AT the island
-<img src="{{ '/assets/images/2025_05_18B2.jpg' | relative_url }}" 
-     alt="Tomogashima Island" 
-     class="blog-image">
+## Insight
+-I learnt from the other two to have a more exposed field of view, and I find it rather meaningful. Paying attention to the rocks for example he can tell that it is recently exposed because the algae growth is lesser compared to others. 
+-Additionally talking to other random traveller is a risk worth taking. I am usually rather reserved but it was a really enjoyable experience.
 
-The island I visit was a former world war 2 defense port. There is no local population, I went past a few abandoned buildings. I met a new friend over here, we still talk occasionally. It was an exciting hike, through the right side is sealed off for safety reason. I walked most of the island.
-
-<img src="{{ '/assets/images/2025_05_18B3.jpg' | relative_url }}" 
-     alt="Leaving the island" 
-     class="blog-image">
-I actually miss the ferry back, it was kinda too full. I spoke to my new friends and they are much older than me. I guess most people my age don't have the money or the recklessness to commit to a solo trip. Through I panic for a moment I did learn to go with the flow.
-
-# Day 3 reflection
-Since those two is of privacy minded I can't put this online.
