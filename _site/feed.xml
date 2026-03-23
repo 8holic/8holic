@@ -1,62 +1,228 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/8holic/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/8holic/" rel="alternate" type="text/html" /><updated>2026-03-22T15:58:25+08:00</updated><id>http://localhost:4000/8holic/feed.xml</id><title type="html">8holic</title><subtitle>The main hub by 8holic (Real name Bryan) to create a hub to link all existing projects and files.</subtitle><author><name>Bryan Ang</name></author><entry><title type="html">Osaka, Japan Day 5</title><link href="http://localhost:4000/8holic/posts/2025/05/20/post/" rel="alternate" type="text/html" title="Osaka, Japan Day 5" /><published>2025-05-20T00:00:00+08:00</published><updated>2025-05-20T00:00:00+08:00</updated><id>http://localhost:4000/8holic/posts/2025/05/20/post</id><content type="html" xml:base="http://localhost:4000/8holic/posts/2025/05/20/post/"><![CDATA[<p><img src="Slide1.JPG" alt="Midnight Shrine" class="blog-image" /></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/8holic/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/8holic/" rel="alternate" type="text/html" /><updated>2026-03-23T18:15:45+08:00</updated><id>http://localhost:4000/8holic/feed.xml</id><title type="html">8holic</title><subtitle>The main hub by 8holic (Real name Bryan) to create a hub to link all existing projects and files.</subtitle><author><name>Bryan Ang</name></author><entry><title type="html">Book Reading Reflection</title><link href="http://localhost:4000/8holic/posts/2026/03/23/post/" rel="alternate" type="text/html" title="Book Reading Reflection" /><published>2026-03-23T00:00:00+08:00</published><updated>2026-03-23T00:00:00+08:00</updated><id>http://localhost:4000/8holic/posts/2026/03/23/post</id><content type="html" xml:base="http://localhost:4000/8holic/posts/2026/03/23/post/"><![CDATA[<hr />
+<h1 id="background">Background</h1>
+<p>I was reading the book Atomic Habits and I was reading the first few pages. I found what was said to be insightful, in determining what I want to be instead of the end goal. I find that usually when my parents ask me to clean my room usually it get messy again soon enough. Reading this made me realize that it is purely because the habits do not substain the goal. So I wish to reflect on this. Starting with the below</p>
+<h1 id="what-type-of-person-do-i-want-to-be">What type of person do I want to be?</h1>
+<p>This question is suprising difficult to answer, despite being a seemingly easy question. I broke it down into the following questions to answer instead.</p>
+<h2 id="what-am-i-doing-now">What am I doing NOW</h2>
+<p>-Going to internship
+-Preparing for University
+-Play video games
+-Running my Toastmaster Club
+-Helping my community network in tech areas
+-Mindlessly browsing and listening to Music
+-Cleaning up my room</p>
+<h2 id="what-will-i-continue-doingstop-doing">What will I CONTINUE doing/STOP doing?</h2>
 
-<p>At 12am I went to hike the Fushimi Inari Shrine, I heard that this location is very busy in the day. So I decided to visit it at night. It has a completely different atmosphere, a little overworldly.</p>
+<table>
+  <thead>
+    <tr>
+      <th>What I want to do now</th>
+      <th>What I will stop doing</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Studying OSINT/tech related things</td>
+      <td>Going to University</td>
+    </tr>
+  </tbody>
+</table>
 
-<p><img src="Slide2.JPG" alt="Midnight Shrine" class="blog-image" />
-In kyoto I went to the train museum, at one segment I can pilot a toy train with a camera front looking. That was really cool</p>
+<p>I was a little suprise to see that I listed both studying and University. I listed the two and I think I see the issue</p>
 
-<p><img src="Slide3.JPG" alt="Midnight Shrine" class="blog-image" /></p>
+<table>
+  <thead>
+    <tr>
+      <th>Aspect</th>
+      <th>University Education</th>
+      <th>Self Study (OSINT/tech)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Pace</td>
+      <td>Fixed, often rushed</td>
+      <td>Self‑paced, can slow down to understand</td>
+    </tr>
+    <tr>
+      <td>Teaching style</td>
+      <td>Professors focused on research, not teaching</td>
+      <td>Self‑selected resources, learn by doing</td>
+    </tr>
+    <tr>
+      <td>Motivation</td>
+      <td>Studying for tests, external pressure</td>
+      <td>Internal curiosity, goals I set myself</td>
+    </tr>
+    <tr>
+      <td>Goal setting</td>
+      <td>Curriculum‑driven, rigid</td>
+      <td>I set the study goals and path</td>
+    </tr>
+    <tr>
+      <td>Schedule control</td>
+      <td>Fixed class times, attendance requirements</td>
+      <td>I decide when, how long, and the rhythm</td>
+    </tr>
+    <tr>
+      <td>Autonomy over content</td>
+      <td>Core subjects, prerequisites, limited choice</td>
+      <td>I choose exactly what I want, in any order</td>
+    </tr>
+    <tr>
+      <td>Evaluation pressure</td>
+      <td>Grades, exams, GPA, bell curve</td>
+      <td>Self‑assessment, pulbic perception</td>
+    </tr>
+    <tr>
+      <td>Hierarchy</td>
+      <td>Professors as authority, power distance</td>
+      <td>Bad resources get discarded</td>
+    </tr>
+    <tr>
+      <td>Intellectual freedom</td>
+      <td>Curriculum decides what’s relevant</td>
+      <td>I get to chase after useless knowledge</td>
+    </tr>
+  </tbody>
+</table>
 
-<p>At the end I went and oversee the city, it is very urban. TBH I didn’t really feel much, the Hibike collab was nice through. i liked that show. I got a coaster.</p>
+<p>I did not realize these restriction until I head to University Charles III of Madrid for an exchange semester, where the way lessosn are conducted there affected my thoughts. The key difference is the the professors are more open to questions and meeting with students, as well as more intellectual freedom to explore topics we are interested in(even if my group squandered it). I think this is why it is more toleratable even through it is signficantly more difficult. I want to solve the ‘how’ and not go through a rigid process.</p>
 
-<p>However, I felt that I spend way too little over in Kyoto, the next time I need to plan differently.</p>]]></content><author><name>Bryan Ang</name></author><category term="travel" /><category term="japan" /><category term="kyoto" /><category term="reflection" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Osaka, Japan Day 4</title><link href="http://localhost:4000/8holic/posts/2025/05/19/post/" rel="alternate" type="text/html" title="Osaka, Japan Day 4" /><published>2025-05-19T00:00:00+08:00</published><updated>2025-05-19T00:00:00+08:00</updated><id>http://localhost:4000/8holic/posts/2025/05/19/post</id><content type="html" xml:base="http://localhost:4000/8holic/posts/2025/05/19/post/"><![CDATA[<h1 id="kyoto-5-day-trip">Kyoto 5 Day trip</h1>
-<p><img src="/8holic/assets/images/2025_05_19B1.JPG" alt="Rainy Osaka" class="blog-image" /></p>
+<p>Based on this, here is my first identity: I want to be a student of technology.</p>
 
-<p>I had something intresting from the supermarket, fried noodles on bread. Like hot dog. Looks weird but it taste ok, probabl wont eat again in the future</p>
+<table>
+  <thead>
+    <tr>
+      <th>What I want to do now</th>
+      <th>What I will stop doing</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Travel overseas</td>
+      <td>Mindlessly Browse the web</td>
+    </tr>
+    <tr>
+      <td>Do things with intent</td>
+      <td>Lose time to Listening to Music</td>
+    </tr>
+    <tr>
+      <td>Finish reading my bookshelf</td>
+      <td>Stop buying more books</td>
+    </tr>
+    <tr>
+      <td>Help uplift the community</td>
+      <td>Eat unhealth sugarly drinks</td>
+    </tr>
+    <tr>
+      <td>Go for Health Checkup</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
 
-<p>This time I am visiting Ikoma Sanjo Amusement Park, before going to Nara. I saw this location and was interested in visiting it.</p>
+<p>These are group together because they have a common theme, which is active vs passive consumption. The left side are about doing and experiencing things, while most of the thing I want to stop are passive consumptions. For things on the left I felt that they are usually harder to start, however upon starting it is harder to stop. Whereas things on the right are easy to start and easy to stay engaged, but at the end I felt that I haven’t done anything.</p>
 
-<p><img src="/8holic/assets/images/2025_05_19B2.JPG" alt="Ikoma Sanjo Amusement Park" class="blog-image" /></p>
+<p>So the second Identity will be: I want to be someone who does and experience.</p>]]></content><author><name>Bryan Ang</name></author><category term="reflection" /><category term="book" /><category term="atomic habits" /><summary type="html"><![CDATA[Background I was reading the book Atomic Habits and I was reading the first few pages. I found what was said to be insightful, in determining what I want to be instead of the end goal. I find that usually when my parents ask me to clean my room usually it get messy again soon enough. Reading this made me realize that it is purely because the habits do not substain the goal. So I wish to reflect on this. Starting with the below What type of person do I want to be? This question is suprising difficult to answer, despite being a seemingly easy question. I broke it down into the following questions to answer instead. What am I doing NOW -Going to internship -Preparing for University -Play video games -Running my Toastmaster Club -Helping my community network in tech areas -Mindlessly browsing and listening to Music -Cleaning up my room What will I CONTINUE doing/STOP doing?]]></summary></entry><entry><title type="html">URECA Project Presentation</title><link href="http://localhost:4000/8holic/posts/2025/06/18/post/" rel="alternate" type="text/html" title="URECA Project Presentation" /><published>2025-06-18T00:00:00+08:00</published><updated>2025-06-18T00:00:00+08:00</updated><id>http://localhost:4000/8holic/posts/2025/06/18/post</id><content type="html" xml:base="http://localhost:4000/8holic/posts/2025/06/18/post/"><![CDATA[<h1 id="overview">Overview</h1>]]></content><author><name>Bryan Ang</name></author><category term="reflection" /><summary type="html"><![CDATA[Overview]]></summary></entry><entry><title type="html">Osaka, Japan Day 6&amp;amp;7</title><link href="http://localhost:4000/8holic/posts/2025/05/22/post/" rel="alternate" type="text/html" title="Osaka, Japan Day 6&amp;amp;7" /><published>2025-05-22T00:00:00+08:00</published><updated>2025-05-22T00:00:00+08:00</updated><id>http://localhost:4000/8holic/posts/2025/05/22/post</id><content type="html" xml:base="http://localhost:4000/8holic/posts/2025/05/22/post/"><![CDATA[<h1 id="overview">Overview</h1>
+<p>So I realize I do not have much to write here, so I combined both days</p>
 
-<p>Ikoma Sanjo Amusement Park is free to enter, where I pay for the rides I took. Being located at the top of the mountain also means there is some nice sights.</p>
+<h1 id="wakayama">Wakayama</h1>
+<h2 id="intent">Intent</h2>
+<p>Hot Spring are kinda what is popular in Japan, so I went to this hot spring resort.</p>
 
-<p><img src="/8holic/assets/images/2025_05_19B3.JPG" alt="White house" class="blog-image" /></p>
+<h2 id="experience">Experience</h2>
+<p>As I am aware there is no food I bought some stuff before I went. It was an intresting experience as I was given something to wear in the hotel. My room was facing the ocean. I went for the hot spring and they list the composition(in japanese), soaking inside I can feel like something is on my skin. I went twice, once at night and another in the morning.</p>
 
-<p>One cuorsity is the “White house”. When I went initally there wasn’t anyone, so I wandered around a bit before returning. The white house in question consist of various part of american history, starting with all the past president.</p>
+<p>In the morning I was at the outdoors section where I can look at the nearby highway. After that I had breakfast which was a spread of random meals. I walked around Kada town a bit before departing.</p>
 
-<p>The founding myth is depicted with a bridge, also certain rooms are tilted a few degrees. Afterwards they depict the steam age with a vaccum cleaner in the background, and a train, the side simulating a train ride. Near the end the moon landing was depicited with a lego toy on a string.</p>
+<h2 id="memory">Memory</h2>
+<p>The Hot Spring certainly feel nice, it is an unique experience. It was relatively isolated since I arrive late/early respectively.</p>
 
-<p>It felt like a intresting view of america. I also took a few rides, one was a looping airplane. The view of the city was really nice, since it is located between Nara and Osaka</p>
+<h2 id="insight">Insight</h2>
+<p>I need to stay for more days in the future, one day isn’t enough unfortuantely.</p>
 
-<p><img src="/8holic/assets/images/2025_05_19B4.JPG" alt="Nara" class="blog-image" /></p>
+<h1 id="reflection---overall">Reflection - Overall</h1>
+<p>All in all it was an enjoyable trip, however the last few days are hampered by poor planning making them less memorable   compared to the first few days. I hope to do this again in the future.</p>]]></content><author><name>Bryan Ang</name></author><category term="travel" /><category term="japan" /><category term="kyoto" /><category term="reflection" /><summary type="html"><![CDATA[Overview So I realize I do not have much to write here, so I combined both days]]></summary></entry><entry><title type="html">Osaka, Japan Day 5</title><link href="http://localhost:4000/8holic/posts/2025/05/20/post/" rel="alternate" type="text/html" title="Osaka, Japan Day 5" /><published>2025-05-20T00:00:00+08:00</published><updated>2025-05-20T00:00:00+08:00</updated><id>http://localhost:4000/8holic/posts/2025/05/20/post</id><content type="html" xml:base="http://localhost:4000/8holic/posts/2025/05/20/post/"><![CDATA[<h1 id="kyoto-fushimi-inari-shrine">Kyoto, Fushimi Inari Shrine</h1>
 
-<p>The hike down was non eventful, I saw a few shrines through. A sign promise a path to a waterfall, however the mountain was really steep so I did not bother. The numbers of stairs is just absurd.</p>
+<h2 id="intent">Intent</h2>
+<p>To be honest I was trying to avoid the crowd, I thought it will be cool since it will be late at night.</p>
 
-<p>Nara is known for its deers, through I wasn’t prepared for how hostile they are. I got some deer biscuit, and some deer just arrive and rip the entire package. They ended up on the floor and I got a sight of the deer competing to eat it.</p>
+<h2 id="experience">Experience</h2>
+<p>I went down the shrine at 12AM basically, the entire place feels calming initally. However around the Tori gates the atmosphere become very opressive, espeically as I can hear the wild boars and friends. I did not finish the ascend as planned and I dipped out midway through.</p>
 
-<p><img src="/8holic/assets/images/2025_05_19B5.JPG" alt="Rainy Osaka" class="blog-image" /></p>
+<h2 id="memory">Memory</h2>
+<p>Something about the night turn a simple walk into a scary one. I think it is the lack of people or the darkness, however the number of Tori gate make the experience a surreal one</p>
 
-<h1 id="day-4-reflection">Day 4 reflection</h1>
+<h2 id="insight">Insight</h2>
+<p>I hope to go again in the morning, through I learnt the importance of pulling out. The entire experience was an unique one but I am unsure if my heart can handle this.</p>
 
-<p>So for Day 4 I am actually staying in kyoto, that was the plan. Dinner was nice. Through tonight isnt ending very early…</p>]]></content><author><name>Bryan Ang</name></author><category term="travel" /><category term="japan" /><category term="nara" /><category term="reflection" /><summary type="html"><![CDATA[Kyoto 5 Day trip]]></summary></entry><entry><title type="html">Osaka, Japan Day 4</title><link href="http://localhost:4000/8holic/posts/2025/05/18/post/" rel="alternate" type="text/html" title="Osaka, Japan Day 4" /><published>2025-05-18T00:00:00+08:00</published><updated>2025-05-18T00:00:00+08:00</updated><id>http://localhost:4000/8holic/posts/2025/05/18/post</id><content type="html" xml:base="http://localhost:4000/8holic/posts/2025/05/18/post/"><![CDATA[<h1 id="trip-to-wakayama">Trip to Wakayama</h1>
-<p><img src="/8holic/assets/images/2025_05_18B1.jpg" alt="Rainy Osaka" class="blog-image" /></p>
+<h1 id="kyoto-railway-museum-and-tower">Kyoto, Railway Museum and Tower</h1>
 
-<p>On day 4, with the great weather, I decided its time to push the button. Tomogashima Island ahve been of interest since I saw it in some anime, also abandoned places are kinda my thing so I went ahead with this. I booked a ferry at 0900, so I got up early, ate the cup noodles I made a few days ago and too the train.</p>
+<h2 id="intent-1">Intent</h2>
+<p>I didn’t have any real goal in mind so I was just googling for intresting things.</p>
 
-<p>There is a convenient train towards Kada town, where I have to walk to the harbor. It feels like a quiet Japanese town, very different from the Osaka city</p>
+<h2 id="experiencememory">Experience/Memory</h2>
+<p>To be honest it is pretty forgettable, the only thing I rembered is that the fog blocked the view. Oh yes and there is a minature section to drive trains.</p>
 
-<p>During the morning, the ship was delayed and potentially cancelled. I was worried but an hour later it was fine and the boat went ahead.</p>
+<h2 id="insights">Insights</h2>
+<p>Maybe spamming random activites and commiting to it isn’t the best idea if I clearly don’t care about it.</p>
 
-<h1 id="trip-at-the-island">Trip AT the island</h1>
-<p><img src="/8holic/assets/images/2025_05_18B2.jpg" alt="Tomogashima Island" class="blog-image" /></p>
+<h1 id="kyoto-gear-play">Kyoto, Gear Play</h1>
 
-<p>The island I visit was a former world war 2 defense port. There is no local population, I went past a few abandoned buildings. I met a new friend over here, we still talk occasionally. It was an exciting hike, through the right side is sealed off for safety reason. I walked most of the island.</p>
+<h2 id="intent-2">Intent</h2>
+<p>I saw the advertisement as a “wordless” play, which is something I think I can enjoy even without a translator so I went inside.</p>
 
-<p><img src="/8holic/assets/images/2025_05_18B3.jpg" alt="Leaving the island" class="blog-image" />
-I actually miss the ferry back, it was kinda too full. I spoke to my new friends and they are much older than me. I guess most people my age don’t have the money or the recklessness to commit to a solo trip. Through I panic for a moment I did learn to go with the flow.</p>
+<h2 id="experience-1">Experience</h2>
+<p>I sat down and we watched a play, the entire play features 5 character and a set. The production is really high and there are flyers and stuff. I took a few home.</p>
 
-<h1 id="day-3-reflection">Day 3 reflection</h1>
-<p>Since those two is of privacy minded I can’t put this online.</p>]]></content><author><name>Bryan Ang</name></author><category term="travel" /><category term="japan" /><category term="wakayama" /><category term="reflection" /><summary type="html"><![CDATA[Trip to Wakayama]]></summary></entry><entry><title type="html">Osaka, Japan Day 3</title><link href="http://localhost:4000/8holic/posts/2025/05/17/post/" rel="alternate" type="text/html" title="Osaka, Japan Day 3" /><published>2025-05-17T00:00:00+08:00</published><updated>2025-05-17T00:00:00+08:00</updated><id>http://localhost:4000/8holic/posts/2025/05/17/post</id><content type="html" xml:base="http://localhost:4000/8holic/posts/2025/05/17/post/"><![CDATA[<h1 id="overview">Overview</h1>
+<h2 id="memory-1">Memory</h2>
+<p>This was the highlight of the kyoto trip suprising, the entire play was something that convey emotion despite not a single word being spoken. They conveyed the sense of creativity and things quite well, as well as using creative stageplay. The emotions conveyed are really strong, I even bought the stageplay and some shirts. Even if it is all in Japanese so I need to get on with learning the language to read it.</p>
+
+<h2 id="insight-1">Insight</h2>
+<p>It seems I had some misconception on plays on account of only being exposed to my school terrible plays. In the future I will seek our more theatres to watch and expand my horizon.</p>
+
+<h1 id="insight-overall">Insight-Overall</h1>
+<p>I learnt the plan is to plan more time. 1 day in Kyoto is insufficient and one of the main issue I ran into is the fact that I am constrained by time, some attractions and museums are not open that day so I wasn’t able to visit.</p>]]></content><author><name>Bryan Ang</name></author><category term="travel" /><category term="japan" /><category term="kyoto" /><category term="reflection" /><summary type="html"><![CDATA[Kyoto, Fushimi Inari Shrine]]></summary></entry><entry><title type="html">Osaka, Japan Day 4</title><link href="http://localhost:4000/8holic/posts/2025/05/19/post/" rel="alternate" type="text/html" title="Osaka, Japan Day 4" /><published>2025-05-19T00:00:00+08:00</published><updated>2025-05-19T00:00:00+08:00</updated><id>http://localhost:4000/8holic/posts/2025/05/19/post</id><content type="html" xml:base="http://localhost:4000/8holic/posts/2025/05/19/post/"><![CDATA[<h1 id="ikoma-sanjo-amusement-park">Ikoma Sanjo Amusement Park</h1>
+
+<h2 id="intent">Intent</h2>
+<p>An amusement park on the hill was something I was curious about, the main drive is curosity.</p>
+
+<h2 id="experience">Experience</h2>
+<p>I went up via a train, the amusement park is free to visit. Payment is only for specific rides. I went to the flying plane as well as the “White House”. Afterwards I climbed down the hill and walked back to the train.</p>
+
+<h2 id="memory">Memory</h2>
+<p>The trains are very cute and have a nice design. The flying plane is great because I was able to see both Nara and Osaka from a high overview. Additionally the White house depicted an intresting version of America, the building is tilted by a few degrees. The founding myth was shown as a bridge, then followed by a steam train. Notably the train noise is clearly a vaccum cleaner. At the end, lego was used to depict the moon landing.</p>
+
+<h2 id="insight">Insight</h2>
+<p>Overall the entire place was really enjoyable despite the low budget vibe. Some of the creative solutions are something to inspire me. In the future I learn how the budget does not determine the quality.</p>
+
+<h1 id="nara-deer-park">Nara, Deer Park</h1>
+
+<h2 id="intent-1">Intent</h2>
+<p>The Nara Park are kinda popular and I heard of them before.</p>
+
+<h2 id="experience-1">Experience</h2>
+<p>There are indeed, many deers. I bought some deer biscuit but a single deer forcefully ripped it from my fingers. Additionally I visited the nearby shrines, and sat down on a bench and watch the deers just laze around.</p>
+
+<h2 id="memory-1">Memory</h2>
+<p>The sheer number of deers is certainly something to remember, through being robbed by a deer was not expected. Sitting on the bench was calming and relaxing.</p>
+
+<h2 id="insight-1">Insight</h2>
+<p>I guess I learnt how scary wild animals can be, and also how calming is it to do nothing. I wish to come back to stare at the deers in the future.</p>]]></content><author><name>Bryan Ang</name></author><category term="travel" /><category term="japan" /><category term="nara" /><category term="reflection" /><summary type="html"><![CDATA[Ikoma Sanjo Amusement Park]]></summary></entry><entry><title type="html">Osaka, Japan Day 4</title><link href="http://localhost:4000/8holic/posts/2025/05/18/post/" rel="alternate" type="text/html" title="Osaka, Japan Day 4" /><published>2025-05-18T00:00:00+08:00</published><updated>2025-05-18T00:00:00+08:00</updated><id>http://localhost:4000/8holic/posts/2025/05/18/post</id><content type="html" xml:base="http://localhost:4000/8holic/posts/2025/05/18/post/"><![CDATA[<h1 id="tomogashima-island">Tomogashima Island</h1>
+
+<h2 id="intent">Intent</h2>
+<p>As the weather is great, and I am always curious about abandoned places(since they are illegal to visit in Singapore), I decide to pull the trigger for this. I was expecting a hike basically in the wildness</p>
+
+<h2 id="experience">Experience</h2>
+<p>It took 1 hour to get from Osaka to Wakayama,kada Village.At 9am where the ferry is suppose to leave the weather suddendly worsen causing the ferry to halt. However at 1030am all is good so I went ahead. On the island I visited the observatory and it is pretty nice. I also met up with two nice lads and we became acquainted. At the end we missed the initial ferry back so we waited together for an hour for the 4pm ferry.</p>
+
+<h2 id="memory">Memory</h2>
+<p>For a moment I was concern that the trip needs to be cancelled. The intresting things are the world war 2 fort as well as former shophouses in the era. Additionally there was an statue there.</p>
+
+<h2 id="insight">Insight</h2>
+<p>-I learnt from the other two to have a more exposed field of view, and I find it rather meaningful. Paying attention to the rocks for example he can tell that it is recently exposed because the algae growth is lesser compared to others. 
+-Additionally talking to other random traveller is a risk worth taking. I am usually rather reserved but it was a really enjoyable experience.</p>]]></content><author><name>Bryan Ang</name></author><category term="travel" /><category term="japan" /><category term="wakayama" /><category term="reflection" /><summary type="html"><![CDATA[Tomogashima Island]]></summary></entry><entry><title type="html">Osaka, Japan Day 3</title><link href="http://localhost:4000/8holic/posts/2025/05/17/post/" rel="alternate" type="text/html" title="Osaka, Japan Day 3" /><published>2025-05-17T00:00:00+08:00</published><updated>2025-05-17T00:00:00+08:00</updated><id>http://localhost:4000/8holic/posts/2025/05/17/post</id><content type="html" xml:base="http://localhost:4000/8holic/posts/2025/05/17/post/"><![CDATA[<h1 id="overview">Overview</h1>
 <p>Today the plan was to visit the Osaka Aquarium, the boat ride and Umeda Sky. After the previous packed day I decide to go for a lighter day.</p>
 
 <h1 id="osaka-aquarium">Osaka Aquarium</h1>
@@ -65,35 +231,30 @@ I actually miss the ferry back, it was kinda too full. I spoke to my new friends
 <p>So the honest reason was that I haven’t really visit many Aquariums so I was curious. I also saw it in an anime</p>
 
 <h2 id="experience">Experience</h2>
-<p>The aquarium</p>
+<p>The aquarium started with a nice outdoor section,followed by a lot of animals. There are a lot of information avilable for people. I also paid for the feeding area.</p>
 
 <h2 id="memory">Memory</h2>
+<p>The caretakers are very knowledgeble and speak some english. The following are some intresting things I learnt
+-The animals do not attack each other when well fed which is how they kept everyone in the same tank.</p>
 
 <h2 id="insight">Insight</h2>
+<p>I learn some intresting things about animal, from this I learnt to give unconventional experience a go. Even through I am not a marine entuhaist I still learnt some intresting facts and understand the animals better.</p>
 
-<h1 id="osaka-aquarium-and-car-museum">Osaka Aquarium and car museum</h1>
+<h1 id="umeda-sky-and-car-museum">Umeda Sky and Car Museum</h1>
 
-<p>The first location I visited was Osaka Aquarium, I have seen it in an anime before so I was kinda curious.</p>
+<h2 id="intent-1">Intent</h2>
+<p>For Umeda Sky I thought that the skyline would be nice since I have seen the older side I am curious how does the more modern side look.
+I happen to stumble across the Car Museum so I payed it a visit</p>
 
-<p>Overall the aquarium was really nice, I paid extra to enter the feeding area. The caretakers are very knowledgeable and speak some english.
-Q:All these animals how do they coexist in the same tent
-A:We keep the animals well fed, the animals do not attack each other if they are full.
-Q:Is this why the divers are safe in these animals
-A:Yes, the animals recognize the divers as a food provider.
-I also see a few of the divers feeding them and a trainer. The backstage experience is worth the cost if I want to ask questions. Unfortunately I am not a big marine entuaist so I don’t have much to ask, however if someone is really curious this is worth the cost.
-The rest of the place is well maintained and the envrioment looks exciting. I will go again in the future.</p>
+<h2 id="experience-1">Experience</h2>
+<p>Upon reaching the top I see two side, one side is the river facing side and the other side is mor eurban
+The Car Museum is a small but neat museum and features cars from the start of car development to current cars.</p>
 
-<p>Looking at the map I noticed a old car museum, the Glion Museum. I do like cars, my dad like cars, it is located at this factory like place. I had to do a double take to ensure I arrived at the right location.</p>
+<h2 id="memory-1">Memory</h2>
+<p>For both they aren’t a lot of intresting details but the sights is nice.</p>
 
-<p>The entire place consist of many cars, from the start of transport with horses, to the old cars. Most of the description are in japanese, but it looks pretty nice. It is a small nice museum for an hour or two.</p>
-
-<h1 id="umeda-sky">Umeda Sky</h1>
-
-<p>A view of Osaka from Umeda Sky has two distinctive side, one side where the river is visible while the other side is more modern. It was included in the Osaka card and it is worth the short time to have a nice view of Osaka.
-There was also an art museum nearby.</p>
-
-<h1 id="reflection-of-day-3">Reflection of Day 3</h1>
-<p>Day 3 is a lot lighter, but it was a pretty enjoyable experience. I think the highlights is seeing how different nation can do the same thing(like an aquarium) differently and still be enjoyable. Osaka Aquarium is definetly the highlight and I learn a bit about marine life. Umeda Sky is a nice overview of Osaka.</p>]]></content><author><name>Bryan Ang</name></author><category term="travel" /><category term="japan" /><category term="osaka" /><category term="reflection" /><summary type="html"><![CDATA[Overview Today the plan was to visit the Osaka Aquarium, the boat ride and Umeda Sky. After the previous packed day I decide to go for a lighter day.]]></summary></entry><entry><title type="html">Osaka, Japan Day 2</title><link href="http://localhost:4000/8holic/posts/2025/05/16/post/" rel="alternate" type="text/html" title="Osaka, Japan Day 2" /><published>2025-05-16T00:00:00+08:00</published><updated>2025-05-16T00:00:00+08:00</updated><id>http://localhost:4000/8holic/posts/2025/05/16/post</id><content type="html" xml:base="http://localhost:4000/8holic/posts/2025/05/16/post/"><![CDATA[<h1 id="overview">Overview</h1>
+<h2 id="insight-1">Insight</h2>
+<p>Sometimes a slow relaxing day is fine, to simply relax and look around.</p>]]></content><author><name>Bryan Ang</name></author><category term="travel" /><category term="japan" /><category term="osaka" /><category term="reflection" /><summary type="html"><![CDATA[Overview Today the plan was to visit the Osaka Aquarium, the boat ride and Umeda Sky. After the previous packed day I decide to go for a lighter day.]]></summary></entry><entry><title type="html">Osaka, Japan Day 2</title><link href="http://localhost:4000/8holic/posts/2025/05/16/post/" rel="alternate" type="text/html" title="Osaka, Japan Day 2" /><published>2025-05-16T00:00:00+08:00</published><updated>2025-05-16T00:00:00+08:00</updated><id>http://localhost:4000/8holic/posts/2025/05/16/post</id><content type="html" xml:base="http://localhost:4000/8holic/posts/2025/05/16/post/"><![CDATA[<h1 id="overview">Overview</h1>
 <p>Today was packed with two piority, I visited the Osaka Castle as well as the World Expo.</p>
 
 <h1 id="osaka-castle">Osaka Castle</h1>

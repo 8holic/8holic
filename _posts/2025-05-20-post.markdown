@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Osaka, Japan Day 5"
-date: 2025-05-20
 location: "Kyoto, Japan"
 tags:
   - travel
@@ -9,21 +8,44 @@ tags:
   - kyoto
   - reflection
 ---
-<img src="{{ page.image_dir | relative_url }}Slide1.JPG"
-     alt="Midnight Shrine" 
-     class="blog-image">
+# Kyoto, Fushimi Inari Shrine
 
-At 12am I went to hike the Fushimi Inari Shrine, I heard that this location is very busy in the day. So I decided to visit it at night. It has a completely different atmosphere, a little overworldly.
+## Intent
+To be honest I was trying to avoid the crowd, I thought it will be cool since it will be late at night.
 
-<img src="{{ page.image_dir | relative_url }}Slide2.JPG"
-     alt="Midnight Shrine" 
-     class="blog-image">
-In kyoto I went to the train museum, at one segment I can pilot a toy train with a camera front looking. That was really cool
+## Experience
+I went down the shrine at 12AM basically, the entire place feels calming initally. However around the Tori gates the atmosphere become very opressive, espeically as I can hear the wild boars and friends. I did not finish the ascend as planned and I dipped out midway through.
 
-<img src="{{ page.image_dir | relative_url }}Slide3.JPG"
-     alt="Midnight Shrine" 
-     class="blog-image">
+## Memory
+Something about the night turn a simple walk into a scary one. I think it is the lack of people or the darkness, however the number of Tori gate make the experience a surreal one
 
-At the end I went and oversee the city, it is very urban. TBH I didn't really feel much, the Hibike collab was nice through. i liked that show. I got a coaster.
+## Insight
+I hope to go again in the morning, through I learnt the importance of pulling out. The entire experience was an unique one but I am unsure if my heart can handle this.
 
-However, I felt that I spend way too little over in Kyoto, the next time I need to plan differently.
+# Kyoto, Railway Museum and Tower
+
+## Intent
+I didn't have any real goal in mind so I was just googling for intresting things.
+
+## Experience/Memory
+To be honest it is pretty forgettable, the only thing I rembered is that the fog blocked the view. Oh yes and there is a minature section to drive trains. 
+
+## Insights
+Maybe spamming random activites and commiting to it isn't the best idea if I clearly don't care about it.
+
+# Kyoto, Gear Play
+
+## Intent
+I saw the advertisement as a "wordless" play, which is something I think I can enjoy even without a translator so I went inside.
+
+## Experience
+I sat down and we watched a play, the entire play features 5 character and a set. The production is really high and there are flyers and stuff. I took a few home.
+
+## Memory
+This was the highlight of the kyoto trip suprising, the entire play was something that convey emotion despite not a single word being spoken. They conveyed the sense of creativity and things quite well, as well as using creative stageplay. The emotions conveyed are really strong, I even bought the stageplay and some shirts. Even if it is all in Japanese so I need to get on with learning the language to read it.
+
+## Insight
+It seems I had some misconception on plays on account of only being exposed to my school terrible plays. In the future I will seek our more theatres to watch and expand my horizon.
+
+# Insight-Overall
+I learnt the plan is to plan more time. 1 day in Kyoto is insufficient and one of the main issue I ran into is the fact that I am constrained by time, some attractions and museums are not open that day so I wasn't able to visit.

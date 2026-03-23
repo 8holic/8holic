@@ -10,13 +10,14 @@ layout: default
 {% endif %}
 
 <div class="banner">
-  <img src="{{ featured_image | relative_url }}" alt="Banner image">
+  <img src="{{ featured_image | relative_url }}" alt="Banner image" onerror="this.onerror=null; this.src='{{ '/assets/images/generic-banner.jpg' | relative_url }}'">
   <div class="banner-text">
     <h1>{{ page.title }}</h1>
     <div class="banner-meta">
       {% if page.location %}
         <span class="location">📍 {{ page.location }}</span>
       {% endif %}
+      <span class="date">📅 {{ page.date | date: "%B %d, %Y" }}</span>
       <span class="reading-time">
         📖 {% assign words = content | number_of_words %}{{ words | divided_by: 180 | plus: 1 }} min read
       </span>
