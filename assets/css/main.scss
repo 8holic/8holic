@@ -374,3 +374,19 @@ h2 {
     color: $accent-light;
   }
 }
+
+
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table, th, td {
+  border: 1px solid white;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+}

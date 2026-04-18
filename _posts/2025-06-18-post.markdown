@@ -1,0 +1,24 @@
+---
+layout: post
+title: "URECA Project Presentation"
+location: "NTU, Singapore"
+tags:
+  - reflection
+---
+
+# Overview
+Last year I took part in the Undergraduate Research Experience on Campus(URECA) Project. I was tasked with figuring our a way to port an experience to a more consumer friendly version. The photo above was my presentation during the URECA Conference. Overall this was a wonderful 1 year where I learnt a lot. I was supervised by Assoc Professor Benjamin.
+
+I felt that the professor was wonderful, it was mostly unsupervised due to his busy schedule. This gave me a lot of opporunity to mostly figure things out by myself and decide on my course of action, with inputs from him during each presentation. 
+
+The things I done well is the following:
+-The ability to think creatively to solve issues
+-The ability to work consistenly on the project throughout the semester
+-The ability to present my work to the professor
+-The conclusion of the project involved it being presented to people in the community center after the above conference, I think it is a good showcase of the work to a wider audiance.
+
+The things I think I can do better:
+-Clearer communication or more meaningful communiation to the professor, I am unsure if the update aren't significant enough or he is busy but sometimes I am not sure how to proceed. Usually I can just figure something out, but at the end when it comes to publishing rights I am not sure if I should do it under my account or under the school since the school owns all the project
+-Preseting a demo, some of my presentation did not work when presenting to the professor and I believe he had some trouble to get it to work properly.
+
+I think that some factors are out of control as I am not very sure about the school proceedings, NTU being a black box does not help either. While I was unable to publish the work, I hope that I have done enough that the Professor will get there eventurally.

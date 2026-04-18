@@ -1,0 +1,60 @@
+---
+layout: post
+title: "Book Reading Reflection"
+location: "Kyoto, Japan"
+tags:
+  - reflection
+  - book
+  - atomic habits
+---
+
+---
+# Background
+I was reading the book Atomic Habits and I was reading the first few pages. I found what was said to be insightful, in determining what I want to be instead of the end goal. I find that usually when my parents ask me to clean my room usually it get messy again soon enough. Reading this made me realize that it is purely because the habits do not substain the goal. So I wish to reflect on this. Starting with the below
+# What type of person do I want to be?
+This question is suprising difficult to answer, despite being a seemingly easy question. I broke it down into the following questions to answer instead.
+## What am I doing NOW
+-Going to internship
+-Preparing for University
+-Play video games
+-Running my Toastmaster Club
+-Helping my community network in tech areas
+-Mindlessly browsing and listening to Music
+-Cleaning up my room
+## What will I CONTINUE doing/STOP doing?
+
+| What I want to do now               | What I will stop doing        |
+|-------------------------------------|-------------------------------|
+| Studying OSINT/tech related things  | Going to University           |
+
+I was a little suprise to see that I listed both studying and University. I listed the two and I think I see the issue
+
+| Aspect               | University Education                           | Self Study (OSINT/tech)                      |
+|----------------------|------------------------------------------------|----------------------------------------------|
+| Pace                 | Fixed, often rushed                            | Self‑paced, can slow down to understand      |
+| Teaching style       | Professors focused on research, not teaching   | Self‑selected resources, learn by doing      |
+| Motivation           | Studying for tests, external pressure          | Internal curiosity, goals I set myself       |
+| Goal setting         | Curriculum‑driven, rigid                       | I set the study goals and path               |
+| Schedule control     | Fixed class times, attendance requirements     | I decide when, how long, and the rhythm      |
+| Autonomy over content| Core subjects, prerequisites, limited choice   | I choose exactly what I want, in any order   |
+| Evaluation pressure  | Grades, exams, GPA, bell curve                 | Self‑assessment, pulbic perception           |
+| Hierarchy            | Professors as authority, power distance        | Bad resources get discarded                  |
+| Intellectual freedom | Curriculum decides what’s relevant             | I get to chase after useless knowledge       |
+
+I did not realize these restriction until I head to University Charles III of Madrid for an exchange semester, where the way lessosn are conducted there affected my thoughts. The key difference is the the professors are more open to questions and meeting with students, as well as more intellectual freedom to explore topics we are interested in(even if my group squandered it). I think this is why it is more toleratable even through it is signficantly more difficult. I want to solve the 'how' and not go through a rigid process.
+
+Based on this, here is my first identity: I want to be a student of technology. 
+
+| What I want to do now               | What I will stop doing        |
+|-------------------------------------|-------------------------------|
+|   Travel overseas                   | Mindlessly Browse the web     |
+| Do things with intent               | Lose time to Listening to Music |
+| Finish reading my bookshelf         | Stop buying more books        |
+|   Help uplift the community         | Eat unhealth sugarly drinks   |
+|   Go for Health Checkup             |                               |
+
+These are group together because they have a common theme, which is active vs passive consumption. The left side are about doing and experiencing things, while most of the thing I want to stop are passive consumptions. For things on the left I felt that they are usually harder to start, however upon starting it is harder to stop. Whereas things on the right are easy to start and easy to stay engaged, but at the end I felt that I haven't done anything. 
+
+So the second Identity will be: I want to be someone who does and experience.
+
+

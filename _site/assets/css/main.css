@@ -74,3 +74,9 @@ h2 { padding-bottom: 0; /* space between text and underline */ margin-bottom: 1e
 
 .main-content a { color: #A367B1; }
 .main-content a:hover { color: #FFD1E3; }
+
+table { border-collapse: collapse; width: 100%; }
+
+table, th, td { border: 1px solid white; }
+
+th, td { padding: 8px; text-align: left; }
