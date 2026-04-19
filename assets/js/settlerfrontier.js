@@ -1,38 +1,24 @@
 /************************************************************
- * CARAVAN SURVIVAL – MANUAL MODE
- * Post‑apocalyptic settlement search
- * 
- * Sections:
- * 1. Game State & Constants
- * 2. Utility Functions
- * 3. Location Generation
- * 4. Event System
- * 5. Core Game Actions (Move, Settle)
- * 6. UI Update Functions
- * 7. Event Handlers & Initialization
+ * CARAVAN SURVIVAL – FULL JS GENERATED UI
+ * Menu → Manual (with backstory) / Bot (placeholder)
+ * All HTML created dynamically. No external IDs needed.
  ************************************************************/
 
 // ========== 1. GAME STATE & CONSTANTS ==========
 const GameState = {
   settlers: 1000,
-  condition: 100,      // landbase condition %
-  unity: 100,          // cohesion %
-  equipment: 10,       // analysis equipment count
+  condition: 100,
+  unity: 100,
+  equipment: 10,
   moves: 0,
   isActive: false,
   gameOver: false,
-  currentLocation: null,   // will hold location object
-  pendingEvent: null       // for events requiring choice
+  currentLocation: null,
+  pendingEvent: null
 };
 
-// Quality tiers for location attributes
-const QUALITY = {
-  GOOD: 'good',
-  OK: 'ok',
-  BAD: 'bad'
-};
+const QUALITY = { GOOD: 'good', OK: 'ok', BAD: 'bad' };
 
-// Attribute display mappings
 const WATER_LABELS = {
   good: 'Natural Spring / River',
   ok: 'Pond / Lake',
@@ -63,20 +49,16 @@ function clamp(value, min, max) {
   return Math.min(max, Math.max(min, value));
 }
 
-// Exponential event probability: y = e^(0.2 * moves)
 function getEventProbability(moves) {
   return Math.exp(0.2 * moves);
 }
 
 function rollForEvent(moves) {
-  const prob = getEventProbability(moves);
-  // Cap at 100% for high move counts, but probability can exceed 1
-  return Math.random() < Math.min(prob, 1.0);
+  return Math.random() < Math.min(getEventProbability(moves), 1.0);
 }
 
 // ========== 3. LOCATION GENERATION ==========
 function generateLocation(moves) {
-  // For now, attributes are random; later can bias based on moves if desired
   const attrs = ['water', 'climate', 'resources', 'radiation'];
   const location = {};
   attrs.forEach(attr => {
@@ -89,54 +71,35 @@ function generateLocation(moves) {
 }
 
 // ========== 4. EVENT SYSTEM ==========
-// Event definitions – expandable array of objects
 const EVENT_LIST = [
-  // 6 non‑choice events
   {
     name: 'Quarrel',
     description: 'A heated argument breaks out among the settlers.',
-    effect: (state) => {
-      state.unity = clamp(state.unity - 10, 0, Infinity);
-      return `Unity decreased by 10%.`;
-    },
+    effect: (state) => { state.unity = clamp(state.unity - 10, 0, Infinity); return `Unity decreased by 10%.`; },
     hasChoice: false
   },
   {
     name: 'Bad Weather',
     description: 'A sudden storm catches the caravan off guard.',
-    effect: (state) => {
-      const loss = randomInt(20, 30);
-      state.settlers = Math.max(0, state.settlers - loss);
-      return `${loss} settlers perished in the storm.`;
-    },
+    effect: (state) => { const loss = randomInt(20, 30); state.settlers = Math.max(0, state.settlers - loss); return `${loss} settlers perished in the storm.`; },
     hasChoice: false
   },
   {
     name: 'Poor Maintenance',
     description: 'The landbase shows signs of neglect.',
-    effect: (state) => {
-      state.condition = clamp(state.condition - 5, 0, Infinity);
-      return `Landbase condition decreased by 5%.`;
-    },
+    effect: (state) => { state.condition = clamp(state.condition - 5, 0, Infinity); return `Landbase condition decreased by 5%.`; },
     hasChoice: false
   },
   {
     name: 'Friendly Wanderers',
     description: 'A group of survivors asks to join the caravan.',
-    effect: (state) => {
-      const gain = randomInt(10, 20);
-      state.settlers += gain;
-      return `${gain} settlers joined the caravan.`;
-    },
+    effect: (state) => { const gain = randomInt(10, 20); state.settlers += gain; return `${gain} settlers joined the caravan.`; },
     hasChoice: false
   },
   {
     name: 'Song and Dance',
     description: 'Someone starts a tune, lifting spirits.',
-    effect: (state) => {
-      state.unity = clamp(state.unity + 5, 0, Infinity);
-      return `Unity increased by 5%.`;
-    },
+    effect: (state) => { state.unity = clamp(state.unity + 5, 0, Infinity); return `Unity increased by 5%.`; },
     hasChoice: false
   },
   {
@@ -150,26 +113,13 @@ const EVENT_LIST = [
     },
     hasChoice: false
   },
-  // 4 choice events
   {
     name: 'Refugee Wave',
     description: 'A large group of desperate survivors wants to join.',
     hasChoice: true,
     choices: [
-      {
-        text: 'Accept them (+100 settlers, -20% unity)',
-        effect: (state) => {
-          state.settlers += 100;
-          state.unity = clamp(state.unity - 20, 0, Infinity);
-          return '100 settlers joined, unity dropped 20%.';
-        }
-      },
-      {
-        text: 'Refuse them (no change)',
-        effect: (state) => {
-          return 'You turned them away.';
-        }
-      }
+      { text: 'Accept them (+100 settlers, -20% unity)', effect: (state) => { state.settlers += 100; state.unity = clamp(state.unity - 20, 0, Infinity); return '100 settlers joined, unity dropped 20%.'; } },
+      { text: 'Refuse them (no change)', effect: (state) => 'You turned them away.' }
     ]
   },
   {
@@ -177,21 +127,8 @@ const EVENT_LIST = [
     description: 'A scout claims there is a reliable water source ahead, but the path is rough.',
     hasChoice: true,
     choices: [
-      {
-        text: 'Take the rough path (-5% condition, next location water = Good)',
-        effect: (state) => {
-          state.condition = clamp(state.condition - 5, 0, Infinity);
-          // Mark that next location water is guaranteed good
-          state.nextWaterGood = true;
-          return 'Condition reduced by 5%, but the next area will have good water.';
-        }
-      },
-      {
-        text: 'Ignore and continue normally',
-        effect: (state) => {
-          return 'You stay on the main route.';
-        }
-      }
+      { text: 'Take the rough path (-5% condition, next location water = Good)', effect: (state) => { state.condition = clamp(state.condition - 5, 0, Infinity); state.nextWaterGood = true; return 'Condition reduced by 5%, but the next area will have good water.'; } },
+      { text: 'Ignore and continue normally', effect: (state) => 'You stay on the main route.' }
     ]
   },
   {
@@ -199,21 +136,8 @@ const EVENT_LIST = [
     description: 'A landslide blocks the road.',
     hasChoice: true,
     choices: [
-      {
-        text: 'Clear it manually (lose 20‑50 settlers)',
-        effect: (state) => {
-          const loss = randomInt(20, 50);
-          state.settlers = Math.max(0, state.settlers - loss);
-          return `${loss} settlers died clearing the path.`;
-        }
-      },
-      {
-        text: 'Find a detour (-10% condition)',
-        effect: (state) => {
-          state.condition = clamp(state.condition - 10, 0, Infinity);
-          return 'Condition reduced by 10%.';
-        }
-      }
+      { text: 'Clear it manually (lose 20‑50 settlers)', effect: (state) => { const loss = randomInt(20, 50); state.settlers = Math.max(0, state.settlers - loss); return `${loss} settlers died clearing the path.`; } },
+      { text: 'Find a detour (-10% condition)', effect: (state) => { state.condition = clamp(state.condition - 10, 0, Infinity); return 'Condition reduced by 10%.'; } }
     ]
   },
   {
@@ -221,79 +145,56 @@ const EVENT_LIST = [
     description: 'A risky shortcut could save time but may damage the landbase.',
     hasChoice: true,
     choices: [
-      {
-        text: 'Take safe path (no change)',
-        effect: (state) => {
-          return 'You proceed cautiously.';
-        }
-      },
-      {
-        text: 'Take shortcut (condition -1‑10%, but next location better)',
-        effect: (state) => {
-          const loss = randomInt(1, 10);
-          state.condition = clamp(state.condition - loss, 0, Infinity);
-          // Mark that next location attributes will be improved
-          state.nextLocationBetter = true;
-          return `Condition reduced by ${loss}%, but the next area looks promising.`;
-        }
-      }
+      { text: 'Take safe path (no change)', effect: (state) => 'You proceed cautiously.' },
+      { text: 'Take shortcut (condition -1‑10%, but next location better)', effect: (state) => { const loss = randomInt(1, 10); state.condition = clamp(state.condition - loss, 0, Infinity); state.nextLocationBetter = true; return `Condition reduced by ${loss}%, but the next area looks promising.`; } }
     ]
   }
 ];
 
 function triggerRandomEvent(state) {
-  // Filter out any special event flags? We just pick a random event.
-  const event = EVENT_LIST[Math.floor(Math.random() * EVENT_LIST.length)];
-  return event;
+  return EVENT_LIST[Math.floor(Math.random() * EVENT_LIST.length)];
 }
 
 // ========== 5. CORE GAME ACTIONS ==========
 function applyLocationGeneration(state) {
   let location = generateLocation(state.moves);
-  // Apply any special flags from previous events
   if (state.nextWaterGood) {
     location.water = QUALITY.GOOD;
     delete state.nextWaterGood;
   }
   if (state.nextLocationBetter) {
-    // Improve all attributes by one tier if possible
     const tierOrder = [QUALITY.BAD, QUALITY.OK, QUALITY.GOOD];
     ['water', 'climate', 'resources', 'radiation'].forEach(attr => {
       const current = location[attr];
       const idx = tierOrder.indexOf(current);
-      if (idx < tierOrder.length - 1) {
-        location[attr] = tierOrder[idx + 1];
-      }
+      if (idx < tierOrder.length - 1) location[attr] = tierOrder[idx + 1];
     });
     delete state.nextLocationBetter;
   }
   return location;
 }
 
+// These will be defined after UI creation
+let ui = {};
+
 function moveToNextLocation() {
   if (!GameState.isActive || GameState.gameOver) return;
 
-  // Increment moves
   GameState.moves++;
-  
-  // Check for event
   let eventTriggered = false;
   if (rollForEvent(GameState.moves)) {
     const event = triggerRandomEvent(GameState);
     if (event.hasChoice) {
-      // Pause game and show choices
       GameState.pendingEvent = event;
       showEventChoiceUI(event);
       eventTriggered = true;
     } else {
-      // Apply non‑choice event immediately
       const message = event.effect(GameState);
       log(`📌 Event: ${event.name} – ${message}`);
     }
   }
 
   if (!eventTriggered) {
-    // No event, just generate new location
     GameState.currentLocation = applyLocationGeneration(GameState);
     log(`📍 Moved to a new location.`);
     displayLocation();
@@ -305,125 +206,95 @@ function moveToNextLocation() {
 
 function settle() {
   if (!GameState.isActive || GameState.gameOver) return;
-  
-  // Use the death calculation formula
+
   const moves = Math.min(GameState.moves, 30);
   const minVal = Math.max(0, 100 - (100 / 30) * moves);
   const randomNum = minVal + Math.random() * 50;
-  
+
   let deathChange = 0;
   let outcomeMessage = '';
-  
-  if (randomNum > 100) {
-    deathChange = 30;
-    outcomeMessage = 'The land is harsh and unforgiving.';
-  } else if (randomNum >= 40) {
-    deathChange = -30;
-    outcomeMessage = 'The area seems survivable.';
-  } else {
-    deathChange = 0;
-    outcomeMessage = 'A near‑perfect location!';
-  }
-  
-  // Apply death change (can be negative, meaning fewer deaths than baseline?)
-  // Interpretation: deathChange is added to a base death count? The spec says:
-  // "Number of people that will die if we settle" – the formula gives a modifier.
-  // We'll assume base deaths are 0, and deathChange directly modifies settler count.
-  // Negative deathChange reduces deaths, but we can't have negative deaths.
-  // We'll implement: if deathChange positive, settlers die; if negative, we save that many from an implied baseline? 
-  // For simplicity, we'll treat deathChange as the number of settlers lost (positive = loss, negative = gain? That doesn't make sense.)
-  // Clarify: The sample function returns deathChange with +30 (bad), -30 (good). 
-  // Likely meaning: +30 means 30 *additional* deaths beyond normal. Since we haven't defined normal deaths, we can just apply the deathChange directly as settlers lost (positive) or saved (negative means fewer deaths, i.e., settlers increase).
-  // We'll do: settlers = settlers - deathChange (if deathChange positive, settlers decrease; if negative, settlers increase because fewer died than expected).
+  if (randomNum > 100) { deathChange = 30; outcomeMessage = 'The land is harsh and unforgiving.'; }
+  else if (randomNum >= 40) { deathChange = -30; outcomeMessage = 'The area seems survivable.'; }
+  else { deathChange = 0; outcomeMessage = 'A near‑perfect location!'; }
+
   GameState.settlers = Math.max(0, GameState.settlers - deathChange);
-  
-  // Determine settlement quality based on location attributes
+
   const loc = GameState.currentLocation;
   let qualityBonus = 1.0;
   if (loc.water === QUALITY.GOOD) qualityBonus *= 1.2;
   if (loc.climate === QUALITY.GOOD) qualityBonus *= 1.2;
   if (loc.resources === QUALITY.GOOD) qualityBonus *= 1.2;
   if (loc.radiation === QUALITY.GOOD) qualityBonus *= 1.2;
-  
-  // Final score calculation
+
   const finalScore = Math.floor(GameState.settlers * (GameState.unity / 100) * (GameState.condition / 100) * 1000 * qualityBonus);
-  
+
   GameState.isActive = false;
   GameState.gameOver = true;
-  
+
   log(`🏁 Settlement attempted. ${outcomeMessage}`);
   log(`📊 Final Score: ${finalScore}`);
-  
-  // Show game over panel
-  document.getElementById('finalScore').textContent = `Final Score: ${finalScore}`;
-  document.getElementById('gameOverPanel').style.display = 'block';
-  document.getElementById('moveBtn').disabled = true;
-  document.getElementById('settleBtn').disabled = true;
-  
+
+  ui.finalScore.textContent = `Final Score: ${finalScore}`;
+  ui.gameOverPanel.style.display = 'block';
+  ui.moveBtn.disabled = true;
+  ui.settleBtn.disabled = true;
+
   updateUI();
 }
 
-// ========== 6. UI UPDATE FUNCTIONS ==========
+// ========== 6. UI UPDATE FUNCTIONS (depend on ui object) ==========
 function updateUI() {
-  document.getElementById('settlersValue').textContent = GameState.settlers;
-  document.getElementById('conditionValue').textContent = GameState.condition;
-  document.getElementById('unityValue').textContent = GameState.unity;
-  document.getElementById('equipmentValue').textContent = GameState.equipment;
-  document.getElementById('movesValue').textContent = GameState.moves;
+  ui.settlers.textContent = GameState.settlers;
+  ui.condition.textContent = GameState.condition;
+  ui.unity.textContent = GameState.unity;
+  ui.equipment.textContent = GameState.equipment;
+  ui.moves.textContent = GameState.moves;
 }
 
 function displayLocation() {
   const loc = GameState.currentLocation;
   if (!loc) return;
-  document.getElementById('waterValue').textContent = WATER_LABELS[loc.water];
-  document.getElementById('climateValue').textContent = CLIMATE_LABELS[loc.climate];
-  document.getElementById('resourcesValue').textContent = RESOURCES_LABELS[loc.resources];
-  document.getElementById('radiationValue').textContent = RADIATION_LABELS[loc.radiation];
+  ui.water.textContent = WATER_LABELS[loc.water];
+  ui.climate.textContent = CLIMATE_LABELS[loc.climate];
+  ui.resources.textContent = RESOURCES_LABELS[loc.resources];
+  ui.radiation.textContent = RADIATION_LABELS[loc.radiation];
 }
 
 function log(message) {
-  const logDiv = document.getElementById('gameLog');
   const entry = document.createElement('div');
   entry.textContent = message;
-  logDiv.appendChild(entry);
-  logDiv.scrollTop = logDiv.scrollHeight;
+  ui.gameLog.appendChild(entry);
+  ui.gameLog.scrollTop = ui.gameLog.scrollHeight;
 }
 
 function clearLog() {
-  document.getElementById('gameLog').innerHTML = '';
+  ui.gameLog.innerHTML = '';
 }
 
 function showEventChoiceUI(event) {
-  const container = document.getElementById('eventContainer');
-  const desc = document.getElementById('eventDescription');
-  const choicesDiv = document.getElementById('eventChoices');
-  
-  desc.textContent = event.description;
-  choicesDiv.innerHTML = '';
-  
-  event.choices.forEach((choice, index) => {
+  ui.eventContainer.style.display = 'block';
+  ui.eventDesc.textContent = event.description;
+  ui.eventChoices.innerHTML = '';
+
+  event.choices.forEach(choice => {
     const btn = document.createElement('button');
     btn.textContent = choice.text;
+    btn.style.margin = '5px';
     btn.addEventListener('click', () => {
-      // Apply chosen effect
       const message = choice.effect(GameState);
       log(`📌 Event: ${event.name} – ${message}`);
-      // After choice, generate next location (event happened during move)
       GameState.currentLocation = applyLocationGeneration(GameState);
       displayLocation();
-      // Hide event UI
-      container.style.display = 'none';
+      ui.eventContainer.style.display = 'none';
       GameState.pendingEvent = null;
       updateUI();
       checkGameOver();
     });
-    choicesDiv.appendChild(btn);
+    ui.eventChoices.appendChild(btn);
   });
-  
-  container.style.display = 'block';
-  // Disable action buttons while event is pending
-  document.getElementById('moveBtn').disabled = true;
-  document.getElementById('settleBtn').disabled = true;
+
+  ui.moveBtn.disabled = true;
+  ui.settleBtn.disabled = true;
 }
 
 function checkGameOver() {
@@ -431,21 +302,146 @@ function checkGameOver() {
     GameState.isActive = false;
     GameState.gameOver = true;
     log('💀 All settlers have perished. The journey ends.');
-    document.getElementById('gameOverPanel').style.display = 'block';
-    document.getElementById('finalScore').textContent = 'Score: 0';
-    document.getElementById('moveBtn').disabled = true;
-    document.getElementById('settleBtn').disabled = true;
+    ui.gameOverPanel.style.display = 'block';
+    ui.finalScore.textContent = 'Score: 0';
+    ui.moveBtn.disabled = true;
+    ui.settleBtn.disabled = true;
   }
-  // Re‑enable buttons if no pending event
   if (!GameState.pendingEvent && GameState.isActive) {
-    document.getElementById('moveBtn').disabled = false;
-    document.getElementById('settleBtn').disabled = false;
+    ui.moveBtn.disabled = false;
+    ui.settleBtn.disabled = false;
   }
 }
 
-// ========== 7. EVENT HANDLERS & INITIALIZATION ==========
+// ========== 7. BUILD ENTIRE UI WITH JAVASCRIPT ==========
+function buildUI() {
+  // Clear body or create a container
+  document.body.innerHTML = '';
+  document.body.style.cssText = 'background:#1e1e1e; color:#eee; font-family:system-ui; padding:20px;';
+
+  const app = document.createElement('div');
+  app.id = 'game-app';
+  document.body.appendChild(app);
+
+  // ----- MENU SCREEN -----
+  const menuDiv = document.createElement('div');
+  menuDiv.id = 'menuScreen';
+  menuDiv.style.textAlign = 'center';
+  menuDiv.innerHTML = `
+    <h1>🚐 Caravan Survival</h1>
+    <p>Choose your mode:</p>
+    <button id="manualModeBtn" style="font-size:1.5rem; padding:10px 30px; margin:10px;">🕹️ Manual Mode</button>
+    <button id="botModeBtn" style="font-size:1.5rem; padding:10px 30px; margin:10px;">🤖 Bot Mode (Coming Soon)</button>
+  `;
+  app.appendChild(menuDiv);
+
+  // ----- BACKSTORY MODAL (hidden initially) -----
+  const backstoryOverlay = document.createElement('div');
+  backstoryOverlay.id = 'backstoryOverlay';
+  backstoryOverlay.style.cssText = 'position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); display:none; justify-content:center; align-items:center; z-index:100;';
+  backstoryOverlay.innerHTML = `
+    <div style="background:#2a2a2a; max-width:600px; padding:30px; border-radius:16px; text-align:center;">
+      <h2>🌄 The Surface</h2>
+      <p>The bunker doors grind open. Resources are gone. You lead 1,000 settlers into the unknown, seeking a new permanent home. The landbase is intact, spirits are high, but the wasteland is unpredictable.</p>
+      <p>Guide them wisely.</p>
+      <button id="startGameBtn" style="margin-top:20px; padding:10px 30px;">Begin Journey</button>
+    </div>
+  `;
+  document.body.appendChild(backstoryOverlay);
+
+  // ----- GAME UI (hidden initially) -----
+  const gameDiv = document.createElement('div');
+  gameDiv.id = 'gameScreen';
+  gameDiv.style.display = 'none';
+  gameDiv.innerHTML = `
+    <div class="game-panel" style="max-width:800px; margin:0 auto;">
+      <h2>Caravan Status</h2>
+      <p>👥 Settlers: <span id="settlersValue">1000</span></p>
+      <p>🚐 Landbase Condition: <span id="conditionValue">100</span>%</p>
+      <p>🤝 Unity: <span id="unityValue">100</span>%</p>
+      <p>🔬 Analysis Equipment: <span id="equipmentValue">10</span></p>
+      <p>📅 Moves Taken: <span id="movesValue">0</span></p>
+
+      <h2>Current Location</h2>
+      <p>💧 Water: <span id="waterValue"></span></p>
+      <p>🌡️ Climate: <span id="climateValue"></span></p>
+      <p>📦 Resources: <span id="resourcesValue"></span></p>
+      <p>☢️ Radiation: <span id="radiationValue"></span></p>
+
+      <div style="margin:20px 0;">
+        <button id="moveBtn">🚶 Move to Next Location</button>
+        <button id="settleBtn">🏠 Attempt Settlement</button>
+      </div>
+
+      <div id="eventContainer" style="display:none; background:#2a2a2a; border:1px solid #b99b6b; padding:15px; border-radius:8px; margin:15px 0;">
+        <h3>Event</h3>
+        <p id="eventDescription"></p>
+        <div id="eventChoices"></div>
+      </div>
+
+      <h2>Log</h2>
+      <div id="gameLog" style="background:#0f0f0f; border:1px solid #333; padding:10px; height:150px; overflow-y:auto; font-family:monospace; border-radius:6px;"></div>
+
+      <div id="gameOverPanel" style="display:none; margin-top:20px; text-align:center;">
+        <h2>Journey Complete</h2>
+        <p id="finalScore"></p>
+        <button id="restartBtn">🔄 Start New Journey</button>
+      </div>
+    </div>
+  `;
+  app.appendChild(gameDiv);
+
+  // Store UI element references
+  ui = {
+    settlers: document.getElementById('settlersValue'),
+    condition: document.getElementById('conditionValue'),
+    unity: document.getElementById('unityValue'),
+    equipment: document.getElementById('equipmentValue'),
+    moves: document.getElementById('movesValue'),
+    water: document.getElementById('waterValue'),
+    climate: document.getElementById('climateValue'),
+    resources: document.getElementById('resourcesValue'),
+    radiation: document.getElementById('radiationValue'),
+    moveBtn: document.getElementById('moveBtn'),
+    settleBtn: document.getElementById('settleBtn'),
+    restartBtn: document.getElementById('restartBtn'),
+    eventContainer: document.getElementById('eventContainer'),
+    eventDesc: document.getElementById('eventDescription'),
+    eventChoices: document.getElementById('eventChoices'),
+    gameLog: document.getElementById('gameLog'),
+    gameOverPanel: document.getElementById('gameOverPanel'),
+    finalScore: document.getElementById('finalScore')
+  };
+
+  // Wire up menu buttons
+  document.getElementById('manualModeBtn').addEventListener('click', () => {
+    menuDiv.style.display = 'none';
+    backstoryOverlay.style.display = 'flex';
+  });
+
+  document.getElementById('botModeBtn').addEventListener('click', () => {
+    alert('Bot Mode will be implemented later. Stay tuned!');
+  });
+
+  // Backstory "Begin Journey" button
+  document.getElementById('startGameBtn').addEventListener('click', () => {
+    backstoryOverlay.style.display = 'none';
+    gameDiv.style.display = 'block';
+    startNewGame();
+  });
+
+  // Restart button
+  ui.restartBtn.addEventListener('click', () => {
+    startNewGame();
+  });
+
+  // Action buttons
+  ui.moveBtn.addEventListener('click', moveToNextLocation);
+  ui.settleBtn.addEventListener('click', settle);
+}
+
+// ========== 8. GAME INITIALIZATION ==========
 function startNewGame() {
-  // Reset state
   GameState.settlers = 1000;
   GameState.condition = 100;
   GameState.unity = 100;
@@ -456,33 +452,20 @@ function startNewGame() {
   GameState.pendingEvent = null;
   delete GameState.nextWaterGood;
   delete GameState.nextLocationBetter;
-  
-  // Generate first location
+
+  // Generate first location (not unknown)
   GameState.currentLocation = generateLocation(0);
-  
-  // Clear UI
+
   clearLog();
-  document.getElementById('gameOverPanel').style.display = 'none';
-  document.getElementById('eventContainer').style.display = 'none';
-  document.getElementById('moveBtn').disabled = false;
-  document.getElementById('settleBtn').disabled = false;
-  
+  ui.gameOverPanel.style.display = 'none';
+  ui.eventContainer.style.display = 'none';
+  ui.moveBtn.disabled = false;
+  ui.settleBtn.disabled = false;
+
   updateUI();
   displayLocation();
   log('🚀 The caravan emerges from the bunker. Find a new home.');
 }
 
-function init() {
-  // Wire buttons
-  document.getElementById('moveBtn').addEventListener('click', moveToNextLocation);
-  document.getElementById('settleBtn').addEventListener('click', settle);
-  document.getElementById('restartBtn').addEventListener('click', () => {
-    startNewGame();
-  });
-  
-  // Start game
-  startNewGame();
-}
-
-// Start when DOM ready
-document.addEventListener('DOMContentLoaded', init);
+// ========== 9. KICK OFF ==========
+document.addEventListener('DOMContentLoaded', buildUI);
