@@ -6,34 +6,45 @@ categories: [project]
 ---
 <!-- CARAVAN GAME UI -->
 <div id="caravan-game" class="game-panel">
-  <h2>Caravan Status</h2>
-  <div class="stats">
-    <p>🍞 Supply: <span id="supplyValue">100</span></p>
-    <p>👥 Manpower: <span id="manpowerValue">10</span></p>
-    <p>📅 Turn: <span id="turnValue">0</span></p>
+  <!-- Status Panel -->
+  <div class="status-panel">
+    <h2>Caravan Status</h2>
+    <p>👥 Settlers: <span id="settlersValue">1000</span></p>
+    <p>🚐 Landbase Condition: <span id="conditionValue">100</span>%</p>
+    <p>🤝 Unity: <span id="unityValue">100</span>%</p>
+    <p>🔬 Analysis Equipment: <span id="equipmentValue">10</span></p>
+    <p>📅 Moves Taken: <span id="movesValue">0</span></p>
   </div>
 
-  <h2>Current Area</h2>
-  <div class="stats">
-    <p>🌲 Forestry: <span id="forestryValue">50</span></p>
-    <p>💧 Water: <span id="waterValue">50</span></p>
-    <p>🌡️ Temperature: <span id="temperatureValue">50</span></p>
-    <p>🐾 Wildlife: <span id="wildlifeValue">docile</span></p>
+  <!-- Current Location Panel -->
+  <div class="location-panel">
+    <h2>Current Location</h2>
+    <p>💧 Water: <span id="waterValue">Unknown</span></p>
+    <p>🌡️ Climate: <span id="climateValue">Unknown</span></p>
+    <p>📦 Resources: <span id="resourcesValue">Unknown</span></p>
+    <p>☢️ Radiation: <span id="radiationValue">Unknown</span></p>
   </div>
 
-  <h2>Your Rules</h2>
-  <div id="rulesContainer"></div>
-  <button id="addRuleBtn">➕ Add Rule</button>
-
-  <div class="game-controls" style="margin-top: 20px;">
-    <button id="startGameBtn">🚀 Start Journey</button>
-    <button id="nextTurnBtn" disabled>⏭️ Next Turn</button>
+  <!-- Action Buttons -->
+  <div class="action-panel">
+    <button id="moveBtn">🚶 Move to Next Location</button>
+    <button id="settleBtn">🏠 Attempt Settlement</button>
   </div>
 
-  <h2>Log</h2>
+  <!-- Event Display Area -->
+  <div id="eventContainer" class="event-container" style="display: none;">
+    <h3>Event</h3>
+    <p id="eventDescription"></p>
+    <div id="eventChoices"></div>
+  </div>
+
+  <!-- Game Log -->
   <div id="gameLog" class="log-box"></div>
 
-  <h2 id="settlementScoreDisplay" style="margin-top: 20px;"></h2>
+  <!-- Game Over / Score Display -->
+  <div id="gameOverPanel" style="display: none;">
+    <h2>Journey Complete</h2>
+    <p id="finalScore"></p>
+    <button id="restartBtn">🔄 Start New Journey</button>
+  </div>
 </div>
-
-<script src="{{ '/assets/js/settlerfrontier.js' | relative_url }}"></script>
