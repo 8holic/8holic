@@ -1,9 +1,8 @@
 /************************************************************
- * CARAVAN SURVIVAL – HTML + JS HYBRID
- * All UI elements exist in static HTML; JS attaches behavior.
+ * CARAVAN SURVIVAL – HTML + JS HYBRID (COMPLETE)
  ************************************************************/
 
-// ========== 1. GAME STATE & CONSTANTS (unchanged) ==========
+// ========== 1. GAME STATE & CONSTANTS ==========
 const GameState = {
   settlers: 1000,
   condition: 100,
@@ -39,7 +38,7 @@ const RADIATION_LABELS = {
   bad: 'High'
 };
 
-// ========== 2. UTILITY FUNCTIONS (unchanged) ==========
+// ========== 2. UTILITY FUNCTIONS ==========
 function randomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -53,7 +52,7 @@ function rollForEvent(moves) {
   return Math.random() < Math.min(getEventProbability(moves), 1.0);
 }
 
-// ========== 3. LOCATION GENERATION (unchanged) ==========
+// ========== 3. LOCATION GENERATION ==========
 function generateLocation(moves) {
   const attrs = ['water', 'climate', 'resources', 'radiation'];
   const location = {};
@@ -66,16 +65,76 @@ function generateLocation(moves) {
   return location;
 }
 
-// ========== 4. EVENT SYSTEM (unchanged) ==========
+// ========== 4. EVENT SYSTEM (FULL LIST) ==========
 const EVENT_LIST = [
-  // ... (same as original, no changes needed)
   {
     name: 'Quarrel',
     description: 'A heated argument breaks out among the settlers.',
     effect: (state) => { state.unity = clamp(state.unity - 10, 0, Infinity); return `Unity decreased by 10%.`; },
     hasChoice: false
   },
-  // ... include all other events exactly as before ...
+  {
+    name: 'Bad Weather',
+    description: 'A sudden storm catches the caravan off guard.',
+    effect: (state) => { const loss = randomInt(20, 30); state.settlers = Math.max(0, state.settlers - loss); return `${loss} settlers perished in the storm.`; },
+    hasChoice: false
+  },
+  {
+    name: 'Poor Maintenance',
+    description: 'The landbase shows signs of neglect.',
+    effect: (state) => { state.condition = clamp(state.condition - 5, 0, Infinity); return `Landbase condition decreased by 5%.`; },
+    hasChoice: false
+  },
+  {
+    name: 'Friendly Wanderers',
+    description: 'A group of survivors asks to join the caravan.',
+    effect: (state) => { const gain = randomInt(10, 20); state.settlers += gain; return `${gain} settlers joined the caravan.`; },
+    hasChoice: false
+  },
+  {
+    name: 'Song and Dance',
+    description: 'Someone starts a tune, lifting spirits.',
+    effect: (state) => { state.unity = clamp(state.unity + 5, 0, Infinity); return `Unity increased by 5%.`; },
+    hasChoice: false
+  },
+  {
+    name: 'Minor Mishap',
+    description: 'A small accident causes losses.',
+    effect: (state) => {
+      const loss = randomInt(5, 20);
+      state.settlers = Math.max(0, state.settlers - loss);
+      state.unity = clamp(state.unity - 5, 0, Infinity);
+      return `${loss} settlers lost, unity decreased by 5%.`;
+    },
+    hasChoice: false
+  },
+  {
+    name: 'Refugee Wave',
+    description: 'A large group of desperate survivors wants to join.',
+    hasChoice: true,
+    choices: [
+      { text: 'Accept them (+100 settlers, -20% unity)', effect: (state) => { state.settlers += 100; state.unity = clamp(state.unity - 20, 0, Infinity); return '100 settlers joined, unity dropped 20%.'; } },
+      { text: 'Refuse them (no change)', effect: (state) => 'You turned them away.' }
+    ]
+  },
+  {
+    name: 'Hidden Spring',
+    description: 'A scout claims there is a reliable water source ahead, but the path is rough.',
+    hasChoice: true,
+    choices: [
+      { text: 'Take the rough path (-5% condition, next location water = Good)', effect: (state) => { state.condition = clamp(state.condition - 5, 0, Infinity); state.nextWaterGood = true; return 'Condition reduced by 5%, but the next area will have good water.'; } },
+      { text: 'Ignore and continue normally', effect: (state) => 'You stay on the main route.' }
+    ]
+  },
+  {
+    name: 'Landslide',
+    description: 'A landslide blocks the road.',
+    hasChoice: true,
+    choices: [
+      { text: 'Clear it manually (lose 20‑50 settlers)', effect: (state) => { const loss = randomInt(20, 50); state.settlers = Math.max(0, state.settlers - loss); return `${loss} settlers died clearing the path.`; } },
+      { text: 'Find a detour (-10% condition)', effect: (state) => { state.condition = clamp(state.condition - 10, 0, Infinity); return 'Condition reduced by 10%.'; } }
+    ]
+  },
   {
     name: 'Shortcut',
     description: 'A risky shortcut could save time but may damage the landbase.',
@@ -91,7 +150,7 @@ function triggerRandomEvent(state) {
   return EVENT_LIST[Math.floor(Math.random() * EVENT_LIST.length)];
 }
 
-// ========== 5. CORE GAME ACTIONS (unchanged) ==========
+// ========== 5. CORE GAME ACTIONS ==========
 function applyLocationGeneration(state) {
   let location = generateLocation(state.moves);
   if (state.nextWaterGood) {
@@ -111,10 +170,9 @@ function applyLocationGeneration(state) {
 }
 
 // ========== 6. UI ELEMENT REFERENCES ==========
-// (will be populated after DOM is ready)
 let ui = {};
 
-// ========== 7. UI UPDATE FUNCTIONS (now use ui object) ==========
+// ========== 7. UI UPDATE FUNCTIONS ==========
 function updateUI() {
   ui.settlers.textContent = GameState.settlers;
   ui.condition.textContent = GameState.condition;
@@ -161,7 +219,6 @@ function showEventChoiceUI(event) {
       GameState.pendingEvent = null;
       updateUI();
       checkGameOver();
-      // Re-enable main buttons
       ui.moveBtn.disabled = false;
       ui.settleBtn.disabled = false;
     });
@@ -253,9 +310,8 @@ function checkGameOver() {
   }
 }
 
-// ========== 8. INITIALIZATION (hooks into existing HTML) ==========
+// ========== 8. GAME INITIALIZATION ==========
 function startNewGame() {
-  // Reset state
   GameState.settlers = 1000;
   GameState.condition = 100;
   GameState.unity = 100;
@@ -280,71 +336,82 @@ function startNewGame() {
   log('🚀 The caravan emerges from the bunker. Find a new home.');
 }
 
-// ========== 9. DOM READY – ATTACH LISTENERS & SET UP UI ==========
+// ========== 9. DOM READY – ATTACH LISTENERS ==========
 document.addEventListener('DOMContentLoaded', function() {
+  console.log('Caravan Survival: Initializing UI...');
+
   // Cache all UI elements
   ui = {
-    // Menu screens
     menuScreen: document.getElementById('gameMenuScreen'),
     backstoryOverlay: document.getElementById('backstoryOverlay'),
     gameScreen: document.getElementById('gameScreen'),
 
-    // Stats
     settlers: document.getElementById('settlersValue'),
     condition: document.getElementById('conditionValue'),
     unity: document.getElementById('unityValue'),
     equipment: document.getElementById('equipmentValue'),
     moves: document.getElementById('movesValue'),
 
-    // Location
     water: document.getElementById('waterValue'),
     climate: document.getElementById('climateValue'),
     resources: document.getElementById('resourcesValue'),
     radiation: document.getElementById('radiationValue'),
 
-    // Buttons
     moveBtn: document.getElementById('moveBtn'),
     settleBtn: document.getElementById('settleBtn'),
     restartBtn: document.getElementById('restartBtn'),
 
-    // Event UI
     eventContainer: document.getElementById('eventContainer'),
     eventDesc: document.getElementById('eventDescription'),
     eventChoices: document.getElementById('eventChoices'),
 
-    // Log and Game Over
     gameLog: document.getElementById('gameLog'),
     gameOverPanel: document.getElementById('gameOverPanel'),
     finalScore: document.getElementById('finalScore')
   };
 
+  // Verify all elements were found
+  for (let key in ui) {
+    if (!ui[key]) {
+      console.error(`Missing UI element: ${key}`);
+    }
+  }
+
   // Wire up menu buttons
-  document.getElementById('manualModeBtn').addEventListener('click', function() {
-    ui.menuScreen.style.display = 'none';
-    ui.backstoryOverlay.style.display = 'flex';
-  });
+  const manualBtn = document.getElementById('manualModeBtn');
+  if (manualBtn) {
+    manualBtn.addEventListener('click', function() {
+      console.log('Manual Mode clicked');
+      ui.menuScreen.style.display = 'none';
+      ui.backstoryOverlay.style.display = 'flex';
+    });
+  } else {
+    console.error('Button #manualModeBtn not found');
+  }
 
-  document.getElementById('botModeBtn').addEventListener('click', function() {
-    alert('Bot Mode will be implemented later. Stay tuned!');
-  });
+  const botBtn = document.getElementById('botModeBtn');
+  if (botBtn) {
+    botBtn.addEventListener('click', function() {
+      alert('Bot Mode will be implemented later. Stay tuned!');
+    });
+  }
 
-  // Backstory "Begin Journey"
-  document.getElementById('startGameBtn').addEventListener('click', function() {
-    ui.backstoryOverlay.style.display = 'none';
-    ui.gameScreen.style.display = 'block';
-    startNewGame();
-  });
+  const startBtn = document.getElementById('startGameBtn');
+  if (startBtn) {
+    startBtn.addEventListener('click', function() {
+      ui.backstoryOverlay.style.display = 'none';
+      ui.gameScreen.style.display = 'block';
+      startNewGame();
+    });
+  }
 
-  // Restart button (both from game over and possibly a global restart)
   ui.restartBtn.addEventListener('click', function() {
-    // Reset UI visibility (in case game over panel is shown)
     ui.gameScreen.style.display = 'block';
     startNewGame();
   });
 
-  // Action buttons
   ui.moveBtn.addEventListener('click', moveToNextLocation);
   ui.settleBtn.addEventListener('click', settle);
 
-  // Optionally, you could add a "Back to Menu" feature, but not in original spec.
+  console.log('Caravan Survival: Ready.');
 });
