@@ -1,0 +1,37 @@
+[
+  {
+    "name": "Radiated Water",
+    "target": "water",
+    "modifier": { "min": 70, "max": 100 },
+    "desc": "Water sources are contaminated with radiation.",
+    "increasesDeath": true
+  },
+  {
+    "name": "Underground Water Reserve",
+    "target": "water",
+    "modifier": { "min": -50, "max": -40 },
+    "desc": "A hidden aquifer provides clean water.",
+    "increasesDeath": false
+  },
+  {
+    "name": "Climate Controlled Greenhouse",
+    "target": "climate",
+    "modifier": { "min": -50, "max": -40 },
+    "desc": "Ancient climate systems still function, stabilizing temperatures.",
+    "increasesDeath": false
+  },
+  {
+    "name": "Dangerous Wildlife",
+    "target": "resources",
+    "modifier": { "min": 30, "max": 50 },
+    "desc": "Aggressive creatures hunt in this area.",
+    "increasesDeath": true
+  },
+  {
+    "name": "Unmarked Minefield",
+    "target": "general",
+    "modifier": { "min": 30, "max": 50 },
+    "desc": "Hidden explosives pose a constant threat to settlers.",
+    "increasesDeath": true
+  }
+]

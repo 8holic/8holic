@@ -1,10 +1,75 @@
----
-layout: post
-title: "Settler Frontier"
-date: 2026-04-18
-categories: [project]
----
-<!-- CARAVAN SURVIVAL – WITH TERRARIAN FEATURES -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settler Frontier | 8holic</title>
+  <link rel="stylesheet" href="/8holic/assets/css/main.css">
+</head>
+<body>
+
+  <div class="site-wrapper">
+    <!-- Sidebar (off-canvas) -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <button class="close-sidebar" aria-label="Close menu">&times;</button>
+      </div>
+      <div class="sidebar-content">
+        <div class="profile">
+          <!-- Replace with your own image path -->
+          <img src="/8holic/assets/images/profile.jpg" alt="Profile Picture" class="profile-img">
+          <h2 class="profile-name">Bryan Ang</h2>
+          <p class="profile-bio">Student, tech and travel enthuasiast, and aspiring software engineer.</p>
+        </div>
+        <nav class="sidebar-nav">
+          <ul class="nav-list">
+  
+    <li><a href="/8holic/">Home</a></li>
+  
+    <li><a href="/8holic/posts/">Posts</a></li>
+  
+    <li><a href="/8holic/tags/">Tags</a></li>
+  
+    <li><a href="/8holic/projects/">Projects</a></li>
+  
+</ul>
+        </nav>
+      </div>
+    </aside>
+
+    <!-- Main content area -->
+    <div class="main-content">
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+      <main>
+        
+
+
+
+
+<div class="banner">
+  <img src="/8holic/post-photos/2026-04-18-featured.jpg" alt="Banner image" onerror="this.onerror=null; this.src='/8holic/assets/images/generic-banner.jpg'">
+  <div class="banner-text">
+    <h1>Settler Frontier</h1>
+    <div class="banner-meta">
+      
+      <span class="date">📅 April 18, 2026</span>
+      <span class="reading-time">
+        📖 4 min read
+      </span>
+    </div>
+  </div>
+</div>
+
+<article class="post">
+  
+    <div class="post-tags card">
+      <strong>Tags:</strong>
+      
+    </div>
+  
+
+  <div class="post-content card">
+    <!-- CARAVAN SURVIVAL – WITH TERRARIAN FEATURES -->
 <!-- CARAVAN SURVIVAL – WITH TERRARIAN FEATURES & SEED SYSTEM -->
 <div id="caravan-game-root" class="caravan-game">
 
@@ -23,7 +88,7 @@ categories: [project]
     <p>Guide them wisely.</p>
     <div style="margin: 20px 0;">
       <label for="seedInput" style="display: block; margin-bottom: 8px;">🎲 Seed (optional):</label>
-      <input type="text" id="seedInput" placeholder="Enter a seed or leave blank for random" style="width: 100%; padding: 10px; border-radius: 40px; border: 1px solid #A367B1; background: #1e1a2f; color: #f0f0f0;">
+      <input type="text" id="seedInput" placeholder="Enter a seed or leave blank for random" style="width: 100%; padding: 10px; border-radius: 40px; border: 1px solid #A367B1; background: #1e1a2f; color: #f0f0f0;" />
       <div style="display: flex; gap: 10px; margin-top: 10px;">
         <button id="randomSeedBtn" class="game-btn" style="flex: 1;">🎲 Random Seed</button>
         <button id="useSeedBtn" class="game-btn" style="flex: 1;">✅ Use This Seed</button>
@@ -59,7 +124,7 @@ categories: [project]
 
     <!-- SCAN BUTTON & TERRARIAN FEATURES DISPLAY -->
     <div style="margin: 15px 0;">
-      <button id="scanBtn" class="game-btn" disabled>🔍 Scan Location (Cost: 1 Equipment)</button>
+      <button id="scanBtn" class="game-btn" disabled="">🔍 Scan Location (Cost: 1 Equipment)</button>
       <div id="terrarianDisplay" style="margin-top: 10px; padding: 10px; background: #1e1a2f; border-radius: 12px; border-left: 4px solid #A367B1;">
         <span id="terrarianStatus">❓ Further investigation needed.</span>
         <div id="terrarianList" style="margin-top: 5px;"></div>
@@ -74,8 +139,8 @@ categories: [project]
     </div>
 
     <div class="game-actions">
-      <button id="moveBtn" class="game-btn" disabled>🚶 Move to Next Location</button>
-      <button id="settleBtn" class="game-btn" disabled>🏠 Attempt Settlement</button>
+      <button id="moveBtn" class="game-btn" disabled="">🚶 Move to Next Location</button>
+      <button id="settleBtn" class="game-btn" disabled="">🏠 Attempt Settlement</button>
     </div>
 
     <!-- GAME LOG -->
@@ -198,10 +263,27 @@ categories: [project]
     margin: 5px 0;
   }
 </style>
+
 <script>
   // Define the base path for game assets (works with Jekyll's relative_url)
-  window.SETTLERFRONTIER_BASE = "{{ '/assets/settlerfrontier/' | relative_url }}";
+  window.SETTLERFRONTIER_BASE = "/8holic/assets/settlerfrontier/";
 </script>
-<script src="{{ '/assets/settlerfrontier/settlerfrontier.js' | relative_url }}"></script>
+
+<script src="/8holic/assets/settlerfrontier/settlerfrontier.js"></script>
+
 <!-- Load game script from its dedicated folder -->
-<script src="{{ '/assets/settlerfrontier/settlerfrontier.js' | relative_url }}"></script>
+<script src="/8holic/assets/settlerfrontier/settlerfrontier.js"></script>
+
+
+  </div>
+</article>
+      </main>
+      <footer class="site-footer">
+        <p>&copy; 2026 8holic</p>
+      </footer>
+    </div>
+  </div>
+
+  <script src="/8holic/assets/js/main.js"></script>
+</body>
+</html>

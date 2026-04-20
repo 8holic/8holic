@@ -1,0 +1,154 @@
+[
+  {
+    "name": "Quarrel",
+    "description": "A heated argument breaks out among the settlers.",
+    "hasChoice": false,
+    "effects": [
+      { "type": "unity", "delta": -10 }
+    ]
+  },
+  {
+    "name": "Bad Weather",
+    "description": "A sudden storm catches the caravan off guard.",
+    "hasChoice": false,
+    "effects": [
+      { "type": "settlers", "delta": { "min": -30, "max": -20 } }
+    ]
+  },
+  {
+    "name": "Poor Maintenance",
+    "description": "The landbase shows signs of neglect.",
+    "hasChoice": false,
+    "effects": [
+      { "type": "condition", "delta": -5 }
+    ]
+  },
+  {
+    "name": "Friendly Wanderers",
+    "description": "A group of survivors asks to join the caravan.",
+    "hasChoice": false,
+    "effects": [
+      { "type": "settlers", "delta": { "min": 10, "max": 20 } }
+    ]
+  },
+  {
+    "name": "Song and Dance",
+    "description": "Someone starts a tune, lifting spirits.",
+    "hasChoice": false,
+    "effects": [
+      { "type": "unity", "delta": 5 }
+    ]
+  },
+  {
+    "name": "Minor Mishap",
+    "description": "A small accident causes losses.",
+    "hasChoice": false,
+    "effects": [
+      { "type": "settlers", "delta": { "min": -20, "max": -5 } },
+      { "type": "unity", "delta": -5 }
+    ]
+  },
+  {
+    "name": "Old World Relic",
+    "description": "Scouts find a rusted pre‑war sign: \"Now Entering Hope County.\"",
+    "hasChoice": false,
+    "effects": []
+  },
+  {
+    "name": "Strange Lights",
+    "description": "At night, glowing orbs drift silently across the sky.",
+    "hasChoice": false,
+    "effects": []
+  },
+  {
+    "name": "Children's Game",
+    "description": "The children invent a game using pebbles and old bottle caps.",
+    "hasChoice": false,
+    "effects": []
+  },
+  {
+    "name": "Abandoned Vehicle",
+    "description": "You pass a military convoy, long picked clean.",
+    "hasChoice": false,
+    "effects": []
+  },
+  {
+    "name": "Unexploded Bomb",
+    "description": "An old artillery shell lies half‑buried beside the road.",
+    "hasChoice": false,
+    "effects": []
+  },
+  {
+    "name": "Refugee Wave",
+    "description": "A large group of desperate survivors wants to join.",
+    "hasChoice": true,
+    "choices": [
+      {
+        "text": "Accept them (+100 settlers, -20% unity)",
+        "effects": [
+          { "type": "settlers", "delta": 100 },
+          { "type": "unity", "delta": -20 }
+        ]
+      },
+      {
+        "text": "Refuse them (no change)",
+        "effects": []
+      }
+    ]
+  },
+  {
+    "name": "Hidden Spring",
+    "description": "A scout claims there is a reliable water source ahead, but the path is rough.",
+    "hasChoice": true,
+    "choices": [
+      {
+        "text": "Take the rough path (-5% condition, next water = green)",
+        "effects": [
+          { "type": "condition", "delta": -5 },
+          { "type": "flag", "name": "nextWaterGood", "value": true }
+        ]
+      },
+      {
+        "text": "Ignore and continue normally",
+        "effects": []
+      }
+    ]
+  },
+  {
+    "name": "Landslide",
+    "description": "A landslide blocks the road.",
+    "hasChoice": true,
+    "choices": [
+      {
+        "text": "Clear it manually (lose 20‑50 settlers)",
+        "effects": [
+          { "type": "settlers", "delta": { "min": -50, "max": -20 } }
+        ]
+      },
+      {
+        "text": "Find a detour (-10% condition)",
+        "effects": [
+          { "type": "condition", "delta": -10 }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Shortcut",
+    "description": "A risky shortcut could save time but may damage the landbase.",
+    "hasChoice": true,
+    "choices": [
+      {
+        "text": "Take safe path (no change)",
+        "effects": []
+      },
+      {
+        "text": "Take shortcut (condition -1‑10%, next location better)",
+        "effects": [
+          { "type": "condition", "delta": { "min": -10, "max": -1 } },
+          { "type": "flag", "name": "nextLocationBetter", "value": true }
+        ]
+      }
+    ]
+  }
+]
