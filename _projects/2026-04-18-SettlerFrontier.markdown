@@ -1,10 +1,11 @@
 ---
-layout: post
+layout: project
 title: "Settler Frontier"
 date: 2026-04-18
+project_type: "Javascript Game"
+status: 'Ongoing'
 categories: [project]
 ---
-<!-- CARAVAN SURVIVAL – WITH TERRARIAN FEATURES -->
 <!-- CARAVAN SURVIVAL – WITH TERRARIAN FEATURES & SEED SYSTEM -->
 <div id="caravan-game-root" class="caravan-game">
 
@@ -18,9 +19,9 @@ categories: [project]
 
   <!-- BACKSTORY MODAL (with seed input) -->
   <div id="backstoryOverlay" class="card" style="display: none; background: rgba(30,26,47,0.95);">
-    <h2>🌄 The Surface</h2>
-    <p>The bunker doors grind open. Resources are gone. You lead 1,000 settlers into the unknown, seeking a new permanent home.</p>
-    <p>Guide them wisely.</p>
+    <h2>🌄 The Bunker Opens</h2>
+    <p>In 2030, a great disaster occurred. Nobody knows what it is. When it became obvious that the era of man was over, 1000 people were sealed in a bunker.</p>
+    <p>You are the trusted leader of the caravan. A brave new Frontier awaits among the ruins of the old. Your goal is to find a suitable place for the caravan to settle down.</p>
     <div style="margin: 20px 0;">
       <label for="seedInput" style="display: block; margin-bottom: 8px;">🎲 Seed (optional):</label>
       <input type="text" id="seedInput" placeholder="Enter a seed or leave blank for random" style="width: 100%; padding: 10px; border-radius: 40px; border: 1px solid #A367B1; background: #1e1a2f; color: #f0f0f0;">
@@ -43,19 +44,24 @@ categories: [project]
     </div>
     <div class="game-stats-grid">
       <div class="stat-item">👥 Settlers: <span id="settlersValue">1000</span></div>
-      <div class="stat-item">🚐 Landbase Condition: <span id="conditionValue">100</span>%</div>
+      <div class="stat-item">🛰️ Terrain Scanner: <span id="terrainScannerValue">100</span>%</div>
+      <div class="stat-item">🛰️ Atmospheric Scanner: <span id="atmosphericScannerValue">100</span>%</div>
       <div class="stat-item">🤝 Unity: <span id="unityValue">100</span>%</div>
-      <div class="stat-item">🔬 Analysis Equipment: <span id="equipmentValue">10</span></div>
+      <div class="stat-item">💾 Knowledge: <span id="databaseValue">100</span>%</div>
+      <div class="stat-item">🔬 Analysis Equipment: <span id="equipmentValue">5</span></div>
       <div class="stat-item">📅 Moves Taken: <span id="movesValue">0</span></div>
     </div>
 
     <h2>Current Location</h2>
-    <div class="game-stats-grid">
-      <div class="stat-item">💧 Water: <span id="waterValue">—</span></div>
-      <div class="stat-item">🌡️ Climate: <span id="climateValue">—</span></div>
-      <div class="stat-item">📦 Resources: <span id="resourcesValue">—</span></div>
-      <div class="stat-item">☢️ Radiation: <span id="radiationValue">—</span></div>
-    </div>
+    <ul class="location-list">
+      <li>💧 Water Supply: <span id="waterSupplyValue">—</span></li>
+      <li>🏞️ Land: <span id="landValue">—</span></li>
+      <li>🌿 Vegetation: <span id="vegetationValue">—</span></li>
+      <li>🌡️ Temperature: <span id="temperatureValue">—</span></li>
+      <li>🌧️ Precipitation: <span id="precipitationValue">—</span></li>
+      <li>☢️ Radiation: <span id="radiationValue">—</span></li>
+      <li>🏚️ Shelter: <span id="shelterValue">—</span></li>
+    </ul>
 
     <!-- SCAN BUTTON & TERRARIAN FEATURES DISPLAY -->
     <div style="margin: 15px 0;">
@@ -68,7 +74,7 @@ categories: [project]
 
     <!-- PERMANENT EVENT PANEL -->
     <div id="eventPanel" class="game-event-panel">
-      <h3>⚡ Current Event</h3>
+      <h3>⚡ Decision Maker 1000</h3>
       <p id="eventPanelDescription">Loading game data...</p>
       <div id="eventPanelChoices" class="event-choices"></div>
     </div>
@@ -91,7 +97,7 @@ categories: [project]
   </div>
 </div>
 
-<!-- Styles (same as before; you can move to SCSS later) -->
+<!-- Styles (updated for list and new layout) -->
 <style>
   .caravan-game .game-btn {
     background: #392467;
@@ -136,6 +142,28 @@ categories: [project]
     color: #f0f0f0;
   }
   .caravan-game .stat-item span {
+    font-weight: 700;
+    color: #FFD1E3;
+  }
+  .caravan-game .location-list {
+    list-style: none;
+    padding: 0;
+    background: #1e1a2f;
+    border-radius: 24px;
+    border: 1px solid #5D3587;
+    padding: 18px 20px;
+    margin: 10px 0 20px 0;
+    color: #f0f0f0;
+    font-size: 1.1rem;
+  }
+  .caravan-game .location-list li {
+    padding: 4px 0;
+    border-bottom: 1px solid #2a2440;
+  }
+  .caravan-game .location-list li:last-child {
+    border-bottom: none;
+  }
+  .caravan-game .location-list li span {
     font-weight: 700;
     color: #FFD1E3;
   }
@@ -202,6 +230,5 @@ categories: [project]
   // Define the base path for game assets (works with Jekyll's relative_url)
   window.SETTLERFRONTIER_BASE = "{{ '/assets/settlerfrontier/' | relative_url }}";
 </script>
-<script src="{{ '/assets/settlerfrontier/settlerfrontier.js' | relative_url }}"></script>
-<!-- Load game script from its dedicated folder -->
+<!-- Load game script from its dedicated folder (only once!) -->
 <script src="{{ '/assets/settlerfrontier/settlerfrontier.js' | relative_url }}"></script>

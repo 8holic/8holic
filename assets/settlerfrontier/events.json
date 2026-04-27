@@ -1,153 +1,1388 @@
 [
   {
-    "name": "Quarrel",
-    "description": "A heated argument breaks out among the settlers.",
-    "hasChoice": false,
-    "effects": [
-      { "type": "unity", "delta": -10 }
-    ]
-  },
-  {
-    "name": "Bad Weather",
-    "description": "A sudden storm catches the caravan off guard.",
-    "hasChoice": false,
-    "effects": [
-      { "type": "settlers", "delta": { "min": -30, "max": -20 } }
-    ]
-  },
-  {
-    "name": "Poor Maintenance",
-    "description": "The landbase shows signs of neglect.",
-    "hasChoice": false,
-    "effects": [
-      { "type": "condition", "delta": -5 }
-    ]
-  },
-  {
-    "name": "Friendly Wanderers",
-    "description": "A group of survivors asks to join the caravan.",
-    "hasChoice": false,
-    "effects": [
-      { "type": "settlers", "delta": { "min": 10, "max": 20 } }
-    ]
-  },
-  {
-    "name": "Song and Dance",
-    "description": "Someone starts a tune, lifting spirits.",
-    "hasChoice": false,
-    "effects": [
-      { "type": "unity", "delta": 5 }
-    ]
-  },
-  {
-    "name": "Minor Mishap",
-    "description": "A small accident causes losses.",
-    "hasChoice": false,
-    "effects": [
-      { "type": "settlers", "delta": { "min": -20, "max": -5 } },
-      { "type": "unity", "delta": -5 }
-    ]
-  },
-  {
-    "name": "Old World Relic",
-    "description": "Scouts find a rusted pre‑war sign: \"Now Entering Hope County.\"",
-    "hasChoice": false,
-    "effects": []
-  },
-  {
-    "name": "Strange Lights",
-    "description": "At night, glowing orbs drift silently across the sky.",
-    "hasChoice": false,
-    "effects": []
-  },
-  {
-    "name": "Children's Game",
-    "description": "The children invent a game using pebbles and old bottle caps.",
-    "hasChoice": false,
-    "effects": []
-  },
-  {
-    "name": "Abandoned Vehicle",
-    "description": "You pass a military convoy, long picked clean.",
-    "hasChoice": false,
-    "effects": []
-  },
-  {
-    "name": "Unexploded Bomb",
-    "description": "An old artillery shell lies half‑buried beside the road.",
-    "hasChoice": false,
-    "effects": []
-  },
-  {
-    "name": "Refugee Wave",
-    "description": "A large group of desperate survivors wants to join.",
+    "ID": 11,
+    "name": "Dust‑choked Instruments",
+    "description": "A sudden dust‑devil engulfs the convoy. Grit scours every surface. You can shield either the terrain scanner’s lenses or the atmospheric sensor’s delicate intakes. One will suffer damage.",
     "hasChoice": true,
     "choices": [
       {
-        "text": "Accept them (+100 settlers, -20% unity)",
+        "text": "Shield the terrain scanner",
         "effects": [
-          { "type": "settlers", "delta": 100 },
-          { "type": "unity", "delta": -20 }
+          {
+            "type": "atmosphericScanner",
+            "delta": { "min": -9, "max": -1 },
+            "message": "The terrain scanner survives intact, but the atmospheric sensor is choked with dust, losing {delta}% precision."
+          }
         ]
       },
       {
-        "text": "Refuse them (no change)",
-        "effects": []
-      }
-    ]
-  },
-  {
-    "name": "Hidden Spring",
-    "description": "A scout claims there is a reliable water source ahead, but the path is rough.",
-    "hasChoice": true,
-    "choices": [
-      {
-        "text": "Take the rough path (-5% condition, next water = green)",
+        "text": "Shield the atmospheric scanner",
         "effects": [
-          { "type": "condition", "delta": -5 },
-          { "type": "flag", "name": "nextWaterGood", "value": true }
-        ]
-      },
-      {
-        "text": "Ignore and continue normally",
-        "effects": []
-      }
-    ]
-  },
-  {
-    "name": "Landslide",
-    "description": "A landslide blocks the road.",
-    "hasChoice": true,
-    "choices": [
-      {
-        "text": "Clear it manually (lose 20‑50 settlers)",
-        "effects": [
-          { "type": "settlers", "delta": { "min": -50, "max": -20 } }
-        ]
-      },
-      {
-        "text": "Find a detour (-10% condition)",
-        "effects": [
-          { "type": "condition", "delta": -10 }
+          {
+            "type": "terrainScanner",
+            "delta": { "min": -9, "max": -1 },
+            "message": "The atmospheric scanner remains clean, but the terrain scanner’s lenses are etched and lose {delta}% clarity."
+          }
         ]
       }
     ]
   },
   {
-    "name": "Shortcut",
-    "description": "A risky shortcut could save time but may damage the landbase.",
+    "ID": 13,
+    "name": "Failing Generator",
+    "description": "The main generator sputters and throws sparks. You can either route the dying power to the knowledge database or to the terrain scanner’s calibration array. The other will lose its saved state.",
     "hasChoice": true,
     "choices": [
       {
-        "text": "Take safe path (no change)",
-        "effects": []
+        "text": "Save the knowledge database",
+        "effects": [
+          {
+            "type": "terrainScanner",
+            "delta": { "min": -9, "max": -1 },
+            "message": "The database hums safely, but the terrain scanner loses {delta}% calibration before it can reboot."
+          }
+        ]
       },
       {
-        "text": "Take shortcut (condition -1‑10%, next location better)",
+        "text": "Save the terrain scanner",
         "effects": [
-          { "type": "condition", "delta": { "min": -10, "max": -1 } },
-          { "type": "flag", "name": "nextLocationBetter", "value": true }
+          {
+            "type": "knowledge",
+            "delta": { "min": -9, "max": -1 },
+            "message": "The scanner holds its settings, but the power flicker corrupts {delta}% of stored knowledge."
+          }
         ]
+      }
+    ]
+  },
+  {
+    "ID": 15,
+    "name": "Corrosive Rainfall",
+    "description": "A light but corrosive rain begins to fall. There’s time to cover either the atmospheric scanner’s weather vane or the precious analysis modules. The other will be etched by acid.",
+    "hasChoice": true,
+    "choices": [
+      {
+        "text": "Cover the atmospheric scanner",
+        "effects": [
+          {
+            "type": "equipment",
+            "delta": -1,
+            "message": "The atmospheric scanner is safe, but one analysis kit is corroded beyond use. The caravan loses a scan charge."
+          }
+        ]
+      },
+      {
+        "text": "Cover the analysis modules",
+        "effects": [
+          {
+            "type": "atmosphericScanner",
+            "delta": { "min": -9, "max": -1 },
+            "message": "The equipment is saved, but the atmospheric scanner’s vanes are pitted, lowering accuracy by {delta}%."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ID": 17,
+    "name": "Data‑Surge Cascade",
+    "description": "A power surge feeds back through the database. You can either dump the excess into the terrain scanner’s memory bank or let it flood the knowledge archives. One will be scrambled.",
+    "hasChoice": true,
+    "choices": [
+      {
+        "text": "Dump surge to terrain scanner",
+        "effects": [
+          {
+            "type": "terrainScanner",
+            "delta": { "min": -9, "max": -1 },
+            "message": "The knowledge archive stays intact, but the terrain scanner’s banks lose {delta}% of mapping data."
+          }
+        ]
+      },
+      {
+        "text": "Dump surge to knowledge archive",
+        "effects": [
+          {
+            "type": "knowledge",
+            "delta": { "min": -9, "max": -1 },
+            "message": "The terrain scanner is spared, but the database loses {delta}% of its precious records."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ID": 19,
+    "name": "Strained Unity",
+    "description": "A bitter argument erodes morale. You can either address the crowd directly to keep everyone together, or let the anger run its course while you safeguard the knowledge library. One will suffer.",
+    "hasChoice": true,
+    "choices": [
+      {
+        "text": "Address the crowd",
+        "effects": [
+          {
+            "type": "knowledge",
+            "delta": { "min": -9, "max": -1 },
+            "message": "The crowd calms, but during the chaos {delta}% of knowledge was accidentally deleted from the database."
+          }
+        ]
+      },
+      {
+        "text": "Guard the knowledge library",
+        "effects": [
+          {
+            "type": "unity",
+            "delta": { "min": -9, "max": -1 },
+            "message": "The data is safe, but the unresolved anger causes unity to plummet by {delta}%."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ID": 21,
+    "name": "Ruptured Coolant Line",
+    "description": "A coolant pipe bursts near the equipment bay. You can either seal the area to protect the analysis modules, or vent the heat toward the terrain scanner’s CPU. One will overheat.",
+    "hasChoice": true,
+    "choices": [
+      {
+        "text": "Protect the analysis modules",
+        "effects": [
+          {
+            "type": "terrainScanner",
+            "delta": { "min": -9, "max": -1 },
+            "message": "The equipment is safe, but the terrain scanner’s processors overheat and lose {delta}% efficiency."
+          }
+        ]
+      },
+      {
+        "text": "Vent heat away from the terrain scanner",
+        "effects": [
+          {
+            "type": "equipment",
+            "delta": -1,
+            "message": "The scanner stays cool, but one analysis module is scorched. A scan charge is lost."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ID": 23,
+    "name": "Shifting Ground",
+    "description": "A tremor opens a fissure that threatens two critical assets: the atmospheric scanner’s intake tower and the knowledge database’s external drive array. You can only brace one against the collapse.",
+    "hasChoice": true,
+    "choices": [
+      {
+        "text": "Brace the atmospheric scanner",
+        "effects": [
+          {
+            "type": "knowledge",
+            "delta": { "min": -9, "max": -1 },
+            "message": "The scanner holds, but the database’s drives are shaken and {delta}% of data is corrupted."
+          }
+        ]
+      },
+      {
+        "text": "Brace the knowledge drives",
+        "effects": [
+          {
+            "type": "atmosphericScanner",
+            "delta": { "min": -9, "max": -1 },
+            "message": "The knowledge remains intact, but the atmospheric scanner’s alignment shifts by {delta}%."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ID": 25,
+    "name": "Soured Water Supply",
+    "description": "A contaminated water source forces a choice: you can deploy the terrain scanner’s filters to purify enough for your own people, preserving unity, or use the knowledge database to synthesise a filter that saves the survey equipment. One will fail.",
+    "hasChoice": true,
+    "choices": [
+      {
+        "text": "Purify for the people",
+        "effects": [
+          {
+            "type": "equipment",
+            "delta": -1,
+            "message": "The people stay healthy, but one precious analysis module is ruined by the bad water. A scan is lost."
+          }
+        ]
+      },
+      {
+        "text": "Synthesise the filter for the equipment",
+        "effects": [
+          {
+            "type": "unity",
+            "delta": { "min": -9, "max": -1 },
+            "message": "The equipment is saved, but the water shortage causes unity to drop by {delta}%."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ID": 27,
+    "name": "Magnetic Storm",
+    "description": "A geomagnetic storm fries electronics. You can either erect a makeshift Faraday cage around the knowledge database, or shield the terrain scanner’s magnetometer. The other will be wiped.",
+    "hasChoice": true,
+    "choices": [
+      {
+        "text": "Shield the knowledge database",
+        "effects": [
+          {
+            "type": "terrainScanner",
+            "delta": { "min": -9, "max": -1 },
+            "message": "The database survives, but the terrain scanner’s magnetometer loses {delta}% calibration."
+          }
+        ]
+      },
+      {
+        "text": "Shield the terrain scanner",
+        "effects": [
+          {
+            "type": "knowledge",
+            "delta": { "min": -9, "max": -1 },
+            "message": "The scanner holds, but the storm wipes {delta}% of the database."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ID": 29,
+    "name": "Frozen Pipes",
+    "description": "A sudden freeze bursts pipes in the equipment bay. You can either thaw the lines that feed the atmospheric scanner’s sensor suite, or repair the lines to the analysis storage. One will be left frozen.",
+    "hasChoice": true,
+    "choices": [
+      {
+        "text": "Rescue the atmospheric scanner",
+        "effects": [
+          {
+            "type": "equipment",
+            "delta": -1,
+            "message": "The scanner is fine, but a frozen analysis module cracks. One scan is lost."
+          }
+        ]
+      },
+      {
+        "text": "Save the analysis modules",
+        "effects": [
+          {
+            "type": "atmosphericScanner",
+            "delta": { "min": -9, "max": -1 },
+            "message": "The modules are safe, but the atmospheric scanner’s sensors degrade by {delta}%."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ID": 31,
+    "name": "Toxic Spore Bloom",
+    "description": "A cloud of toxic spores wafts through the camp. You can either deploy portable filters to help the settlers breathe, preserving their will to continue, or seal the atmospheric scanner’s intake, keeping its forecasts accurate. One will suffer.",
+    "hasChoice": true,
+    "choices": [
+      {
+        "text": "Filter for the settlers",
+        "effects": [
+          {
+            "type": "atmosphericScanner",
+            "delta": { "min": -9, "max": -1 },
+            "message": "The settlers are safe, but the spores gum up the atmospheric scanner, reducing its accuracy by {delta}%."
+          }
+        ]
+      },
+      {
+        "text": "Seal the scanner’s intake",
+        "effects": [
+          {
+            "type": "unity",
+            "delta": { "min": -9, "max": -1 },
+            "message": "The scanner stays clean, but the breathing problems cause unity to fall by {delta}%."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ID": 33,
+    "name": "Fractured Hoses",
+    "description": "Hydraulic hoses burst near the terrain scanner’s shock absorbers and the atmospheric scanner’s pressure sensor. You can only repair one set. The other will leak and lose functionality.",
+    "hasChoice": true,
+    "choices": [
+      {
+        "text": "Repair the terrain scanner hoses",
+        "effects": [
+          {
+            "type": "atmosphericScanner",
+            "delta": { "min": -9, "max": -1 },
+            "message": "The terrain scanner stays smooth, but the atmospheric scanner’s pressure sensor loses {delta}% accuracy."
+          }
+        ]
+      },
+      {
+        "text": "Repair the atmospheric scanner hoses",
+        "effects": [
+          {
+            "type": "terrainScanner",
+            "delta": { "min": -9, "max": -1 },
+            "message": "The atmospheric scanner is fine, but the terrain scanner’s damping worsens by {delta}%."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ID": 35,
+    "name": "Desperate Gamble",
+    "description": "A risky shortcut could save time, but it requires shutting down either the knowledge database or the terrain scanner to avoid electrical interference. One will crash.",
+    "hasChoice": true,
+    "choices": [
+      {
+        "text": "Shut down the knowledge database",
+        "effects": [
+          {
+            "type": "knowledge",
+            "delta": { "min": -9, "max": -1 },
+            "message": "The shortcut works, but the sudden shutdown corrupts {delta}% of the database."
+          }
+        ]
+      },
+      {
+        "text": "Shut down the terrain scanner",
+        "effects": [
+          {
+            "type": "terrainScanner",
+            "delta": { "min": -9, "max": -1 },
+            "message": "The knowledge is safe, but the terrain scanner needs a {delta}% recalibration after the trip."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ID": 37,
+    "name": "Bitter Frost",
+    "description": "A sudden frost can crack either the unity‑bonding communal water heater or the delicate analysis modules in an unheated crate. You can only warm one.",
+    "hasChoice": true,
+    "choices": [
+      {
+        "text": "Warm the communal heater",
+        "effects": [
+          {
+            "type": "equipment",
+            "delta": -1,
+            "message": "The settlers stay warm, but one frozen analysis module shatters. A scan is lost."
+          }
+        ]
+      },
+      {
+        "text": "Warm the module crate",
+        "effects": [
+          {
+            "type": "unity",
+            "delta": { "min": -9, "max": -1 },
+            "message": "The equipment is saved, but the cold night causes unity to drop by {delta}%."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ID": 39,
+    "name": "Quake‑damaged Wiring",
+    "description": "An aftershock snaps cables to the atmospheric scanner’s transmitter and the knowledge database’s backup drive. Only one line can be reconnected before the system cycles down.",
+    "hasChoice": true,
+    "choices": [
+      {
+        "text": "Reconnect the atmospheric scanner",
+        "effects": [
+          {
+            "type": "knowledge",
+            "delta": { "min": -9, "max": -1 },
+            "message": "The scanner returns, but the backup drive loses {delta}% of its data before power is restored."
+          }
+        ]
+      },
+      {
+        "text": "Reconnect the knowledge backup",
+        "effects": [
+          {
+            "type": "atmosphericScanner",
+            "delta": { "min": -9, "max": -1 },
+            "message": "The database is safe, but the atmospheric scanner’s transmitter is down, costing {delta}% of its range."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ID": 40,
+    "name": "Scanner Calibration Drift",
+    "description": "Age and vibration take their toll. The terrain scanner's delicate gyroscopes lose alignment, reducing its precision significantly.",
+    "hasChoice": false,
+    "effects": [
+      {
+        "type": "terrainScanner",
+        "delta": { "min": -15, "max": -5 },
+        "message": "The terrain scanner's accuracy drops by {delta}%. Maintenance crews scramble to recalibrate."
+      }
+    ]
+  },
+  {
+    "ID": 41,
+    "name": "Atmospheric Sensor Fouling",
+    "description": "A thin film of residue coats the atmospheric sensor intakes. The readings become erratic, undermining weather predictions.",
+    "hasChoice": false,
+    "effects": [
+      {
+        "type": "atmosphericScanner",
+        "delta": { "min": -15, "max": -5 },
+        "message": "The atmospheric scanner loses {delta}% of its sensitivity. Storms may come without warning."
+      }
+    ]
+  },
+  {
+    "ID": 42,
+    "name": "Cross‑Calibration Opportunity",
+    "description": "A rare window allows the two scanners to be recalibrated against each other. One can be boosted using the other's components, or you can leave both untouched.",
+    "hasChoice": true,
+    "choices": [
+      {
+        "text": "Use terrain scanner to recalibrate atmospheric",
+        "effects": [
+          {
+            "type": "terrainScanner",
+            "delta": { "min": -10, "max": -5 },
+            "message": "The terrain scanner sacrifices {delta}% precision to improve the atmospheric scanner."
+          },
+          {
+            "type": "atmosphericScanner",
+            "delta": { "min": 5, "max": 10 },
+            "message": "The atmospheric scanner gains {delta}% accuracy from the cross‑calibration."
+          }
+        ]
+      },
+      {
+        "text": "Use atmospheric scanner to recalibrate terrain",
+        "effects": [
+          {
+            "type": "atmosphericScanner",
+            "delta": { "min": -10, "max": -5 },
+            "message": "The atmospheric scanner loses {delta}% sensitivity to boost the terrain scanner."
+          },
+          {
+            "type": "terrainScanner",
+            "delta": { "min": 5, "max": 10 },
+            "message": "The terrain scanner improves by {delta}% using the atmospheric scanner's data."
+          }
+        ]
+      },
+      {
+        "text": "Leave both alone",
+        "effects": [
+          {
+            "type": "settlers",
+            "delta": 0,
+            "message": "The caravan decides not to meddle. No changes are made."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ID": 43,
+    "name": "Dispute Over Rations",
+    "description": "A flawed distribution of water causes a shouting match that fractures the caravan's fragile solidarity.",
+    "hasChoice": false,
+    "effects": [
+      {
+        "type": "unity",
+        "delta": { "min": -15, "max": -5 },
+        "message": "Unity falls by {delta}% as old resentments resurface."
+      }
+    ]
+  },
+  {
+    "ID": 44,
+    "name": "Database Corruption",
+    "description": "A solar flare corrupts a portion of the knowledge database. Vital information is scrambled beyond recovery.",
+    "hasChoice": false,
+    "effects": [
+      {
+        "type": "knowledge",
+        "delta": { "min": -15, "max": -5 },
+        "message": "{delta}% of stored knowledge is lost. Some lessons may have to be relearned."
+      }
+    ]
+  },
+  {
+    "ID": 45,
+    "name": "Equipment Cache – Hidden Cost",
+    "description": "A prospector's stash contains analysis modules, but they are locked behind a ciphered terminal. Hacking it will drain some of the caravan's knowledge banks.",
+    "hasChoice": true,
+    "choices": [
+      {
+        "text": "Hack the terminal",
+        "effects": [
+          {
+            "type": "knowledge",
+            "delta": { "min": -9, "max": -1 },
+            "message": "{delta}% of knowledge is sacrificed to break the encryption."
+          },
+          {
+            "type": "equipment",
+            "delta": 1,
+            "message": "The analysis module is recovered. The caravan gains an extra scan."
+          }
+        ]
+      },
+      {
+        "text": "Leave it alone",
+        "effects": [
+          {
+            "type": "settlers",
+            "delta": 0,
+            "message": "The caravan leaves the cache untouched. No risks, no rewards."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ID": 46,
+    "name": "Structural Collapse",
+    "description": "While exploring a crumbling overpass, a section of concrete gives way. Dozens are caught in the debris before help can arrive.",
+    "hasChoice": false,
+    "effects": [
+      {
+        "type": "settlers",
+        "delta": { "min": -100, "max": -50 },
+        "message": "The collapse claims {delta} settlers. The caravan mourns and moves on."
+      }
+    ]
+  },
+  {
+    "ID": 47,
+    "name": "Sandstorm Disorientation",
+    "description": "A ferocious sandstorm swallows the convoy whole. When the air clears, all bearings are lost, and every direction looks equally hostile.",
+    "hasChoice": false,
+    "effects": [
+      {
+        "type": "waterSupply",
+        "delta": { "min": 30, "max": 60 },
+        "message": "Water supplies become harder to locate after the storm."
+      },
+      {
+        "type": "land",
+        "delta": { "min": 30, "max": 60 },
+        "message": "The terrain is now treacherous and disorienting."
+      },
+      {
+        "type": "temperature",
+        "delta": { "min": 30, "max": 60 },
+        "message": "Extreme temperature pockets appear without warning."
+      },
+      {
+        "type": "precipitation",
+        "delta": { "min": 30, "max": 60 },
+        "message": "Rainfall patterns become unpredictable and dangerous."
+      },
+      {
+        "type": "vegetation",
+        "delta": { "min": 30, "max": 60 },
+        "message": "Edible plants are buried or uprooted by the storm."
+      },
+      {
+        "type": "radiation",
+        "delta": { "min": 30, "max": 60 },
+        "message": "Dust stirred by the storm carries irradiated particles."
+      },
+      {
+        "type": "shelter",
+        "delta": { "min": 30, "max": 60 },
+        "message": "Landmarks and shelters are obliterated by the shifting sands."
+      }
+    ]
+  },
+  {
+    "ID": 48,
+    "name": "Council of Adaptation",
+    "description": "A gathering of the wisest heads commits to a brutal study of the land. The effort drains morale and erases some stored knowledge, but the insights gained make all future environments less deadly.",
+    "hasChoice": false,
+    "effects": [
+      {
+        "type": "unity",
+        "delta": { "min": -10, "max": -5 },
+        "message": "The intense sessions cause unity to drop by {delta}%."
+      },
+      {
+        "type": "knowledge",
+        "delta": { "min": -10, "max": -5 },
+        "message": "{delta}% of knowledge is overwritten with new survival data."
+      },
+      {
+        "type": "waterSupply",
+        "delta": -5,
+        "permanent": true,
+        "message": "Permanent insight into water sources reduces future danger."
+      },
+      {
+        "type": "land",
+        "delta": -5,
+        "permanent": true,
+        "message": "Land assessment permanently improves."
+      },
+      {
+        "type": "temperature",
+        "delta": -5,
+        "permanent": true,
+        "message": "Climate adaptation becomes permanent."
+      },
+      {
+        "type": "precipitation",
+        "delta": -5,
+        "permanent": true,
+        "message": "Rainfall prediction permanently enhanced."
+      },
+      {
+        "type": "vegetation",
+        "delta": -5,
+        "permanent": true,
+        "message": "Knowledge of edible plants permanently increases safety."
+      },
+      {
+        "type": "radiation",
+        "delta": -5,
+        "permanent": true,
+        "message": "Radiation hazards permanently reduced through understanding."
+      },
+      {
+        "type": "shelter",
+        "delta": -5,
+        "permanent": true,
+        "message": "Shelter construction techniques improve permanently."
+      }
+    ]
+  },
+  {
+    "ID": 49,
+    "name": "The Fork in the Wastes",
+    "description": "The caravan must choose between a direct path through an old minefield or a long detour through a region known for extreme hostility. Both routes are deadly, but in different ways.",
+    "hasChoice": true,
+    "choices": [
+      {
+        "text": "Cross the minefield",
+        "effects": [
+          {
+            "type": "settlers",
+            "delta": { "min": -100, "max": -5 },
+            "message": "Explosions take {delta} settlers. The path is clear but costly."
+          }
+        ]
+      },
+      {
+        "text": "Take the long way around",
+        "effects": [
+          {
+            "type": "waterSupply",
+            "delta": 200,
+            "message": "The detour leads into a brutal landscape where water is scarce and deadly."
+          },
+          {
+            "type": "land",
+            "delta": 200,
+            "message": "The ground is jagged and unstable, making every step a hazard."
+          },
+          {
+            "type": "temperature",
+            "delta": 200,
+            "message": "Unforgiving temperature swings punish the caravan."
+          },
+          {
+            "type": "precipitation",
+            "delta": 200,
+            "message": "Torrential floods and dry spells alternate without mercy."
+          },
+          {
+            "type": "vegetation",
+            "delta": 200,
+            "message": "Nothing edible grows along this cursed route."
+          },
+          {
+            "type": "radiation",
+            "delta": 200,
+            "message": "Radiation hotspots dot the path, invisible and lethal."
+          },
+          {
+            "type": "shelter",
+            "delta": 200,
+            "message": "There is no cover for miles, leaving the caravan exposed."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ID": 50,
+    "name": "Automated Fortress",
+    "description": "An ancient fortress bristling with automated defences offers a trove of pre‑disaster knowledge. A scout team could infiltrate, but casualties are certain. Alternatively, the caravan can bypass it unscathed.",
+    "hasChoice": true,
+    "choices": [
+      {
+        "text": "Send the scouts",
+        "effects": [
+          {
+            "type": "settlers",
+            "delta": { "min": -30, "max": -1 },
+            "message": "{delta} scouts are lost to the fortress's security systems."
+          },
+          {
+            "type": "knowledge",
+            "delta": { "min": 10, "max": 20 },
+            "message": "The data cores yield invaluable pre‑disaster knowledge, boosting the database by {delta}%."
+          }
+        ]
+      },
+      {
+        "text": "Avoid the fortress",
+        "effects": [
+          {
+            "type": "settlers",
+            "delta": 0,
+            "message": "The caravan steers clear. No lives are lost, but the knowledge remains out of reach."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ID": 51,
+    "name": "Frozen Bunker Vault",
+    "description": "A massive bunker door lies frozen solid. Opening it requires diverting immense power from the scanners, but the promise of hundreds of survivors inside is too great to ignore. The caravan can also choose to preserve its scanners and leave the vault sealed.",
+    "hasChoice": true,
+    "choices": [
+      {
+        "text": "Unfreeze the bunker",
+        "effects": [
+          {
+            "type": "terrainScanner",
+            "delta": { "min": -10, "max": -5 },
+            "message": "The terrain scanner suffers a {delta}% drain while melting the ice."
+          },
+          {
+            "type": "atmosphericScanner",
+            "delta": { "min": -10, "max": -5 },
+            "message": "The atmospheric scanner loses {delta}% of its charge during the operation."
+          },
+          {
+            "type": "settlers",
+            "delta": { "min": 50, "max": 150 },
+            "message": "The door cracks open, revealing {delta} survivors in cold sleep. They awake and join the caravan."
+          }
+        ]
+      },
+      {
+        "text": "Leave it frozen",
+        "effects": [
+          {
+            "type": "settlers",
+            "delta": 0,
+            "message": "The caravan decides to preserve scanner power. The frozen bunker remains sealed, its secrets untouched."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ID": 52,
+    "name": "Double Breakdown",
+    "description": "Two critical systems fail at once. The caravan must choose where to allocate the remaining repair drones: fix the scanner suite or restore the social and knowledge networks.",
+    "hasChoice": true,
+    "choices": [
+      {
+        "text": "Repair the scanners",
+        "effects": [
+          {
+            "type": "unity",
+            "delta": { "min": -15, "max": -5 },
+            "message": "Unity crumbles by {delta}% while the repair drones are occupied."
+          },
+          {
+            "type": "knowledge",
+            "delta": { "min": -15, "max": -5 },
+            "message": "Knowledge degrades by {delta}% without maintenance."
+          }
+        ]
+      },
+      {
+        "text": "Restore morale and data",
+        "effects": [
+          {
+            "type": "terrainScanner",
+            "delta": { "min": -20, "max": -10 },
+            "message": "The terrain scanner loses {delta}% efficiency."
+          },
+          {
+            "type": "atmosphericScanner",
+            "delta": { "min": -20, "max": -10 },
+            "message": "The atmospheric scanner drops by {delta}% accuracy."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ID": 53,
+    "name": "Flying Rock",
+    "description": "A stray boulder, hurled by the wind, crashes into the terrain scanner's external array. The damage is immediate and severe.",
+    "hasChoice": false,
+    "effects": [
+      {
+        "type": "terrainScanner",
+        "delta": { "min": -15, "max": -5 },
+        "message": "The terrain scanner is struck and loses {delta}% of its capability."
+      }
+    ]
+  },
+  {
+    "ID": 54,
+    "name": "Last‑Ditch Calibration",
+    "description": "The caravan can activate an experimental protocol that burns out the scanners in exchange for a permanent reduction in environmental hostility. It is a steep price for a safer future.",
+    "hasChoice": true,
+    "choices": [
+      {
+        "text": "Activate the protocol",
+        "effects": [
+          {
+            "type": "terrainScanner",
+            "delta": { "min": -10, "max": -5 },
+            "message": "The terrain scanner is sacrificed, losing {delta}%."
+          },
+          {
+            "type": "atmosphericScanner",
+            "delta": { "min": -10, "max": -5 },
+            "message": "The atmospheric scanner loses {delta}%."
+          },
+          {
+            "type": "waterSupply",
+            "delta": -5,
+            "permanent": true,
+            "message": "Water sources become permanently safer."
+          },
+          {
+            "type": "land",
+            "delta": -5,
+            "permanent": true,
+            "message": "Land stability permanently improves."
+          },
+          {
+            "type": "temperature",
+            "delta": -5,
+            "permanent": true,
+            "message": "Climate permanently moderates."
+          },
+          {
+            "type": "precipitation",
+            "delta": -5,
+            "permanent": true,
+            "message": "Rainfall patterns permanently improve."
+          },
+          {
+            "type": "vegetation",
+            "delta": -5,
+            "permanent": true,
+            "message": "Vegetation permanently flourishes."
+          },
+          {
+            "type": "radiation",
+            "delta": -5,
+            "permanent": true,
+            "message": "Radiation levels permanently drop."
+          },
+          {
+            "type": "shelter",
+            "delta": -5,
+            "permanent": true,
+            "message": "Natural shelters become permanently more common."
+          }
+        ]
+      },
+      {
+        "text": "Leave it alone",
+        "effects": [
+          {
+            "type": "settlers",
+            "delta": 0,
+            "message": "The caravan decides not to risk the scanners. No changes occur."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ID": 55,
+    "name": "Cave of Echoes",
+    "description": "A gaping cave mouth offers a shortcut – and untold danger. The caravan can enter and risk everything for a chance to clear the path ahead, or steer clear.",
+    "hasChoice": true,
+    "choices": [
+      {
+        "text": "Explore the cave",
+        "effects": [
+          {
+            "type": "settlers",
+            "delta": { "min": -500, "max": -300 },
+            "message": "{delta} settlers perish in the cave's depths."
+          },
+          {
+            "type": "terrainScanner",
+            "delta": { "min": -30, "max": -20 },
+            "message": "The terrain scanner is damaged by cave-ins, losing {delta}%."
+          },
+          {
+            "type": "atmosphericScanner",
+            "delta": { "min": -30, "max": -20 },
+            "message": "The atmospheric scanner is battered, losing {delta}%."
+          },
+          {
+            "type": "unity",
+            "delta": { "min": -15, "max": -10 },
+            "message": "Unity fractures by {delta}% in the darkness."
+          },
+          {
+            "type": "knowledge",
+            "delta": { "min": -15, "max": -10 },
+            "message": "{delta}% of knowledge is lost in the chaos."
+          },
+          {
+            "type": "waterSupply",
+            "delta": -50,
+            "message": "The path ahead becomes far safer for water."
+          },
+          {
+            "type": "land",
+            "delta": -50,
+            "message": "The ground ahead is now stable and clear."
+          },
+          {
+            "type": "temperature",
+            "delta": -50,
+            "message": "The climate ahead is now mild."
+          },
+          {
+            "type": "precipitation",
+            "delta": -50,
+            "message": "Rainfall ahead becomes gentle."
+          },
+          {
+            "type": "vegetation",
+            "delta": -50,
+            "message": "Vegetation ahead is now abundant."
+          },
+          {
+            "type": "radiation",
+            "delta": -50,
+            "message": "Radiation ahead drops to near-zero."
+          },
+          {
+            "type": "shelter",
+            "delta": -50,
+            "message": "Shelter ahead is plentiful."
+          }
+        ]
+      },
+      {
+        "text": "Continue on",
+        "effects": [
+          {
+            "type": "settlers",
+            "delta": 0,
+            "message": "The caravan avoids the cave. No risk, no reward."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ID": 56,
+    "name": "Cave of Echoes",
+    "description": "A gaping cave mouth offers a shortcut – and untold danger. The caravan can enter and risk everything for a chance to clear the path ahead, or steer clear.",
+    "hasChoice": true,
+    "choices": [
+      {
+        "text": "Explore the cave",
+        "effects": [
+          {
+            "type": "settlers",
+            "delta": { "min": -500, "max": -300 },
+            "message": "{delta} settlers perish in the cave's depths."
+          },
+          {
+            "type": "terrainScanner",
+            "delta": { "min": -30, "max": -20 },
+            "message": "The terrain scanner is damaged by cave-ins, losing {delta}%."
+          },
+          {
+            "type": "atmosphericScanner",
+            "delta": { "min": -30, "max": -20 },
+            "message": "The atmospheric scanner is battered, losing {delta}%."
+          },
+          {
+            "type": "unity",
+            "delta": { "min": -15, "max": -10 },
+            "message": "Unity fractures by {delta}% in the darkness."
+          },
+          {
+            "type": "knowledge",
+            "delta": { "min": -15, "max": -10 },
+            "message": "{delta}% of knowledge is lost in the chaos."
+          },
+          {
+            "type": "waterSupply",
+            "delta": -50,
+            "message": "The path ahead becomes far safer for water."
+          },
+          {
+            "type": "land",
+            "delta": -50,
+            "message": "The ground ahead is now stable and clear."
+          },
+          {
+            "type": "temperature",
+            "delta": -50,
+            "message": "The climate ahead is now mild."
+          },
+          {
+            "type": "precipitation",
+            "delta": -50,
+            "message": "Rainfall ahead becomes gentle."
+          },
+          {
+            "type": "vegetation",
+            "delta": -50,
+            "message": "Vegetation ahead is now abundant."
+          },
+          {
+            "type": "radiation",
+            "delta": -50,
+            "message": "Radiation ahead drops to near-zero."
+          },
+          {
+            "type": "shelter",
+            "delta": -50,
+            "message": "Shelter ahead is plentiful."
+          }
+        ]
+      },
+      {
+        "text": "Continue on",
+        "effects": [
+          {
+            "type": "settlers",
+            "delta": 0,
+            "message": "The caravan avoids the cave. No risk, no reward."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ID": 57,
+    "name": "Shifting Resources",
+    "description": "The environment can be nudged: a dam can be built to increase water, but it will flood the last fertile plains. Choose which resource to sacrifice.",
+    "hasChoice": true,
+    "choices": [
+      {
+        "text": "Enhance water supply",
+        "effects": [
+          {
+            "type": "waterSupply",
+            "delta": 30,
+            "message": "Water becomes more plentiful."
+          },
+          {
+            "type": "vegetation",
+            "delta": -30,
+            "message": "But the flood destroys vegetation."
+          }
+        ]
+      },
+      {
+        "text": "Preserve vegetation",
+        "effects": [
+          {
+            "type": "waterSupply",
+            "delta": -30,
+            "message": "Water becomes scarcer."
+          },
+          {
+            "type": "vegetation",
+            "delta": 30,
+            "message": "Vegetation flourishes."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ID": 58,
+    "name": "Climate Reroute",
+    "description": "By venting heat from the geothermal vents, the caravan can stabilize temperatures at the cost of rainfall. Or they can keep the rain and suffer extremes.",
+    "hasChoice": true,
+    "choices": [
+      {
+        "text": "Stabilize temperature",
+        "effects": [
+          {
+            "type": "temperature",
+            "delta": -30,
+            "message": "Temperatures become milder."
+          },
+          {
+            "type": "precipitation",
+            "delta": 30,
+            "message": "But rainfall grows erratic."
+          }
+        ]
+      },
+      {
+        "text": "Keep the rain",
+        "effects": [
+          {
+            "type": "temperature",
+            "delta": 30,
+            "message": "Extremes worsen."
+          },
+          {
+            "type": "precipitation",
+            "delta": -30,
+            "message": "Rain becomes reliable."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ID": 59,
+    "name": "Sanctuary or Safety",
+    "description": "A region offers either solid radiation‑free ground or sturdy natural shelters. The caravan must decide which will serve them better in the final stretch.",
+    "hasChoice": true,
+    "choices": [
+      {
+        "text": "Clear radiation",
+        "effects": [
+          {
+            "type": "radiation",
+            "delta": -30,
+            "message": "Radiation drops significantly."
+          },
+          {
+            "type": "shelter",
+            "delta": 30,
+            "message": "Shelters become less reliable."
+          }
+        ]
+      },
+      {
+        "text": "Fortify shelters",
+        "effects": [
+          {
+            "type": "radiation",
+            "delta": 30,
+            "message": "Radiation rises."
+          },
+          {
+            "type": "shelter",
+            "delta": -30,
+            "message": "Shelters become abundant."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ID": 60,
+    "name": "Last Avalanche",
+    "description": "A collapsing cliff buries part of the caravan. Many are lost before they can be dug out.",
+    "hasChoice": false,
+    "effects": [
+      {
+        "type": "settlers",
+        "delta": { "min": -150, "max": -50 },
+        "message": "{delta} settlers are lost to the avalanche."
+      }
+    ]
+  },
+  {
+    "ID": 61,
+    "name": "Scanner Shatter",
+    "description": "A violent tremor topples the terrain scanner. Its main lens cracks, severely impairing its function.",
+    "hasChoice": false,
+    "effects": [
+      {
+        "type": "terrainScanner",
+        "delta": { "min": -20, "max": -10 },
+        "message": "The terrain scanner loses {delta}% efficiency."
+      }
+    ]
+  },
+  {
+    "ID": 62,
+    "name": "Lightning Strike",
+    "description": "A bolt of lightning fries the atmospheric scanner's external probe. Its readings will never be the same.",
+    "hasChoice": false,
+    "effects": [
+      {
+        "type": "atmosphericScanner",
+        "delta": { "min": -20, "max": -10 },
+        "message": "The atmospheric scanner is damaged by {delta}%."
+      }
+    ]
+  },
+  {
+    "ID": 63,
+    "name": "Mass Hysteria",
+    "description": "Rumours of an approaching super‑storm spark panic. The caravan's hard‑won unity evaporates in hours.",
+    "hasChoice": false,
+    "effects": [
+      {
+        "type": "unity",
+        "delta": { "min": -15, "max": -5 },
+        "message": "Unity collapses by {delta}%."
+      }
+    ]
+  },
+  {
+    "ID": 64,
+    "name": "Data Terminal Meltdown",
+    "description": "The main knowledge terminal overheats and melts its memory banks. Irreplaceable data is lost.",
+    "hasChoice": false,
+    "effects": [
+      {
+        "type": "knowledge",
+        "delta": { "min": -15, "max": -5 },
+        "message": "{delta}% of stored knowledge is destroyed."
+      }
+    ]
+  },
+  {
+    "ID": 65,
+    "name": "Ominous Skies",
+    "description": "Dark clouds gather on the horizon, swirling with unnatural speed. The elders whisper of the SuperStorm – a wall of ash and lightning that leaves nothing behind. The caravan must find a home before it arrives.",
+    "hasChoice": false,
+    "effects": [
+      {
+        "type": "settlers",
+        "delta": 0,
+        "message": "The skies darken. The SuperStorm is coming. Settle soon."
+      }
+    ]
+  },
+  {
+    "ID": 66,
+    "name": "Ominous Skies",
+    "description": "Dark clouds gather on the horizon, swirling with unnatural speed. The elders whisper of the SuperStorm – a wall of ash and lightning that leaves nothing behind. The caravan must find a home before it arrives.",
+    "hasChoice": false,
+    "effects": [
+      {
+        "type": "settlers",
+        "delta": 0,
+        "message": "The skies darken. The SuperStorm is coming. Settle soon."
+      }
+    ]
+  },
+  {
+    "ID": 67,
+    "name": "Ominous Skies",
+    "description": "Dark clouds gather on the horizon, swirling with unnatural speed. The elders whisper of the SuperStorm – a wall of ash and lightning that leaves nothing behind. The caravan must find a home before it arrives.",
+    "hasChoice": false,
+    "effects": [
+      {
+        "type": "settlers",
+        "delta": 0,
+        "message": "The skies darken. The SuperStorm is coming. Settle soon."
+      }
+    ]
+  },
+  {
+    "ID": 68,
+    "name": "Ominous Skies",
+    "description": "Dark clouds gather on the horizon, swirling with unnatural speed. The elders whisper of the SuperStorm – a wall of ash and lightning that leaves nothing behind. The caravan must find a home before it arrives.",
+    "hasChoice": false,
+    "effects": [
+      {
+        "type": "settlers",
+        "delta": 0,
+        "message": "The skies darken. The SuperStorm is coming. Settle soon."
+      }
+    ]
+  },
+  {
+    "ID": 69,
+    "name": "SuperStorm – First Gusts",
+    "description": "The SuperStorm's outer bands strike the caravan. Violent winds and searing ash leave no one unscathed.",
+    "hasChoice": false,
+    "effects": [
+      {
+        "type": "settlers",
+        "delta": { "min": -100, "max": -50 },
+        "message": "{delta} settlers are killed by the storm's fury."
+      },
+      {
+        "type": "terrainScanner",
+        "delta": { "min": -30, "max": -20 },
+        "message": "The terrain scanner is battered, losing {delta}%."
+      },
+      {
+        "type": "atmosphericScanner",
+        "delta": { "min": -30, "max": -20 },
+        "message": "The atmospheric scanner is shredded, losing {delta}%."
+      },
+      {
+        "type": "unity",
+        "delta": { "min": -20, "max": -10 },
+        "message": "Unity cracks by {delta}%."
+      },
+      {
+        "type": "knowledge",
+        "delta": { "min": -20, "max": -10 },
+        "message": "{delta}% of knowledge is scattered by the wind."
+      }
+    ]
+  },
+  {
+    "ID": 70,
+    "name": "SuperStorm – First Gusts",
+    "description": "The SuperStorm's outer bands strike the caravan. Violent winds and searing ash leave no one unscathed.",
+    "hasChoice": false,
+    "effects": [
+      {
+        "type": "settlers",
+        "delta": { "min": -100, "max": -50 },
+        "message": "{delta} settlers are killed by the storm's fury."
+      },
+      {
+        "type": "terrainScanner",
+        "delta": { "min": -30, "max": -20 },
+        "message": "The terrain scanner is battered, losing {delta}%."
+      },
+      {
+        "type": "atmosphericScanner",
+        "delta": { "min": -30, "max": -20 },
+        "message": "The atmospheric scanner is shredded, losing {delta}%."
+      },
+      {
+        "type": "unity",
+        "delta": { "min": -20, "max": -10 },
+        "message": "Unity cracks by {delta}%."
+      },
+      {
+        "type": "knowledge",
+        "delta": { "min": -20, "max": -10 },
+        "message": "{delta}% of knowledge is scattered by the wind."
       }
     ]
   }

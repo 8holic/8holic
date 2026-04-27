@@ -1,0 +1,513 @@
+[
+  {
+    "name": "Milestone: Environmental Breakthrough",
+    "description": "A rare alignment of knowledge, luck, and circumstance allows the caravan to permanently reshape one aspect of the world ahead. Choose which environmental factor to improve forever.",
+    "hasChoice": true,
+    "choices": [
+      {
+        "text": "Improve Land",
+        "effects": [
+          {
+            "type": "land",
+            "delta": -30,
+            "permanent": true,
+            "message": "The very ground becomes more stable and fertile. Land danger is permanently reduced."
+          }
+        ]
+      },
+      {
+        "text": "Improve Temperature",
+        "effects": [
+          {
+            "type": "temperature",
+            "delta": -30,
+            "permanent": true,
+            "message": "A gentle climate pattern settles in. Temperature extremes are permanently softened."
+          }
+        ]
+      },
+      {
+        "text": "Improve Precipitation",
+        "effects": [
+          {
+            "type": "precipitation",
+            "delta": -30,
+            "permanent": true,
+            "message": "Rainfall grows more reliable. Drought and flood dangers are permanently lessened."
+          }
+        ]
+      },
+      {
+        "text": "Improve Vegetation",
+        "effects": [
+          {
+            "type": "vegetation",
+            "delta": -30,
+            "permanent": true,
+            "message": "Edible plants begin to flourish along the route. Vegetation safety is permanently improved."
+          }
+        ]
+      },
+      {
+        "text": "Improve Radiation",
+        "effects": [
+          {
+            "type": "radiation",
+            "delta": -30,
+            "permanent": true,
+            "message": "Background radiation levels drop. The land is permanently cleansed of a subtle poison."
+          }
+        ]
+      },
+      {
+        "text": "Improve Shelter",
+        "effects": [
+          {
+            "type": "shelter",
+            "delta": -30,
+            "permanent": true,
+            "message": "Natural formations offer better cover. Shelter quality is permanently increased."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Milestone: Environmental Breakthrough",
+    "description": "A rare alignment of knowledge, luck, and circumstance allows the caravan to permanently reshape one aspect of the world ahead. Choose which environmental factor to improve forever.",
+    "hasChoice": true,
+    "choices": [
+      {
+        "text": "Improve Water Supply",
+        "effects": [
+          {
+            "type": "waterSupply",
+            "delta": -30,
+            "permanent": true,
+            "message": "Underground springs seep closer to the surface. Water availability is permanently increased."
+          }
+        ]
+      },
+      {
+        "text": "Improve Temperature",
+        "effects": [
+          {
+            "type": "temperature",
+            "delta": -30,
+            "permanent": true,
+            "message": "A gentle climate pattern settles in. Temperature extremes are permanently softened."
+          }
+        ]
+      },
+      {
+        "text": "Improve Precipitation",
+        "effects": [
+          {
+            "type": "precipitation",
+            "delta": -30,
+            "permanent": true,
+            "message": "Rainfall grows more reliable. Drought and flood dangers are permanently lessened."
+          }
+        ]
+      },
+      {
+        "text": "Improve Vegetation",
+        "effects": [
+          {
+            "type": "vegetation",
+            "delta": -30,
+            "permanent": true,
+            "message": "Edible plants begin to flourish along the route. Vegetation safety is permanently improved."
+          }
+        ]
+      },
+      {
+        "text": "Improve Radiation",
+        "effects": [
+          {
+            "type": "radiation",
+            "delta": -30,
+            "permanent": true,
+            "message": "Background radiation levels drop. The land is permanently cleansed of a subtle poison."
+          }
+        ]
+      },
+      {
+        "text": "Improve Shelter",
+        "effects": [
+          {
+            "type": "shelter",
+            "delta": -30,
+            "permanent": true,
+            "message": "Natural formations offer better cover. Shelter quality is permanently increased."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Milestone: Environmental Breakthrough",
+    "description": "A rare alignment of knowledge, luck, and circumstance allows the caravan to permanently reshape one aspect of the world ahead. Choose which environmental factor to improve forever.",
+    "hasChoice": true,
+    "choices": [
+      {
+        "text": "Improve Water Supply",
+        "effects": [
+          {
+            "type": "waterSupply",
+            "delta": -30,
+            "permanent": true,
+            "message": "Underground springs seep closer to the surface. Water availability is permanently increased."
+          }
+        ]
+      },
+      {
+        "text": "Improve Land",
+        "effects": [
+          {
+            "type": "land",
+            "delta": -30,
+            "permanent": true,
+            "message": "The very ground becomes more stable and fertile. Land danger is permanently reduced."
+          }
+        ]
+      },
+      {
+        "text": "Improve Precipitation",
+        "effects": [
+          {
+            "type": "precipitation",
+            "delta": -30,
+            "permanent": true,
+            "message": "Rainfall grows more reliable. Drought and flood dangers are permanently lessened."
+          }
+        ]
+      },
+      {
+        "text": "Improve Vegetation",
+        "effects": [
+          {
+            "type": "vegetation",
+            "delta": -30,
+            "permanent": true,
+            "message": "Edible plants begin to flourish along the route. Vegetation safety is permanently improved."
+          }
+        ]
+      },
+      {
+        "text": "Improve Radiation",
+        "effects": [
+          {
+            "type": "radiation",
+            "delta": -30,
+            "permanent": true,
+            "message": "Background radiation levels drop. The land is permanently cleansed of a subtle poison."
+          }
+        ]
+      },
+      {
+        "text": "Improve Shelter",
+        "effects": [
+          {
+            "type": "shelter",
+            "delta": -30,
+            "permanent": true,
+            "message": "Natural formations offer better cover. Shelter quality is permanently increased."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Milestone: Environmental Breakthrough",
+    "description": "A rare alignment of knowledge, luck, and circumstance allows the caravan to permanently reshape one aspect of the world ahead. Choose which environmental factor to improve forever.",
+    "hasChoice": true,
+    "choices": [
+      {
+        "text": "Improve Water Supply",
+        "effects": [
+          {
+            "type": "waterSupply",
+            "delta": -30,
+            "permanent": true,
+            "message": "Underground springs seep closer to the surface. Water availability is permanently increased."
+          }
+        ]
+      },
+      {
+        "text": "Improve Land",
+        "effects": [
+          {
+            "type": "land",
+            "delta": -30,
+            "permanent": true,
+            "message": "The very ground becomes more stable and fertile. Land danger is permanently reduced."
+          }
+        ]
+      },
+      {
+        "text": "Improve Temperature",
+        "effects": [
+          {
+            "type": "temperature",
+            "delta": -30,
+            "permanent": true,
+            "message": "A gentle climate pattern settles in. Temperature extremes are permanently softened."
+          }
+        ]
+      },
+      {
+        "text": "Improve Vegetation",
+        "effects": [
+          {
+            "type": "vegetation",
+            "delta": -30,
+            "permanent": true,
+            "message": "Edible plants begin to flourish along the route. Vegetation safety is permanently improved."
+          }
+        ]
+      },
+      {
+        "text": "Improve Radiation",
+        "effects": [
+          {
+            "type": "radiation",
+            "delta": -30,
+            "permanent": true,
+            "message": "Background radiation levels drop. The land is permanently cleansed of a subtle poison."
+          }
+        ]
+      },
+      {
+        "text": "Improve Shelter",
+        "effects": [
+          {
+            "type": "shelter",
+            "delta": -30,
+            "permanent": true,
+            "message": "Natural formations offer better cover. Shelter quality is permanently increased."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Milestone: Environmental Breakthrough",
+    "description": "A rare alignment of knowledge, luck, and circumstance allows the caravan to permanently reshape one aspect of the world ahead. Choose which environmental factor to improve forever.",
+    "hasChoice": true,
+    "choices": [
+      {
+        "text": "Improve Water Supply",
+        "effects": [
+          {
+            "type": "waterSupply",
+            "delta": -30,
+            "permanent": true,
+            "message": "Underground springs seep closer to the surface. Water availability is permanently increased."
+          }
+        ]
+      },
+      {
+        "text": "Improve Land",
+        "effects": [
+          {
+            "type": "land",
+            "delta": -30,
+            "permanent": true,
+            "message": "The very ground becomes more stable and fertile. Land danger is permanently reduced."
+          }
+        ]
+      },
+      {
+        "text": "Improve Temperature",
+        "effects": [
+          {
+            "type": "temperature",
+            "delta": -30,
+            "permanent": true,
+            "message": "A gentle climate pattern settles in. Temperature extremes are permanently softened."
+          }
+        ]
+      },
+      {
+        "text": "Improve Precipitation",
+        "effects": [
+          {
+            "type": "precipitation",
+            "delta": -30,
+            "permanent": true,
+            "message": "Rainfall grows more reliable. Drought and flood dangers are permanently lessened."
+          }
+        ]
+      },
+      {
+        "text": "Improve Radiation",
+        "effects": [
+          {
+            "type": "radiation",
+            "delta": -30,
+            "permanent": true,
+            "message": "Background radiation levels drop. The land is permanently cleansed of a subtle poison."
+          }
+        ]
+      },
+      {
+        "text": "Improve Shelter",
+        "effects": [
+          {
+            "type": "shelter",
+            "delta": -30,
+            "permanent": true,
+            "message": "Natural formations offer better cover. Shelter quality is permanently increased."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Milestone: Environmental Breakthrough",
+    "description": "A rare alignment of knowledge, luck, and circumstance allows the caravan to permanently reshape one aspect of the world ahead. Choose which environmental factor to improve forever.",
+    "hasChoice": true,
+    "choices": [
+      {
+        "text": "Improve Water Supply",
+        "effects": [
+          {
+            "type": "waterSupply",
+            "delta": -30,
+            "permanent": true,
+            "message": "Underground springs seep closer to the surface. Water availability is permanently increased."
+          }
+        ]
+      },
+      {
+        "text": "Improve Land",
+        "effects": [
+          {
+            "type": "land",
+            "delta": -30,
+            "permanent": true,
+            "message": "The very ground becomes more stable and fertile. Land danger is permanently reduced."
+          }
+        ]
+      },
+      {
+        "text": "Improve Temperature",
+        "effects": [
+          {
+            "type": "temperature",
+            "delta": -30,
+            "permanent": true,
+            "message": "A gentle climate pattern settles in. Temperature extremes are permanently softened."
+          }
+        ]
+      },
+      {
+        "text": "Improve Precipitation",
+        "effects": [
+          {
+            "type": "precipitation",
+            "delta": -30,
+            "permanent": true,
+            "message": "Rainfall grows more reliable. Drought and flood dangers are permanently lessened."
+          }
+        ]
+      },
+      {
+        "text": "Improve Vegetation",
+        "effects": [
+          {
+            "type": "vegetation",
+            "delta": -30,
+            "permanent": true,
+            "message": "Edible plants begin to flourish along the route. Vegetation safety is permanently improved."
+          }
+        ]
+      },
+      {
+        "text": "Improve Shelter",
+        "effects": [
+          {
+            "type": "shelter",
+            "delta": -30,
+            "permanent": true,
+            "message": "Natural formations offer better cover. Shelter quality is permanently increased."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Milestone: Environmental Breakthrough",
+    "description": "A rare alignment of knowledge, luck, and circumstance allows the caravan to permanently reshape one aspect of the world ahead. Choose which environmental factor to improve forever.",
+    "hasChoice": true,
+    "choices": [
+      {
+        "text": "Improve Water Supply",
+        "effects": [
+          {
+            "type": "waterSupply",
+            "delta": -30,
+            "permanent": true,
+            "message": "Underground springs seep closer to the surface. Water availability is permanently increased."
+          }
+        ]
+      },
+      {
+        "text": "Improve Land",
+        "effects": [
+          {
+            "type": "land",
+            "delta": -30,
+            "permanent": true,
+            "message": "The very ground becomes more stable and fertile. Land danger is permanently reduced."
+          }
+        ]
+      },
+      {
+        "text": "Improve Temperature",
+        "effects": [
+          {
+            "type": "temperature",
+            "delta": -30,
+            "permanent": true,
+            "message": "A gentle climate pattern settles in. Temperature extremes are permanently softened."
+          }
+        ]
+      },
+      {
+        "text": "Improve Precipitation",
+        "effects": [
+          {
+            "type": "precipitation",
+            "delta": -30,
+            "permanent": true,
+            "message": "Rainfall grows more reliable. Drought and flood dangers are permanently lessened."
+          }
+        ]
+      },
+      {
+        "text": "Improve Vegetation",
+        "effects": [
+          {
+            "type": "vegetation",
+            "delta": -30,
+            "permanent": true,
+            "message": "Edible plants begin to flourish along the route. Vegetation safety is permanently improved."
+          }
+        ]
+      },
+      {
+        "text": "Improve Radiation",
+        "effects": [
+          {
+            "type": "radiation",
+            "delta": -30,
+            "permanent": true,
+            "message": "Background radiation levels drop. The land is permanently cleansed of a subtle poison."
+          }
+        ]
+      }
+    ]
+  }
+]

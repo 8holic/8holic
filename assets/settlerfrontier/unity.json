@@ -1,0 +1,137 @@
+[
+  {
+    "ID": 0,
+    "name": "Whispers of Discontent",
+    "description": "Around the campfire, hushed voices speak of the hardship and the distance still ahead. A few settlers stare longingly back at the last valley. No action is needed yet, but the mood is shifting.",
+    "hasChoice": false,
+    "effects": []
+  },
+  {
+    "ID": 1,
+    "name": "Restless Sleep",
+    "description": "During the night, arguments break out over trivial matters. Blankets are tossed, and a handful of settlers mutter about leaving. The caravan's unity trembles, but the dawn brings a fragile calm.",
+    "hasChoice": false,
+    "effects": []
+  },
+  {
+    "ID": 2,
+    "name": "Fireside Grumbling",
+    "description": "A group of travellers complains loudly about the constant marching and the lack of a permanent home. Their words sow doubt among the younger settlers. The leader's gaze alone keeps them in line for now.",
+    "hasChoice": false,
+    "effects": []
+  },
+  {
+    "ID": 3,
+    "name": "The Settler's Doubt",
+    "description": "An elderly settler, respected by many, questions whether the caravan will ever find a true haven. Her words hang heavy in the air. The caravan continues, but the seed of doubt is planted.",
+    "hasChoice": false,
+    "effects": []
+  },
+  {
+    "ID": 4,
+    "name": "Clenched Fists",
+    "description": "Tempers flare over a perceived unfair distribution of tools. Pushing and shoving stop short of violence, but the atmosphere is tense. The caravan's heart beats a little faster tonight.",
+    "hasChoice": false,
+    "effects": []
+  },
+  {
+    "ID": 5,
+    "name": "The Call of the Last Oasis",
+    "description": "A faction of settlers insists the previous site was better than any we'll find. They demand to turn back and settle there, threatening to break off.",
+    "hasChoice": true,
+    "choices": [
+      {
+        "text": "Let them go",
+        "effects": [
+          {
+            "type": "settlers",
+            "delta": { "min": -100, "max": -50 },
+            "message": "{delta} settlers leave the caravan, convinced the last valley was their true home."
+          }
+        ]
+      },
+      {
+        "text": "Rally the caravan's spirit",
+        "effects": [
+          {
+            "type": "unity",
+            "delta": { "min": -20, "max": -10 },
+            "message": "It takes impassioned speeches and shared rations, but the dissenters stay. Unity drops by {delta}%."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ID": 6,
+    "name": "Fork in the Road",
+    "description": "A persuasive group claims the path behind offered richer land. They demand a vote to go back. The caravan's decision is stark: let them leave or burn precious unity to hold the line.",
+    "hasChoice": true,
+    "choices": [
+      {
+        "text": "Allow them to depart",
+        "effects": [
+          {
+            "type": "settlers",
+            "delta": { "min": -80, "max": -40 },
+            "message": "{delta} settlers turn back, taking their supplies with them. The caravan grows smaller."
+          }
+        ]
+      },
+      {
+        "text": "Convince them to stay",
+        "effects": [
+          {
+            "type": "unity",
+            "delta": { "min": -25, "max": -15 },
+            "message": "Heated debates and concessions cost the caravan dearly. Unity erodes by {delta}%."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ID": 7,
+    "name": "Rough Tinkering",
+    "description": "A restless crowd, searching for answers, accidentally floods the terrain scanner with chaotic signals, damaging its sensitivity.",
+    "hasChoice": false,
+    "effects": [
+      {
+        "type": "terrainScanner",
+        "delta": { "min": -10, "max": -5 },
+        "message": "The terrain scanner is damaged by {delta}%. Precious precision lost."
+      }
+    ]
+  },
+  {
+    "ID": 8,
+    "name": "Storm of Nervous Hands",
+    "description": "Anxiety drives settlers to fiddle with the weather instruments, hoping to find a forecast of a promised land. The delicate sensors are mishandled.",
+    "hasChoice": false,
+    "effects": [
+      {
+        "type": "atmosphericScanner",
+        "delta": { "min": -10, "max": -5 },
+        "message": "The atmospheric scanner suffers a {delta}% calibration loss. Storms may now come without warning."
+      }
+    ]
+  },
+  {
+    "ID": 9,
+    "name": "A Fatal Brawl",
+    "description": "Tempers flare into a violent scuffle over remaining supplies. Before order is restored, blood is spilled and trust is shattered.",
+    "hasChoice": false,
+    "effects": [
+      {
+        "type": "settlers",
+        "delta": { "min": -30, "max": -10 },
+        "message": "{delta} settlers perish in the chaos."
+      },
+      {
+        "type": "unity",
+        "delta": { "min": -15, "max": -5 },
+        "message": "Unity crumbles by {delta}% as fear takes hold."
+      }
+    ]
+  }
+]

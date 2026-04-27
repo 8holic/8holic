@@ -1,0 +1,590 @@
+[
+  {
+    "ID": 0,
+    "name": "Hydrological vs Terrain Maps",
+    "description": "The knowledge database reveals two exclusive map sets: one pinpoints a region with exceptional water reserves, the other marks stable, fertile ground. Which route should the caravan prioritise?",
+    "hasChoice": true,
+    "choices": [
+      {
+        "text": "Follow the water map",
+        "effects": [
+          {
+            "type": "waterSupply",
+            "delta": -50,
+            "message": "The hydrological charts guide the caravan toward a pristine watershed. The next region's water supply will be far safer."
+          }
+        ]
+      },
+      {
+        "text": "Follow the terrain map",
+        "effects": [
+          {
+            "type": "land",
+            "delta": -50,
+            "message": "Ancient survey data reveals a stretch of stable ground. The next area's land quality will be much more forgiving."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ID": 1,
+    "name": "Water vs Climate",
+    "description": "The database holds conflicting forecasts: one predicts a region with abundant fresh water, the other promises mild temperatures. Only one lead can be pursued.",
+    "hasChoice": true,
+    "choices": [
+      {
+        "text": "Seek the water source",
+        "effects": [
+          {
+            "type": "waterSupply",
+            "delta": -50,
+            "message": "The caravan diverts toward the predicted spring line, ensuring the next location's water danger drops sharply."
+          }
+        ]
+      },
+      {
+        "text": "Head for the mild climate",
+        "effects": [
+          {
+            "type": "temperature",
+            "delta": -50,
+            "message": "Climate models pinpoint a pocket of gentle weather ahead. The next stop's temperature will be far less extreme."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ID": 2,
+    "name": "Water vs Rainfall",
+    "description": "Two promising predictions: a hidden aquifer or a zone of steady, gentle rain. The caravan must decide which asset matters more right now.",
+    "hasChoice": true,
+    "choices": [
+      {
+        "text": "Dig for the aquifer",
+        "effects": [
+          {
+            "type": "waterSupply",
+            "delta": -50,
+            "message": "The aquifer's location is uploaded to the nav system. Next region's water supply will be significantly safer."
+          }
+        ]
+      },
+      {
+        "text": "Move toward the rain",
+        "effects": [
+          {
+            "type": "precipitation",
+            "delta": -50,
+            "message": "Chasing the rain band promises a well-watered next stop. Precipitation danger will be notably reduced."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ID": 3,
+    "name": "Water vs Flora",
+    "description": "A fork in the data: one path leads to a chain of clear springs, the other to dense, edible vegetation. Which provision should the caravan secure?",
+    "hasChoice": true,
+    "choices": [
+      {
+        "text": "Prioritise the springs",
+        "effects": [
+          {
+            "type": "waterSupply",
+            "delta": -50,
+            "message": "The spring chain is locked in. The next location's water supply will be much less hazardous."
+          }
+        ]
+      },
+      {
+        "text": "Prioritise the vegetation",
+        "effects": [
+          {
+            "type": "vegetation",
+            "delta": -50,
+            "message": "The database's flora scan leads to a lush region ahead. Vegetation danger plummets for the next stop."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ID": 4,
+    "name": "Water vs Radiation",
+    "description": "The science terminal flags a clean lake, but also a valley with unusually low background radiation. Only one destination can be reached before nightfall.",
+    "hasChoice": true,
+    "choices": [
+      {
+        "text": "Travel to the lake",
+        "effects": [
+          {
+            "type": "waterSupply",
+            "delta": -50,
+            "message": "The clean lake coordinates are set. The next region's water supply will be dramatically safer."
+          }
+        ]
+      },
+      {
+        "text": "Travel to the low‑rad valley",
+        "effects": [
+          {
+            "type": "radiation",
+            "delta": -50,
+            "message": "The valley's low radiation signature guides the way. Next stop's radiation threat drops substantially."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ID": 5,
+    "name": "Water vs Shelter",
+    "description": "Two promising sites: a riverbend with drinkable water, or the ruins of a bunker that would provide sturdy shelter. Which necessity comes first?",
+    "hasChoice": true,
+    "choices": [
+      {
+        "text": "Make for the riverbend",
+        "effects": [
+          {
+            "type": "waterSupply",
+            "delta": -50,
+            "message": "The riverbend's coordinates promise relief. Water supply danger in the next area is greatly reduced."
+          }
+        ]
+      },
+      {
+        "text": "Make for the bunker",
+        "effects": [
+          {
+            "type": "shelter",
+            "delta": -50,
+            "message": "The bunker's silhouette appears on the map. The next location's shelter will be far more secure."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ID": 6,
+    "name": "Land vs Climate",
+    "description": "The database highlights two safe havens: one with rich, tillable soil, the other with consistently comfortable temperatures. The caravan must choose its next camp.",
+    "hasChoice": true,
+    "choices": [
+      {
+        "text": "Settle the fertile ground",
+        "effects": [
+          {
+            "type": "land",
+            "delta": -50,
+            "message": "The fertile ground data reshapes the route. The next region's land will be far easier to work."
+          }
+        ]
+      },
+      {
+        "text": "Settle the temperate zone",
+        "effects": [
+          {
+            "type": "temperature",
+            "delta": -50,
+            "message": "The temperate zone becomes the new target. Next location's temperature danger falls sharply."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ID": 7,
+    "name": "Land vs Rainfall",
+    "description": "Two terrain analyses: one predicts solid, arable soil; the other suggests consistent rain that will keep crops alive. Which advantage to chase?",
+    "hasChoice": true,
+    "choices": [
+      {
+        "text": "Go for the arable soil",
+        "effects": [
+          {
+            "type": "land",
+            "delta": -50,
+            "message": "The arable soil prediction reshapes the caravan's path. The next stop's land danger decreases markedly."
+          }
+        ]
+      },
+      {
+        "text": "Go for the consistent rain",
+        "effects": [
+          {
+            "type": "precipitation",
+            "delta": -50,
+            "message": "Steady rain models guide the caravan forward. Precipitation danger next area is significantly lower."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ID": 8,
+    "name": "Land vs Vegetation",
+    "description": "The scouts’ data reveals a stretch of perfect farmland, while another report speaks of wild orchards. Only one location can be reached with the caravan’s remaining fuel.",
+    "hasChoice": true,
+    "choices": [
+      {
+        "text": "Drive to the farmland",
+        "effects": [
+          {
+            "type": "land",
+            "delta": -50,
+            "message": "The farmland's bearing is fed into the nav system. Land danger next move will be greatly reduced."
+          }
+        ]
+      },
+      {
+        "text": "Drive to the orchards",
+        "effects": [
+          {
+            "type": "vegetation",
+            "delta": -50,
+            "message": "Orchard coordinates override the current heading. The next region's vegetation danger drops sharply."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ID": 9,
+    "name": "Land vs Radiation",
+    "description": "A terrain scan shows a perfect building site, but a radiation survey marks a clean zone nearby. Only one gamble can be made.",
+    "hasChoice": true,
+    "choices": [
+      {
+        "text": "Stake the building site",
+        "effects": [
+          {
+            "type": "land",
+            "delta": -50,
+            "message": "The building site's stability is confirmed. Next location's land threat will be much less severe."
+          }
+        ]
+      },
+      {
+        "text": "Relocate to the clean zone",
+        "effects": [
+          {
+            "type": "radiation",
+            "delta": -50,
+            "message": "The clean zone's readings reroute the caravan. Radiation danger next stop will plummet."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ID": 10,
+    "name": "Land vs Shelter",
+    "description": "Two opportunities: a wide, clear area ideal for farming, or a canyon riddled with natural caves. Which does the caravan need more?",
+    "hasChoice": true,
+    "choices": [
+      {
+        "text": "Claim the farming area",
+        "effects": [
+          {
+            "type": "land",
+            "delta": -50,
+            "message": "The farming area's soil analysis boosts confidence. The next region's land danger is substantially lower."
+          }
+        ]
+      },
+      {
+        "text": "Claim the cave‑filled canyon",
+        "effects": [
+          {
+            "type": "shelter",
+            "delta": -50,
+            "message": "The canyon's cave network looks promising. Next location's shelter will be far more reliable."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ID": 11,
+    "name": "Climate vs Rainfall",
+    "description": "Predictive models disagree: one points to a region of stable, pleasant temperatures; the other promises ample rainfall. Only one projection can be followed.",
+    "hasChoice": true,
+    "choices": [
+      {
+        "text": "Trust the temperature model",
+        "effects": [
+          {
+            "type": "temperature",
+            "delta": -50,
+            "message": "The temperature model adjusts the caravan's heading. Next stop's climate will be far more tolerable."
+          }
+        ]
+      },
+      {
+        "text": "Trust the rainfall model",
+        "effects": [
+          {
+            "type": "precipitation",
+            "delta": -50,
+            "message": "The rainfall projection steers the group towards a wetter, safer zone. Precipitation danger decreases sharply."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ID": 12,
+    "name": "Climate vs Vegetation",
+    "description": "Two climate‑based advantages: mild weather that would ease travel, or a microclimate where edible plants flourish. The caravan must pick its priority.",
+    "hasChoice": true,
+    "choices": [
+      {
+        "text": "Chase the mild weather",
+        "effects": [
+          {
+            "type": "temperature",
+            "delta": -50,
+            "message": "The mild weather corridor is now the target. Temperature danger at the next site drops substantially."
+          }
+        ]
+      },
+      {
+        "text": "Chase the vegetation",
+        "effects": [
+          {
+            "type": "vegetation",
+            "delta": -50,
+            "message": "The microclimate's plant life promises bounty. Vegetation threat next move will be greatly reduced."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ID": 13,
+    "name": "Climate vs Radiation",
+    "description": "One projection shows a comfortable climate, but a rival scan has found a pocket with nearly zero radiation. The caravan can only travel towards one.",
+    "hasChoice": true,
+    "choices": [
+      {
+        "text": "Aim for the comfort zone",
+        "effects": [
+          {
+            "type": "temperature",
+            "delta": -50,
+            "message": "The comfort zone's coordinates override the map. Next region's temperature will be much safer."
+          }
+        ]
+      },
+      {
+        "text": "Aim for the radiation pocket",
+        "effects": [
+          {
+            "type": "radiation",
+            "delta": -50,
+            "message": "The radiation pocket's beacon is locked in. The next location's radiation danger will be minimal."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ID": 14,
+    "name": "Climate vs Shelter",
+    "description": "Two scientific predictions: a stretch of warm, easy‑going weather, or a region full of natural shelters. Only one can be reached with current supplies.",
+    "hasChoice": true,
+    "choices": [
+      {
+        "text": "March towards the warmth",
+        "effects": [
+          {
+            "type": "temperature",
+            "delta": -50,
+            "message": "The warm zone prediction shifts the caravan's route. Next site's temperature threat falls dramatically."
+          }
+        ]
+      },
+      {
+        "text": "March towards the shelters",
+        "effects": [
+          {
+            "type": "shelter",
+            "delta": -50,
+            "message": "The region of shelters appears on the scanner. The next location's shelter will be exceptionally safe."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ID": 15,
+    "name": "Rainfall vs Vegetation",
+    "description": "The database suggests two fertile zones: one defined by regular, nourishing rain; the other by thick, natural plant cover. Which resource should guide the caravan?",
+    "hasChoice": true,
+    "choices": [
+      {
+        "text": "Follow the rain",
+        "effects": [
+          {
+            "type": "precipitation",
+            "delta": -50,
+            "message": "The rain charts become the new guide. The next area's precipitation danger will be far less worrying."
+          }
+        ]
+      },
+      {
+        "text": "Follow the plant cover",
+        "effects": [
+          {
+            "type": "vegetation",
+            "delta": -50,
+            "message": "The thick vegetation data points to a safer stop. Vegetation threat next move drops substantially."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ID": 16,
+    "name": "Rainfall vs Radiation",
+    "description": "A hard choice from the models: a rain‑rich area that will keep water barrels full, or a sanctuary with almost no radiation signature. One must be sacrificed.",
+    "hasChoice": true,
+    "choices": [
+      {
+        "text": "Opt for the rain",
+        "effects": [
+          {
+            "type": "precipitation",
+            "delta": -50,
+            "message": "Choosing the rain-rich area ensures a well-hydrated next stop. Precipitation danger falls sharply."
+          }
+        ]
+      },
+      {
+        "text": "Opt for the safety",
+        "effects": [
+          {
+            "type": "radiation",
+            "delta": -50,
+            "message": "The radiation-free sanctuary is set as the next waypoint. Radiation danger there will be nearly nonexistent."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ID": 17,
+    "name": "Rainfall vs Shelter",
+    "description": "Two analysed locations: one benefits from constant light rain that can be harvested; the other offers strong, pre‑existing structures. The caravan must decide.",
+    "hasChoice": true,
+    "choices": [
+      {
+        "text": "Head into the rain zone",
+        "effects": [
+          {
+            "type": "precipitation",
+            "delta": -50,
+            "message": "The rain zone's forecast is plugged into the route. Next area's precipitation danger will be markedly lower."
+          }
+        ]
+      },
+      {
+        "text": "Head for the structures",
+        "effects": [
+          {
+            "type": "shelter",
+            "delta": -50,
+            "message": "The pre-existing structures become the caravan's destination. Shelter quality next stop will be greatly improved."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ID": 18,
+    "name": "Vegetation vs Radiation",
+    "description": "The science logs show a forest bursting with food, but also a sterile plateau free of radiation. Only one haven can be reached with the remaining daylight.",
+    "hasChoice": true,
+    "choices": [
+      {
+        "text": "Enter the forest",
+        "effects": [
+          {
+            "type": "vegetation",
+            "delta": -50,
+            "message": "The forest's biomass signature promises safety. Next location's vegetation danger will be drastically reduced."
+          }
+        ]
+      },
+      {
+        "text": "Head to the plateau",
+        "effects": [
+          {
+            "type": "radiation",
+            "delta": -50,
+            "message": "The plateau's rad-free reading steers the caravan. Radiation threat next stop will be negligible."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ID": 19,
+    "name": "Vegetation vs Shelter",
+    "description": "Two encouraging reports: an overgrown valley where food is plentiful, and a cliffside with deep, weather‑proof caves. The caravan can only secure one.",
+    "hasChoice": true,
+    "choices": [
+      {
+        "text": "Secure the valley",
+        "effects": [
+          {
+            "type": "vegetation",
+            "delta": -50,
+            "message": "The overgrown valley is locked into the route. Next stop's vegetation danger will be far less of a threat."
+          }
+        ]
+      },
+      {
+        "text": "Secure the caves",
+        "effects": [
+          {
+            "type": "shelter",
+            "delta": -50,
+            "message": "The cliffside caves promise immense shelter. The next location's shelter quality will be exceptional."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ID": 20,
+    "name": "Radiation vs Shelter",
+    "description": "A final dilemma from the database: a region with virtually no radiation, or the remains of a fortified bunker that could house the entire caravan. Only one path can be taken.",
+    "hasChoice": true,
+    "choices": [
+      {
+        "text": "Travel to the clean region",
+        "effects": [
+          {
+            "type": "radiation",
+            "delta": -50,
+            "message": "The clean region's coordinates light up the map. The next stop's radiation danger will be almost wiped out."
+          }
+        ]
+      },
+      {
+        "text": "Travel to the bunker",
+        "effects": [
+          {
+            "type": "shelter",
+            "delta": -50,
+            "message": "The fortified bunker's position is saved. Next location's shelter will be robust and secure."
+          }
+        ]
+      }
+    ]
+  }
+]
