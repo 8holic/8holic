@@ -77,13 +77,13 @@
     <h1 class="game-title" style="border-bottom: none;">🚐 Caravan Survival</h1>
     <p>Choose your mode:</p>
     <button id="manualModeBtn" class="game-btn game-btn-large">🕹️ Manual Mode</button>
-    <button id="botModeBtn" class="game-btn game-btn-large">🤖 Bot Mode (Coming Soon)</button>
+    <button id="botModeBtn" class="game-btn game-btn-large">🤖 Bot Mode</button>
   </div>
 
   <!-- BACKSTORY MODAL (with seed input) -->
   <div id="backstoryOverlay" class="card" style="display: none; background: rgba(30,26,47,0.95);">
     <h2>🌄 The Bunker Opens</h2>
-    <p>In 2030, a great disaster occurred. Nobody knows what it is. When it became obvious that the era of man was over, 1000 people were sealed in a bunker.</p>
+    <p>In 2030, a great disaster occurred. Nobody knows what it is. When it became obvious that the era of man was over, 2000 people were sealed in a bunker.</p>
     <p>You are the trusted leader of the caravan. A brave new Frontier awaits among the ruins of the old. Your goal is to find a suitable place for the caravan to settle down.</p>
     <div style="margin: 20px 0;">
       <label for="seedInput" style="display: block; margin-bottom: 8px;">🎲 Seed (optional):</label>
@@ -97,6 +97,29 @@
     <button id="startGameBtn" class="game-btn">Begin Journey</button>
   </div>
 
+  <!-- BOT BUILDER OVERLAY (hidden initially) -->
+  <div id="botBuilderOverlay" class="card" style="display: none; background: rgba(30,26,47,0.95);">
+    <h2>🤖 Bot Program Builder</h2>
+    <p>Build your decision tree. Blocks are evaluated top‑to‑bottom.</p>
+    <div id="blockToolbar" style="margin-bottom:15px;">
+      <button id="addWhenBlock" class="game-btn">➕ Add When Block</button>
+    </div>
+    <div id="blockCanvas" style="background:#1e1a2f; border:1px solid #A367B1; border-radius:8px; padding:15px; min-height:200px;">
+      <!-- Blocks will be rendered here -->
+    </div>
+    <div style="margin-top: 15px; display: flex; gap: 10px; flex-wrap: wrap;">
+      <button id="launchBotBtn" class="game-btn">🚀 Launch Bot</button>
+      <button id="cancelBotBtn" class="game-btn">✖ Cancel</button>
+      <button id="exportBotBtn" class="game-btn">📥 Export Program</button>
+      <button id="importBotBtn" class="game-btn">📤 Import Program</button>
+    </div>
+    <input type="file" id="importBotFile" accept=".json" style="display:none;" />
+    <div style="margin-top: 10px; opacity: 0.7; font-size: 0.9rem;">
+      <p>💡 <b>Conditions:</b> <code>settlers &gt; 700</code>, <code>allVisibleGreen</code>, <code>equipmentAvailable</code>, <code>attributeColor</code>.</p>
+      <p>💡 <b>Actions:</b> <code>settle</code>, <code>scan</code>, <code>move</code>, <code>priority</code>.</p>
+    </div>
+  </div>
+
   <!-- GAME SCREEN (hidden initially) -->
   <div id="gameScreen" class="game-panel" style="display: none;">
     <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -106,7 +129,7 @@
       </span>
     </div>
     <div class="game-stats-grid">
-      <div class="stat-item">👥 Settlers: <span id="settlersValue">1000</span></div>
+      <div class="stat-item">👥 Settlers: <span id="settlersValue">2000</span></div>
       <div class="stat-item">🛰️ Terrain Scanner: <span id="terrainScannerValue">100</span>%</div>
       <div class="stat-item">🛰️ Atmospheric Scanner: <span id="atmosphericScannerValue">100</span>%</div>
       <div class="stat-item">🤝 Unity: <span id="unityValue">100</span>%</div>
@@ -295,7 +318,7 @@
   window.SETTLERFRONTIER_BASE = "/8holic/assets/settlerfrontier/";
 </script>
 
-<!-- Load game script from its dedicated folder (only once!) -->
+<!-- Load the three split scripts in order -->
 <script src="/8holic/assets/settlerfrontier/settlerfrontier.js"></script>
 
 

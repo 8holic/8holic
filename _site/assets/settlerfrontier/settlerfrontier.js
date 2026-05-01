@@ -1,3 +1,4 @@
+
 /************************************************************
  * CARAVAN SURVIVAL – DATA-DRIVEN (JSON EVENTS & FEATURES)
  ************************************************************/
@@ -17,6 +18,7 @@
 
   let rng = mulberry32(Date.now());
   let currentSeed = Date.now();
+  let pendingBotMode = false;
 
   function seededRandomInt(min, max) {
     return Math.floor(rng() * (max - min + 1)) + min;
@@ -43,7 +45,7 @@
 
   // ---------- 3. GAME STATE ----------
   const GameState = {
-    settlers: 1000,
+    settlers: 2000,
     terrainScanner: 100,
     atmosphericScanner: 100,
     unity: 100,
@@ -55,7 +57,9 @@
     currentLocation: null,
     pendingEvent: null,
     eventQueue: [],
-    permanentLocationModifiers: {}   // { waterSupply: 5, radiation: -10, ... }
+    permanentLocationModifiers: {},   // { waterSupply: 5, radiation: -10, ... }
+    botMode: false,                   // add this
+    botProgram: null
   };
 
   // ---------- 4. UTILITIES ----------
@@ -438,7 +442,7 @@
   }
 
   function enableActions() {
-    if (!GameState.gameOver && GameState.isActive) {
+    if (!GameState.gameOver && GameState.isActive && !GameState.botMode) {
       ui.moveBtn.disabled = false;
       ui.settleBtn.disabled = false;
       updateUI();
@@ -448,12 +452,33 @@
   function processEventQueue() {
     if (GameState.eventQueue.length === 0) {
       clearEventPanel();
+      if (GameState.botMode) {
+        const action = botAutoStep();
+        if (action === 'settle') { settle(); return; }
+        if (action === 'scan') {
+          scanLocation();
+          setTimeout(() => {
+            GameState.currentLocation = applyLocationGeneration(GameState);
+            log('📍 Moved to a new location.');
+            displayLocation();
+            updateUI();
+            checkGameOver();
+            if (!GameState.gameOver) moveToNextLocation();
+          }, 1200);
+          return;
+        }
+      }
       GameState.currentLocation = applyLocationGeneration(GameState);
-      log(`📍 Moved to a new location.`);
+      log('📍 Moved to a new location.');
       displayLocation();
       updateUI();
       checkGameOver();
-      enableActions();
+      if (GameState.gameOver) return;
+      if (GameState.botMode) {
+        moveToNextLocation();   // keep looping
+      } else {
+        enableActions();
+      }
       return;
     }
 
@@ -474,40 +499,213 @@
     GameState.pendingEvent = event;
     ui.eventPanelDescription.textContent = event.description;
     ui.eventPanelChoices.innerHTML = '';
-    event.choices.forEach(choice => {
-      const btn = document.createElement('button');
-      btn.textContent = choice.text;
-      btn.classList.add('game-btn', 'event-choice-btn');
-      btn.addEventListener('click', () => {
-        const message = choice.effect(GameState);
+
+    if (GameState.botMode) {
+      const priority = findPriorityInProgram();
+      const chosen = priority ? botDecidePriority(priority, event.choices) : event.choices[0];
+      showBotReasoning('Chose: ' + chosen.text);
+      setTimeout(() => {
+        const message = chosen.effect(GameState);
         log(`📌 Event: ${event.name} – ${message}`);
-        displayAutoEvent(event, message, choice.text);
+        displayAutoEvent(event, message, chosen.text);
+      }, 800);
+    } else {
+      event.choices.forEach(choice => {
+        const btn = document.createElement('button');
+        btn.textContent = choice.text;
+        btn.classList.add('game-btn', 'event-choice-btn');
+        btn.addEventListener('click', () => {
+          const message = choice.effect(GameState);
+          log(`📌 Event: ${event.name} – ${message}`);
+          displayAutoEvent(event, message, choice.text);
+        });
+        ui.eventPanelChoices.appendChild(btn);
       });
-      ui.eventPanelChoices.appendChild(btn);
-    });
+    }
     disableActions();
   }
 
   function displayAutoEvent(event, outcomeMessage, choiceText = null) {
     GameState.pendingEvent = event;
     let html = event.description;
-    if (choiceText) {
-      html += '<br><br>➡️ ' + choiceText;
-    }
+    if (choiceText) html += '<br><br>➡️ ' + choiceText;
     html += '<br><br>' + outcomeMessage;
     ui.eventPanelDescription.innerHTML = html;
     ui.eventPanelChoices.innerHTML = '';
 
-    const ackBtn = document.createElement('button');
-    ackBtn.textContent = '✔️ Acknowledge';
-    ackBtn.classList.add('game-btn');
-    ackBtn.addEventListener('click', () => {
-      processEventQueue();
-    });
-    ui.eventPanelChoices.appendChild(ackBtn);
+    if (GameState.botMode) {
+      setTimeout(() => { processEventQueue(); }, 1800);
+    } else {
+      const ackBtn = document.createElement('button');
+      ackBtn.textContent = '✔️ Acknowledge';
+      ackBtn.classList.add('game-btn');
+      ackBtn.addEventListener('click', () => { processEventQueue(); });
+      ui.eventPanelChoices.appendChild(ackBtn);
+    }
     disableActions();
   }
+  // ---------- BOT ENGINE ----------
+  function evaluateCondition(cond, state) {
+    if (cond.type === 'comparison') {
+      const left = state[cond.stat];
+      switch (cond.op) {
+        case '>': return left > cond.value;
+        case '<': return left < cond.value;
+        case '>=': return left >= cond.value;
+        case '<=': return left <= cond.value;
+        default: return false;
+      }
+    } else if (cond.type === 'attributeColor') {
+      if (!state.currentLocation) return false;
+      const attr = cond.attr;
+      // Determine visible? Use visible flag if present, else treat as visible
+      const visible = (state.currentLocation.visible && state.currentLocation.visible[attr] !== false);
+      let tier;
+      if (visible) {
+        const roll = state.currentLocation[attr];
+        tier = roll >= 200 ? 'red' : (roll >= 75 ? 'orange' : 'green');
+      } else {
+        // Attribute is hidden: use unknownAs if defined, otherwise use actual roll (cheating)
+        if (cond.unknownAs) {
+          tier = cond.unknownAs;
+        } else {
+          const roll = state.currentLocation[attr];
+          tier = roll >= 200 ? 'red' : (roll >= 75 ? 'orange' : 'green');
+        }
+      }
+      return tier === cond.color;
+    } else if (cond.type === 'allVisibleGreen') {
+      if (!state.currentLocation) return false;
+      return LOCATION_ATTRIBUTES.every(attr => {
+        return state.currentLocation.visible && state.currentLocation.visible[attr] && state.currentLocation[attr] < 75;
+      });
+    } else if (cond.type === 'equipmentAvailable') {
+      return state.equipment > 0;
+    } else if (cond.type === 'positiveFeaturesGreaterThanNegative') {
+      if (!state.currentLocation || !state.currentLocation.scanned) return false;
+      let pos = 0, neg = 0;
+      state.currentLocation.terrarianFeatures.forEach(f => f.increasesDeath ? neg++ : pos++);
+      return pos > neg;
+    } else if (cond.type === 'countAttributeColor') {
+      if (!state.currentLocation) return false;
+      const targetColor = cond.color;
+      let count = 0;
+      LOCATION_ATTRIBUTES.forEach(attr => {
+        const visible = (state.currentLocation.visible && state.currentLocation.visible[attr] !== false);
+        let tier;
+        if (visible) {
+          const roll = state.currentLocation[attr];
+          tier = roll >= 200 ? 'red' : (roll >= 75 ? 'orange' : 'green');
+        } else {
+          tier = cond.hiddenAs || null;
+        }
+        if (tier === targetColor) count++;
+      });
+      const threshold = cond.value || cond.minCount || 0;
+      switch (cond.op) {
+        case '>': return count > threshold;
+        case '<': return count < threshold;
+        case '>=': return count >= threshold;
+        case '<=': return count <= threshold;
+        case '==': return count === threshold;
+        default: return count >= threshold;
+      }
+    } else if (cond.type === 'countUnknown') {
+      if (!state.currentLocation) return false;
+      let count = 0;
+      LOCATION_ATTRIBUTES.forEach(attr => {
+        if (!state.currentLocation.visible || !state.currentLocation.visible[attr]) count++;
+      });
+      const threshold = cond.value || cond.minCount || 0;
+      switch (cond.op) {
+        case '>': return count > threshold;
+        case '<': return count < threshold;
+        case '>=': return count >= threshold;
+        case '<=': return count <= threshold;
+        case '==': return count === threshold;
+        default: return count >= threshold;
+      }
+    }
+  }
 
+  function botDecidePriority(priorityList, choices) {
+    const harmScores = choices.map(choice => {
+      let worstIndex = -1;
+      (choice.effects || []).forEach(eff => {
+        const stat = eff.type;
+        if (priorityList.includes(stat)) {
+          let delta = typeof eff.delta === 'object' ? 0 : (eff.delta || 0);
+          if (delta < 0) {
+            const idx = priorityList.indexOf(stat);
+            if (idx > worstIndex) worstIndex = idx;
+          }
+        }
+      });
+      return { choice, worstIndex };
+    });
+    harmScores.sort((a, b) => {
+      if (a.worstIndex === -1 && b.worstIndex !== -1) return -1;
+      if (b.worstIndex === -1 && a.worstIndex !== -1) return 1;
+      return b.worstIndex - a.worstIndex;
+    });
+    return harmScores[0].choice;
+  }
+
+  function botProcessActions(actions, state) {
+    for (const action of actions) {
+      if (action.type === 'settle') return 'settle';
+      if (action.type === 'scan' && state.equipment > 0 && state.currentLocation && !state.currentLocation.scanned) return 'scan';
+      if (action.type === 'move') return 'move';
+    }
+    return null;
+  }
+
+  function botAutoStep() {
+    if (!GameState.botProgram) return 'move';
+    for (const whenBlock of GameState.botProgram) {
+      if (evaluateCondition(whenBlock.condition, GameState)) {
+        for (const rule of whenBlock.rules) {
+          if (rule.type === 'if') {
+            if (rule.conditions.every(c => evaluateCondition(c, GameState))) {
+              const action = botProcessActions(rule.actions, GameState);
+              if (action) return action;
+            } else if (rule.elseActions) {
+              const action = botProcessActions(rule.elseActions, GameState);
+              if (action) return action;
+            }
+          } else if (rule.type === 'settle' || rule.type === 'scan' || rule.type === 'move') {
+            if (rule.type === 'scan' && GameState.equipment > 0 && GameState.currentLocation && !GameState.currentLocation.scanned) return 'scan';
+            if (rule.type === 'settle') return 'settle';
+            if (rule.type === 'move') return 'move';
+          }
+        }
+        return 'move';
+      }
+    }
+    return 'move';
+  }
+
+  function findPriorityInProgram() {
+    if (!GameState.botProgram) return null;
+    for (const when of GameState.botProgram) {
+      if (evaluateCondition(when.condition, GameState)) {
+        for (const rule of when.rules) {
+          if (rule.type === 'priority') return rule.order;
+        }
+      }
+    }
+    return null;
+  }
+
+  function showBotReasoning(text) {
+    const existing = document.getElementById('botReasoning');
+    if (existing) existing.remove();
+    const div = document.createElement('div');
+    div.id = 'botReasoning';
+    div.style.cssText = 'margin-top:8px;padding:6px 10px;background:#392467;border-radius:8px;font-size:0.9rem;color:#FFD1E3;';
+    div.textContent = '🤖 ' + text;
+    document.getElementById('eventPanel')?.appendChild(div);
+  }
   // ---------- 11. MOVE (with science/unity probability) ----------
   function moveToNextLocation() {
     if (!GameState.isActive || GameState.gameOver) return;
@@ -771,7 +969,7 @@
   // ---------- 15. NEW GAME ----------
   function startNewGame(seedValue) {
     initializeSeed(seedValue);
-    GameState.settlers = 1000;
+    GameState.settlers = 2000;
     GameState.terrainScanner = 100;
     GameState.atmosphericScanner = 100;
     GameState.unity = 100;
@@ -783,6 +981,8 @@
     GameState.pendingEvent = null;
     delete GameState.locationModifiers;
     GameState.permanentLocationModifiers = {};   // reset permanent modifiers
+    MILESTONE_POOL = buildEventObjects(MILESTONE_RAW);
+
 
     GameState.currentLocation = generateLocation(0, GameState);
     clearLog();
@@ -794,11 +994,12 @@
     log('🚀 The caravan emerges from the bunker. Find a new home.');
   }
 
+
   // ---------- 16. LOAD JSON & INIT ----------
   async function loadGameData() {
     try {
       const base = window.SETTLERFRONTIER_BASE || '/assets/settlerfrontier/';
-      const [eventsResp, scienceResp, unityResp, featuresResp] = await Promise.all([
+      const [eventsResp, scienceResp, unityResp, featuresResp, milestonesResp] = await Promise.all([
         fetch(base + 'events.json'),
         fetch(base + 'science.json'),
         fetch(base + 'unity.json'),
@@ -809,13 +1010,14 @@
       const rawScience = await scienceResp.json();
       const rawUnity = await unityResp.json();
       const rawFeatures = await featuresResp.json();
+      const rawMilestones = await milestonesResp.json();
 
       EVENT_LIST = buildEventObjects(rawEvents);
       SCIENCE_EVENT_LIST = buildEventObjects(rawScience);
       UNITY_EVENT_LIST = buildEventObjects(rawUnity);
       TERRARIAN_FEATURES = buildFeatureObjects(rawFeatures);
-      MILESTONE_RAW = rawMilestones;                           // keep raw for restarts
-      MILESTONE_POOL = buildEventObjects(rawMilestones);       // initial pool
+      MILESTONE_RAW = rawMilestones;
+      MILESTONE_POOL = buildEventObjects(rawMilestones);
 
       ui.eventPanelDescription.textContent = 'No active event.';
       ui.moveBtn.disabled = false;
@@ -826,7 +1028,354 @@
       ui.eventPanelDescription.textContent = 'Error loading game data. Please refresh.';
     }
   }
+  
+  // ---------- BLOCK BUILDER (corrected) ----------
+  const BlockBuilder = {
+    program: [],
+    canvas: null,
+    init(canvasId) {
+      this.canvas = document.getElementById(canvasId);
+      this.program = [];   // always start EMPTY
+      this.render();
+    },
+    addWhenBlock() {
+      this.program.push({
+        type: 'when',
+        condition: { type: 'comparison', stat: 'settlers', op: '>', value: 700 },
+        rules: []
+      });
+      this.render();
+    },
+    removeWhen(idx) { this.program.splice(idx,1); this.render(); },
+    addRule(wen, rule) { this.program[wen].rules.push(rule); this.render(); },
+    removeRule(wen, ridx) { this.program[wen].rules.splice(ridx,1); this.render(); },
+    serialize() { return JSON.stringify(this.program, null, 2); },
 
+    render() {
+      const c = this.canvas;
+      if (!c) return;
+      c.innerHTML = '';
+      if (this.program.length === 0) {
+        c.innerHTML = '<p style="color:#aaa;text-align:center;">No rules yet. Click "Add When Block" to start.</p>';
+        return;
+      }
+      this.program.forEach((when, wi) => {
+        const d = document.createElement('div');
+        d.className = 'when-block';
+        d.style.cssText = 'background:#2a2340; border:1px solid #A367B1; border-radius:8px; padding:10px; margin:10px 0;';
+        d.innerHTML = `
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+            <b>WHEN</b>
+            <select class="whenStat" data-wi="${wi}">
+              <option value="settlers" ${when.condition.stat==='settlers'?'selected':''}>Settlers</option>
+              <option value="knowledge" ${when.condition.stat==='knowledge'?'selected':''}>Knowledge</option>
+              <option value="unity" ${when.condition.stat==='unity'?'selected':''}>Unity</option>
+              <option value="equipment" ${when.condition.stat==='equipment'?'selected':''}>Equipment</option>
+            </select>
+            <select class="whenOp" data-wi="${wi}">
+              <option value=">" ${when.condition.op==='>'?'selected':''}>></option>
+              <option value="<" ${when.condition.op==='<'?'selected':''}><</option>
+              <option value=">=" ${when.condition.op==='>='?'selected':''}>>=</option>
+              <option value="<=" ${when.condition.op==='<='?'selected':''}><=</option>
+            </select>
+            <input type="number" class="whenValue" value="${when.condition.value}" style="width:80px;" data-wi="${wi}">
+            <button class="game-btn removeWhen" data-wi="${wi}">🗑 Remove</button>
+            <button class="game-btn addRuleToWhen" data-wi="${wi}">➕ Add Rule</button>
+          </div>
+          <div class="rules-cont" style="margin-left:20px;margin-top:8px;"></div>`;
+        const rc = d.querySelector('.rules-cont');
+        when.rules.forEach((r,ri) => rc.appendChild(this._renderRule(r, wi, ri)));
+        c.appendChild(d);
+
+        d.querySelector('.removeWhen').onclick = () => this.removeWhen(wi);
+        d.querySelector('.addRuleToWhen').onclick = () => this._showRuleMenu(wi);
+        d.querySelector('.whenStat').onchange = e => { when.condition.stat = e.target.value; };
+        d.querySelector('.whenOp').onchange = e => { when.condition.op = e.target.value; };
+        d.querySelector('.whenValue').onchange = e => { when.condition.value = parseInt(e.target.value)||0; };
+      });
+    },
+
+    _showRuleMenu(wi) {
+      const type = prompt('Rule type: "priority", "if", "settle", "scan", "move"');
+      if (!type) return;
+      let rule;
+      switch(type) {
+        case 'priority':
+          rule = { type:'priority', order: ['knowledge','terrainScanner','atmosphericScanner','unity','settlers'] };
+          break;
+        case 'if':
+          rule = { type:'if', conditions:[], actions:[], elseActions:[] };
+          break;
+        case 'settle': case 'scan': case 'move':
+          rule = { type };
+          break;
+        default: return;
+      }
+      this.addRule(wi, rule);
+    },
+
+    _renderRule(rule, wi, ri) {
+      const div = document.createElement('div');
+      div.className = 'rule-item';
+      div.style.cssText = 'background:#392467;border-radius:6px;padding:8px;margin:5px 0;';
+      const self = this;
+
+      if (rule.type === 'priority') {
+        div.innerHTML = `<b>PRIORITY</b>
+          <ul class="prioList" style="list-style:none;padding:0;margin:4px 0;">
+            ${(rule.order||[]).map((s,i)=>`
+              <li style="background:#5D3587;margin:2px 0;padding:4px 8px;border-radius:4px;display:flex;justify-content:space-between;align-items:center;">
+                📌 ${s}
+                <span>
+                  <button class="moveUp" ${i===0?'disabled':''}>▲</button>
+                  <button class="moveDown" ${i===rule.order.length-1?'disabled':''}>▼</button>
+                  <button class="removeStat">✖</button>
+                </span></li>`).join('')}
+          </ul>
+          <button class="addStatBtn">➕ Add Stat</button>
+          <button class="game-btn removeRule" style="float:right;">🗑 Remove</button>`;
+
+        div.querySelector('.removeRule').onclick = () => self.removeRule(wi, ri);
+        div.querySelector('.addStatBtn').onclick = () => {
+          const s = prompt('Stat name (e.g., "knowledge", "settlers")');
+          if (s) { rule.order.push(s); self.render(); }
+        };
+        const lis = div.querySelectorAll('.prioList li');
+        lis.forEach((li, i) => {
+          li.querySelector('.moveUp').onclick = () => {
+            if (i > 0) {
+              const t = rule.order[i-1];
+              rule.order[i-1] = rule.order[i];
+              rule.order[i] = t;
+              self.render();
+            }
+          };
+          li.querySelector('.moveDown').onclick = () => {
+            if (i < rule.order.length-1) {
+              const t = rule.order[i+1];
+              rule.order[i+1] = rule.order[i];
+              rule.order[i] = t;
+              self.render();
+            }
+          };
+          li.querySelector('.removeStat').onclick = () => {
+            rule.order.splice(i, 1);
+            self.render();
+          };
+        });
+      } else if (rule.type === 'if') {
+        div.innerHTML = `<b>IF</b>
+          <div class="cond-list" style="margin-left:10px;"></div>
+          <button class="addCondBtn">➕ Condition</button>
+          <div style="margin-top:5px;"><b>THEN:</b><span class="then-acts"></span></div>
+          <div style="margin-top:3px;"><b>ELSE:</b><span class="else-acts"></span></div>
+          <button class="addThenAct">➕ Action to THEN</button>
+          <button class="addElseAct">➕ Action to ELSE</button>
+          <button class="game-btn removeRule" style="float:right;">🗑 Remove</button>`;
+
+        const condList = div.querySelector('.cond-list');
+        (rule.conditions||[]).forEach((c,ci) => condList.appendChild(self._renderCondition(c, wi, ri, ci)));
+        self._renderActions(div.querySelector('.then-acts'), rule.actions||[], wi, ri, 'then');
+        self._renderActions(div.querySelector('.else-acts'), rule.elseActions||[], wi, ri, 'else');
+
+        div.querySelector('.addCondBtn').onclick = () => {
+          rule.conditions.push({ type:'attributeColor', attr:'waterSupply', color:'green' });
+          self.render();
+        };
+        div.querySelector('.addThenAct').onclick = () => { rule.actions.push({ type:'settle' }); self.render(); };
+        div.querySelector('.addElseAct').onclick = () => { rule.elseActions.push({ type:'move' }); self.render(); };
+        div.querySelector('.removeRule').onclick = () => self.removeRule(wi, ri);
+      } else {
+        // simple action
+        div.innerHTML = `<b>ACTION:</b> ${rule.type.toUpperCase()}
+          <button class="game-btn removeRule" style="float:right;">🗑 Remove</button>`;
+        div.querySelector('.removeRule').onclick = () => self.removeRule(wi, ri);
+      }
+      return div;
+    },
+
+    _renderCondition(cond, wi, ri, ci) {
+      const d = document.createElement('div');
+      d.style.margin = '3px 0';
+      const type = cond.type || 'attributeColor';
+      d.innerHTML = `
+        <select class="condType">
+          <option value="attributeColor" ${type==='attributeColor'?'selected':''}>Attribute Color</option>
+          <option value="countAttributeColor" ${type==='countAttributeColor'?'selected':''}>Count of Attributes (Color)</option>
+          <option value="countUnknown" ${type==='countUnknown'?'selected':''}>Count of Unknown</option>
+          <option value="equipmentAvailable" ${type==='equipmentAvailable'?'selected':''}>Equipment Available</option>
+          <option value="allVisibleGreen" ${type==='allVisibleGreen'?'selected':''}>All Visible Green</option>
+        </select>
+        <span class="condDetails"></span>
+        <button class="removeCond">✖</button>`;
+      const details = d.querySelector('.condDetails');
+      const self = this;
+
+      function renderDetails() {
+        details.innerHTML = '';
+        if (cond.type === 'attributeColor' || cond.type === undefined) {
+          details.innerHTML = `
+            <select class="attrName">
+              ${LOCATION_ATTRIBUTES.map(a => `<option value="${a}" ${cond.attr===a?'selected':''}>${a}</option>`).join('')}
+            </select>
+            <select class="attrColor">
+              <option value="green" ${cond.color==='green'?'selected':''}>Green</option>
+              <option value="orange" ${cond.color==='orange'?'selected':''}>Orange</option>
+              <option value="red" ${cond.color==='red'?'selected':''}>Red</option>
+            </select>
+            <select class="unknownAs">
+              <option value="" ${!cond.unknownAs?'selected':''}>If hidden: use actual</option>
+              <option value="green" ${cond.unknownAs==='green'?'selected':''}>treat as Green</option>
+              <option value="orange" ${cond.unknownAs==='orange'?'selected':''}>treat as Orange</option>
+              <option value="red" ${cond.unknownAs==='red'?'selected':''}>treat as Red</option>
+            </select>`;
+        } else if (cond.type === 'countAttributeColor') {
+          const op = cond.op || '>=';
+          const val = cond.value || cond.minCount || 1;
+          details.innerHTML = `
+            <select class="countColor">
+              <option value="green" ${cond.color==='green'?'selected':''}>Green</option>
+              <option value="orange" ${cond.color==='orange'?'selected':''}>Orange</option>
+              <option value="red" ${cond.color==='red'?'selected':''}>Red</option>
+            </select>
+            <select class="countOp">
+              <option value=">=" ${op==='>='?'selected':''}>>=</option>
+              <option value=">" ${op==='>'?'selected':''}>></option>
+              <option value="<=" ${op==='<='?'selected':''}><=</option>
+              <option value="<" ${op==='<'?'selected':''}><</option>
+              <option value="==" ${op==='=='?'selected':''}>==</option>
+            </select>
+            <input type="number" class="countValue" value="${val}" style="width:60px;" min="0">
+            `;
+        } else if (cond.type === 'countUnknown') {
+          const op = cond.op || '>=';
+          const val = cond.value || cond.minCount || 1;
+          details.innerHTML = `
+            <select class="unknownOp">
+              <option value=">=" ${op==='>='?'selected':''}>>=</option>
+              <option value=">" ${op==='>'?'selected':''}>></option>
+              <option value="<=" ${op==='<='?'selected':''}><=</option>
+              <option value="<" ${op==='<'?'selected':''}><</option>
+              <option value="==" ${op==='=='?'selected':''}>==</option>
+            </select>
+            <input type="number" class="unknownValue" value="${val}" style="width:60px;" min="0">
+            unknown`;
+        }
+      }
+      renderDetails();
+
+      d.querySelector('.condType').onchange = function(e) {
+        cond.type = e.target.value;
+        delete cond.attr; delete cond.color; delete cond.minCount; delete cond.unknownAs;
+        delete cond.op; delete cond.value;
+        if (cond.type === 'attributeColor') { cond.attr = 'waterSupply'; cond.color = 'green'; }
+        else if (cond.type === 'countAttributeColor') { cond.color = 'green'; cond.op = '>='; cond.value = 1; }
+        else if (cond.type === 'countUnknown') { cond.op = '>='; cond.value = 1; }
+        renderDetails();
+      };
+
+      d.querySelector('.removeCond').onclick = function() {
+        self.program[wi].rules[ri].conditions.splice(ci, 1);
+        self.render();
+      };
+
+      details.addEventListener('change', function(e) {
+        if (e.target.classList.contains('attrName')) cond.attr = e.target.value;
+        else if (e.target.classList.contains('attrColor')) cond.color = e.target.value;
+        else if (e.target.classList.contains('unknownAs')) {
+          cond.unknownAs = e.target.value || null;
+        }
+        else if (e.target.classList.contains('countColor')) cond.color = e.target.value;
+        else if (e.target.classList.contains('countOp')) cond.op = e.target.value;
+        else if (e.target.classList.contains('countValue')) cond.value = parseInt(e.target.value) || 0;
+        else if (e.target.classList.contains('unknownOp')) cond.op = e.target.value;
+        else if (e.target.classList.contains('unknownValue')) cond.value = parseInt(e.target.value) || 0;
+      });
+
+      return d;
+    },
+
+    _renderActions(container, actions, wi, ri, target) {
+      container.innerHTML = '';
+      actions.forEach((a, ai) => {
+        const span = document.createElement('span');
+        span.style.marginRight = '8px';
+        span.innerHTML = `
+          <select class="actType">
+            <option value="settle" ${a.type==='settle'?'selected':''}>Settle</option>
+            <option value="scan" ${a.type==='scan'?'selected':''}>Scan</option>
+            <option value="move" ${a.type==='move'?'selected':''}>Move</option>
+          </select>
+          <button class="remAct">✖</button>`;
+        span.querySelector('.actType').onchange = e => { a.type = e.target.value; };
+        span.querySelector('.remAct').onclick = () => {
+          actions.splice(ai, 1);
+          this.render();
+        };
+        container.appendChild(span);
+      });
+    }
+  };
+
+  function showBotBuilder(chosenSeed) {
+    const overlay = document.getElementById('botBuilderOverlay');
+    if (!overlay) {
+      alert('Bot builder overlay not found. Ensure the HTML overlay is present.');
+      return;
+    }
+    overlay._botSeed = chosenSeed;
+    overlay.style.display = 'block';
+
+    const saved = localStorage.getItem('settlerBotProgram');
+    BlockBuilder.init('blockCanvas', saved);
+
+    document.getElementById('addWhenBlock').onclick = () => BlockBuilder.addWhenBlock();
+
+    document.getElementById('launchBotBtn').onclick = () => {
+      const json = BlockBuilder.serialize();
+      let program;
+      try { program = JSON.parse(json); } catch(e) { alert('Invalid program structure.'); return; }
+      GameState.botProgram = program;
+      localStorage.setItem('settlerBotProgram', json);
+      GameState.botMode = true;
+      overlay.style.display = 'none';
+      ui.gameScreen.style.display = 'block';
+      startNewGame(overlay._botSeed || null);
+    };
+    document.getElementById('cancelBotBtn').onclick = () => {
+      overlay.style.display = 'none';
+    };
+    // ---- NEW: Export & Import bindings ----
+    document.getElementById('exportBotBtn').onclick = () => {
+      const json = BlockBuilder.serialize();
+      const blob = new Blob([json], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'caravan-bot-program.json';
+      a.click();
+      URL.revokeObjectURL(url);
+    };
+
+    document.getElementById('importBotBtn').onclick = () => {
+      document.getElementById('importBotFile').click();
+    };
+    document.getElementById('importBotFile').onchange = (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (ev) => {
+        try {
+          const program = JSON.parse(ev.target.result);
+          BlockBuilder.program = program;
+          BlockBuilder.render();
+        } catch (err) {
+          alert('Invalid JSON file.');
+        }
+      };
+      reader.readAsText(file);
+    };
+  }
   // ---------- 17. DOM READY ----------
   document.addEventListener('DOMContentLoaded', function() {
     ui = {
@@ -882,12 +1431,22 @@
       ui.seedInput.value = '';
     });
     document.getElementById('botModeBtn').addEventListener('click', () => {
-      alert('🤖 Bot Mode will be added soon. Stay tuned!');
+      pendingBotMode = true;
+      ui.menuScreen.style.display = 'none';
+      ui.backstoryOverlay.style.display = 'block';
+      ui.currentSeedDisplay.textContent = Date.now();
+      ui.seedInput.value = '';
     });
     document.getElementById('startGameBtn').addEventListener('click', () => {
+      const seed = ui.seedInput.value || null;
       ui.backstoryOverlay.style.display = 'none';
-      ui.gameScreen.style.display = 'block';
-      startNewGame(ui.seedInput.value || null);
+      if (pendingBotMode) {
+        pendingBotMode = false;
+        showBotBuilder(seed);
+      } else {
+        ui.gameScreen.style.display = 'block';
+        startNewGame(seed);
+      }
     });
     ui.restartBtn.addEventListener('click', () => {
       ui.gameScreen.style.display = 'block';
