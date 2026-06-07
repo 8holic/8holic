@@ -6,7 +6,7 @@ project_type: "Javascript Game"
 status: 'Ongoing'
 categories: [project]
 ---
-<!-- CARAVAN SURVIVAL – WITH TERRARIAN FEATURES & SEED SYSTEM -->
+<!-- CARAVAN SURVIVAL – SIMPLIFIED (single scanner, 4 attributes) -->
 <div id="caravan-game-root" class="caravan-game">
 
   <!-- MENU SCREEN -->
@@ -20,7 +20,7 @@ categories: [project]
   <!-- BACKSTORY MODAL (with seed input) -->
   <div id="backstoryOverlay" class="card" style="display: none; background: rgba(30,26,47,0.95);">
     <h2>🌄 The Bunker Opens</h2>
-    <p>In 2030, a great disaster occurred. Nobody knows what it is. When it became obvious that the era of man was over, 2000 people were sealed in a bunker.</p>
+    <p>In 2030, a great disaster occurred. Nobody knows what it is. When it became obvious that the era of man was over, 1000 people were sealed in a bunker.</p>
     <p>You are the trusted leader of the caravan. A brave new Frontier awaits among the ruins of the old. Your goal is to find a suitable place for the caravan to settle down.</p>
     <div style="margin: 20px 0;">
       <label for="seedInput" style="display: block; margin-bottom: 8px;">🎲 Seed (optional):</label>
@@ -66,9 +66,8 @@ categories: [project]
       </span>
     </div>
     <div class="game-stats-grid">
-      <div class="stat-item">👥 Settlers: <span id="settlersValue">2000</span></div>
-      <div class="stat-item">🛰️ Terrain Scanner: <span id="terrainScannerValue">100</span>%</div>
-      <div class="stat-item">🛰️ Atmospheric Scanner: <span id="atmosphericScannerValue">100</span>%</div>
+      <div class="stat-item">👥 Settlers: <span id="settlersValue">1000</span></div>
+      <div class="stat-item">🛰️ Scanner: <span id="scannerValue">100</span>%</div>
       <div class="stat-item">🤝 Unity: <span id="unityValue">100</span>%</div>
       <div class="stat-item">💾 Knowledge: <span id="databaseValue">100</span>%</div>
       <div class="stat-item">🔬 Analysis Equipment: <span id="equipmentValue">5</span></div>
@@ -79,11 +78,8 @@ categories: [project]
     <ul class="location-list">
       <li>💧 Water Supply: <span id="waterSupplyValue">—</span></li>
       <li>🏞️ Land: <span id="landValue">—</span></li>
-      <li>🌿 Vegetation: <span id="vegetationValue">—</span></li>
       <li>🌡️ Temperature: <span id="temperatureValue">—</span></li>
-      <li>🌧️ Precipitation: <span id="precipitationValue">—</span></li>
       <li>☢️ Radiation: <span id="radiationValue">—</span></li>
-      <li>🏚️ Shelter: <span id="shelterValue">—</span></li>
     </ul>
 
     <!-- SCAN BUTTON & TERRARIAN FEATURES DISPLAY -->
@@ -253,5 +249,5 @@ categories: [project]
   // Define the base path for game assets (works with Jekyll's relative_url)
   window.SETTLERFRONTIER_BASE = "{{ '/assets/settlerfrontier/' | relative_url }}";
 </script>
-<!-- Load the three split scripts in order -->
+<!-- Load the main script (updated version with simplified mechanics) -->
 <script src="{{ '/assets/settlerfrontier/settlerfrontier.js' | relative_url }}"></script>
