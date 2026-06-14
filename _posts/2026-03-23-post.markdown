@@ -1,11 +1,10 @@
 ---
 layout: post
-title: "Book Reading Reflection"
-location: "Kyoto, Japan"
+title: "Reading: Atomic Habits"
+location: "Singapore, Singapore"
 tags:
   - reflection
   - book
-  - atomic habits
 ---
 
 ---

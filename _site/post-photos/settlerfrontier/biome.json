@@ -1,0 +1,122 @@
+[
+  {
+    "comment": "0 — high everything, basic",
+    "name": "Ruins of Boon Lay",
+    "eventRange": [0, 7],
+    "descriptions": [
+      "Ground zero of the apocalypse. Radiation storms sweep between collapsed HDB blocks and abandoned factories. Nobody intends to stay here."
+    ],
+    "waterSupply": [250, 400],
+    "land": [250, 400],
+    "temperature": [250, 400],
+    "radiation": [350, 500]
+  },
+  {
+    "comment": "1 — +unity",
+    "name": "Lakeside",
+    "eventRange": [8, 15],
+    "descriptions": [
+      "Dense forests surround an overgrown reservoir. Fresh water remains abundant, but decades of fallout still poison the region."
+    ],
+    "waterSupply": [40, 120],
+    "land": [120, 220],
+    "temperature": [100, 220],
+    "radiation": [250, 400]
+  },
+  {
+    "comment": "2 — +knowledge",
+    "name": "Ruins of the Science Museum",
+    "eventRange": [16, 23],
+    "descriptions": [
+      "Research exhibits, laboratories and archives lie buried beneath rubble. Knowledge survives here, but so do dangerous experiments."
+    ],
+    "waterSupply": [120, 220],
+    "land": [120, 220],
+    "temperature": [120, 220],
+    "radiation": [250, 400]
+  },
+  {
+    "comment": "3 — +settler + permanent equipment",
+    "name": "Jurong East Shopping Centre Ruins",
+    "eventRange": [24, 31],
+    "descriptions": [
+      "The last great refugee hub. Survivors crowd the interconnected malls and transport networks despite the harsh conditions."
+    ],
+    "waterSupply": [120, 220],
+    "land": [120, 220],
+    "temperature": [120, 220],
+    "radiation": [250, 400]
+  },
+  {
+    "comment": "4 — +scanner +equipment, -settler -unity",
+    "name": "Chua Chu Kang Military Base",
+    "eventRange": [32, 39],
+    "descriptions": [
+      "Fortified compounds and sealed armouries offer protection from the wastes. It is dangerous, but finally survivable."
+    ],
+    "waterSupply": [100, 220],
+    "land": [100, 220],
+    "temperature": [100, 220],
+    "radiation": [100, 220]
+  },
+  {
+    "comment": "5 — +unity, -settler",
+    "name": "Clementi Forest District",
+    "eventRange": [40, 47],
+    "descriptions": [
+      "Nature has reclaimed entire neighbourhoods. Thick vegetation shields the district from the worst of the apocalypse."
+    ],
+    "waterSupply": [60, 180],
+    "land": [80, 180],
+    "temperature": [80, 180],
+    "radiation": [100, 220]
+  },
+  {
+    "comment": "6 — +settler +equipment, -unity -knowledge",
+    "name": "Dover Hospital",
+    "eventRange": [48, 55],
+    "descriptions": [
+      "A sprawling medical enclave maintained by generations of survivors. One of the few places where settlement feels realistic."
+    ],
+    "waterSupply": [60, 160],
+    "land": [60, 160],
+    "temperature": [60, 160],
+    "radiation": [80, 180]
+  },
+  {
+    "comment": "7 — Mass Rapid Transit Station, +temperature radiation (good temp & rad), -unity",
+    "name": "Mass Rapid Transit Station",
+    "eventRange": [56, 63],
+    "descriptions": [
+      "Underground tunnels shield you from the surface fallout. Scavengers trade safety for cramped, lightless living."
+    ],
+    "waterSupply": [100, 200],
+    "land": [100, 200],
+    "temperature": [0, 100],
+    "radiation": [0, 100]
+  },
+  {
+    "comment": "8 — MacRitchie, +water +land (good water & land)",
+    "name": "MacRitchie",
+    "eventRange": [64, 71],
+    "descriptions": [
+      "The reservoir park has become a tangled jungle. Fresh water and rich soil are easy to find, but the old world's poisons linger."
+    ],
+    "waterSupply": [0, 100],
+    "land": [0, 100],
+    "temperature": [50, 150],
+    "radiation": [200, 300]
+  },
+  {
+    "comment": "9 — Mandai Park Ruins, balanced (everything 50‑150)",
+    "name": "Mandai Park Ruins",
+    "eventRange": [72, 79],
+    "descriptions": [
+      "Crumbled enclosures and overgrown trails mark what was once a wildlife park. Nature and decay coexist in equal measure."
+    ],
+    "waterSupply": [50, 150],
+    "land": [50, 150],
+    "temperature": [50, 150],
+    "radiation": [50, 150]
+  }
+]

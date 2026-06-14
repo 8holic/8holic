@@ -62,10 +62,26 @@ h2 { padding-bottom: 0; /* space between text and underline */ margin-bottom: 1e
 .recent-posts .post-preview h3 a:hover { color: #A367B1; }
 .recent-posts .post-preview .post-meta { font-size: 0.85rem; color: #b0b0b0; margin-bottom: 0.5rem; }
 .recent-posts .post-preview p { color: #f0f0f0; }
+.recent-posts .post-preview.is-hidden { display: none !important; }
+.recent-posts .post-filter { margin-bottom: 2rem; }
+.recent-posts .post-filter-header { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+.recent-posts .post-filter-header h2 { margin: 0; font-size: 1.5rem; }
+.recent-posts .tag-filter-list { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+.recent-posts .tag-filter-btn, .recent-posts .post-filter-clear { border: 1px solid #5D3587; border-radius: 999px; background: transparent; color: #f0f0f0; cursor: pointer; padding: 0.45rem 0.9rem; transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease; }
+.recent-posts .tag-filter-btn:hover, .recent-posts .tag-filter-btn.is-active, .recent-posts .post-filter-clear:hover, .recent-posts .post-filter-clear.is-active { background: #A367B1; border-color: #A367B1; color: #0a0a1a; }
+.recent-posts .post-filter-clear { white-space: nowrap; }
+.recent-posts .post-filter-empty { margin-top: 1rem; color: #b0b0b0; }
 .recent-posts a[href*="/blog/"] { display: inline-block; margin-top: 1rem; color: #A367B1; text-decoration: none; }
 .recent-posts a[href*="/blog/"]:hover { text-decoration: underline; color: #FFD1E3; }
 
 .card { border: 2px solid #5D3587; border-radius: 8px; background: #1e1a2f; padding: 1.5rem; margin: 0 10% 1.5rem 10%; }
+
+.post-featured-image { padding: 0; overflow: hidden; }
+.post-featured-image img { display: block; width: 100%; height: auto; }
+
+.sf-embed-wrap { margin: 0 10% 1.5rem 10%; }
+
+.sf-embed { display: block; width: 100%; min-height: 1200px; border: 0; background: #fff; }
 
 .post-preview { display: flex; gap: 1rem; align-items: flex-start; }
 .post-preview .post-thumbnail { flex-shrink: 0; width: 100px; }

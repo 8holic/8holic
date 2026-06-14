@@ -1,0 +1,59 @@
+[
+  {
+    "name": "Crossroads",
+    "description": "While we are traveling across the ruins of Singapore, we come across a splitting path. Where should we go?",
+    "hasChoice": true,
+    "pairOptions": [
+      [
+        { "text": "Lakeside", "range": 1 },
+        { "text": "Science Museum", "range": 2 }
+      ],
+      [
+        { "text": "Lakeside", "range": 1 },
+        { "text": "Jurong East Shopping Centre", "range": 3 }
+      ],
+      [
+        { "text": "Science Museum", "range": 2 },
+        { "text": "Jurong East Shopping Centre", "range": 3 }
+      ]
+    ]
+  },
+  {
+    "name": "Crossroads",
+    "description": "While we are traveling across the ruins of Singapore, we come across a splitting path. Where should we go?",
+    "hasChoice": true,
+    "pairOptions": [
+      [
+        { "text": "Chua Chu Kang Military Base", "range": 4 },
+        { "text": "Clementi Forest", "range": 5 }
+      ],
+      [
+        { "text": "Chua Chu Kang Military Base", "range": 4 },
+        { "text": "Dover Hospital", "range": 6 }
+      ],
+      [
+        { "text": "Clementi Forest", "range": 5 },
+        { "text": "Dover Hospital", "range": 6 }
+      ]
+    ]
+  },
+  {
+    "name": "Crossroads",
+    "description": "While we are traveling across the ruins of Singapore, we come across a splitting path. Where should we go?",
+    "hasChoice": true,
+    "pairOptions": [
+      [
+        { "text": "the northern refinery ruins", "range": 7 },
+        { "text": "the eastern marshlands", "range": 8 }
+      ],
+      [
+        { "text": "the northern refinery ruins", "range": 7 },
+        { "text": "the southern crater", "range": 9 }
+      ],
+      [
+        { "text": "the eastern marshlands", "range": 8 },
+        { "text": "the southern crater", "range": 9 }
+      ]
+    ]
+  }
+]

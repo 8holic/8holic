@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Caravan Test</title>
+<style>
+  :root {
+    --ink: #111;
+    --line: #bdbdbd;
+    --banner: #1f6a8a;
+    --banner-dark: #184f67;
+    --bg: #ffffff;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .page {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .frame {
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .content-wrap { padding: 0 0 18px; }
+
+  .topbar {
+    padding: 10px 0 8px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .title {
+    margin: 0 0 6px 0;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.05;
+  }
+
+  .stats-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    align-items: center;
+    font-size: 14px;
+  }
+
+  .stats-row strong { font-weight: 400; }
+
+  /* Permanent block: event, story, score, biome, everything important */
+  .permanent-banner {
+    min-height: 146px;
+    background: var(--banner);
+    color: #fff;
+    border-top: 2px solid var(--banner-dark);
+    border-bottom: 1px solid #9bb9c7;
+    padding: 16px 18px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .banner-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .banner-title {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  .banner-subtitle {
+    margin-top: 4px;
+    font-size: 14px;
+    opacity: 0.95;
+  }
+
+  .banner-biome {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 30px;
+    min-width: 170px;
+    padding: 0 14px;
+    border: 2px solid #0f3f55;
+    background: rgba(255,255,255,0.08);
+    color: #fff;
+    font-size: 18px;
+    line-height: 1;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .banner-main {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 12px;
+    align-items: stretch;
+  }
+
+  .banner-card {
+    border: 1px solid rgba(255,255,255,0.28);
+    background: rgba(255,255,255,0.08);
+    padding: 10px 12px;
+    border-radius: 2px;
+    min-height: 84px;
+  }
+
+  .banner-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    opacity: 0.85;
+    margin-bottom: 6px;
+  }
+
+  #eventPanelDescription {
+    font-size: 18px;
+    line-height: 1.35;
+    color: #fff;
+  }
+
+  #eventPanelChoices {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  #eventPanelChoices .game-btn,
+  .controls button,
+  .footer-row button {
+    font: inherit;
+    padding: 2px 10px;
+    border: 1px solid #9d9d9d;
+    background: #efefef;
+    border-radius: 2px;
+    cursor: pointer;
+  }
+
+  #eventPanelChoices .game-btn:disabled,
+  .controls button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .section {
+    padding: 18px 0 10px;
+    border-top: 1px solid var(--line);
+  }
+
+  .section-heading {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 0 0 16px;
+  }
+
+  .section-heading h2 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .location-grid {
+    display: grid;
+    gap: 4px;
+    font-size: 15px;
+    margin-bottom: 12px;
+  }
+
+  .location-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .dot {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #ff9eaa 0%, #e55a69 42%, #b92b3b 100%);
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,0.08);
+    vertical-align: middle;
+    margin-right: 4px;
+  }
+
+  .controls {
+    display: flex;
+    gap: 12px;
+    padding: 10px 0 12px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 10px;
+  }
+
+  .event-panel {
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 18px 0 20px;
+    min-height: 130px;
+    display: none;
+  }
+
+  .event-panel h3 {
+    margin: 0 0 22px;
+    font-size: 22px;
+    font-weight: 700;
+  }
+
+  #eventPanelDescriptionBottom {
+    font-size: 16px;
+    line-height: 1.4;
+    color: #111;
+  }
+
+  #eventPanelChoicesBottom {
+    margin-top: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .footer-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 0 0;
+    font-size: 16px;
+  }
+
+  .footer-pill {
+    width: 180px;
+    height: 24px;
+    border: 1px solid #8a8a8a;
+    background: #fafafa;
+  }
+
+  .seed-text {
+    font-size: 16px;
+    color: #111;
+    white-space: nowrap;
+  }
+
+  .tiny-icons {
+    display: flex;
+    gap: 14px;
+    margin-left: auto;
+    color: #777;
+    font-size: 18px;
+    line-height: 1;
+  }
+
+  .hidden-shell { display: none !important; }
+</style>
+</head>
+<body>
+  <div class="page">
+    <div class="frame">
+      <div class="topbar content-wrap">
+        <h1 class="title">Caravan Test</h1>
+        <div class="stats-row">
+          <span>Settlers: <strong id="settlersValue">1000</strong></span>
+          <span>Scanner: <strong id="scannerValue">100</strong></span>
+          <span>Unity: <strong id="unityValue">100</strong></span>
+          <span>Knowledge: <strong id="databaseValue">100</strong></span>
+          <span>Moves: <strong id="movesValue">0</strong></span>
+        </div>
+      </div>
+
+      <div class="permanent-banner" id="storyBanner">
+        <div class="banner-top">
+          <div>
+            <div class="banner-title">All in 1 Messanger 1000</div>
+            <div class="banner-subtitle">For all your importnat communicatons.</div>
+          </div>
+            <div class="banner-biome" id="biomeName">Biome Name</div>
+            <div id="biomeDescription"></div>
+        </div>
+
+        <div class="banner-main">
+          <div class="banner-card">
+            <div class="banner-label">Current Event</div>
+            <div id="eventPanelDescription">No active event.</div>
+          </div>
+          <div class="banner-card">
+            <div class="banner-label">Choices</div>
+            <div id="eventPanelChoices"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section content-wrap" id="locationSection">
+        <div class="section-heading">
+          <h2>Location</h2>
+        </div>
+
+        <div class="location-grid">
+          <div class="location-row">Water: <span class="dot"></span> <span id="waterSupplyValue">Dry riverbed</span></div>
+          <div class="location-row">Land: <span class="dot"></span> <span id="landValue">Barren wasteland</span></div>
+          <div class="location-row">Temperature: <span class="dot"></span> <span id="temperatureValue">Unrelenting sun</span></div>
+          <div class="location-row">Radiation: <span class="dot"></span> <span id="radiationValue">Hot zone</span></div>
+        </div>
+      </div>
+
+      <div class="controls content-wrap">
+        <button id="moveBtn">Move</button>
+        <button id="settleBtn">Settle</button>
+        <button id="restartBtn">Restart</button>
+      </div>
+
+      <div class="content-wrap">
+        <div id="gameOverPanel" style="display:none; padding: 12px 0 4px;">
+          <h2 style="margin:0 0 8px;">Game Over</h2>
+          <div id="finalScore"></div>
+        </div>
+      </div>
+
+      <div class="content-wrap">
+        <div class="footer-row">
+          <div class="footer-pill"></div>
+          <span class="seed-text" id="currentSeedDisplay"></span>
+          <span class="seed-text" id="gameSeedDisplay"></span>
+          <div class="tiny-icons" aria-hidden="true">▭ ▭ ▭ ▭ ▭</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="gameMenuScreen" class="hidden-shell"></div>
+  <div id="backstoryOverlay" class="hidden-shell"></div>
+  <div id="gameScreen" class="hidden-shell"></div>
+  <div id="terrarianStatus" class="hidden-shell"></div>
+  <div id="terrarianList" class="hidden-shell"></div>
+  <input id="seedInput" class="hidden-shell" />
+  <button id="randomSeedBtn" class="hidden-shell"></button>
+  <button id="useSeedBtn" class="hidden-shell"></button>
+  <button id="manualModeBtn" class="hidden-shell"></button>
+  <button id="botModeBtn" class="hidden-shell"></button>
+  <button id="startGameBtn" class="hidden-shell"></button>
+  <div id="botBuilderOverlay" class="hidden-shell"></div>
+
+  <script src="core.js"></script>
+  <script src="manual.js"></script>
+  <script src="ui.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (typeof startNewGame === 'function') {
+        startNewGame();
+      }
+    });
+  </script>
+</body>
+</html>
