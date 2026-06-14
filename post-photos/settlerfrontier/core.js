@@ -19,6 +19,10 @@ let rng = mulberry32(Date.now());
 let currentSeed = Date.now();
 let BIOME_LOCATION_RANGES = [];
 
+function whenGameDataReady() {
+  return window.settlerfrontierDataReady || Promise.resolve();
+}
+
 
 function seededRandomInt(min, max) {
   return Math.floor(rng() * (max - min + 1)) + min;
@@ -187,7 +191,14 @@ const LOCATION_ATTRIBUTES = ['waterSupply', 'land', 'temperature', 'radiation'];
 function generateLocation(biome, state) {
   const profile = BIOME_LOCATION_RANGES[
     Math.min(biome, BIOME_LOCATION_RANGES.length - 1)
-  ];
+  ] || {
+    name: `Biome ${biome}`,
+    descriptions: ["Placeholder biome description."],
+    waterSupply: [0, 0],
+    land: [0, 0],
+    temperature: [0, 0],
+    radiation: [0, 0]
+  };
 
   const descList = profile.descriptions || ["Placeholder biome description."];
 

@@ -32,7 +32,7 @@
       gameSeedDisplay: document.getElementById('gameSeedDisplay')
     };
 
-    loadGameData();
+    window.settlerfrontierDataReady = window.settlerfrontierDataReady || loadGameData();
 
     document.getElementById('randomSeedBtn').addEventListener('click', () => {
       const randomStr = Math.random().toString(36).substring(2,10);
@@ -60,17 +60,21 @@
     document.getElementById('startGameBtn').addEventListener('click', () => {
       const seed = ui.seedInput.value || null;
       ui.backstoryOverlay.style.display = 'none';
-      if (pendingBotMode) {
-        pendingBotMode = false;
-        showBotBuilder(seed);
-      } else {
-        ui.gameScreen.style.display = 'block';
-        startNewGame(seed);
-      }
+      whenGameDataReady().then(() => {
+        if (pendingBotMode) {
+          pendingBotMode = false;
+          showBotBuilder(seed);
+        } else {
+          ui.gameScreen.style.display = 'block';
+          startNewGame(seed);
+        }
+      });
     });
     ui.restartBtn.addEventListener('click', () => {
-      ui.gameScreen.style.display = 'block';
-      startNewGame(ui.seedInput.value || null);
+      whenGameDataReady().then(() => {
+        ui.gameScreen.style.display = 'block';
+        startNewGame(ui.seedInput.value || null);
+      });
     });
 
     ui.moveBtn.addEventListener('click', moveToNextLocation);

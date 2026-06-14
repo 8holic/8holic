@@ -359,8 +359,8 @@
   <script src="ui.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      if (typeof startNewGame === 'function') {
-        startNewGame();
+      if (typeof whenGameDataReady === 'function' && typeof startNewGame === 'function') {
+        whenGameDataReady().then(() => startNewGame());
       }
     });
   </script>
