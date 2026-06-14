@@ -613,6 +613,7 @@ function displayAutoEvent(event, outcomeMessage, choiceText = null) {
 }
 function processEventQueue() {
   if (GameState.eventQueue.length === 0) {
+    GameState.pendingEvent = null;
     clearEventPanel();
     GameState.currentLocation = applyLocationGeneration(GameState);
 

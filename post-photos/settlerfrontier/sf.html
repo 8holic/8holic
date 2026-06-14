@@ -38,6 +38,29 @@
     border-bottom: 1px solid var(--line);
   }
 
+  .mode-panel {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    padding: 10px 0 14px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .mode-panel .field,
+  .mode-panel button {
+    font: inherit;
+    padding: 4px 10px;
+    border: 1px solid #9d9d9d;
+    background: #efefef;
+    border-radius: 2px;
+  }
+
+  .mode-panel .field {
+    min-width: 180px;
+    background: #fff;
+  }
+
   .title {
     margin: 0 0 6px 0;
     font-size: 28px;
@@ -282,6 +305,15 @@
         </div>
       </div>
 
+      <div class="mode-panel content-wrap">
+        <input id="seedInput" class="field" placeholder="Optional seed" />
+        <button id="randomSeedBtn">Random Seed</button>
+        <button id="useSeedBtn">Use Seed</button>
+        <button id="manualModeBtn">Manual Mode</button>
+        <button id="botModeBtn">Bot Mode</button>
+        <span id="currentSeedDisplay" class="seed-text"></span>
+      </div>
+
       <div class="permanent-banner" id="storyBanner">
         <div class="banner-top">
           <div>
@@ -346,23 +378,11 @@
   <div id="gameScreen" class="hidden-shell"></div>
   <div id="terrarianStatus" class="hidden-shell"></div>
   <div id="terrarianList" class="hidden-shell"></div>
-  <input id="seedInput" class="hidden-shell" />
-  <button id="randomSeedBtn" class="hidden-shell"></button>
-  <button id="useSeedBtn" class="hidden-shell"></button>
-  <button id="manualModeBtn" class="hidden-shell"></button>
-  <button id="botModeBtn" class="hidden-shell"></button>
   <button id="startGameBtn" class="hidden-shell"></button>
   <div id="botBuilderOverlay" class="hidden-shell"></div>
 
   <script src="core.js"></script>
   <script src="manual.js"></script>
-  <script src="ui.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      if (typeof whenGameDataReady === 'function' && typeof startNewGame === 'function') {
-        whenGameDataReady().then(() => startNewGame());
-      }
-    });
-  </script>
+  <script src="bot.js"></script>
 </body>
 </html>

@@ -1,3 +1,5 @@
+  let pendingBotMode = false;
+
   // ---------- 6. UI ELEMENTS (simplified) ----------
   let ui = {};
 
@@ -104,31 +106,42 @@ function displayLocation() {
     });
 
     document.getElementById('manualModeBtn').addEventListener('click', () => {
+      pendingBotMode = false;
       ui.menuScreen.style.display = 'none';
-      ui.backstoryOverlay.style.display = 'block';
-      ui.currentSeedDisplay.textContent = Date.now();
-      ui.seedInput.value = '';
+      ui.backstoryOverlay.style.display = 'none';
+      ui.gameScreen.style.display = 'block';
+      whenGameDataReady().then(() => {
+        startNewGame(ui.seedInput.value || null);
+      });
     });
     document.getElementById('botModeBtn').addEventListener('click', () => {
       pendingBotMode = true;
       ui.menuScreen.style.display = 'none';
-      ui.backstoryOverlay.style.display = 'block';
-      ui.currentSeedDisplay.textContent = Date.now();
-      ui.seedInput.value = '';
-    });
-    document.getElementById('startGameBtn').addEventListener('click', () => {
-      const seed = ui.seedInput.value || null;
       ui.backstoryOverlay.style.display = 'none';
+      ui.gameScreen.style.display = 'block';
       whenGameDataReady().then(() => {
-        if (pendingBotMode) {
-          pendingBotMode = false;
-          showBotBuilder(seed);
-        } else {
-          ui.gameScreen.style.display = 'block';
-          startNewGame(seed);
-        }
+        const seed = ui.seedInput.value || null;
+        pendingBotMode = false;
+        startNewGame(seed);
+        showBotBuilder(seed, true);
       });
     });
+    const startGameButton = document.getElementById('startGameBtn');
+    if (startGameButton) {
+      startGameButton.addEventListener('click', () => {
+        const seed = ui.seedInput.value || null;
+        ui.backstoryOverlay.style.display = 'none';
+        whenGameDataReady().then(() => {
+          if (pendingBotMode) {
+            pendingBotMode = false;
+            showBotBuilder(seed, true);
+          } else {
+            ui.gameScreen.style.display = 'block';
+            startNewGame(seed);
+          }
+        });
+      });
+    }
     ui.restartBtn.addEventListener('click', () => {
       whenGameDataReady().then(() => {
         ui.gameScreen.style.display = 'block';
