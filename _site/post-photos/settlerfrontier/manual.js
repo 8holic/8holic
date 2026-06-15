@@ -115,15 +115,11 @@ function displayLocation() {
       });
     });
     document.getElementById('botModeBtn').addEventListener('click', () => {
-      pendingBotMode = true;
       ui.menuScreen.style.display = 'none';
       ui.backstoryOverlay.style.display = 'none';
-      ui.gameScreen.style.display = 'block';
+      ui.gameScreen.style.display = 'block';          // game screen visible behind overlay
       whenGameDataReady().then(() => {
-        const seed = ui.seedInput.value || null;
-        pendingBotMode = false;
-        startNewGame(seed);
-        showBotBuilder(seed, true);
+        showBotBuilder();                             // defined in bot.js
       });
     });
     const startGameButton = document.getElementById('startGameBtn');

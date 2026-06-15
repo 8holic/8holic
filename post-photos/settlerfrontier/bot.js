@@ -1,314 +1,562 @@
-"use strict";
+// bot.js – IF and ELSE as separate blocks, linear script execution
+(function() {
+  'use strict';
 
-let botRunning = false;
-let botTimer = null;
-let botStatusEl = null;
+  // ---- GAME STATS (show numbers) ----
+  const GAME_STATS = ['settlers','scanner','unity','knowledge','moves'];
 
-const BOT_ASPECTS = [
-    "settlers",
-    "scanner",
-    "unity",
-    "knowledge",
-    "waterSupply",
-    "land",
-    "temperature",
-    "radiation"
-];
+  // ---- LOCATION ATTRIBUTES (show colours) ----
+  const LOCATION_ATTRS = ['waterSupply','land','temperature','radiation'];
 
-const BOT_WEIGHTS = {
-    settlers: 4,
-    scanner: 3,
-    unity: 3,
-    knowledge: 3,
-    waterSupply: 2,
-    land: 2,
-    temperature: 2,
-    radiation: 2
-};
+  const ATTRIBUTES = [
+    { value: 'settlers', label: 'Settlers', type: 'stat' },
+    { value: 'scanner', label: 'Scanner', type: 'stat' },
+    { value: 'unity', label: 'Unity', type: 'stat' },
+    { value: 'knowledge', label: 'Knowledge', type: 'stat' },
+    { value: 'moves', label: 'Moves', type: 'stat' },
+    { value: 'waterSupply', label: 'Water', type: 'location' },
+    { value: 'land', label: 'Land', type: 'location' },
+    { value: 'temperature', label: 'Temperature', type: 'location' },
+    { value: 'radiation', label: 'Radiation', type: 'location' }
+  ];
 
-const BOT_TARGETS = {
-    settlers: 700,
-    scanner: 100,
-    unity: 90,
-    knowledge: 100,
-    waterSupply: 120,
-    land: 120,
-    temperature: 120,
-    radiation: 120
-};
+  const NUM_OPERATORS = [
+    { value: '>', label: '>' },
+    { value: '<', label: '<' },
+    { value: '>=', label: '>=' },
+    { value: '<=', label: '<=' }
+  ];
 
-function getBotAspectValue(name) {
-    if (name in GameState) {
-        return GameState[name];
+  const COLOUR_LEVELS = [
+    { value: 'green', label: 'Green' },
+    { value: 'orange', label: 'Orange' },
+    { value: 'red', label: 'Red' }
+  ];
+
+  const ACTIONS = [
+    { value: 'move', label: 'Move' },
+    { value: 'settle', label: 'Settle' },
+    { value: 'pickBestFor', label: 'Pick best for...' },
+    { value: 'wait', label: 'Wait / Acknowledge' }
+  ];
+
+  const PRIORITY_STATS = [
+    { value: 'settlers', label: 'Settlers' },
+    { value: 'scanner', label: 'Scanner' },
+    { value: 'unity', label: 'Unity' },
+    { value: 'knowledge', label: 'Knowledge' },
+    { value: 'upgrade', label: 'Upgrade' }
+  ];
+
+  // ---------- BUILDER UI ----------
+  function createOverlay() {
+    const overlay = document.createElement('div');
+    overlay.id = 'botOverlay';
+    overlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;z-index:1000;background:rgba(0,0,0,0.9);color:#eee;font-family:monospace;display:flex;align-items:center;justify-content:center;';
+    overlay.innerHTML = `
+      <div style="background:#1a1a2e;padding:20px;border-radius:10px;width:95%;max-width:900px;max-height:90vh;overflow-y:auto;">
+        <h2>Bot Builder</h2>
+        <div style="display:flex;gap:10px;margin-bottom:10px;">
+          <button class="addBlock" data-type="while">+ While</button>
+          <button class="addBlock" data-type="if">+ If</button>
+          <button class="addBlock" data-type="else">+ Else</button>
+          <button class="addBlock" data-type="action">+ Action</button>
+        </div>
+        <div id="botScript" style="background:#16213e;padding:10px;min-height:200px;border:1px dashed #4ecdc4;margin-bottom:10px;">
+          <p class="placeholder">Add blocks to build the bot's logic...</p>
+        </div>
+        <div style="display:flex;gap:10px;margin-bottom:10px;">
+          <button class="tpl" data-tpl="safe">Safe Settle</button>
+          <button class="tpl" data-tpl="explorer">Explorer</button>
+          <button class="tpl" data-tpl="balanced">Balanced</button>
+          <button class="tpl" data-tpl="rush">Rush</button>
+        </div>
+        <button id="runBot" style="display:block;width:100%;padding:10px;background:#27ae60;color:white;border:none;font-size:18px;cursor:pointer;">Run Bot</button>
+        <div id="botLog" style="background:#000;color:#0f0;margin-top:10px;padding:5px;max-height:150px;overflow-y:auto;font-size:12px;"></div>
+      </div>`;
+    return overlay;
+  }
+
+  // ---- BLOCK HTML (IF/ELSE are separate, no nested bodies) ----
+  function blockHTML(type, defaults = {}) {
+    const id = 'b' + Math.random().toString(36).substr(2,6);
+    if (type === 'while') {
+      const attr = defaults.attr || 'settlers';
+      const isStat = GAME_STATS.includes(attr);
+      const opOptions = isStat ? NUM_OPERATORS : COLOUR_LEVELS;
+      const valDisplay = isStat ? 'inline' : 'none';
+      return `<div class="block while" data-id="${id}" data-type="while">
+        <div class="header">WHILE
+          <select class="attr">${ATTRIBUTES.map(a => `<option value="${a.value}" ${a.value===attr?'selected':''}>${a.label}</option>`).join('')}</select>
+          <select class="op">${opOptions.map(o => `<option value="${o.value}" ${o.value===(defaults.op||(isStat?'>':'green'))?'selected':''}>${o.label}</option>`).join('')}</select>
+          <input class="val" type="number" value="${defaults.val||500}" min="0" style="display:${valDisplay}">
+          <button class="del">x</button>
+        </div>
+        <div class="body"></div>
+      </div>`;
     }
+    if (type === 'if') {
+      const attr = defaults.attr || 'waterSupply';
+      const isStat = GAME_STATS.includes(attr);
+      const opOptions = isStat ? NUM_OPERATORS : COLOUR_LEVELS;
+      const valDisplay = isStat ? 'inline' : 'none';
+      return `<div class="block if" data-id="${id}" data-type="if">
+        <div class="header">IF
+          <select class="attr">${ATTRIBUTES.map(a => `<option value="${a.value}" ${a.value===attr?'selected':''}>${a.label}</option>`).join('')}</select>
+          <select class="op">${opOptions.map(o => `<option value="${o.value}" ${o.value===(defaults.op||(isStat?'>':'green'))?'selected':''}>${o.label}</option>`).join('')}</select>
+          <input class="val" type="number" value="${defaults.val||100}" min="0" style="display:${valDisplay}">
+          <button class="del">x</button>
+        </div>
+      </div>`;
+    }
+    if (type === 'else') {
+      return `<div class="block else-block" data-id="${id}" data-type="else">
+        <div class="header">ELSE <button class="del">x</button></div>
+      </div>`;
+    }
+    if (type === 'action') {
+      if (defaults.action === 'pickBestFor') {
+        return `<div class="block action" data-id="${id}" data-type="action">
+          <div class="header">DO Pick best for
+            <select class="pickStat">${PRIORITY_STATS.map(p => `<option value="${p.value}">${p.label}</option>`).join('')}</select>
+            <button class="del">x</button>
+          </div>
+        </div>`;
+      }
+      return `<div class="block action" data-id="${id}" data-type="action">
+        <div class="header">DO
+          <select class="act">${ACTIONS.map(a => `<option value="${a.value}" ${a.value===defaults.action?'selected':''}>${a.label}</option>`).join('')}</select>
+          <button class="del">x</button>
+        </div>
+      </div>`;
+    }
+  }
 
-    const loc = GameState.currentLocation || {};
-    return loc[name] ?? 0;
-}
+  // ---- STYLES ----
+  const style = document.createElement('style');
+  style.textContent = `
+    .block { margin:5px 0; padding:8px; background:#0f3460; border-left:4px solid #4ecdc4; position:relative; }
+    .while { border-left-color:#e74c3c; }
+    .if { border-left-color:#f39c12; }
+    .else-block { border-left-color:#95a5a6; }
+    .action { border-left-color:#2ecc71; }
+    .header { display:flex; align-items:center; gap:6px; flex-wrap:wrap; }
+    .header select, .header input { background:#1a1a2e; color:#eee; border:1px solid #4ecdc4; padding:2px 5px; }
+    .header input { width:80px; }
+    .body { margin-left:20px; padding-left:10px; border-left:2px solid #4ecdc4; }
+    .del { background:#e74c3c; color:white; border:none; border-radius:50%; width:20px; height:20px; cursor:pointer; font-size:14px; line-height:1; position:absolute; right:5px; top:5px; }
+    .exec-hl { box-shadow: 0 0 15px #4ecdc4; transition: 0.2s; }
+  `;
+  document.head.appendChild(style);
 
-function getBotAspectBand(value) {
-    if (value < 100) return 0;
-    if (value < 250) return 1;
-    return 2;
-}
+  // ---------- BOT STATE ----------
+  let botActive = false;
+  const botSpeed = 800;
+  let currentScriptRoot = null;
 
-function scoreBotState() {
-    let score = 0;
+  // ---------- SHOW BUILDER ----------
+  window.showBotBuilder = function() {
+    const root = document.getElementById('botBuilderRoot');
+    root.innerHTML = '';
+    root.appendChild(createOverlay());
 
-    BOT_ASPECTS.forEach(name => {
-        const value = getBotAspectValue(name);
-        const target = BOT_TARGETS[name];
-        const weight = BOT_WEIGHTS[name];
-        const distance = Math.abs(target - value);
+    const scriptArea = document.getElementById('botScript');
+    currentScriptRoot = scriptArea;
 
-        score += Math.max(0, 300 - distance) * weight;
-
-        if (name === "settlers") {
-            score += value * 2;
-        }
-
-        if (name === "scanner" || name === "unity" || name === "knowledge") {
-            score += value;
-        }
+    // Attribute change -> toggle operator/value
+    scriptArea.addEventListener('change', (e) => {
+      if (e.target.classList.contains('attr')) {
+        const block = e.target.closest('.block');
+        const attr = e.target.value;
+        const isStat = GAME_STATS.includes(attr);
+        const opSelect = block.querySelector('.op');
+        const valInput = block.querySelector('.val');
+        if (!opSelect || !valInput) return;
+        const opOptions = isStat ? NUM_OPERATORS : COLOUR_LEVELS;
+        opSelect.innerHTML = opOptions.map(o => `<option value="${o.value}">${o.label}</option>`).join('');
+        valInput.style.display = isStat ? 'inline' : 'none';
+      }
     });
 
-    return score;
-}
+    // Block type buttons
+    document.querySelectorAll('.addBlock').forEach(btn => {
+      btn.onclick = () => {
+        const type = btn.dataset.type;
+        const html = blockHTML(type, {attr:'settlers', op:'>', val:500, action:'move'});
+        const temp = document.createElement('div');
+        temp.innerHTML = html;
+        const el = temp.firstChild;
+        scriptArea.appendChild(el);
+        const ph = scriptArea.querySelector('.placeholder');
+        if (ph) ph.remove();
+        bindBlockEvents(el);
+      };
+    });
 
-function refreshBotStatus(message) {
-    if (botStatusEl) {
-        botStatusEl.textContent = message;
+    // Templates
+    document.querySelectorAll('.tpl').forEach(btn => {
+      btn.onclick = () => {
+        scriptArea.innerHTML = '';
+        const tpl = btn.dataset.tpl;
+        if (tpl === 'safe') {
+          addTemplate(scriptArea, [
+            {type:'while', attr:'settlers', op:'>', val:500, children:[
+              {type:'if', attr:'waterSupply', op:'green'},
+              {type:'if', attr:'radiation', op:'green'},
+              {type:'action', action:'settle'},
+              {type:'else'},
+              {type:'action', action:'move'},
+              {type:'action', action:'pickBestFor', pickStat:'waterSupply'},
+              {type:'action', action:'pickBestFor', pickStat:'radiation'}
+            ]}
+          ]);
+        } else if (tpl === 'explorer') {
+          addTemplate(scriptArea, [
+            {type:'while', attr:'moves', op:'<', val:15, children:[
+              {type:'if', attr:'radiation', op:'green'},
+              {type:'if', attr:'waterSupply', op:'green'},
+              {type:'action', action:'settle'},
+              {type:'else'},
+              {type:'action', action:'move'},
+              {type:'action', action:'pickBestFor', pickStat:'waterSupply'}
+            ]}
+          ]);
+        } else if (tpl === 'balanced') {
+          addTemplate(scriptArea, [
+            {type:'while', attr:'settlers', op:'>', val:300, children:[
+              {type:'if', attr:'unity', op:'>', val:80},
+              {type:'if', attr:'temperature', op:'green'},
+              {type:'action', action:'settle'},
+              {type:'else'},
+              {type:'action', action:'move'},
+              {type:'action', action:'pickBestFor', pickStat:'settlers'}
+            ]}
+          ]);
+        } else if (tpl === 'rush') {
+          addTemplate(scriptArea, [{type:'action', action:'settle'}]);
+        }
+      };
+    });
+
+    document.getElementById('runBot').onclick = () => runBot(scriptArea);
+  };
+
+  function addTemplate(parent, defs) {
+    defs.forEach(def => {
+      const html = blockHTML(def.type, def);
+      const temp = document.createElement('div');
+      temp.innerHTML = html;
+      const el = temp.firstChild;
+      parent.appendChild(el);
+      bindBlockEvents(el);
+      if (def.children) {
+        const body = el.querySelector('.body');
+        if (body) addTemplate(body, def.children);
+      }
+    });
+  }
+
+  function bindBlockEvents(el) {
+    el.querySelector('.del')?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      el.remove();
+    });
+  }
+
+  // ---------- EXECUTION (flat model with separate ELSE) ----------
+  async function runBot(scriptRoot) {
+    if (botActive) return;
+    botActive = true;
+    log('Bot started.');
+
+    if (!window.GameState || !window.GameState.isActive) {
+      const seed = document.getElementById('seedInput')?.value || null;
+      window.startNewGame(seed);
+      await sleep(500);
     }
-}
 
-function chooseEventOption() {
-    const event = GameState.pendingEvent;
-    if (!event) {
-        return;
+    await executeContainer(scriptRoot);
+
+    botActive = false;
+    log('Bot finished.');
+  }
+
+  // Execute a list of sibling blocks
+  async function executeContainer(container) {
+    const children = Array.from(container.children);
+    let i = 0;
+    while (i < children.length && botActive && window.GameState.isActive && !window.GameState.gameOver) {
+      const child = children[i];
+      child.classList.add('exec-hl');
+      await sleep(botSpeed / 2);
+      child.classList.remove('exec-hl');
+
+      if (child.dataset.type === 'if') {
+        // Find matching ELSE
+        let elseBlock = null;
+        for (let j = i + 1; j < children.length; j++) {
+          if (children[j].dataset.type === 'else') {
+            elseBlock = children[j];
+            break;
+          }
+        }
+
+        const conditionTrue = evaluateCondition(child);
+        if (conditionTrue) {
+          // Execute blocks after IF up to the ELSE (or end)
+          let k = i + 1;
+          while (k < children.length && children[k] !== elseBlock) {
+            const block = children[k];
+            block.classList.add('exec-hl');
+            await sleep(botSpeed / 2);
+            block.classList.remove('exec-hl');
+            await executeBlock(block, children, k);
+            await sleep(botSpeed);
+            k++;
+          }
+        } else {
+          // Execute blocks after ELSE (if present)
+          if (elseBlock) {
+            let k = children.indexOf(elseBlock) + 1;
+            while (k < children.length) {
+              const block = children[k];
+              // Stop at the next IF at this level? For simplicity, execute to end.
+              block.classList.add('exec-hl');
+              await sleep(botSpeed / 2);
+              block.classList.remove('exec-hl');
+              await executeBlock(block, children, k);
+              await sleep(botSpeed);
+              k++;
+            }
+          }
+        }
+        // Skip past the entire if-else construct
+        i = elseBlock ? children.indexOf(elseBlock) + 1 : children.length;
+        continue;
+      }
+
+      // Non-IF block
+      await executeBlock(child, children, i);
+      await sleep(botSpeed);
+      i++;
+    }
+  }
+
+  async function executeBlock(block, siblings, index) {
+    const type = block.dataset.type;
+    if (type === 'while') {
+      let iter = 0;
+      while (botActive && window.GameState.isActive && !window.GameState.gameOver && iter < 100) {
+        if (!evaluateCondition(block)) break;
+        const body = block.querySelector('.body');
+        if (body) await executeContainer(body);
+        iter++;
+      }
+    }
+    else if (type === 'action') {
+      await executeAction(block, siblings, index);
+    }
+    // else blocks are just markers, no action
+  }
+
+  async function executeAction(block, siblings, index) {
+    const actEl = block.querySelector('.act');
+    let action = actEl ? actEl.value : null;
+    if (!action) {
+      action = 'pickBestFor';
     }
 
-    const buttons = Array.from(ui?.eventPanelChoices?.querySelectorAll("button") || []);
-    if (!buttons.length) {
-        return;
+    log('DO ' + action);
+
+    switch (action) {
+      case 'move':
+        clickButton('moveBtn');
+        break;
+      case 'settle':
+        clickButton('settleBtn');
+        break;
+      case 'pickBestFor':
+        await pickBestFor(block);
+        break;
+      case 'wait':
+        clickAcknowledge();
+        break;
     }
 
-    const choices = Array.isArray(event.choices) && event.choices.length > 0
-        ? event.choices
-        : buttons.map((button, index) => ({
-            text: button.textContent || "",
-            index
-        }));
+    if (action === 'move' || action === 'settle') {
+      await autoHandleEvents(siblings, index);
+    }
+    if (action === 'pickBestFor') {
+      await autoAcknowledgeIfPresent();
+    }
+    await waitForIdle();
+  }
 
+  async function pickBestFor(block) {
+    let tries = 0;
+    while (botActive && tries < 30) {
+      const btns = document.querySelectorAll('#eventPanelChoices .event-choice-btn');
+      if (btns.length > 0) break;
+      await sleep(100);
+      tries++;
+    }
+
+    const event = window.GameState?.pendingEvent;
+    if (!event || !event.choices || event.choices.length === 0) {
+      log('No choice event for Pick best for');
+      return;
+    }
+
+    const stat = block.querySelector('.pickStat')?.value || 'settlers';
     let bestIndex = 0;
-    let bestScore = Number.NEGATIVE_INFINITY;
+    let bestVal = -Infinity;
 
-    choices.forEach((choice, index) => {
-        let choiceScore = 0;
-
-        if (Array.isArray(choice.effects)) {
-            choice.effects.forEach(effect => {
-                const delta = typeof effect.delta === "number"
-                    ? effect.delta
-                    : Math.max(effect.delta?.min ?? 0, effect.delta?.max ?? 0);
-
-                if (effect.type === "settlers") choiceScore += delta * 6;
-                if (effect.type === "scanner") choiceScore += delta * 4;
-                if (effect.type === "unity") choiceScore += delta * 4;
-                if (effect.type === "knowledge") choiceScore += delta * 4;
-                if (effect.type === "waterSupply") choiceScore += delta * 2;
-                if (effect.type === "land") choiceScore += delta * 2;
-                if (effect.type === "temperature") choiceScore += delta * 2;
-                if (effect.type === "radiation") choiceScore += delta * 2;
-                if (effect.type === "equipment") choiceScore += delta * 3;
-            });
-        }
-
-        if (choice.text) {
-            const lowered = choice.text.toLowerCase();
-            if (lowered.includes("save") || lowered.includes("protect") || lowered.includes("shield")) {
-                choiceScore += 10;
-            }
-            if (lowered.includes("leave") || lowered.includes("avoid") || lowered.includes("continue")) {
-                choiceScore += 4;
-            }
-            if (lowered.includes("settler") || lowered.includes("people") || lowered.includes("unity")) {
-                choiceScore += GameState.unity < 80 ? 12 : 6;
-            }
-            if (lowered.includes("knowledge") || lowered.includes("database") || lowered.includes("data")) {
-                choiceScore += GameState.knowledge < 90 ? 10 : 5;
-            }
-
-            if (event.kind === "milestone") {
-                if (lowered.includes("water") || lowered.includes("lake")) {
-                    choiceScore += GameState.settlers < 700 ? 8 : 4;
-                }
-                if (lowered.includes("science") || lowered.includes("museum") || lowered.includes("knowledge")) {
-                    choiceScore += GameState.knowledge < 120 ? 8 : 4;
-                }
-                if (lowered.includes("forest") || lowered.includes("unity")) {
-                    choiceScore += GameState.unity < 90 ? 8 : 4;
-                }
-                if (lowered.includes("hospital") || lowered.includes("settler") || lowered.includes("refugee")) {
-                    choiceScore += GameState.settlers < 800 ? 8 : 4;
-                }
-                if (lowered.includes("military") || lowered.includes("base") || lowered.includes("scanner")) {
-                    choiceScore += GameState.scanner < 100 ? 8 : 4;
-                }
-                if (lowered.includes("safe") || lowered.includes("shelter") || lowered.includes("underground")) {
-                    choiceScore += 5;
-                }
-            }
-        }
-
-        const loc = GameState.currentLocation || {};
-        BOT_ASPECTS.slice(4).forEach(name => {
-            const band = getBotAspectBand(loc[name] ?? 0);
-            if (band === 2) {
-                choiceScore -= 2;
-            }
-        });
-
-        if (choiceScore > bestScore) {
-            bestScore = choiceScore;
-            bestIndex = index;
-        }
+    event.choices.forEach((choice, idx) => {
+      const info = choice.info;
+      if (!info) return;
+      const val = info[stat] !== undefined ? info[stat] : 0;
+      if (val > bestVal) {
+        bestVal = val;
+        bestIndex = idx;
+      }
     });
 
-    buttons[bestIndex]?.click();
-}
+    log('Picked option ' + (bestIndex+1) + ' for ' + stat);
+    clickChoice(bestIndex);
+  }
 
-function chooseActionByState() {
-    if (!GameState.isActive || GameState.gameOver) {
+  async function autoHandleEvents(siblings, currentIndex) {
+    let handled = true;
+    while (handled && botActive && window.GameState.isActive && !window.GameState.gameOver) {
+      handled = false;
+      const ackBtn = document.querySelector('#eventPanelChoices button:not(.event-choice-btn)');
+      if (ackBtn && ackBtn.textContent.includes('Acknowledge')) {
+        ackBtn.click();
+        log('Acknowledged event');
+        handled = true;
+        await sleep(botSpeed);
+        continue;
+      }
+      const choiceBtns = document.querySelectorAll('#eventPanelChoices .event-choice-btn');
+      if (choiceBtns.length > 0) break;
+    }
+  }
+
+  async function autoAcknowledgeIfPresent() {
+    let attempts = 0;
+    while (attempts < 20 && botActive) {
+      const ackBtn = document.querySelector('#eventPanelChoices button:not(.event-choice-btn)');
+      if (ackBtn && ackBtn.textContent.includes('Acknowledge')) {
+        ackBtn.click();
+        log('Acknowledged after choice');
+        await sleep(botSpeed);
         return;
+      }
+      await sleep(100);
+      attempts++;
     }
+  }
 
-    if (GameState.pendingEvent) {
-        chooseEventOption();
-        return;
+  function clickButton(id) {
+    const btn = document.getElementById(id);
+    if (btn && !btn.disabled) {
+      btn.click();
+      log('Clicked ' + id);
+    } else {
+      log('Button ' + id + ' not available');
     }
+  }
 
-    const currentScore = scoreBotState();
-    const settleScore = currentScore + Math.max(0, 1000 - GameState.moves * 5) - (GameState.currentBiome * 25);
-    const moveScore = currentScore + 150 + Math.max(0, 200 - getBotAspectValue("scanner"));
-
-    if (GameState.moves >= 6 && settleScore >= moveScore) {
-        settle();
-        return;
+  function clickChoice(index) {
+    const choices = document.querySelectorAll('#eventPanelChoices .event-choice-btn');
+    if (choices.length > index) {
+      choices[index].click();
+      log('Chose Option ' + (index+1));
+    } else {
+      log('Choice option ' + (index+1) + ' not available');
     }
+  }
 
-    if (GameState.settlers <= 250 || GameState.scanner <= 40 || GameState.unity <= 35) {
-        settle();
-        return;
+  function clickAcknowledge() {
+    const ack = document.querySelector('#eventPanelChoices button:not(.event-choice-btn)');
+    if (ack && ack.textContent.includes('Acknowledge')) {
+      ack.click();
+      log('Acknowledged');
     }
+  }
 
-    moveToNextLocation();
-}
+  function evaluateCondition(block) {
+    const src = block.querySelector('.src')?.value || 'current';
+    const attr = block.querySelector('.attr')?.value;
+    const op = block.querySelector('.op')?.value;
+    const valInput = block.querySelector('.val');
+    const val = valInput ? (parseInt(valInput.value) || 0) : 0;
+    if (!attr || !op) return true;
 
-function runBotTick() {
-    if (!botRunning) {
-        return;
+    let curValue;
+    const isStat = GAME_STATS.includes(attr);
+
+    if (src === 'current') {
+      if (isStat) {
+        curValue = window.GameState[attr];
+      } else if (window.GameState.currentLocation) {
+        curValue = window.GameState.currentLocation[attr];
+      } else {
+        return false;
+      }
+
+      if (isStat) {
+        switch (op) {
+          case '>': return curValue > val;
+          case '<': return curValue < val;
+          case '>=': return curValue >= val;
+          case '<=': return curValue <= val;
+          default: return false;
+        }
+      } else {
+        if (op === 'green') return curValue < 100;
+        if (op === 'orange') return curValue >= 100 && curValue < 250;
+        if (op === 'red') return curValue >= 250;
+        return false;
+      }
+    } else if (src === 'choice1info' || src === 'choice2info') {
+      const event = window.GameState?.pendingEvent;
+      if (!event || !event.choices) return false;
+      const idx = src === 'choice1info' ? 0 : 1;
+      if (idx >= event.choices.length) return false;
+      const info = event.choices[idx].info;
+      if (!info || info[attr] === undefined) return false;
+      curValue = info[attr];
+      switch (op) {
+        case '>': return curValue > val;
+        case '<': return curValue < val;
+        case '>=': return curValue >= val;
+        case '<=': return curValue <= val;
+        default: return false;
+      }
     }
+    return false;
+  }
 
-    if (!GameState.isActive || GameState.gameOver) {
-        refreshBotStatus("Bot idle.");
-        return;
+  async function waitForIdle() {
+    let wait = 0;
+    while (botActive && wait < 50) {
+      const moveBtn = document.getElementById('moveBtn');
+      if (moveBtn && !moveBtn.disabled) break;
+      await sleep(200);
+      wait++;
     }
+  }
 
-    if (GameState.pendingEvent && ui?.eventPanelChoices?.children?.length) {
-        refreshBotStatus("Bot resolving event.");
-        chooseEventOption();
-        return;
+  function log(msg) {
+    const logDiv = document.getElementById('botLog');
+    if (logDiv) {
+      logDiv.innerHTML += `<div>[${new Date().toLocaleTimeString()}] ${msg}</div>`;
+      logDiv.scrollTop = logDiv.scrollHeight;
     }
+  }
 
-    refreshBotStatus("Bot planning next action.");
-    chooseActionByState();
-}
-
-function stopBot() {
-    botRunning = false;
-    if (botTimer) {
-        clearInterval(botTimer);
-        botTimer = null;
-    }
-    refreshBotStatus("Bot stopped.");
-}
-
-function startBot() {
-    botRunning = true;
-
-    if (botTimer) {
-        clearInterval(botTimer);
-    }
-
-    botTimer = setInterval(runBotTick, 250);
-    refreshBotStatus("Bot running.");
-}
-
-function showBotBuilder(seed, autoStart = false) {
-    const overlay = document.getElementById("botBuilderOverlay");
-
-    if (overlay) {
-        overlay.classList.remove("hidden-shell");
-        overlay.style.display = "block";
-        overlay.innerHTML = "";
-
-        const panel = document.createElement("div");
-        panel.style.cssText = "position:fixed;inset:20px;z-index:9999;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.45);";
-
-        const card = document.createElement("div");
-        card.style.cssText = "min-width:280px;max-width:420px;padding:20px;background:#fff;color:#111;border:1px solid #bbb;box-shadow:0 10px 30px rgba(0,0,0,0.2);font-family:system-ui,sans-serif;";
-
-        const title = document.createElement("div");
-        title.textContent = "Bot Mode";
-        title.style.cssText = "font-size:20px;font-weight:700;margin-bottom:10px;";
-
-        botStatusEl = document.createElement("div");
-        botStatusEl.style.cssText = "font-size:14px;line-height:1.4;margin-bottom:14px;";
-        botStatusEl.textContent = "Ready to run the automated player.";
-
-        const seedLine = document.createElement("div");
-        seedLine.style.cssText = "font-size:12px;color:#555;margin-bottom:14px;";
-        seedLine.textContent = seed ? `Seed: ${seed}` : "Seed: current time";
-
-        const startButton = document.createElement("button");
-        startButton.className = "game-btn";
-        startButton.textContent = "Start bot";
-        startButton.addEventListener("click", () => {
-            overlay.style.display = "none";
-            if (ui?.gameScreen) {
-                ui.gameScreen.style.display = "block";
-            }
-            if (typeof startNewGame === "function") {
-                startNewGame(seed || null);
-            }
-            startBot();
-        });
-
-        const stopButton = document.createElement("button");
-        stopButton.className = "game-btn";
-        stopButton.textContent = "Stop bot";
-        stopButton.style.marginLeft = "8px";
-        stopButton.addEventListener("click", () => {
-            stopBot();
-            overlay.style.display = "none";
-        });
-
-        card.appendChild(title);
-        card.appendChild(botStatusEl);
-        card.appendChild(seedLine);
-        card.appendChild(startButton);
-        card.appendChild(stopButton);
-        panel.appendChild(card);
-        overlay.appendChild(panel);
-    }
-
-    refreshBotStatus("Bot builder ready.");
-
-    if (autoStart) {
-        startBot();
-    }
-}
-
-window.startBot = startBot;
-window.stopBot = stopBot;
-window.showBotBuilder = showBotBuilder;
+  function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+})();
