@@ -1,12 +1,9 @@
-// bot.js – IF and ELSE as separate blocks, linear script execution
-(function() {
+// bot.js — refactored into a real tree/chain control-flow system
+(function () {
   'use strict';
 
-  // ---- GAME STATS (show numbers) ----
-  const GAME_STATS = ['settlers','scanner','unity','knowledge','moves'];
-
-  // ---- LOCATION ATTRIBUTES (show colours) ----
-  const LOCATION_ATTRS = ['waterSupply','land','temperature','radiation'];
+  const GAME_STATS = ['settlers', 'scanner', 'unity', 'knowledge', 'moves'];
+  const LOCATION_ATTRS = ['waterSupply', 'land', 'temperature', 'radiation'];
 
   const ATTRIBUTES = [
     { value: 'settlers', label: 'Settlers', type: 'stat' },
@@ -48,295 +45,420 @@
     { value: 'upgrade', label: 'Upgrade' }
   ];
 
-  // ---------- BUILDER UI ----------
+  const CONTROL_TYPES = new Set(['while', 'if', 'elseif', 'else']);
+  const SCRIPT_CONTAINER_ID = 'botScript';
+
+  let botActive = false;
+  let botSpeed = 800;
+  let currentScriptRoot = null;
+
+  function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  function log(msg) {
+    const logDiv = document.getElementById('botLog');
+    if (!logDiv) return;
+    logDiv.innerHTML += `<div>[${new Date().toLocaleTimeString()}] ${msg}</div>`;
+    logDiv.scrollTop = logDiv.scrollHeight;
+  }
+
   function createOverlay() {
     const overlay = document.createElement('div');
     overlay.id = 'botOverlay';
-    overlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;z-index:1000;background:rgba(0,0,0,0.9);color:#eee;font-family:monospace;display:flex;align-items:center;justify-content:center;';
+    overlay.style.cssText = [
+      'position:fixed', 'inset:0', 'z-index:1000', 'background:rgba(0,0,0,0.9)',
+      'color:#eee', 'font-family:monospace', 'display:flex', 'align-items:center', 'justify-content:center'
+    ].join(';');
+
     overlay.innerHTML = `
-      <div style="background:#1a1a2e;padding:20px;border-radius:10px;width:95%;max-width:900px;max-height:90vh;overflow-y:auto;">
-        <h2>Bot Builder</h2>
-        <div style="display:flex;gap:10px;margin-bottom:10px;">
+      <div style="background:#1a1a2e;padding:20px;border-radius:10px;width:95%;max-width:1000px;max-height:90vh;overflow-y:auto;">
+        <h2 style="margin-top:0;">Bot Builder</h2>
+
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px;">
           <button class="addBlock" data-type="while">+ While</button>
           <button class="addBlock" data-type="if">+ If</button>
+          <button class="addBlock" data-type="elseif">+ Else If</button>
           <button class="addBlock" data-type="else">+ Else</button>
           <button class="addBlock" data-type="action">+ Action</button>
         </div>
-        <div id="botScript" style="background:#16213e;padding:10px;min-height:200px;border:1px dashed #4ecdc4;margin-bottom:10px;">
-          <p class="placeholder">Add blocks to build the bot's logic...</p>
-        </div>
-        <div style="display:flex;gap:10px;margin-bottom:10px;">
+
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px;">
           <button class="tpl" data-tpl="safe">Safe Settle</button>
           <button class="tpl" data-tpl="explorer">Explorer</button>
           <button class="tpl" data-tpl="balanced">Balanced</button>
           <button class="tpl" data-tpl="rush">Rush</button>
+          <button class="tpl" data-tpl="empty">Empty</button>
         </div>
+
+        <div id="${SCRIPT_CONTAINER_ID}" style="background:#16213e;padding:12px;min-height:240px;border:1px dashed #4ecdc4;margin-bottom:10px;">
+          <p class="placeholder" style="opacity:.75;margin:0;">Add blocks to build the bot's logic...</p>
+        </div>
+
         <button id="runBot" style="display:block;width:100%;padding:10px;background:#27ae60;color:white;border:none;font-size:18px;cursor:pointer;">Run Bot</button>
-        <div id="botLog" style="background:#000;color:#0f0;margin-top:10px;padding:5px;max-height:150px;overflow-y:auto;font-size:12px;"></div>
+        <div id="botLog" style="background:#000;color:#0f0;margin-top:10px;padding:8px;max-height:180px;overflow-y:auto;font-size:12px;"></div>
       </div>`;
+
     return overlay;
   }
 
-  // ---- BLOCK HTML (IF/ELSE are separate, no nested bodies) ----
-  function blockHTML(type, defaults = {}) {
-    const id = 'b' + Math.random().toString(36).substr(2,6);
-    if (type === 'while') {
-      const attr = defaults.attr || 'settlers';
-      const isStat = GAME_STATS.includes(attr);
-      const opOptions = isStat ? NUM_OPERATORS : COLOUR_LEVELS;
-      const valDisplay = isStat ? 'inline' : 'none';
-      return `<div class="block while" data-id="${id}" data-type="while">
-        <div class="header">WHILE
-          <select class="attr">${ATTRIBUTES.map(a => `<option value="${a.value}" ${a.value===attr?'selected':''}>${a.label}</option>`).join('')}</select>
-          <select class="op">${opOptions.map(o => `<option value="${o.value}" ${o.value===(defaults.op||(isStat?'>':'green'))?'selected':''}>${o.label}</option>`).join('')}</select>
-          <input class="val" type="number" value="${defaults.val||500}" min="0" style="display:${valDisplay}">
-          <button class="del">x</button>
-        </div>
-        <div class="body"></div>
-      </div>`;
-    }
-    if (type === 'if') {
-      const attr = defaults.attr || 'waterSupply';
-      const isStat = GAME_STATS.includes(attr);
-      const opOptions = isStat ? NUM_OPERATORS : COLOUR_LEVELS;
-      const valDisplay = isStat ? 'inline' : 'none';
-      return `<div class="block if" data-id="${id}" data-type="if">
-        <div class="header">IF
-          <select class="attr">${ATTRIBUTES.map(a => `<option value="${a.value}" ${a.value===attr?'selected':''}>${a.label}</option>`).join('')}</select>
-          <select class="op">${opOptions.map(o => `<option value="${o.value}" ${o.value===(defaults.op||(isStat?'>':'green'))?'selected':''}>${o.label}</option>`).join('')}</select>
-          <input class="val" type="number" value="${defaults.val||100}" min="0" style="display:${valDisplay}">
-          <button class="del">x</button>
-        </div>
-      </div>`;
-    }
-    if (type === 'else') {
-      return `<div class="block else-block" data-id="${id}" data-type="else">
-        <div class="header">ELSE <button class="del">x</button></div>
-      </div>`;
-    }
-    if (type === 'action') {
-      if (defaults.action === 'pickBestFor') {
-        return `<div class="block action" data-id="${id}" data-type="action">
-          <div class="header">DO Pick best for
-            <select class="pickStat">${PRIORITY_STATS.map(p => `<option value="${p.value}">${p.label}</option>`).join('')}</select>
-            <button class="del">x</button>
-          </div>
-        </div>`;
-      }
-      return `<div class="block action" data-id="${id}" data-type="action">
-        <div class="header">DO
-          <select class="act">${ACTIONS.map(a => `<option value="${a.value}" ${a.value===defaults.action?'selected':''}>${a.label}</option>`).join('')}</select>
-          <button class="del">x</button>
-        </div>
-      </div>`;
-    }
+  function isStatAttr(attr) {
+    return GAME_STATS.includes(attr);
   }
 
-  // ---- STYLES ----
-  const style = document.createElement('style');
-  style.textContent = `
-    .block { margin:5px 0; padding:8px; background:#0f3460; border-left:4px solid #4ecdc4; position:relative; }
-    .while { border-left-color:#e74c3c; }
-    .if { border-left-color:#f39c12; }
-    .else-block { border-left-color:#95a5a6; }
-    .action { border-left-color:#2ecc71; }
-    .header { display:flex; align-items:center; gap:6px; flex-wrap:wrap; }
-    .header select, .header input { background:#1a1a2e; color:#eee; border:1px solid #4ecdc4; padding:2px 5px; }
-    .header input { width:80px; }
-    .body { margin-left:20px; padding-left:10px; border-left:2px solid #4ecdc4; }
-    .del { background:#e74c3c; color:white; border:none; border-radius:50%; width:20px; height:20px; cursor:pointer; font-size:14px; line-height:1; position:absolute; right:5px; top:5px; }
-    .exec-hl { box-shadow: 0 0 15px #4ecdc4; transition: 0.2s; }
-  `;
-  document.head.appendChild(style);
+  function isBranchType(type) {
+    return type === 'if' || type === 'elseif' || type === 'else';
+  }
 
-  // ---------- BOT STATE ----------
-  let botActive = false;
-  const botSpeed = 800;
-  let currentScriptRoot = null;
+  function makeId() {
+    return 'b' + Math.random().toString(36).slice(2, 8);
+  }
 
-  // ---------- SHOW BUILDER ----------
-  window.showBotBuilder = function() {
+  function conditionOperatorsFor(attr) {
+    return isStatAttr(attr) ? NUM_OPERATORS : COLOUR_LEVELS;
+  }
+
+  function defaultAttrFor(type) {
+    if (type === 'while') return 'settlers';
+    if (type === 'if' || type === 'elseif') return 'waterSupply';
+    return 'waterSupply';
+  }
+
+  function defaultOpFor(attr) {
+    return isStatAttr(attr) ? '>' : 'green';
+  }
+
+  function blockHTML(type, defaults = {}) {
+    const id = makeId();
+
+    if (type === 'while' || type === 'if' || type === 'elseif') {
+      const attr = defaults.attr || defaultAttrFor(type);
+      const opOptions = conditionOperatorsFor(attr);
+      const valDisplay = isStatAttr(attr) ? 'inline' : 'none';
+      const title = type === 'while' ? 'WHILE' : (type === 'elseif' ? 'ELSE IF' : 'IF');
+
+      return `
+        <div class="block ${type}" data-id="${id}" data-type="${type}">
+          <div class="header">
+            <span>${title}</span>
+            <select class="attr">${ATTRIBUTES.map(a => `<option value="${a.value}" ${a.value === attr ? 'selected' : ''}>${a.label}</option>`).join('')}</select>
+            <select class="op">${opOptions.map(o => `<option value="${o.value}" ${o.value === (defaults.op || defaultOpFor(attr)) ? 'selected' : ''}>${o.label}</option>`).join('')}</select>
+            <input class="val" type="number" value="${defaults.val ?? (type === 'while' ? 500 : 100)}" min="0" style="display:${valDisplay}">
+            <button class="del" title="Delete">x</button>
+          </div>
+          <div class="body"></div>
+        </div>`;
+    }
+
+    if (type === 'else') {
+      return `
+        <div class="block else-block" data-id="${id}" data-type="else">
+          <div class="header">
+            <span>ELSE</span>
+            <button class="del" title="Delete">x</button>
+          </div>
+          <div class="body"></div>
+        </div>`;
+    }
+
+    if (type === 'action') {
+      const action = defaults.action || 'move';
+      if (action === 'pickBestFor') {
+        return `
+          <div class="block action" data-id="${id}" data-type="action">
+            <div class="header">
+              <span>DO Pick best for</span>
+              <select class="pickStat">${PRIORITY_STATS.map(p => `<option value="${p.value}" ${p.value === (defaults.pickStat || 'settlers') ? 'selected' : ''}>${p.label}</option>`).join('')}</select>
+              <button class="del" title="Delete">x</button>
+            </div>
+          </div>`;
+      }
+      return `
+        <div class="block action" data-id="${id}" data-type="action">
+          <div class="header">
+            <span>DO</span>
+            <select class="act">${ACTIONS.map(a => `<option value="${a.value}" ${a.value === action ? 'selected' : ''}>${a.label}</option>`).join('')}</select>
+            <button class="del" title="Delete">x</button>
+          </div>
+        </div>`;
+    }
+
+    return '';
+  }
+
+  function addBlockTo(container, def) {
+    const temp = document.createElement('div');
+    temp.innerHTML = blockHTML(def.type, def);
+    const el = temp.firstElementChild;
+    if (!el) return null;
+    container.appendChild(el);
+    bindBlockEvents(el);
+    if (def.children && def.children.length) {
+      const body = el.querySelector(':scope > .body');
+      if (body) addTemplate(body, def.children);
+    }
+    return el;
+  }
+
+  function addTemplate(parent, defs) {
+    defs.forEach(def => addBlockTo(parent, def));
+  }
+
+  function bindBlockEvents(el) {
+    el.querySelector('.del')?.addEventListener('click', e => {
+      e.stopPropagation();
+      el.remove();
+    });
+
+    el.querySelector('.attr')?.addEventListener('change', e => {
+      const block = e.currentTarget.closest('.block');
+      if (!block) return;
+      const attr = e.currentTarget.value;
+      const opSelect = block.querySelector('.op');
+      const valInput = block.querySelector('.val');
+      if (!opSelect || !valInput) return;
+
+      const options = conditionOperatorsFor(attr);
+      opSelect.innerHTML = options.map(o => `<option value="${o.value}">${o.label}</option>`).join('');
+      opSelect.value = defaultOpFor(attr);
+      valInput.style.display = isStatAttr(attr) ? 'inline' : 'none';
+      if (isStatAttr(attr) && !valInput.value) valInput.value = '100';
+    });
+
+    el.querySelector('.act')?.addEventListener('change', e => {
+      const block = e.currentTarget.closest('.block');
+      if (!block) return;
+      const selected = e.currentTarget.value;
+      if (selected === 'pickBestFor' && !block.querySelector('.pickStat')) {
+        const header = block.querySelector('.header');
+        const wrap = document.createElement('span');
+        wrap.innerHTML = `<select class="pickStat">${PRIORITY_STATS.map(p => `<option value="${p.value}">${p.label}</option>`).join('')}</select>`;
+        header.insertBefore(wrap.firstElementChild, header.querySelector('.del'));
+      }
+    });
+  }
+
+  function showBotBuilder() {
     const root = document.getElementById('botBuilderRoot');
+    if (!root) {
+      console.error('botBuilderRoot missing');
+      return;
+    }
+
     root.innerHTML = '';
     root.appendChild(createOverlay());
 
-    const scriptArea = document.getElementById('botScript');
+    const scriptArea = document.getElementById(SCRIPT_CONTAINER_ID);
     currentScriptRoot = scriptArea;
 
-    // Attribute change -> toggle operator/value
-    scriptArea.addEventListener('change', (e) => {
-      if (e.target.classList.contains('attr')) {
-        const block = e.target.closest('.block');
-        const attr = e.target.value;
-        const isStat = GAME_STATS.includes(attr);
-        const opSelect = block.querySelector('.op');
-        const valInput = block.querySelector('.val');
-        if (!opSelect || !valInput) return;
-        const opOptions = isStat ? NUM_OPERATORS : COLOUR_LEVELS;
-        opSelect.innerHTML = opOptions.map(o => `<option value="${o.value}">${o.label}</option>`).join('');
-        valInput.style.display = isStat ? 'inline' : 'none';
-      }
+    scriptArea.addEventListener('change', e => {
+      if (!e.target.classList.contains('attr')) return;
+      const block = e.target.closest('.block');
+      if (!block) return;
+      const attr = e.target.value;
+      const opSelect = block.querySelector('.op');
+      const valInput = block.querySelector('.val');
+      if (!opSelect || !valInput) return;
+
+      const options = conditionOperatorsFor(attr);
+      opSelect.innerHTML = options.map(o => `<option value="${o.value}">${o.label}</option>`).join('');
+      opSelect.value = defaultOpFor(attr);
+      valInput.style.display = isStatAttr(attr) ? 'inline' : 'none';
     });
 
-    // Block type buttons
     document.querySelectorAll('.addBlock').forEach(btn => {
       btn.onclick = () => {
         const type = btn.dataset.type;
-        const html = blockHTML(type, {attr:'settlers', op:'>', val:500, action:'move'});
+        const html = blockHTML(type, {
+          attr: defaultAttrFor(type),
+          op: defaultOpFor(defaultAttrFor(type)),
+          val: type === 'while' ? 500 : 100,
+          action: 'move',
+          pickStat: 'settlers'
+        });
         const temp = document.createElement('div');
         temp.innerHTML = html;
-        const el = temp.firstChild;
+        const el = temp.firstElementChild;
         scriptArea.appendChild(el);
-        const ph = scriptArea.querySelector('.placeholder');
-        if (ph) ph.remove();
+        scriptArea.querySelector('.placeholder')?.remove();
         bindBlockEvents(el);
       };
     });
 
-    // Templates
     document.querySelectorAll('.tpl').forEach(btn => {
       btn.onclick = () => {
         scriptArea.innerHTML = '';
         const tpl = btn.dataset.tpl;
+
         if (tpl === 'safe') {
           addTemplate(scriptArea, [
-            {type:'while', attr:'settlers', op:'>', val:500, children:[
-              {type:'if', attr:'waterSupply', op:'green'},
-              {type:'if', attr:'radiation', op:'green'},
-              {type:'action', action:'settle'},
-              {type:'else'},
-              {type:'action', action:'move'},
-              {type:'action', action:'pickBestFor', pickStat:'waterSupply'},
-              {type:'action', action:'pickBestFor', pickStat:'radiation'}
-            ]}
+            {
+              type: 'while', attr: 'settlers', op: '>', val: 500, children: [
+                { type: 'if', attr: 'waterSupply', op: 'green', children: [
+                  { type: 'if', attr: 'radiation', op: 'green', children: [
+                    { type: 'action', action: 'settle' }
+                  ]},
+                  { type: 'elseif', attr: 'land', op: 'green', children: [
+                    { type: 'action', action: 'move' },
+                    { type: 'action', action: 'pickBestFor', pickStat: 'waterSupply' }
+                  ]},
+                  { type: 'else', children: [
+                    { type: 'action', action: 'move' }
+                  ]}
+                ] }
+              ]
+            }
           ]);
         } else if (tpl === 'explorer') {
           addTemplate(scriptArea, [
-            {type:'while', attr:'moves', op:'<', val:15, children:[
-              {type:'if', attr:'radiation', op:'green'},
-              {type:'if', attr:'waterSupply', op:'green'},
-              {type:'action', action:'settle'},
-              {type:'else'},
-              {type:'action', action:'move'},
-              {type:'action', action:'pickBestFor', pickStat:'waterSupply'}
-            ]}
+            {
+              type: 'while', attr: 'moves', op: '<', val: 15, children: [
+                { type: 'if', attr: 'radiation', op: 'green', children: [
+                  { type: 'if', attr: 'waterSupply', op: 'green', children: [
+                    { type: 'action', action: 'settle' }
+                  ]},
+                  { type: 'else', children: [
+                    { type: 'action', action: 'move' },
+                    { type: 'action', action: 'pickBestFor', pickStat: 'waterSupply' }
+                  ]}
+                ] }
+              ]
+            }
           ]);
         } else if (tpl === 'balanced') {
           addTemplate(scriptArea, [
-            {type:'while', attr:'settlers', op:'>', val:300, children:[
-              {type:'if', attr:'unity', op:'>', val:80},
-              {type:'if', attr:'temperature', op:'green'},
-              {type:'action', action:'settle'},
-              {type:'else'},
-              {type:'action', action:'move'},
-              {type:'action', action:'pickBestFor', pickStat:'settlers'}
-            ]}
+            {
+              type: 'while', attr: 'settlers', op: '>', val: 300, children: [
+                { type: 'if', attr: 'unity', op: '>', val: 80, children: [
+                  { type: 'if', attr: 'temperature', op: 'green', children: [
+                    { type: 'action', action: 'settle' }
+                  ]},
+                  { type: 'elseif', attr: 'knowledge', op: '>', val: 90, children: [
+                    { type: 'action', action: 'move' }
+                  ]},
+                  { type: 'else', children: [
+                    { type: 'action', action: 'pickBestFor', pickStat: 'settlers' }
+                  ]}
+                ] }
+              ]
+            }
           ]);
         } else if (tpl === 'rush') {
-          addTemplate(scriptArea, [{type:'action', action:'settle'}]);
+          addTemplate(scriptArea, [
+            { type: 'action', action: 'settle' }
+          ]);
+        } else {
+          scriptArea.innerHTML = '<p class="placeholder" style="opacity:.75;margin:0;">Add blocks to build the bot\'s logic...</p>';
         }
       };
     });
 
-    document.getElementById('runBot').onclick = () => runBot(scriptArea);
-  };
+    const runBtn = document.getElementById('runBot');
+    if (runBtn) runBtn.onclick = () => runBot(scriptArea);
+  }
 
-  function addTemplate(parent, defs) {
-    defs.forEach(def => {
-      const html = blockHTML(def.type, def);
-      const temp = document.createElement('div');
-      temp.innerHTML = html;
-      const el = temp.firstChild;
-      parent.appendChild(el);
-      bindBlockEvents(el);
-      if (def.children) {
-        const body = el.querySelector('.body');
-        if (body) addTemplate(body, def.children);
+  function getDirectChildren(container) {
+    return Array.from(container.children).filter(el => el.classList && el.classList.contains('block'));
+  }
+
+  function findMatchingBranchChain(children, startIndex) {
+    const chain = [];
+    const first = children[startIndex];
+    if (!first || first.dataset.type !== 'if') return chain;
+
+    chain.push(first);
+    for (let i = startIndex + 1; i < children.length; i++) {
+      const type = children[i].dataset.type;
+      if (type === 'elseif' || type === 'else') {
+        chain.push(children[i]);
+        continue;
       }
-    });
+      break;
+    }
+    return chain;
   }
 
-  function bindBlockEvents(el) {
-    el.querySelector('.del')?.addEventListener('click', (e) => {
-      e.stopPropagation();
-      el.remove();
-    });
-  }
-
-  // ---------- EXECUTION (flat model with separate ELSE) ----------
   async function runBot(scriptRoot) {
     if (botActive) return;
     botActive = true;
     log('Bot started.');
 
-    if (!window.GameState || !window.GameState.isActive) {
-      const seed = document.getElementById('seedInput')?.value || null;
-      window.startNewGame(seed);
-      await sleep(500);
+    try {
+      if (!window.GameState || !window.GameState.isActive) {
+        const seed = document.getElementById('seedInput')?.value || null;
+        if (typeof window.startNewGame === 'function') {
+          window.startNewGame(seed);
+          await sleep(500);
+        }
+      }
+
+      await executeContainer(scriptRoot);
+    } catch (err) {
+      console.error(err);
+      log('Bot error: ' + (err?.message || String(err)));
+    } finally {
+      botActive = false;
+      log('Bot finished.');
     }
-
-    await executeContainer(scriptRoot);
-
-    botActive = false;
-    log('Bot finished.');
   }
 
-  // Execute a list of sibling blocks
   async function executeContainer(container) {
-    const children = Array.from(container.children);
+    const children = getDirectChildren(container);
     let i = 0;
-    while (i < children.length && botActive && window.GameState.isActive && !window.GameState.gameOver) {
-      const child = children[i];
-      child.classList.add('exec-hl');
-      await sleep(botSpeed / 2);
-      child.classList.remove('exec-hl');
 
-      if (child.dataset.type === 'if') {
-        // Find matching ELSE
-        let elseBlock = null;
-        for (let j = i + 1; j < children.length; j++) {
-          if (children[j].dataset.type === 'else') {
-            elseBlock = children[j];
+    while (i < children.length && botActive && window.GameState?.isActive && !window.GameState?.gameOver) {
+      const block = children[i];
+      block.classList.add('exec-hl');
+      await sleep(botSpeed / 2);
+      block.classList.remove('exec-hl');
+
+      const type = block.dataset.type;
+
+      if (type === 'while') {
+        let guard = 0;
+        while (botActive && window.GameState?.isActive && !window.GameState?.gameOver && guard < 200) {
+          if (!evaluateCondition(block)) break;
+          const body = block.querySelector(':scope > .body');
+          if (body) await executeContainer(body);
+          guard++;
+        }
+        i++;
+        continue;
+      }
+
+      if (type === 'if') {
+        const chain = findMatchingBranchChain(children, i);
+        let matched = false;
+
+        for (const branch of chain) {
+          const branchType = branch.dataset.type;
+          if (branchType === 'else') {
+            if (!matched) {
+              const body = branch.querySelector(':scope > .body');
+              if (body) await executeContainer(body);
+            }
+            break;
+          }
+
+          const ok = evaluateCondition(branch);
+          if (ok) {
+            matched = true;
+            const body = branch.querySelector(':scope > .body');
+            if (body) await executeContainer(body);
             break;
           }
         }
 
-        const conditionTrue = evaluateCondition(child);
-        if (conditionTrue) {
-          // Execute blocks after IF up to the ELSE (or end)
-          let k = i + 1;
-          while (k < children.length && children[k] !== elseBlock) {
-            const block = children[k];
-            block.classList.add('exec-hl');
-            await sleep(botSpeed / 2);
-            block.classList.remove('exec-hl');
-            await executeBlock(block, children, k);
-            await sleep(botSpeed);
-            k++;
-          }
-        } else {
-          // Execute blocks after ELSE (if present)
-          if (elseBlock) {
-            let k = children.indexOf(elseBlock) + 1;
-            while (k < children.length) {
-              const block = children[k];
-              // Stop at the next IF at this level? For simplicity, execute to end.
-              block.classList.add('exec-hl');
-              await sleep(botSpeed / 2);
-              block.classList.remove('exec-hl');
-              await executeBlock(block, children, k);
-              await sleep(botSpeed);
-              k++;
-            }
-          }
-        }
-        // Skip past the entire if-else construct
-        i = elseBlock ? children.indexOf(elseBlock) + 1 : children.length;
+        i += chain.length;
         continue;
       }
 
-      // Non-IF block
-      await executeBlock(child, children, i);
+      if (type === 'elseif' || type === 'else') {
+        i++;
+        continue;
+      }
+
+      await executeBlock(block, children, i);
       await sleep(botSpeed);
       i++;
     }
@@ -344,25 +466,18 @@
 
   async function executeBlock(block, siblings, index) {
     const type = block.dataset.type;
-    if (type === 'while') {
-      let iter = 0;
-      while (botActive && window.GameState.isActive && !window.GameState.gameOver && iter < 100) {
-        if (!evaluateCondition(block)) break;
-        const body = block.querySelector('.body');
-        if (body) await executeContainer(body);
-        iter++;
-      }
-    }
-    else if (type === 'action') {
+
+    if (type === 'action') {
       await executeAction(block, siblings, index);
+      return;
     }
-    // else blocks are just markers, no action
   }
 
   async function executeAction(block, siblings, index) {
     const actEl = block.querySelector('.act');
-    let action = actEl ? actEl.value : null;
-    if (!action) {
+    let action = actEl ? actEl.value : 'move';
+
+    if (action === 'pickBestFor' && !block.querySelector('.pickStat')) {
       action = 'pickBestFor';
     }
 
@@ -384,17 +499,19 @@
     }
 
     if (action === 'move' || action === 'settle') {
-      await autoHandleEvents(siblings, index);
+      await autoHandleEvents();
     }
+
     if (action === 'pickBestFor') {
       await autoAcknowledgeIfPresent();
     }
+
     await waitForIdle();
   }
 
   async function pickBestFor(block) {
     let tries = 0;
-    while (botActive && tries < 30) {
+    while (botActive && tries < 40) {
       const btns = document.querySelectorAll('#eventPanelChoices .event-choice-btn');
       if (btns.length > 0) break;
       await sleep(100);
@@ -402,7 +519,7 @@
     }
 
     const event = window.GameState?.pendingEvent;
-    if (!event || !event.choices || event.choices.length === 0) {
+    if (!event || !event.choices || !event.choices.length) {
       log('No choice event for Pick best for');
       return;
     }
@@ -413,32 +530,28 @@
 
     event.choices.forEach((choice, idx) => {
       const info = choice.info;
-      if (!info) return;
-      const val = info[stat] !== undefined ? info[stat] : 0;
+      const val = info && info[stat] !== undefined ? info[stat] : 0;
       if (val > bestVal) {
         bestVal = val;
         bestIndex = idx;
       }
     });
 
-    log('Picked option ' + (bestIndex+1) + ' for ' + stat);
+    log('Picked option ' + (bestIndex + 1) + ' for ' + stat);
     clickChoice(bestIndex);
   }
 
-  async function autoHandleEvents(siblings, currentIndex) {
+  async function autoHandleEvents() {
     let handled = true;
-    while (handled && botActive && window.GameState.isActive && !window.GameState.gameOver) {
+    while (handled && botActive && window.GameState?.isActive && !window.GameState?.gameOver) {
       handled = false;
       const ackBtn = document.querySelector('#eventPanelChoices button:not(.event-choice-btn)');
-      if (ackBtn && ackBtn.textContent.includes('Acknowledge')) {
+      if (ackBtn && /Acknowledge/i.test(ackBtn.textContent)) {
         ackBtn.click();
         log('Acknowledged event');
         handled = true;
         await sleep(botSpeed);
-        continue;
       }
-      const choiceBtns = document.querySelectorAll('#eventPanelChoices .event-choice-btn');
-      if (choiceBtns.length > 0) break;
     }
   }
 
@@ -446,7 +559,7 @@
     let attempts = 0;
     while (attempts < 20 && botActive) {
       const ackBtn = document.querySelector('#eventPanelChoices button:not(.event-choice-btn)');
-      if (ackBtn && ackBtn.textContent.includes('Acknowledge')) {
+      if (ackBtn && /Acknowledge/i.test(ackBtn.textContent)) {
         ackBtn.click();
         log('Acknowledged after choice');
         await sleep(botSpeed);
@@ -471,62 +584,35 @@
     const choices = document.querySelectorAll('#eventPanelChoices .event-choice-btn');
     if (choices.length > index) {
       choices[index].click();
-      log('Chose Option ' + (index+1));
+      log('Chose option ' + (index + 1));
     } else {
-      log('Choice option ' + (index+1) + ' not available');
+      log('Choice option ' + (index + 1) + ' not available');
     }
   }
 
   function clickAcknowledge() {
     const ack = document.querySelector('#eventPanelChoices button:not(.event-choice-btn)');
-    if (ack && ack.textContent.includes('Acknowledge')) {
+    if (ack && /Acknowledge/i.test(ack.textContent)) {
       ack.click();
       log('Acknowledged');
     }
   }
 
   function evaluateCondition(block) {
-    const src = block.querySelector('.src')?.value || 'current';
     const attr = block.querySelector('.attr')?.value;
     const op = block.querySelector('.op')?.value;
     const valInput = block.querySelector('.val');
-    const val = valInput ? (parseInt(valInput.value) || 0) : 0;
+    const val = valInput ? (parseInt(valInput.value, 10) || 0) : 0;
+
     if (!attr || !op) return true;
 
-    let curValue;
     const isStat = GAME_STATS.includes(attr);
+    let curValue;
 
-    if (src === 'current') {
-      if (isStat) {
-        curValue = window.GameState[attr];
-      } else if (window.GameState.currentLocation) {
-        curValue = window.GameState.currentLocation[attr];
-      } else {
-        return false;
-      }
+    if (!window.GameState) return false;
 
-      if (isStat) {
-        switch (op) {
-          case '>': return curValue > val;
-          case '<': return curValue < val;
-          case '>=': return curValue >= val;
-          case '<=': return curValue <= val;
-          default: return false;
-        }
-      } else {
-        if (op === 'green') return curValue < 100;
-        if (op === 'orange') return curValue >= 100 && curValue < 250;
-        if (op === 'red') return curValue >= 250;
-        return false;
-      }
-    } else if (src === 'choice1info' || src === 'choice2info') {
-      const event = window.GameState?.pendingEvent;
-      if (!event || !event.choices) return false;
-      const idx = src === 'choice1info' ? 0 : 1;
-      if (idx >= event.choices.length) return false;
-      const info = event.choices[idx].info;
-      if (!info || info[attr] === undefined) return false;
-      curValue = info[attr];
+    if (isStat) {
+      curValue = window.GameState[attr];
       switch (op) {
         case '>': return curValue > val;
         case '<': return curValue < val;
@@ -535,6 +621,13 @@
         default: return false;
       }
     }
+
+    curValue = window.GameState.currentLocation ? window.GameState.currentLocation[attr] : null;
+    if (curValue == null) return false;
+
+    if (op === 'green') return curValue < 100;
+    if (op === 'orange') return curValue >= 100 && curValue < 250;
+    if (op === 'red') return curValue >= 250;
     return false;
   }
 
@@ -542,21 +635,12 @@
     let wait = 0;
     while (botActive && wait < 50) {
       const moveBtn = document.getElementById('moveBtn');
-      if (moveBtn && !moveBtn.disabled) break;
+      const settleBtn = document.getElementById('settleBtn');
+      if ((moveBtn && !moveBtn.disabled) || (settleBtn && !settleBtn.disabled)) break;
       await sleep(200);
       wait++;
     }
   }
 
-  function log(msg) {
-    const logDiv = document.getElementById('botLog');
-    if (logDiv) {
-      logDiv.innerHTML += `<div>[${new Date().toLocaleTimeString()}] ${msg}</div>`;
-      logDiv.scrollTop = logDiv.scrollHeight;
-    }
-  }
-
-  function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-  }
+  window.showBotBuilder = showBotBuilder;
 })();
