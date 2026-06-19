@@ -2,58 +2,118 @@
   {
     "id": 1,
     "name": "Mission 1 – First Steps",
-    "description": "Move the robot through the corridor to the goal (G). Use only Forward and Turn.",
+    "description": "Walk straight to the flag. Just use Forward – no turns needed!",
     "maze": [
-      ["S", 0, 0, 0, 0, 1],
-      [ 1, 1, 1, 1, 0, 1],
-      [ 1, 1, 1, 1, 0, 1],
-      [ 1, 1, 1, 1, 0, 1],
-      [ 1, 1, 1, 1, 0, 1],
-      [ 1, 1, 1, 1, 0,"G"]
-    ],
-    "starterCode": ""
+      [ 1, 1, 1, 1, 1, 1],
+      [ 1, 1, 1, 1, 1, 1],
+      [ 1, 0, 0, 0, 0, 1],
+      [ "S", 0, 0, 0, 0, "G"],
+      [ 1, 0, 0, 0, 0, 1],
+      [ 1, 1, 1, 1, 1, 1]
+    ]
   },
   {
     "id": 2,
-    "name": "Mission 2 – The Corridor of Fire",
-    "description": "Same path, but the walls are now fire! Step only on empty tiles, or you'll burn.",
+    "name": "Mission 2 – Watch the Flames",
+    "description": "Same path, but there is fire on the way! Can you cross without getting burned?",
     "maze": [
-      ["S", 0, 0, 0, 0,"F"],
-      ["F","F","F","F", 0,"F"],
-      ["F","F","F","F", 0,"F"],
-      ["F","F","F","F", 0,"F"],
-      ["F","F","F","F", 0,"F"],
-      ["F","F","F","F", 0,"G"]
-    ],
-    "starterCode": ""
+      [ 1, 1, 1, 1, 1, 1],
+      [ 1, 1, 1, 1, 1, 1],
+      [ 1, 0, 0, 0, 0, 1],
+      [ "S", 0, "F", 0, 0, "G"],
+      [ 1, 0, 0, 0, 0, 1],
+      [ 1, 1, 1, 1, 1, 1]
+    ]
   },
   {
     "id": 3,
-    "name": "Mission 3 – The T‑Path",
-    "description": "Collect all coins (🪙) before reaching the goal. The goal is locked until you grab them!",
+    "name": "Mission 3 – Coin Run",
+    "description": "Collect both coins before you reach the flag. The flag stays locked until you do!",
     "maze": [
-      [ 1,"C", 0, 0, 0,"C"],
-      [ 1, 1, 1, 0, 1, 1],
-      [ 1, 1, 1, 0, 1, 1],
-      [ 1, 1, 1, 0, 1, 1],
-      [ 1, 1, 1, 0, 1, 1],
-      [ 1, 1, 1,"S", 1, 1]
-    ],
-    "starterCode": "",
-    "start": { "row": 5, "col": 3, "dir": 3 }
+      [ 1, 1, 1, 1, 1, 1],
+      [ 1, 1, 1, 1, 1, 1],
+      [ 1, "C", 0, 0, 0, 1],
+      [ "S", 0, "F", 0, 0, "G"],
+      [ 1, 0, 0, "C", 0, 1],
+      [ 1, 1, 1, 1, 1, 1]
+    ]
   },
   {
     "id": 4,
-    "name": "Mission 4 – Spiral Path",
-    "description": "Use While and If to automate the explorer through the spiral. The right‑hand rule works here.",
+    "name": "Mission 4 – The Staircase",
+    "description": "Use a While loop with more than one block inside to climb the stairs and reach the flag!",
     "maze": [
-      ["S", 0, 0, 0, 0, 1],
+      ["S", 1, 1, 1, 1, 1],
+      [ 0, 1, 1, 1, 1, 1],
+      [ 0, 0, 1, 1, 1, 1],
+      [ 0, 0, 0, 1, 1, 1],
+      [ 0, 0, 0, 0, 1, 1],
+      [ 0, 0, 0, 0, 0,"G"]
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Mission 5 – The Left Turn",
+    "description": "The camel can only turn right. Use a While loop inside another While loop to make it turn left!",
+    "maze": [
+      [0, 1, 1, 1, 1, 1],
+      ["G", 0, 0, 0, 0, 1],
+      [ 0, 0, 1, 1, 0, 1],
+      [ 0, 0, 0, 1, 0, 1],
       [ 1, 1, 1, 1, 0, 1],
-      [ 1, 0,"G", 1, 0, 1],
-      [ 1, 0, 1, 1, 0, 1],
-      [ 1, 0, 0, 0, 0, 1],
-      [ 1, 1, 1, 1, 1, 1]
-    ],
-    "starterCode": ""
+      [ "S", 0, 0, 0, 0, 1]
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Mission 6 – Danger!",
+    "description": "Fire blocks the path! Use an If block inside your While loop to check for danger before you step.",
+    "maze": [
+      [0, 1, 1, 1, "F", 1],
+      ["G", 0, 0, 0, 0, 1],
+      [ 0, 0, 1, 1, 0, 1],
+      [ 0, 0, 0, 1, 0, 1],
+      [ 1, 1, 1, 1, 0, 1],
+      [ "S", 0, 0, 0, 0,"F"]
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Mission 7 – Crossing!",
+    "description": "Fire and walls block the way! Use If, Else If, and Else to check for fire first, then walls, before you move.",
+    "maze": [
+      [0, 1, 1, 1, 1, "G"],
+      [0, 1, 0, 1, 0, 0],
+      [ 0, 1, 0, 1, 0, "F"],
+      [ 0, 0, "C", 0, 0, "F"],
+      [ 0, 1, 0, 1, "F","F"],
+      [ "S", 1, 0, 1, "F","F"]
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Mission 8 – The Spiral of Fire",
+    "description": "The ultimate desert challenge! Combine While, If, Else If, and Else to survive the burning spiral.",
+    "maze": [
+      ["S", 0, 0, 0, 0,"F"],
+      ["F","F","F","F", 0,"F"],
+      ["F", 0,"G","F", 0,"F"],
+      ["F", 0,"F","F", 0,"F"],
+      ["F", 0, 0, 0, 0,"F"],
+      ["F","F","F","F","F","F"]
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Mission 9 – The Shortcut",
+    "description": "Collect all coins, then reach the flag. Fewest steps wins! Can you find the faster way back?",
+    "maze": [
+      ["S", 0, 1, 1, 1, 1],
+      [ 0, 0, 1, 0, 0,"C"],
+      [ 1, 0, 0, 0, 1, 0],
+      [ 1, 0, 1, 0, 1, 0],
+      [ 1, 0, 1, 0, 0, 0],
+      [ 1, 1, 1, 1, 1,"G"]
+    ]
   }
 ]

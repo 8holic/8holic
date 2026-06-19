@@ -704,6 +704,14 @@
     }
 
     // ---------- BUTTON HANDLERS ----------
+    // Click on empty space in the script area → deselect
+    blockScript.addEventListener('click', (e) => {
+        if (e.target === blockScript) {
+            selectedBlock = null;
+            selectedSlot = null;
+            renderAllBlocks();
+        }
+    });
     document.getElementById('blockToolbox').addEventListener('click', (e) => {
         const btn = e.target.closest('button');
         if (!btn) return;
