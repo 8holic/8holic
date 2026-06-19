@@ -1,25 +1,60 @@
-<!-- ================== GAME BLOCK ================== -->
-<div class="ct-game">
-  <table class="ct-grid" id="ctGrid"></table>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontier Explore</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Mission select screen -->
+        <div id="missionSelectScreen" class="mission-select">
+            <h2>Select a Mission</h2>
+            <ul id="missionList" class="mission-list">
+                <li class="loading-msg">Loading missions…</li>
+            </ul>
+        </div>
 
-  <div class="ct-editor">
-    <label for="ctCode">Your program:</label>
-    <textarea id="ctCode" spellcheck="false">fwd
-fwd
-while can_go_forward:
-    fwd
-turn
-fwd
-turn
-while can_go_forward:
-    fwd</textarea>
+        <!-- Game screen -->
+        <div id="gameScreen" style="display: none;">
+            <div class="ct-game">
+                <div class="ct-top-bar">
+                    <button class="ct-back-btn" id="backBtn">← Back</button>
+                    <span class="ct-mission-title" id="missionTitle"></span>
+                </div>
+                <table class="ct-grid" id="ctGrid"></table>
 
-    <div class="ct-buttons">
-      <button class="ct-btn" id="ctRunBtn">▶ Run</button>
-      <button class="ct-btn" id="ctResetBtn">↺ Reset</button>
+              <div class="ct-direction" id="ctDirection" style="color:#FFD1E3; margin:0 auto 1rem auto; text-align:center; font-size:1rem;">
+                  Facing: East
+              </div>
+  
+          
+
+                <!-- Block Editor -->
+                <div class="block-toolbox" id="blockToolbox">
+                    <button data-type="fwd" class="primitive">→ Forward</button>
+                    <button data-type="turn" class="primitive">↻ Turn</button>
+                    <button data-type="if" class="logic">If</button>
+                    <button data-type="elseif" class="logic" id="elseifBtn" disabled>Else If</button>
+                    <button data-type="else" class="logic" id="elseBtn" disabled>Else</button>
+                    <button data-type="while" class="logic">While</button>
+                    <span style="flex:1;"></span>
+                    <button id="clearBlocksBtn">🗑 Clear All</button>
+                </div>
+                <div class="block-script" id="blockScript"></div>
+
+                <div class="ct-buttons">
+                    <button class="ct-btn" id="ctRunBtn">▶ Run</button>
+                    <button class="ct-btn" id="ctResetBtn">↺ Reset</button>
+                </div>
+                <div class="ct-error" id="ctError"></div>
+                <div class="ct-status" id="ctStatus">Ready. Build your program with blocks, then press Run.</div>
+                <div class="ct-results" id="ctResults"></div>
+            </div>
+        </div>
     </div>
-    <div class="ct-error" id="ctError"></div>
-    <div class="ct-status" id="ctStatus">Ready. Write your program and press Run.</div>
-  </div>
-</div>
-<!-- ================================================ -->
+
+    <script src="main.js"></script>
+</body>
+</html>
