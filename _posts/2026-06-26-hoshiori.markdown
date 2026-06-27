@@ -1,0 +1,41 @@
+---
+layout: post
+title: "Reading: Hoshi Ori Yume Mirai - Common Route"
+location: "Singapore, Singapore"
+tags:
+  - Hoshi Ori Yume Mirai
+  - book
+---
+
+# Background
+It has dawn about me that I have forgotten the common route that connects all the paths, so I thought I should cover it first.
+
+# General Thoughts 
+I will first talk about the first half which is introducing everyone, and the second half which is used to establish the story.
+
+One of the most suprising part is that the protagonist,Ryosuke Hino...has hope and dreams. I know very high bar to clear, however the sheer amount that is just a nice guy blank slate or a backstory that serve to justify them being overpowered means that this actually make the protagonist intresting. We see the POV character is interested in Architecture, and this actually drives some of his actions later on. Most importantly, this means that I can actually see myself falling for him.
+
+Afterwards we are introduced to the characters basically in this order,i think.
+Sora Ousaka is the shy, quiet lass who love astrology.
+Natsuki Segawa is a energetic lass who love photography.
+Azuma Morio is a figure of admiration and mature despite being airheaded.
+Marika Shinozaki is the sweet childhood friend who recovered from an illness.
+Nirasawa Shuuichi who is the a childhood friend with a friendly fierce competitive streak with the protagonist.
+Rikka Narusawa is cold and stoic while being good at the piano.
+Misa Okihara is a knowledgable and sisterly lass about marine life.
+Touko Yukimura who is a bit of a rebel.
+I felt that the introductions did a good job at establishing who everyone is and the type of interest and personality they have. So I have no issue with the first segment at all.
+
+For the second segment we are introduced to the Tanabata festival, and the town unique celeberation. This set up the core driving force for most of the actions taken in the school segment.
+
+For this segment I felt that it was allright, it did its job to make the introduced character into a group. Narusawa-san is the only one that felt like she is literally dragged there by the party. This segment was not the most intresting since they still include more information for every character, and at this point I felt like the elaboration isn't really necessary. This entire segment is basically the "checkbox" to decide whose route you are romancing.
+
+My biggest issue is that the choices does not feel like they matter. Early on Shinozaki-san has a choice to wait for her or go home, regardless of what you choose you still wait for her. It is probably used to count which part to put the player on but why not just...skip it. I already decided that I am going to romance Ousaka-san right at the start, so I was kinda just waiting for her to show up. It also means that there is no reason to replay the common path because the first time round I have already seen everyone event. I felt like if I am constantly affirming the negative the game should just let me, sure I am not going to see what they have in store for Shinozaki-san for example but I am going to come back when I want to romance her. As it stands there is very little incentive to revisit the common route. 
+
+The group scenes however are great, and the conversation at the end paints a good picture of what to expect from each girl when pursuing them. All the silly games they play are the best segment.
+
+# Summary for the common route
+I like the establishment of all the characters, as well as the story. I will appericate if the game is not in fear that I will miss their brilliant writing.
+
+[Sora Route]({% post_url 2026-06-12-hoshiori %})
+[Natsuki Route]({% post_url 2026-06-25-hoshiori %})
