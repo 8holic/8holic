@@ -1,0 +1,16 @@
+---
+layout: post
+title: "I got a 3D Printer!"
+location: "Singapore, Singapore"
+tags:
+  - 3D Printing
+---
+
+# Background
+I have always been interested in 3D Printing, I was first introduced to 3D Printing by some external instructor where we design our pencil holder. That guy still owes me my pencil holder with almost 10 years of debt.
+
+I was researching what 3D Printer I should get and I asked around a bit, I end up getting a Bambu P1S with an AMS 2 pro. This is because the printer I am famillar with is also of Bambu brand. Additionally I heard good reviews regarding it.
+
+Right off the bat I was able to get the printer up and printing in about 15 minutes which suprises me. I was able to get a benchy up in no time.
+
+In the next few days, I plan on printing a shoe rack, a laptop holder and a ship model in that order. Hope all goes well!

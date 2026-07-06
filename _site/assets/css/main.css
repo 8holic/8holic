@@ -96,3 +96,24 @@ table { border-collapse: collapse; width: 100%; }
 table, th, td { border: 1px solid white; }
 
 th, td { padding: 8px; text-align: left; }
+
+img, iframe, video { max-width: 100%; height: auto; display: block; }
+
+@media (max-width: 768px) { .banner { height: 40vh; }
+  .banner-text { padding: 0.5rem 1rem; bottom: 5%; left: 5%; max-width: 90%; }
+  .banner-text h1 { font-size: 1.75rem; }
+  .banner-text p { font-size: 0.95rem; } }
+@media (max-width: 480px) { .banner { height: 30vh; }
+  .banner-text h1 { font-size: 1.3rem; }
+  .banner-text p { font-size: 0.85rem; } }
+@media (max-width: 480px) { .hero, .card { margin-left: 4%; margin-right: 4%; padding: 1rem; } }
+@media (max-width: 480px) { .post-preview { flex-direction: column; align-items: stretch; }
+  .post-preview .post-thumbnail { width: 100%; max-width: 200px; } }
+.sf-embed { min-height: 300px; }
+
+@media (max-width: 768px) { .sf-embed { min-height: 250px; } }
+table { display: block; overflow-x: auto; white-space: nowrap; }
+
+.close-sidebar { min-width: 44px; min-height: 44px; display: flex; align-items: center; justify-content: center; }
+
+@media (max-width: 768px) { body { font-size: 0.95rem; } }

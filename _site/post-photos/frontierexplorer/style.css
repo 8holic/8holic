@@ -316,3 +316,113 @@ body {
     margin-top: 0.5rem;
     font-size: 1.1rem;
 }
+
+/* ============================================================
+   MOBILE‑FRIENDLY ADDITIONS (append to the end of your CSS)
+   ============================================================ */
+
+/* 1. Allow everything to fit in the viewport */
+body {
+  padding: 0.5rem;                 /* less padding on tiny screens */
+}
+
+.container {
+  max-width: 100%;                 /* never wider than screen */
+}
+
+/* 2. Grid cells shrink on narrow devices */
+@media (max-width: 480px) {
+  .ct-grid td {
+    width: 40px;                   /* slightly smaller cells */
+    height: 40px;
+    font-size: 1.5rem;             /* keep arrows readable */
+  }
+}
+
+/* For even smaller screens (320px) you could reduce further */
+@media (max-width: 360px) {
+  .ct-grid td {
+    width: 32px;
+    height: 32px;
+    font-size: 1.2rem;
+  }
+}
+
+/* 3. Touch‑friendly buttons everywhere */
+button, .block-toolbox button, .ct-btn {
+  min-height: 44px;                /* iOS/Android minimum touch size */
+  min-width: 44px;
+  padding: 0.6rem 1rem;            /* slightly larger */
+}
+
+/* 4. Block toolbox wraps nicely and buttons are bigger */
+.block-toolbox {
+  gap: 0.6rem;
+}
+
+.block-toolbox button {
+  font-size: 1rem;
+  flex: 1 1 auto;                  /* each button can grow */
+  text-align: center;
+}
+
+/* 5. Top bar: stack back button and title on narrow screens */
+@media (max-width: 480px) {
+  .ct-top-bar {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .ct-back-btn {
+    width: 100%;
+    text-align: center;
+  }
+  .ct-mission-title {
+    font-size: 1.1rem;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* 6. Block rows (like move/rotate) – prevent overflowing */
+.block-row {
+  flex-wrap: wrap;                 /* allows delete button to drop if needed */
+}
+
+.block-text {
+  word-break: break-word;          /* long text won't cause horizontal scroll */
+}
+
+/* 7. Mission select screen – full‑width list items */
+.mission-list li {
+  margin: 0.5rem 0;
+  padding: 0.8rem;
+}
+
+.mission-select {
+  padding: 1.25rem;                /* less padding on small screens */
+}
+
+/* 8. Make if/while containers fit better */
+.if-container, .while-container {
+  max-width: 100%;
+  overflow-x: auto;                /* scroll if a deeply nested block is too wide */
+}
+
+/* 9. Script area – keep it from being too tall */
+.block-script {
+  max-height: 50vh;                /* limit height, scroll inside if needed */
+  overflow-y: auto;
+}
+
+/* 10. General responsive font tweaks */
+@media (max-width: 480px) {
+  .mission-select h2 {
+    font-size: 1.3rem;
+  }
+  .ct-btn {
+    font-size: 0.9rem;
+  }
+  .block-text {
+    font-size: 0.85rem;
+  }
+}

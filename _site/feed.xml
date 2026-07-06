@@ -1,35 +1,83 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/8holic/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/8holic/" rel="alternate" type="text/html" /><updated>2026-06-19T13:57:14+08:00</updated><id>http://localhost:4000/8holic/feed.xml</id><title type="html">8holic</title><subtitle>The main hub by 8holic (Real name Bryan) to create a hub to link all existing projects and files.</subtitle><author><name>Bryan Ang</name></author><entry><title type="html">Frontierexplore</title><link href="http://localhost:4000/8holic/posts/2026/06/19/frontierexplore/" rel="alternate" type="text/html" title="Frontierexplore" /><published>2026-06-19T00:00:00+08:00</published><updated>2026-06-19T00:00:00+08:00</updated><id>http://localhost:4000/8holic/posts/2026/06/19/frontierexplore</id><content type="html" xml:base="http://localhost:4000/8holic/posts/2026/06/19/frontierexplore/"><![CDATA[<div class="sf-embed-wrap">
-  <iframe class="sf-embed" src="/8holic/post-photos/frontierexplorer/frontierexplore.html" title="Settler Frontier" loading="lazy"></iframe>
-</div>]]></content><author><name>Bryan Ang</name></author><category term="placeholder" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Reading: Hoshi Ori Yume Mirai - Sora Route</title><link href="http://localhost:4000/8holic/posts/2026/06/12/post/" rel="alternate" type="text/html" title="Reading: Hoshi Ori Yume Mirai - Sora Route" /><published>2026-06-12T00:00:00+08:00</published><updated>2026-06-12T00:00:00+08:00</updated><id>http://localhost:4000/8holic/posts/2026/06/12/post</id><content type="html" xml:base="http://localhost:4000/8holic/posts/2026/06/12/post/"><![CDATA[<h1 id="synopsis">Synopsis</h1>
-<p>The novel covers Hino Ryousuke returning to his hometown of Shionagi and his school life. It also cover his struggles as well as romance with Ousaka Sora, the 1st year astrology club president and its only member. The first part focus on the incoming Tanabata festival and the stories while preparing for it, with a focus on Ousaka-san and her growth. The second part focus more on Hino-san and his career inspirations as he is starting out his new firm as an architect.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/8holic/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/8holic/" rel="alternate" type="text/html" /><updated>2026-07-05T20:29:53+08:00</updated><id>http://localhost:4000/8holic/feed.xml</id><title type="html">8holic</title><subtitle>The main hub by 8holic (Real name Bryan) to create a hub to link all existing projects and files.</subtitle><author><name>Bryan Ang</name></author><entry><title type="html">I got a 3D Printer!</title><link href="http://localhost:4000/8holic/posts/2026/07/05/3DPrint/" rel="alternate" type="text/html" title="I got a 3D Printer!" /><published>2026-07-05T00:00:00+08:00</published><updated>2026-07-05T00:00:00+08:00</updated><id>http://localhost:4000/8holic/posts/2026/07/05/3DPrint</id><content type="html" xml:base="http://localhost:4000/8holic/posts/2026/07/05/3DPrint/"><![CDATA[<h1 id="background">Background</h1>
+<p>I have always been interested in 3D Printing, I was first introduced to 3D Printing by some external instructor where we design our pencil holder. That guy still owes me my pencil holder with almost 10 years of debt.</p>
 
-<h1 id="first-impressions">First Impressions</h1>
-<p>The first thing I noticed is that most of the characters have a obession that actually demonstrates. Ousaka-san knowledge of astrology actually go beyond common knowledge and I learnt quite a few things about constellations. 
-Intresting trivia like less light pollution(obvious) and dry air(not obvious) is better for stargazing, or how Zeus is connected to yes amount of constellations. This stands out to me as a lot of anime or visual novel usually tell us that a character is good but never demonstrate knowledge beyond what literally anyone will know. It enforces Ousaka-san as interested in astrology and she is someone I can see asking about this topic.</p>
+<p>I was researching what 3D Printer I should get and I asked around a bit, I end up getting a Bambu P1S with an AMS 2 pro(It is humid over here).</p>]]></content><author><name>Bryan Ang</name></author><category term="3D Printing" /><summary type="html"><![CDATA[Background I have always been interested in 3D Printing, I was first introduced to 3D Printing by some external instructor where we design our pencil holder. That guy still owes me my pencil holder with almost 10 years of debt.]]></summary></entry><entry><title type="html">Toastmaster</title><link href="http://localhost:4000/8holic/posts/2026/07/01/toastmaster/" rel="alternate" type="text/html" title="Toastmaster" /><published>2026-07-01T00:00:00+08:00</published><updated>2026-07-01T00:00:00+08:00</updated><id>http://localhost:4000/8holic/posts/2026/07/01/toastmaster</id><content type="html" xml:base="http://localhost:4000/8holic/posts/2026/07/01/toastmaster/"><![CDATA[]]></content><author><name>Bryan Ang</name></author><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Reading: Hoshi Ori Yume Mirai - Common Route</title><link href="http://localhost:4000/8holic/posts/2026/06/26/hoshiori/" rel="alternate" type="text/html" title="Reading: Hoshi Ori Yume Mirai - Common Route" /><published>2026-06-26T00:00:00+08:00</published><updated>2026-06-26T00:00:00+08:00</updated><id>http://localhost:4000/8holic/posts/2026/06/26/hoshiori</id><content type="html" xml:base="http://localhost:4000/8holic/posts/2026/06/26/hoshiori/"><![CDATA[<h1 id="background">Background</h1>
+<p>It has dawn about me that I have forgotten the common route that connects all the paths, so I thought I should cover it first.</p>
 
-<h1 id="stand-out-moments">Stand out moments</h1>
-<p>To start out with the most obvious thing Hino-san is an actual character and not a self insert. He has his own goals and is seeking out an internship at the start. We see that he is overly confident and humbled by Mo-san(I can’t remember his name but Ousaka-san calls him this) who is someone he look up to. He is someone gentle and care about his girlfriend and how she is feeling, and he struggles with coming up with a correct solution. I felt that being able to describe Hino-san this ways instantly makes him more intresting and I can actually see why…well Ousaka-san in this case falls for him.</p>
+<h1 id="general-thoughts">General Thoughts</h1>
+<p>I will first talk about the first half which is introducing everyone, and the second half which is used to establish the story.</p>
 
-<p>The confession scene was notable because it occurs at what I will consider a moment of weakness of the protagonist. To give context even after Hino-san realize that he has fallen for Ousaka-san, he is determined to confess only AFTER the festial so that if he is rejected it will not affect his duties(which is to convince Ousaka-san to participate in the festival). However after seeing that Ousaka-san is popular and have suitors, when they are together he went ahead with the confession anyways. He even realizes that this can end poorly.</p>
+<p>One of the most suprising part is that the protagonist,Ryosuke Hino…has hope and dreams. I know very high bar to clear, however the sheer amount that is just a nice guy blank slate or a backstory that serve to justify them being overpowered means that this actually make the protagonist intresting. We see the POV character is interested in Architecture, and this actually drives some of his actions later on. Most importantly, this means that I can actually see myself falling for him.</p>
 
-<p>Ousaka-san also does not respond immediately and request time to consider, despite this the relationship afterwards did not become akward. Hino-San even explained the reason he isn’t avoiding her while giving her time to think about it. So when Ousaka-san give her response, even if I already know the answer it is a sweet moment.</p>
+<p>Afterwards we are introduced to the characters basically in this order,i think.
+Sora Ousaka is the shy, quiet lass who love astrology.
+Natsuki Segawa is a energetic lass who love photography.
+Azuma Morio is a figure of admiration and mature despite being airheaded.
+Marika Shinozaki is the sweet childhood friend who recovered from an illness.
+Nirasawa Shuuichi who is the a childhood friend with a friendly fierce competitive streak with the protagonist.
+Rikka Narusawa is cold and stoic while being good at the piano.
+Misa Okihara is a knowledgable and sisterly lass about marine life.
+Touko Yukimura who is a bit of a rebel.
+I felt that the introductions did a good job at establishing who everyone is and the type of interest and personality they have. So I have no issue with the first segment at all.</p>
 
-<p>Throughout the route, constellations are an important part of the relationship beyond a interest, the protagonist reference Zeus and constellations as they kiss for the first time, additionally the final location they are seen together is referenced very early on when they are studnets as the “ideal stargazing spot”.</p>
+<p>For the second segment we are introduced to the Tanabata festival, and the town unique celeberation. This set up the core driving force for most of the actions taken in the school segment.</p>
 
-<p>The sex scenes are quite sweet as well and it reveals another side of the charcater, Ousaka-san is notably more assertive in this segment while Hino-san is really careful throughout the relationship. It helps establish the relationship with each other. Notably unlike quite a few porngraphic material Ousaka-san felt like an actual person instead of a prop to arouse the user.</p>
+<p>For this segment I felt that it was allright, it did its job to make the introduced character into a group. Narusawa-san is the only one that felt like she is literally dragged there by the party. This segment was not the most intresting since they still include more information for every character, and at this point I felt like the elaboration isn’t really necessary. This entire segment is basically the “checkbox” to decide whose route you are romancing.</p>
 
-<p>As of the challanges most of them are relatively realistic and things that can actually happen in real life (such as the rain ruining some of the cardboard storage).</p>
+<p>My biggest issue is that the choices does not feel like they matter. Early on Shinozaki-san has a choice to wait for her or go home, regardless of what you choose you still wait for her. It is probably used to count which part to put the player on but why not just…skip it. As a result I wasn’t aware that these choices affect who we are pursuing later(since they outcome is exactly the same). I think it will be fine to skip it, so if we don’t wait for Marika we skip the entire segment, which makes more sense into the romance part since well we spend less time with her.</p>
 
-<h1 id="highlight-of-the-story">Highlight of the story</h1>
-<p>The most notable part of the story is the adult route when Hino-San open his firm and is stressed out by multiple vectors, with many things to do. He actually suffered the consequences of this excessive load and fainted in office, coming to a tearful Ousaka-san. Whereas they have talk about marriage previously, the marriage proposal from Ousaka-san and the sacrifice she will make is what cause Hino-San to realize how badly he has screwed up. What he said afterwards was one of my favorite parts where he takes responsbility and take care of himself for both his and Ousaka-san sake.</p>
+<p>The group scenes however are great, and the conversation at the end paints a good picture of what to expect from each girl when pursuing them. All the silly games they play does help in creating the atmosphere.</p>
 
-<h1 id="complaints">Complaints</h1>
-<p>I know I litearlly just praised the sex scene earlier, but I felt that they might be too stacked with each other. I primary take issues with the back to back sex scenes, it kinda kill the pacing. I think the offending scene is after the second time they have sex, they go for round 2 in the shower agian. I was kinda waiting for them to get on with the normal interaction. If it is spread out a little more I will not have an issue.</p>
+<h1 id="summary-for-the-common-route">Summary for the common route</h1>
+<p>I like the establishment of all the characters, as well as the story. I will appericate if the game is not in fear that I will miss their brilliant writing.</p>
 
-<h1 id="closing-thoughts">Closing thoughts</h1>
-<p>TWhile I am probably bias because Ousaka-san is exactly my type of girl, I felt that the route is very sweet throughout in showing the relationship as well as the struggles. My favorite part is that the focus is split on both the protagonist and the love interest.</p>]]></content><author><name>Bryan Ang</name></author><category term="reflection" /><category term="book" /><summary type="html"><![CDATA[Synopsis The novel covers Hino Ryousuke returning to his hometown of Shionagi and his school life. It also cover his struggles as well as romance with Ousaka Sora, the 1st year astrology club president and its only member. The first part focus on the incoming Tanabata festival and the stories while preparing for it, with a focus on Ousaka-san and her growth. The second part focus more on Hino-san and his career inspirations as he is starting out his new firm as an architect.]]></summary></entry><entry><title type="html">Settler Frontier</title><link href="http://localhost:4000/8holic/posts/2026/04/23/sf/" rel="alternate" type="text/html" title="Settler Frontier" /><published>2026-04-23T00:00:00+08:00</published><updated>2026-04-23T00:00:00+08:00</updated><id>http://localhost:4000/8holic/posts/2026/04/23/sf</id><content type="html" xml:base="http://localhost:4000/8holic/posts/2026/04/23/sf/"><![CDATA[<div class="sf-embed-wrap">
-  <iframe class="sf-embed" src="/8holic/post-photos/settlerfrontier/sf.html" title="Settler Frontier" loading="lazy"></iframe>
-</div>]]></content><author><name>Bryan Ang</name></author><category term="project" /><category term="game" /><category term="settler-frontier" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Reading: Atomic Habits</title><link href="http://localhost:4000/8holic/posts/2026/03/23/post/" rel="alternate" type="text/html" title="Reading: Atomic Habits" /><published>2026-03-23T00:00:00+08:00</published><updated>2026-03-23T00:00:00+08:00</updated><id>http://localhost:4000/8holic/posts/2026/03/23/post</id><content type="html" xml:base="http://localhost:4000/8holic/posts/2026/03/23/post/"><![CDATA[<hr />
+<p><a href="/posts/2026/06/12/hoshiori/">Sora Route</a>
+<a href="/posts/2026/06/25/hoshiori/">Natsuki Route</a></p>]]></content><author><name>Bryan Ang</name></author><category term="Hoshi Ori Yume Mirai" /><category term="visual novel" /><summary type="html"><![CDATA[Background It has dawn about me that I have forgotten the common route that connects all the paths, so I thought I should cover it first.]]></summary></entry><entry><title type="html">Reading: Hoshi Ori Yume Mirai - Natuuki Route</title><link href="http://localhost:4000/8holic/posts/2026/06/25/hoshiori/" rel="alternate" type="text/html" title="Reading: Hoshi Ori Yume Mirai - Natuuki Route" /><published>2026-06-25T00:00:00+08:00</published><updated>2026-06-25T00:00:00+08:00</updated><id>http://localhost:4000/8holic/posts/2026/06/25/hoshiori</id><content type="html" xml:base="http://localhost:4000/8holic/posts/2026/06/25/hoshiori/"><![CDATA[<h1 id="background">Background</h1>
+<p>The reason I decide to attempt to romance her is simply because she is the most prominent of all the love interest in Ousaka-san path. From aiding in the love confession to showing up in the after story.</p>
+
+<h1 id="general-thoughts---school-arc">General Thoughts - School Arc</h1>
+<p>Segawa-san School Arc difference is that she basically dragged the protagonist along and they eventurally developed feelings. Her primary theme is photography. Her route is devoid of any major conflict and basically sees the protagonist keeping up with her as she take photos for the club. Notably what the astrology and nature club end up doing both end up changing to make her a major player.</p>
+
+<p>The love confession felt kinda abrupt. After spending enough time with each other, they realize they like one another. Or at least the protagonist seems to think so, however his obviliousness doesnt exactly convince me so. It does make use of photography that I find was neat,and is a very Segawa way of confessing.</p>
+
+<p>It primary focus on her obession with photography and the various things they did. The ending felt a little abrupt as they went to the festival and it ends…just like that I am a little sad that the group trip they were talking about just didn’t happen. It might be better if that was never mentioned since I was expecting, you know that group trip to be the climax of the story.</p>
+
+<h1 id="general-thoughts---after-story">General Thoughts - After Story</h1>
+<p>Natsuki(From here on) After Story place a heavy focus on the post marriage life, with a heavy emphasis on the ideal post marriage life. It is a very fluffy read and seems to cover the honeymoon period. The ending fits Natsuki Hino quite well and is photography relevant. They have their rituals, the people around them treating them after the marriage, and how they perform the chores and cook together when they are living as a couple.The story ends with the actual ceremony for the marriage conducted by the school</p>
+
+<h1 id="general-thoughts---the-sex-scene">General Thoughts - The Sex Scene</h1>
+<p>She has around 9 scenes I believe, and somehow all of them are plot relevant as for a lack of a better words showing them fucking raw with zero damn about the world leading to their shotgun marriage is pherhaps the most realistic part about fucking like rabbits. Even if they discover they have no child it is highly belivable. The most plot relevant one is when they are both late due to fucking deep at night. The rest is passable by explaining how they can believe in the pregency.</p>
+
+<h1 id="general-thoughts---overall">General Thoughts - Overall</h1>
+<p>Segawa route is rather unique due to her airheadness, and unique personality. It is a fluffy story that somehow doesn’t stick in my mind. I am optimistic that she might not be my type.</p>]]></content><author><name>Bryan Ang</name></author><category term="Hoshi Ori Yume Mirai" /><category term="visual novel" /><summary type="html"><![CDATA[Background The reason I decide to attempt to romance her is simply because she is the most prominent of all the love interest in Ousaka-san path. From aiding in the love confession to showing up in the after story.]]></summary></entry><entry><title type="html">Settler Frontier, Coding Workshop</title><link href="http://localhost:4000/8holic/posts/2026/06/19/frontierexplore/" rel="alternate" type="text/html" title="Settler Frontier, Coding Workshop" /><published>2026-06-19T00:00:00+08:00</published><updated>2026-06-19T00:00:00+08:00</updated><id>http://localhost:4000/8holic/posts/2026/06/19/frontierexplore</id><content type="html" xml:base="http://localhost:4000/8holic/posts/2026/06/19/frontierexplore/"><![CDATA[<p>This is the poster of the event.</p>
+
+<p>The initial motivation for doing the workshop is simply to test the water if more technical workshop can do well in the community. As someone who has gotten interested in software, I have went through a module on computational thinking. After witnessing my classmate solution which involves several hundred primitive statement to get things done, I reazlie that it is not as intutive as I thought</p>
+
+<p><a href="/8holic/post-photos/frontierexplorer/frontierexplore.html" target="_blank">Play Frontier Explorer</a></p>
+
+<p>The game is designed with programming background in mind, it involves a maze where they have to navigate. I was able to make use of AI to convert my python syntax and logic into javascript, the primary challange is to figure out how to structure the syntax such that it is easier to expand. Overall I made the choice to make it convert into a python script in the back. It is intentionally coded such that it is possible for both semantic error and syntax error to occur, just like real programming.</p>
+
+<p>Using my experience from modding Stellaris, I decide I do not want to write code in order to add more stages. As a result I make it read a JSON file outside, so I can add stages easier.</p>
+
+<p>Additioanlly the instructions are read naturally then moved by some relatively else if logic.</p>
+
+<p>I tried my hand at another game, that actually uses Settler Frontier theme accurately which involve the player actually going around and trying to survvie. Unfortuatnely I was unable to finish it on time. You can check it out below.</p>
+
+<p><a href="/8holic/post-photos/settlerfrontier/sf.html" target="_blank">Play Settler Frontier</a></p>]]></content><author><name>Bryan Ang</name></author><category term="youth network" /><category term="project" /><category term="reflection" /><summary type="html"><![CDATA[This is the poster of the event.]]></summary></entry><entry><title type="html">Reading: Hoshi Ori Yume Mirai - Sora Route</title><link href="http://localhost:4000/8holic/posts/2026/06/12/hoshiori/" rel="alternate" type="text/html" title="Reading: Hoshi Ori Yume Mirai - Sora Route" /><published>2026-06-12T00:00:00+08:00</published><updated>2026-06-12T00:00:00+08:00</updated><id>http://localhost:4000/8holic/posts/2026/06/12/hoshiori</id><content type="html" xml:base="http://localhost:4000/8holic/posts/2026/06/12/hoshiori/"><![CDATA[<h1 id="general-thoughts---school-arc">General Thoughts - School Arc</h1>
+<p>So in this route we are basically stuck with Sora and assisting with the astrology club, who become talkative when it is about the stars. Notably Sora does demonstrate some intresting knowledge about astrology and the associated mythology. There are some light drama and issues they faced which are solved almost immeditely, however the brief moment of setback are realsitic and truely feel like life and dead for that age.</p>
+
+<p>The love confession and realization has quite a bit of build up, from when our protagonist realizes his feelings, to learning more about her then finally confessing at a chance. Notably the protagonist does not actually get a reply immedietly and has to wait for her response. They continue per normal until she resond in affimartive. The group of friends meanwhile play a supporting role offsetting Sora shy nature, and continue to play a role through the festival contribution.</p>
+
+<p>The next part can be broken down into two segment, but generally they face some problem and overcome them. The best way to describe it is that everyone work hard and it eventurally worked out. It felt like they really cared for each other. Notably I was actually suprised at the third setback(since it has been so drama light). The finale felt like a suitable conclusion as we see their hard work pay off and Sora dream is realized.</p>
+
+<h1 id="general-thoughts---after-story">General Thoughts - After Story</h1>
+<p>Whereas the school arc mainly focus on realizing Sora dream, there is a notably swap here where the protagonist take center stage as he open his own firm with Sora and best boss Azuma supporting him. Sora at this point already mostly accomplished her goals in astrology which the protagonist get to witness, the protagonist meanwhile face some struggles maintaining his work life. My favorite scene is when the protagonist faints from overwork, and immeditely continue trying to work again until Sora propose to him. Where the terms she proposal shows she is willing to give up her own dream just to support him,causing the protagonist to realize how he has screwed up and take action to correct.. Eventurally he was able to fufill his own dreams, and then he finally marry Sora and gaze the stars together. The post credit scene confirms that Sora dreams is well and alive after the marriage as he and the other friends arrive to support Sora.</p>
+
+<h1 id="general-thoughts---the-sex-scene">General Thoughts - The Sex Scene</h1>
+<p>She has around 10 scene I believe, and most of the scene felt extremely simillar. Basically I think the plot relevant ones are probably exactly 2. The first is used to show her more assertive side, and the second is used to show how she is willing to accept his fetishes as a part of him. Some of them does depict her as being more careful, however the usage of condom dies after the first raw experience so I am not sure if the above was intended.</p>
+
+<h1 id="general-thoughts---overall">General Thoughts - Overall</h1>
+<p>This is a strong introduction to the novel, I like that it is relatively low stakes and used to further the characters. It has a strong element of mutually supportive relatioship, and it helps Sora is really cute throughout the route.</p>]]></content><author><name>Bryan Ang</name></author><category term="Hoshi Ori Yume Mirai" /><category term="visual novel" /><summary type="html"><![CDATA[General Thoughts - School Arc So in this route we are basically stuck with Sora and assisting with the astrology club, who become talkative when it is about the stars. Notably Sora does demonstrate some intresting knowledge about astrology and the associated mythology. There are some light drama and issues they faced which are solved almost immeditely, however the brief moment of setback are realsitic and truely feel like life and dead for that age.]]></summary></entry><entry><title type="html">Reading: Atomic Habits</title><link href="http://localhost:4000/8holic/posts/2026/03/23/post/" rel="alternate" type="text/html" title="Reading: Atomic Habits" /><published>2026-03-23T00:00:00+08:00</published><updated>2026-03-23T00:00:00+08:00</updated><id>http://localhost:4000/8holic/posts/2026/03/23/post</id><content type="html" xml:base="http://localhost:4000/8holic/posts/2026/03/23/post/"><![CDATA[<hr />
 <h1 id="background">Background</h1>
 <p>I was reading the book Atomic Habits and I was reading the first few pages. I found what was said to be insightful, in determining what I want to be instead of the end goal. I find that usually when my parents ask me to clean my room usually it get messy again soon enough. Reading this made me realize that it is purely because the habits do not substain the goal. So I wish to reflect on this. Starting with the below</p>
 <h1 id="what-type-of-person-do-i-want-to-be">What type of person do I want to be?</h1>
@@ -199,7 +247,7 @@ As of writing I literally just publish it so I am unsure of the reception. Howev
 
 <h1 id="conclusion">Conclusion</h1>
 <p>Overall I learnt a bit about data visualization and how finnicky the software can be at competiting against what I wanted. I also learnt a bit about using creative walkarounds, through the final issue is still unresolved.
-I also realize how scary it is to publish things I have done online even if fundamentally it doesn’t matter, I am unsure why? Maybe it is the fear of someone saying something mean about it, this would be an area of growth.</p>]]></content><author><name>Bryan Ang</name></author><category term="project" /><summary type="html"><![CDATA[Visualization]]></summary></entry><entry><title type="html">Pre Exchange Experience-Day 1</title><link href="http://localhost:4000/8holic/posts/2025/08/14/post/" rel="alternate" type="text/html" title="Pre Exchange Experience-Day 1" /><published>2025-08-14T00:00:00+08:00</published><updated>2025-08-14T00:00:00+08:00</updated><id>http://localhost:4000/8holic/posts/2025/08/14/post</id><content type="html" xml:base="http://localhost:4000/8holic/posts/2025/08/14/post/"><![CDATA[<h1 id="pre-exchange-experience---italy-tourism-day-1">Pre Exchange Experience - Italy Tourism Day 1</h1>
+I also realize how scary it is to publish things I have done online even if fundamentally it doesn’t matter, I am unsure why? Maybe it is the fear of someone saying something mean about it, this would be an area of growth.</p>]]></content><author><name>Bryan Ang</name></author><category term="project" /><summary type="html"><![CDATA[Visualization]]></summary></entry><entry><title type="html">Pre Exchange Experience-Day 1</title><link href="http://localhost:4000/8holic/posts/2025/08/14/italy/" rel="alternate" type="text/html" title="Pre Exchange Experience-Day 1" /><published>2025-08-14T00:00:00+08:00</published><updated>2025-08-14T00:00:00+08:00</updated><id>http://localhost:4000/8holic/posts/2025/08/14/italy</id><content type="html" xml:base="http://localhost:4000/8holic/posts/2025/08/14/italy/"><![CDATA[<h1 id="pre-exchange-experience---italy-tourism-day-1">Pre Exchange Experience - Italy Tourism Day 1</h1>
 <p><img src="/8holic/assets/images/2025-08-14B1.jpg" alt="A pre flight image test 2" class="blog-image" /></p>
 
 <h3 id="background">Background</h3>
@@ -233,7 +281,7 @@ I came across this layout of the city, and it is suprising. I have never seen th
 
 <p>The first day impression started with a robbery on the train, but overall it was pretty exciting. I felt thrusted in a foreign world, everything is new and exciting.</p>
 
-<p>Through the most challanging part was when the hotel cancel on me as i board the flight, booking on the plane causes me a bit of anxiety but it is good it works out.</p>]]></content><author><name>Bryan Ang</name></author><category term="Blog" /><summary type="html"><![CDATA[Italy Tourism Day 1]]></summary></entry><entry><title type="html">URECA Project Presentation</title><link href="http://localhost:4000/8holic/posts/2025/06/18/post/" rel="alternate" type="text/html" title="URECA Project Presentation" /><published>2025-06-18T00:00:00+08:00</published><updated>2025-06-18T00:00:00+08:00</updated><id>http://localhost:4000/8holic/posts/2025/06/18/post</id><content type="html" xml:base="http://localhost:4000/8holic/posts/2025/06/18/post/"><![CDATA[<h1 id="overview">Overview</h1>
+<p>Through the most challanging part was when the hotel cancel on me as i board the flight, booking on the plane causes me a bit of anxiety but it is good it works out.</p>]]></content><author><name>Bryan Ang</name></author><category term="Blog" /><summary type="html"><![CDATA[Italy Tourism Day 1]]></summary></entry><entry><title type="html">URECA Project Presentation</title><link href="http://localhost:4000/8holic/posts/2025/06/18/ureca/" rel="alternate" type="text/html" title="URECA Project Presentation" /><published>2025-06-18T00:00:00+08:00</published><updated>2025-06-18T00:00:00+08:00</updated><id>http://localhost:4000/8holic/posts/2025/06/18/ureca</id><content type="html" xml:base="http://localhost:4000/8holic/posts/2025/06/18/ureca/"><![CDATA[<h1 id="overview">Overview</h1>
 <p>Last year I took part in the Undergraduate Research Experience on Campus(URECA) Project. I was tasked with figuring our a way to port an experience to a more consumer friendly version. The photo above was my presentation during the URECA Conference. Overall this was a wonderful 1 year where I learnt a lot. I was supervised by Assoc Professor Benjamin.</p>
 
 <p>I felt that the professor was wonderful, it was mostly unsupervised due to his busy schedule. This gave me a lot of opporunity to mostly figure things out by myself and decide on my course of action, with inputs from him during each presentation.</p>
@@ -248,89 +296,4 @@ I came across this layout of the city, and it is suprising. I have never seen th
 -Clearer communication or more meaningful communiation to the professor, I am unsure if the update aren’t significant enough or he is busy but sometimes I am not sure how to proceed. Usually I can just figure something out, but at the end when it comes to publishing rights I am not sure if I should do it under my account or under the school since the school owns all the project
 -Preseting a demo, some of my presentation did not work when presenting to the professor and I believe he had some trouble to get it to work properly.</p>
 
-<p>I think that some factors are out of control as I am not very sure about the school proceedings, NTU being a black box does not help either. While I was unable to publish the work, I hope that I have done enough that the Professor will get there eventurally.</p>]]></content><author><name>Bryan Ang</name></author><category term="reflection" /><summary type="html"><![CDATA[Overview Last year I took part in the Undergraduate Research Experience on Campus(URECA) Project. I was tasked with figuring our a way to port an experience to a more consumer friendly version. The photo above was my presentation during the URECA Conference. Overall this was a wonderful 1 year where I learnt a lot. I was supervised by Assoc Professor Benjamin.]]></summary></entry><entry><title type="html">Osaka, Japan Day 6&amp;amp;7</title><link href="http://localhost:4000/8holic/posts/2025/05/22/post/" rel="alternate" type="text/html" title="Osaka, Japan Day 6&amp;amp;7" /><published>2025-05-22T00:00:00+08:00</published><updated>2025-05-22T00:00:00+08:00</updated><id>http://localhost:4000/8holic/posts/2025/05/22/post</id><content type="html" xml:base="http://localhost:4000/8holic/posts/2025/05/22/post/"><![CDATA[<h1 id="overview">Overview</h1>
-<p>So I realize I do not have much to write here, so I combined both days</p>
-
-<h1 id="wakayama">Wakayama</h1>
-<h2 id="intent">Intent</h2>
-<p>Hot Spring are kinda what is popular in Japan, so I went to this hot spring resort.</p>
-
-<h2 id="experience">Experience</h2>
-<p>As I am aware there is no food I bought some stuff before I went. It was an intresting experience as I was given something to wear in the hotel. My room was facing the ocean. I went for the hot spring and they list the composition(in japanese), soaking inside I can feel like something is on my skin. I went twice, once at night and another in the morning.</p>
-
-<p>In the morning I was at the outdoors section where I can look at the nearby highway. After that I had breakfast which was a spread of random meals. I walked around Kada town a bit before departing.</p>
-
-<h2 id="memory">Memory</h2>
-<p>The Hot Spring certainly feel nice, it is an unique experience. It was relatively isolated since I arrive late/early respectively.</p>
-
-<h2 id="insight">Insight</h2>
-<p>I need to stay for more days in the future, one day isn’t enough unfortuantely.</p>
-
-<h1 id="reflection---overall">Reflection - Overall</h1>
-<p>All in all it was an enjoyable trip, however the last few days are hampered by poor planning making them less memorable   compared to the first few days. I hope to do this again in the future.</p>]]></content><author><name>Bryan Ang</name></author><category term="travel" /><category term="japan" /><category term="kyoto" /><category term="reflection" /><summary type="html"><![CDATA[Overview So I realize I do not have much to write here, so I combined both days]]></summary></entry><entry><title type="html">Osaka, Japan Day 5</title><link href="http://localhost:4000/8holic/posts/2025/05/20/post/" rel="alternate" type="text/html" title="Osaka, Japan Day 5" /><published>2025-05-20T00:00:00+08:00</published><updated>2025-05-20T00:00:00+08:00</updated><id>http://localhost:4000/8holic/posts/2025/05/20/post</id><content type="html" xml:base="http://localhost:4000/8holic/posts/2025/05/20/post/"><![CDATA[<h1 id="kyoto-fushimi-inari-shrine">Kyoto, Fushimi Inari Shrine</h1>
-
-<h2 id="intent">Intent</h2>
-<p>To be honest I was trying to avoid the crowd, I thought it will be cool since it will be late at night.</p>
-
-<h2 id="experience">Experience</h2>
-<p>I went down the shrine at 12AM basically, the entire place feels calming initally. However around the Tori gates the atmosphere become very opressive, espeically as I can hear the wild boars and friends. I did not finish the ascend as planned and I dipped out midway through.</p>
-
-<h2 id="memory">Memory</h2>
-<p>Something about the night turn a simple walk into a scary one. I think it is the lack of people or the darkness, however the number of Tori gate make the experience a surreal one</p>
-
-<h2 id="insight">Insight</h2>
-<p>I hope to go again in the morning, through I learnt the importance of pulling out. The entire experience was an unique one but I am unsure if my heart can handle this.</p>
-
-<h1 id="kyoto-railway-museum-and-tower">Kyoto, Railway Museum and Tower</h1>
-
-<h2 id="intent-1">Intent</h2>
-<p>I didn’t have any real goal in mind so I was just googling for intresting things.</p>
-
-<h2 id="experiencememory">Experience/Memory</h2>
-<p>To be honest it is pretty forgettable, the only thing I rembered is that the fog blocked the view. Oh yes and there is a minature section to drive trains.</p>
-
-<h2 id="insights">Insights</h2>
-<p>Maybe spamming random activites and commiting to it isn’t the best idea if I clearly don’t care about it.</p>
-
-<h1 id="kyoto-gear-play">Kyoto, Gear Play</h1>
-
-<h2 id="intent-2">Intent</h2>
-<p>I saw the advertisement as a “wordless” play, which is something I think I can enjoy even without a translator so I went inside.</p>
-
-<h2 id="experience-1">Experience</h2>
-<p>I sat down and we watched a play, the entire play features 5 character and a set. The production is really high and there are flyers and stuff. I took a few home.</p>
-
-<h2 id="memory-1">Memory</h2>
-<p>This was the highlight of the kyoto trip suprising, the entire play was something that convey emotion despite not a single word being spoken. They conveyed the sense of creativity and things quite well, as well as using creative stageplay. The emotions conveyed are really strong, I even bought the stageplay and some shirts. Even if it is all in Japanese so I need to get on with learning the language to read it.</p>
-
-<h2 id="insight-1">Insight</h2>
-<p>It seems I had some misconception on plays on account of only being exposed to my school terrible plays. In the future I will seek our more theatres to watch and expand my horizon.</p>
-
-<h1 id="insight-overall">Insight-Overall</h1>
-<p>I learnt the plan is to plan more time. 1 day in Kyoto is insufficient and one of the main issue I ran into is the fact that I am constrained by time, some attractions and museums are not open that day so I wasn’t able to visit.</p>]]></content><author><name>Bryan Ang</name></author><category term="travel" /><category term="japan" /><category term="kyoto" /><category term="reflection" /><summary type="html"><![CDATA[Kyoto, Fushimi Inari Shrine]]></summary></entry><entry><title type="html">Osaka, Japan Day 4</title><link href="http://localhost:4000/8holic/posts/2025/05/19/post/" rel="alternate" type="text/html" title="Osaka, Japan Day 4" /><published>2025-05-19T00:00:00+08:00</published><updated>2025-05-19T00:00:00+08:00</updated><id>http://localhost:4000/8holic/posts/2025/05/19/post</id><content type="html" xml:base="http://localhost:4000/8holic/posts/2025/05/19/post/"><![CDATA[<h1 id="ikoma-sanjo-amusement-park">Ikoma Sanjo Amusement Park</h1>
-
-<h2 id="intent">Intent</h2>
-<p>An amusement park on the hill was something I was curious about, the main drive is curosity.</p>
-
-<h2 id="experience">Experience</h2>
-<p>I went up via a train, the amusement park is free to visit. Payment is only for specific rides. I went to the flying plane as well as the “White House”. Afterwards I climbed down the hill and walked back to the train.</p>
-
-<h2 id="memory">Memory</h2>
-<p>The trains are very cute and have a nice design. The flying plane is great because I was able to see both Nara and Osaka from a high overview. Additionally the White house depicted an intresting version of America, the building is tilted by a few degrees. The founding myth was shown as a bridge, then followed by a steam train. Notably the train noise is clearly a vaccum cleaner. At the end, lego was used to depict the moon landing.</p>
-
-<h2 id="insight">Insight</h2>
-<p>Overall the entire place was really enjoyable despite the low budget vibe. Some of the creative solutions are something to inspire me. In the future I learn how the budget does not determine the quality.</p>
-
-<h1 id="nara-deer-park">Nara, Deer Park</h1>
-
-<h2 id="intent-1">Intent</h2>
-<p>The Nara Park are kinda popular and I heard of them before.</p>
-
-<h2 id="experience-1">Experience</h2>
-<p>There are indeed, many deers. I bought some deer biscuit but a single deer forcefully ripped it from my fingers. Additionally I visited the nearby shrines, and sat down on a bench and watch the deers just laze around.</p>
-
-<h2 id="memory-1">Memory</h2>
-<p>The sheer number of deers is certainly something to remember, through being robbed by a deer was not expected. Sitting on the bench was calming and relaxing.</p>
-
-<h2 id="insight-1">Insight</h2>
-<p>I guess I learnt how scary wild animals can be, and also how calming is it to do nothing. I wish to come back to stare at the deers in the future.</p>]]></content><author><name>Bryan Ang</name></author><category term="travel" /><category term="japan" /><category term="nara" /><category term="reflection" /><summary type="html"><![CDATA[Ikoma Sanjo Amusement Park]]></summary></entry></feed>
+<p>I think that some factors are out of control as I am not very sure about the school proceedings, NTU being a black box does not help either. While I was unable to publish the work, I hope that I have done enough that the Professor will get there eventurally.</p>]]></content><author><name>Bryan Ang</name></author><category term="reflection" /><summary type="html"><![CDATA[Overview Last year I took part in the Undergraduate Research Experience on Campus(URECA) Project. I was tasked with figuring our a way to port an experience to a more consumer friendly version. The photo above was my presentation during the URECA Conference. Overall this was a wonderful 1 year where I learnt a lot. I was supervised by Assoc Professor Benjamin.]]></summary></entry></feed>

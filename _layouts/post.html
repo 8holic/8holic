@@ -4,10 +4,11 @@ layout: default
 
 {% assign post_date = page.date | date: "%Y-%m-%d" %}
 {% assign featured_image = "/post-photos/" | append: post_date | append: "-featured.jpg" %}
-{% assign banner_image = "/assets/images/posts-banner.jpg" %}
+{% assign banner_image = featured_image %}
 
 {% if page.featured_image_override %}
   {% assign featured_image = page.featured_image_override %}
+  {% assign banner_image = featured_image %}
 {% endif %}
 
 <div class="banner">
@@ -24,10 +25,6 @@ layout: default
       </span>
     </div>
   </div>
-</div>
-
-<div class="post-featured-image card">
-  <img src="{{ featured_image | relative_url }}" alt="Post image" onerror="this.onerror=null; this.src='{{ '/assets/images/generic-banner.jpg' | relative_url }}'">
 </div>
 
 <article class="post">

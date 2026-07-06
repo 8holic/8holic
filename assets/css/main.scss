@@ -468,3 +468,101 @@ th, td {
   padding: 8px;
   text-align: left;
 }
+
+// ============================================================
+// MOBILE‑FRIENDLY OVERRIDES (append to your existing SCSS)
+// ============================================================
+
+// 1. General image / media safety
+img, iframe, video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+// 2. Tablet & phone banner – reduce height & font sizes
+@media (max-width: $breakpoint-md) {
+  .banner {
+    height: 40vh;            // smaller than 60vh
+  }
+  .banner-text {
+    padding: 0.5rem 1rem;   // less padding
+    bottom: 5%;
+    left: 5%;
+    max-width: 90%;
+  }
+  .banner-text h1 {
+    font-size: 1.75rem;     // was 3rem
+  }
+  .banner-text p {
+    font-size: 0.95rem;
+  }
+}
+
+// Even smaller phones (480px)
+@media (max-width: 480px) {
+  .banner {
+    height: 30vh;
+  }
+  .banner-text h1 {
+    font-size: 1.3rem;
+  }
+  .banner-text p {
+    font-size: 0.85rem;
+  }
+}
+
+// 3. Hero & cards – use less side margin on very small screens
+@media (max-width: 480px) {
+  .hero,
+  .card {
+    margin-left: 4%;
+    margin-right: 4%;
+    padding: 1rem;
+  }
+}
+
+// 4. Recent posts – stack thumbnail on top of text on phones
+@media (max-width: 480px) {
+  .post-preview {
+    flex-direction: column;
+    align-items: stretch;   // let thumbnail fill width
+  }
+  .post-preview .post-thumbnail {
+    width: 100%;
+    max-width: 200px;       // keep image from becoming huge
+  }
+}
+
+// 5. Embedded iframes – prevent insane height on mobile
+.sf-embed {
+  min-height: 300px;        // override the 1200px default
+}
+@media (max-width: $breakpoint-md) {
+  .sf-embed {
+    min-height: 250px;
+  }
+}
+
+// 6. Tables – allow horizontal scroll on narrow screens
+table {
+  display: block;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+// 7. Touch target – make sure close button is finger‑friendly
+.close-sidebar {
+  min-width: 44px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// 8. Optional – slightly larger font for body on mobile
+@media (max-width: $breakpoint-md) {
+  body {
+    font-size: 0.95rem;    // keep readability
+  }
+}

@@ -32,7 +32,7 @@ permalink: /posts/
         {% assign thumb_path = "/post-photos/" | append: post_date | append: "-featured.jpg" %}
         <article class="post-preview" data-tags="{% for tag in post.tags %}{{ tag | slugify }}{% unless forloop.last %},{% endunless %}{% endfor %}">
           <div class="post-thumbnail">
-            <img src="{{ thumb_path | relative_url }}" alt="{{ post.title }}">
+            <img src="{{ thumb_path | relative_url }}" alt="{{ post.title }}" onerror="this.onerror=null; this.src='{{ '/assets/images/profile.jpg' | relative_url }}'">
           </div>
           <div class="post-info">
             <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
