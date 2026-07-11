@@ -382,6 +382,7 @@
             });
             header.addEventListener('click', (e) => {
                 e.stopPropagation();
+                if (e.target.closest('select')) return;   // <-- add this line
                 selectBlock(block, 'then');
             });
             container.appendChild(header);
@@ -413,6 +414,7 @@
                 });
                 eiHeader.addEventListener('click', (e) => {
                     e.stopPropagation();
+                    if (e.target.closest('select')) return;   // <-- add this line
                     selectElseIfBlock(block, i);
                 });
                 container.appendChild(eiHeader);
@@ -490,6 +492,7 @@
             });
             header.addEventListener('click', (e) => {
                 e.stopPropagation();
+                if (e.target.closest('select')) return;   // <-- add this line
                 selectBlock(block, 'body');
             });
             container.appendChild(header);
