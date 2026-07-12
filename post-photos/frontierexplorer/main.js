@@ -252,12 +252,13 @@
                     td.classList.add('wall');
                     td.textContent = '🌵';
                 } else if (isPlayerHere) {
-                    // Show robot, even if on fire (to show death)
-                    const robot = document.createElement('span');
-                    robot.textContent = '🐫';
-                    td.appendChild(robot);
+                    const arrow = document.createElement('span');
+                    const dirSymbols = ['➡️', '⬇️', '⬅️', '⬆️'];
+                    arrow.textContent = dirSymbols[player.dir];
+                    arrow.style.fontSize = '1.5em';
+                    if (dead) arrow.style.color = '#ff0000';
+                    td.appendChild(arrow);
                     if (isFire) {
-                        // Indicate the robot is on fire
                         td.style.background = '#ff4500';
                     }
                 } else if (isFire) {
@@ -278,7 +279,6 @@
             gridTable.appendChild(tr);
         }
 
-        // Update facing indicator
         const dirEl = document.getElementById('ctDirection');
         if (dirEl) {
             const dirNames = ['East', 'South', 'West', 'North'];
