@@ -1,125 +1,125 @@
 [
   {
     "id": 1,
-    "name": "Mission 1 – First Steps",
-    "description": "Walk straight to the flag. Just use Forward – no turns needed!",
+    "name": "Mission 1",
+    "description": "Walk straight to the goal – no turns, no obstacles.",
     "maze": [
-      [ 1, 1, 1, 1, 1, 1],
-      [ 1, 1, 1, 1, 1, 1],
-      [ 1, 0, 0, 0, 0, 1],
-      [ 1, "S", 0, 0, "G", 1],
-      [ 1, 0, 0, 0, 0, 1],
-      [ 1, 1, 1, 1, 1, 1]
+      [1, 1, 1, 1, 1, 1],
+      [1, 1, 1, 1, 1, 1],
+      [1, 0, 0, 0, 0, 1],
+      [1, "S", 0, 0, "G", 1],
+      [1, 0, 0, 0, 0, 1],
+      [1, 1, 1, 1, 1, 1]
     ]
   },
   {
     "id": 2,
-    "name": "Mission 2 – T Shape",
-    "description": "",
+    "name": "Mission 2",
+    "description": "Follow the L‑shaped path to the goal; fire lurks below.",
     "maze": [
-      [ 1, 1, 1, 1, 1, "G"],
-      [ 1, 1, 1, 1, 1, 0],
-      [ 1, 1, 1, 1, 1, 0],
-      [ "S", 0, 0, 0, 0, 0],
-      [ 1, 1, 1, 1, 1, 0],
-      [ 1, 1, 1, 1, 1, "F"]
+      [1, 1, 1, 1, 1, "G"],
+      [1, 1, 1, 1, 1, 0],
+      [1, 1, 1, 1, 1, 0],
+      ["S", 0, 0, 0, 0, 0],
+      [1, 1, 1, 1, 1, 0],
+      [1, 1, 1, 1, 1, "F"]
     ]
   },
   {
     "id": 3,
-    "name": "Mission 3 – Coin Run",
-    "description": "Collect both coins before you reach the flag. The flag stays locked until you do!",
+    "name": "Mission 3",
+    "description": "Collect the coin on the way to the goal. Mind the fire at the bottom.",
     "maze": [
-      [ 1, 1, 1, 1, 1, "G"],
-      [ 1, 1, 1, 1, 1, 0],
-      [ 1, 1, 1, 1, 1, 0],
-      [ "S", 0, 0, 0, 0, 0],
-      [ 1, 1, 1, 1, 1, "C"],
-      [ 1, 1, 1, 1, 1, "F"]
+      [1, 1, 1, 1, 1, "G"],
+      [1, 1, 1, 1, 1, 0],
+      [1, 1, 1, 1, 1, 0],
+      ["S", 0, 0, 0, 0, 0],
+      [1, 1, 1, 1, 1, "C"],
+      [1, 1, 1, 1, 1, "F"]
     ]
   },
   {
     "id": 4,
-    "name": "Mission 4 – The Staircase",
-    "description": "Use a While loop with more than one block inside to climb the stairs and reach the flag!",
+    "name": "Mission 4",
+    "description": "Climb the staircase using a While loop with multiple commands inside.",
     "maze": [
-      [ 1, 1, 1, 1, 1,0,0,0,0, 1],
-      [ 1, 1, 1, 1, 1,0,0,0,0, 1],
-      [ 1, 0, 0, 0, 0,0,0,0,0, 1],
-      [ "S",0 , 0, 0, 0,0,0,0,0, "G"],
-      [ 1, 0, 0, 0, 0,0,0,0,0, 1],
-      [ 1, 1, 1, 1, 1,0,0,0,0, 1]
+      [1, 1, 1, 1, 1, 0, 0, 0, 0, 1],
+      [1, 1, 1, 1, 1, 0, 0, 0, 0, 1],
+      [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+      ["S", 0, 0, 0, 0, 0, 0, 0, 0, "G"],
+      [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+      [1, 1, 1, 1, 1, 0, 0, 0, 0, 1]
     ]
   },
   {
     "id": 5,
-    "name": "Mission 5 – The Left Turn",
-    "description": "The camel can only turn right. Use a While loop inside another While loop to make it turn left!",
+    "name": "Mission 5",
+    "description": "Only turn right – use nested While loops to simulate left turns and reach the goal.",
     "maze": [
       ["S", 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0],
-      [ 1, 1, 1, 1, 0, 0],
-      [ 0, 0, "G", 1, 0, 0],
-      [ 0, 1, 1, 1, 0, 0],
-      [ 0, 0, 0, 0, 0, 0]
+      [1, 1, 1, 1, 0, 0],
+      [0, 0, "G", 1, 0, 0],
+      [0, 1, 1, 1, 0, 0],
+      [0, 0, 0, 0, 0, 0]
     ]
   },
   {
     "id": 6,
-    "name": "Mission 6 – Danger!",
-    "description": "Fire blocks the path! Use an If block inside your While loop to check for danger before you step.",
+    "name": "Mission 6",
+    "description": "Fire is in your way. Use an If inside your loop to check for danger before stepping.",
     "maze": [
       [0, 1, 1, 1, "F", 1],
       ["G", 0, 0, 0, 0, 1],
-      [ 1, 1, 1, 1, 0, 1],
-      [ 0, 0, 0, 1, 0, 1],
-      [ 1, 1, 1, 1, 0, 1],
-      [ "S", 0, 0, 0, 0,"F"]
+      [1, 1, 1, 1, 0, 1],
+      [0, 0, 0, 1, 0, 1],
+      [1, 1, 1, 1, 0, 1],
+      ["S", 0, 0, 0, 0, "F"]
     ]
   },
   {
     "id": 7,
-    "name": "Mission 7 – Crossing!",
-    "description": "Fire and walls block the way! Use If, Else If, and Else to check for fire first, then walls, before you move.",
+    "name": "Mission 7",
+    "description": "Fire and walls block you. Use If, Else If, and Else to check for fire first, then walls.",
     "maze": [
       [0, 1, 1, 1, 1, "G"],
       [0, 1, 0, 1, 0, 0],
-      [ 0, 1, 0, 1, 0, "F"],
-      [ 0, 0, "C", 0, 0, "F"],
-      [ 0, 1, 0, 1, "F","F"],
-      [ "S", 1, 0, 1, "F","F"]
+      [0, 1, 0, 1, 0, "F"],
+      [0, 0, "C", 0, 0, "F"],
+      [0, 1, 0, 1, "F", "F"],
+      ["S", 1, 0, 1, "F", "F"]
     ]
   },
   {
     "id": 8,
-    "name": "Mission 8 – The Spiral of Fire",
-    "description": "The ultimate desert challenge! Combine While, If, Else If, and Else to survive the burning spiral.",
+    "name": "Mission 8",
+    "description": "Survive the spiral of fire! Combine While, If, Else If, and Else to reach the goal.",
     "maze": [
-      ["S", 0, 0, 0, 0,"F"],
-      ["F","F","F","F", 0,"F"],
-      ["F", 0,"G","F", 0,"F"],
-      ["F", 0,"F","F", 0,"F"],
-      ["F", 0, 0, 0, 0,"F"],
-      ["F","F","F","F","F","F"]
+      ["S", 0, 0, 0, 0, "F"],
+      ["F", "F", "F", "F", 0, "F"],
+      ["F", 0, "G", "F", 0, "F"],
+      ["F", 0, "F", "F", 0, "F"],
+      ["F", 0, 0, 0, 0, "F"],
+      ["F", "F", "F", "F", "F", "F"]
     ]
   },
   {
     "id": 9,
-    "name": "Mission 9 – The Shortcut",
-    "description": "Collect all coins, then reach the flag. Fewest steps wins! Can you find the faster way back?",
+    "name": "Mission 9",
+    "description": "Collect the coin, then reach the goal. Find the shortest path to save steps.",
     "maze": [
       ["S", 0, 1, 1, 1, 1],
-      [ 0, 0, 1, 0, 0,"C"],
-      [ 1, 0, 0, 0, 1, 0],
-      [ 1, 0, 1, 0, 1, 0],
-      [ 1, 0, 1, 0, 0, 0],
-      [ 1, 1, 1, 1, 1,"G"]
+      [0, 0, 1, 0, 0, "C"],
+      [1, 0, 0, 0, 1, 0],
+      [1, 0, 1, 0, 1, 0],
+      [1, 0, 1, 0, 0, 0],
+      [1, 1, 1, 1, 1, "G"]
     ]
   },
-    {
+  {
     "id": 10,
-    "name": "Mission 10 – The Great Travel",
-    "description": "The ultimate desert challenge!",
+    "name": "Mission 10",
+    "description": "Navigate through fire to collect the coin and reach the goal in this great desert challenge.",
     "maze": [
       ["S", 0, 0, 0, 0, 1, "G"],
       [1, 1, 1, 1, 0, 1, 0],
@@ -129,10 +129,10 @@
       ["F", "F", "F", "F", "F", "F", "F"]
     ]
   },
-    {
+  {
     "id": 11,
-    "name": "Mission 11 – The Catus Maze",
-    "description": "The ultimate desert challenge!",
+    "name": "Mission 11",
+    "description": "A large cactus maze – collect all coins and reach the goal.",
     "maze": [
       ["S", 0, 0, 1, 1, 1, 1, 1, 1, 1],
       [1, 0, 1, 0, "C", 0, 0, 0, 0, 1],
@@ -146,10 +146,10 @@
       [1, 1, 1, 1, 1, 1, 0, 0, "G", 1]
     ]
   },
-      {
+  {
     "id": 12,
-    "name": "Mission 12 – The Great Maze",
-    "description": "The ultimate desert challenge!",
+    "name": "Mission 12",
+    "description": "The ultimate great maze – collect coins and find your way to the goal.",
     "maze": [
       ["S", 0, 1, 1, 1, 1, 1, 1, 1, 1],
       [1, 0, 1, 1, "C", 0, 0, 0, 0, 1],
