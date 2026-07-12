@@ -9,10 +9,11 @@
     let coinPositions = new Set();
     let goalPos = { row: -1, col: -1 };
     let goalUnlocked = false;
-    let dead = false;               // true if player has died
+    let dead = false;
 
     let isRunning = false, cancelExecution = false;
     let moveCount = 0;
+    let blockCount = 0;   // ✅ FIXED: declared globally
 
     const dirDeltas = [{dr:0,dc:1},{dr:1,dc:0},{dr:0,dc:-1},{dr:-1,dc:0}];
 
@@ -82,7 +83,7 @@
         const cols = maze[0].length;
         let start = null, goal = null;
         const coins = [];
-        const fires = [];   // track fire positions for rendering
+        const fires = [];
         for (let r = 0; r < rows; r++) {
             if (maze[r].length !== cols) throw new Error(`Row ${r} has inconsistent length`);
             for (let c = 0; c < cols; c++) {
@@ -127,7 +128,6 @@
             player.dir = start.dir;
             checkCoinPickup();
 
-            // If start is on fire (shouldn't happen), treat as dead
             if (currentMission.rawMaze[player.row][player.col] === 'F') {
                 dead = true;
                 setStatus('🔥 You started on fire!');
@@ -137,6 +137,7 @@
             selectedBlock = null;
             selectedSlot = null;
             moveCount = 0;
+            blockCount = 0;                     // ✅ reset count
             blockIdCounter = 0;
             renderAllBlocks();
             renderGrid();
@@ -157,7 +158,7 @@
         const nr = player.row + d.dr, nc = player.col + d.dc;
         if (nr < 0 || nr >= currentMission.rows || nc < 0 || nc >= currentMission.cols) return false;
         const cell = currentMission.rawMaze[nr][nc];
-        return cell !== 1;   // Fire is not a wall, so you can move into it
+        return cell !== 1;
     }
 
     function evaluateCondition(cond) {
@@ -185,12 +186,11 @@
         checkCoinPickup();
         moveCount++;
 
-        // Check for death by fire
         if (currentMission.rawMaze[player.row][player.col] === 'F') {
             dead = true;
             setStatus('🔥 You stepped into the fire and burned!');
             showResults();
-            return false;   // movement still succeeded, but you died
+            return false;
         }
         return true;
     }
@@ -318,6 +318,27 @@
         return serializeBlocks(topBlocks);
     }
 
+    // ---------- BLOCK COUNTING ----------
+    function countBlocks(blocks) {
+        let count = 0;
+        for (const block of blocks) {
+            count++; // the block itself
+            if (block.type === 'if') {
+                count += countBlocks(block.thenBlocks);
+                for (const ei of block.elseIfBlocks) {
+                    count++; // else-if block itself
+                    count += countBlocks(ei.body);
+                }
+                if (block.elseBlocks) {
+                    count += countBlocks(block.elseBlocks);
+                }
+            } else if (block.type === 'while') {
+                count += countBlocks(block.bodyBlocks);
+            }
+        }
+        return count;
+    }
+
     // ---------- BLOCK EDITOR RENDERING ----------
     function renderAllBlocks() {
         blockScript.innerHTML = '';
@@ -382,7 +403,7 @@
             });
             header.addEventListener('click', (e) => {
                 e.stopPropagation();
-                if (e.target.closest('select')) return;   // <-- add this line
+                if (e.target.closest('select')) return;
                 selectBlock(block, 'then');
             });
             container.appendChild(header);
@@ -397,7 +418,6 @@
             }
             container.appendChild(thenDiv);
 
-            // else-if blocks
             for (let i = 0; i < block.elseIfBlocks.length; i++) {
                 const ei = block.elseIfBlocks[i];
                 const eiHeader = document.createElement('div');
@@ -414,7 +434,7 @@
                 });
                 eiHeader.addEventListener('click', (e) => {
                     e.stopPropagation();
-                    if (e.target.closest('select')) return;   // <-- add this line
+                    if (e.target.closest('select')) return;
                     selectElseIfBlock(block, i);
                 });
                 container.appendChild(eiHeader);
@@ -429,7 +449,6 @@
                 container.appendChild(eiBody);
             }
 
-            // else block (no condition)
             if (block.elseBlocks && block.elseBlocks.length > 0) {
                 const elseHeader = document.createElement('div');
                 elseHeader.className = 'else-header';
@@ -492,7 +511,7 @@
             });
             header.addEventListener('click', (e) => {
                 e.stopPropagation();
-                if (e.target.closest('select')) return;   // <-- add this line
+                if (e.target.closest('select')) return;
                 selectBlock(block, 'body');
             });
             container.appendChild(header);
@@ -707,7 +726,6 @@
     }
 
     // ---------- BUTTON HANDLERS ----------
-    // Click on empty space in the script area → deselect
     blockScript.addEventListener('click', (e) => {
         if (e.target === blockScript) {
             selectedBlock = null;
@@ -777,6 +795,7 @@
 
     document.getElementById('clearBlocksBtn').addEventListener('click', () => {
         topBlocks = [];
+        blockCount = 0;                     // ✅ reset count on clear
         selectedBlock = null;
         selectedSlot = null;
         renderAllBlocks();
@@ -852,9 +871,8 @@
             await new Promise(r => setTimeout(r, 500));
             switch (cmd.type) {
                 case 'fwd':
-                    // moveForward now returns false if movement impossible, but we still check canGoForward first
                     if (!canGoForward()) break;
-                    moveForward();   // may set dead = true
+                    moveForward();
                     renderGrid();
                     if (dead) {
                         showResults();
@@ -904,9 +922,9 @@
 
     function showResults() {
         if (dead) {
-            resultsMsg.textContent = `🔥 Burned! Moves: ${moveCount}`;
+            resultsMsg.textContent = `🔥 Burned! Moves: ${moveCount} · Blocks: ${blockCount}`;
         } else {
-            resultsMsg.textContent = `🏁 Moves: ${moveCount} · Goal: ${reachedGoal() ? 'Reached ✅' : 'Not reached ❌'}`;
+            resultsMsg.textContent = `🏁 Moves: ${moveCount} · Goal: ${reachedGoal() ? '✅' : '❌'} · Blocks: ${blockCount}`;
         }
     }
 
@@ -952,6 +970,9 @@
             return;
         }
 
+        // ✅ Count blocks **after** parsing and before execution
+        blockCount = countBlocks(topBlocks);
+
         setStatus('Executing...');
         cancelExecution = false;
         isRunning = true;
@@ -960,6 +981,7 @@
         resetPlayerToStart();
         resetCoinState();
         moveCount = 0;
+        // ✅ removed the local `let blockCount = 0;` – using the global one
         renderGrid();
 
         await execute(commands);
