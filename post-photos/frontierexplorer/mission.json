@@ -166,7 +166,7 @@
   {
     "id": 13,
     "name": "Mission 13",
-    "description": "The ultimate great maze – collect coins and find your way to the goal.",
+    "description": "",
     "maze": [
       [1, 0, 1, 1, 1, 1, 1, 1, 1, 1],
       [1, 0, 1, 1, "C", 0, 0, 0, 0, 1],
