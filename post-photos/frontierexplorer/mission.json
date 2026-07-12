@@ -121,11 +121,11 @@
     "name": "Mission 10",
     "description": "Navigate through fire to collect the coin and reach the goal in this great desert challenge.",
     "maze": [
-      ["S", 0, 0, 0, 0, 1, "G"],
-      [1, 1, 1, 1, 0, 1, 0],
-      ["F", "F", 1, 1, 0, 1, 0],
-      ["F", "F", "F", "F", 0, 1, 0],
-      ["F", "F", "F", "F", "C", 0, 0],
+      ["S", 0, 0, 0, 0, "G", 0],
+      [1, 1, 1, 1, 0, 0, 0],
+      ["F", "F", 1, 1, 0, 0, "F"],
+      ["F", "F", "F", "F", 0, 0, "F"],
+      ["F", "F", "F", "F", "C", 0, "F"],
       ["F", "F", "F", "F", "F", "F", "F"]
     ]
   },
