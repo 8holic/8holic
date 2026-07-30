@@ -1,0 +1,71 @@
+---
+layout: post
+title: "I played:007 First Light"
+tags:
+  - Gaming
+  - James Bond
+---
+
+# 4 Sentence Summary
+The story feels like a modern day James Bond movie. It taps into some of the anxiety of 2026 however felt rushed at the end.
+
+The game is a linear action/stealth game, with semi open world segments.
+
+The difficulity of the game is low, with little variation in comabt or skill involved.
+
+I finished the main story on normal difficulity in 16.5 hours.
+
+# Storytelling - James Bond Origin
+The story that is told is basically that of IOI own take on James Bond, the famous spy. The story is servicible, with a strong start that falls off midway through. It tapes into the theme in 2026(which is AI) and the villian motive is compelling, at the end they are clearly setting up a sequence hook. However the final segment felt very rushed.
+
+# Gameplay - A bit of stealth,action and very little driving
+
+## Stealth
+
+Stealth is what Bond is known for, on top of gadgets to distract potential watchers, Bond is also able to activate distractions. He also has the ability to lure enemies or bluff them, in pracitce I rarely remember ot use these.
+
+There are two type of stealth here
+Social Stealth-For these type it is not possible to turn to combat,it usually occur in the public and if caught Bond just teleports away. Usually for these there are a few solutions which all lead to the same outcome.
+Combat Stealth-These are more traditional stealth experience as the player try to finish some objective without getting seen. It is reasonably well implemented and the bluffing ability makes it possible to get away with non perfect play. 
+Both of them ensure that the game never get stale during stealth sections as the game swithces between both as we go from a social camoflague to sneaking around high security
+
+## Combat 
+
+Melee combat is what you turn to if stealth fails, there is a parry and a dodge. James Bond also has an grab he can use as well as certain envriomental objects. It start off strong however Bond never gets any new moves, and the enemy types are limited. So combat becomes boring after a while.
+
+In terms of the shooter element, it is a fairy generic shooting game. One notable thing is that James Bond never carries a lot of ammo, making it necessary to switch weapons.
+
+## Misc
+The driving segment is really handholded, if you are able to inconvenient some poor pedestrian the car will auto steer out of their way. Except for a chase near the start, driving never felt exciting as the path is always linear with no possibility of failure.
+
+The bosses are a dissapointment and does not take advantage of the game system fully. Only the first boss fight at the basement make use of Bond hacking tool extensively, after that the fights fall off into overly gimmick fight. I don't feel like a spy outsmarting the opponenet, I feel like John fucking Wick shooting a continental solider, where unless you fufill its gimmick it does nothing.
+
+To discuss the dialogue options I am pretty confident there is 0 variation in what happens. It does not matter what Bond reply things turn out the same. There is only a single moment where you can fail if you didn't choose correctly. It really puts a dent in the mode knowing the dialogue choices does not matter.
+
+Finally I must talk about this, there is a ridicious amount of handholding. I don't need my mission control to tell me to check out X where X is always the solution. I was trying to solve a puzzle to get past a door and my partner just shows up and tell me to get over. Is it that bad to struggle on a puzzle? If I cannot figure it out let me google it, not have the NPC point it out.
+
+# Non Spoiler summary
+I felt that the story is the only reason to play the game, if a James Bond style story isn't for you it is a safe skip. The gameplay is not strong enough to justify the time spent. Tac Sim mode seems promising...but it is quite barebones at the moment.
+
+# Spoiler Discussion
+
+Personally I felt that the game has a very strong start, it starts strong esclating as Bond goes from a regular solider to getting recruited then to the mission in Solvakia. The car chase feel straight out of a Bond Movie, taking shortcuts to catch up and ending in a badass segement where we get to control the tilt of the plane to get through the baddies. At this point the Solvakia mission has a few options, from burning a bin to swiping an employee key card.
+
+## Railroading
+After the above mission, we get to go to a pirates market. There are several activites possible here, in a full exploration where you need to earn money for the auction. I did the boxing ring, and the art deal. Once I get my goal ALL activies instantly become unavailable. I wanted to do the cup game, or the phone hacking, or the shooting range, the game disagree and think I should go back to Greenway. 
+
+On top of that with exactly one exception, the dialogue options do not matter. You know in Casino Royale where Bond won with trickery and insight? I don't feel like bond when none of my options matter. The only part this is implemented is taunting Damien to get him close so we can hack his phone, this is the only smart part. Meanwhile when we have a contact that is blown, or when we are about to be lowered to aligators, regardless what I cannot lose. It takes the tension out.
+
+## Repetitive gameplay
+The formula of the game is essentially doing social stealth,then regular stealth, and ending with a shoot out. The enemy does not actually change, the enemies early on down at the laundary bay feel exactly the same as the guards in the preultimate area. The guns can be summarized as pistol, shotgun,assault rifle, submachine gun and a sniper rifle, with supressed variants. The enemy type can be summarized as normal and armored guys. All in all I felt like I was doing the exact same thing in a loop.
+Also the sheer amount of walking or following a character isn't helping , just make it a cutscene if I cannot deviate from the path.
+
+## Lackluster bosses
+The only boss fight is the fight against Monroe. Literally the first fight, it is a cool CQC fight spanning across multiple locations. A strong start, however all other bosses aren't that unique.
+Tero Murto requires the usage of traps to damage him, however it just ends after 3 hits. The subsequent CQC is completely cut scene based.
+Meanwhile the other Murto twin is a standard CQC fight in the same building, yes it get set on fire later on but the boss himself is unchanged.
+The fight against Damien is extremely simillar to Tero Murto,where it is completely dependent on the surroundings.
+The final boss. have a phase 1 which involves the same thing as Tero, while a phase 2 that is basically the Anor Londo archers. It takes place...in the sewers. So the visual sucks, and it is not intersting or difficult. The story should have ended after antartica, not only do the final boss NOT use melee combat which the game does well in, it is barely a fight.
+
+## Conclusions
+Overall this game is not my thing, it felt tailored made to the most casual of audiences. It is definetly not worth the almost 70$ price tag. The Tac Sim seems to be the intended post game but it is really underbaked. After a year or so maybe it will be worth the price.
