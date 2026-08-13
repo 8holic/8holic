@@ -1,0 +1,11 @@
+---
+layout: post
+title: "Lisbon"
+location: "Lisbon, Portugal"
+tags:
+  - travel
+  - exchange
+---
+
+# Overview
+<img src="{{ '/post-photos/2025-11-07-featured.jpg' | relative_url }}" alt="Lisbon" class="blog-image">

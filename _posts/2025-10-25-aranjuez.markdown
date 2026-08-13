@@ -1,0 +1,11 @@
+---
+layout: post
+title: "Aranjuez"
+location: "Aranjuez, Spain"
+tags:
+  - travel
+  - exchange
+---
+
+# Overview
+<img src="{{ '/post-photos/2025-10-25-featured.jpg' | relative_url }}" alt="Aranjuez" class="blog-image">

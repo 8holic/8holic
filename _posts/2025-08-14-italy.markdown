@@ -8,9 +8,6 @@ location: "Milan, Italy"
 
 ---
 # Pre Exchange Experience - Italy Tourism Day 1
-<img src="{{ '/assets/images/2025-08-14B1.jpg' | relative_url }}" 
-     alt="A pre flight image test 2" 
-     class="blog-image">
 
 ### Background
 As a student heading for exchange, I decided to do a trip in europe since I haven't really travel outside of Asia. I decided on Italy due to its relative close proximity to my exchange university in Spain.

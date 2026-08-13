@@ -5,6 +5,7 @@ location: "Singapore, Singapore"
 tags:
   - Hoshi Ori Yume Mirai
   - visual novel
+  - Sexual Content
 ---
 
 # Background

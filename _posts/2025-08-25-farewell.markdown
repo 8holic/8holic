@@ -1,0 +1,11 @@
+---
+layout: post
+title: "Farewell"
+location: "Italy"
+tags:
+  - travel
+  - exchange
+---
+
+# Overview
+<img src="{{ '/post-photos/2025-08-25-featured.jpg' | relative_url }}" alt="Farewell" class="blog-image">
