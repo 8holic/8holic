@@ -27,6 +27,10 @@ $border-color: #5D3587;
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: sans-serif;
   line-height: 1.6;
@@ -176,6 +180,33 @@ main {
   border-top: 1px solid $border-color;
   font-size: 0.9rem;
   color: $text-muted;
+
+  .post-nav {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+
+    .post-btn {
+      flex: 1;
+      padding: 0.75rem 1rem;
+      text-align: center;
+      border: 2px solid $border-color;
+      border-radius: 8px;
+      background: $card-bg;
+      color: $accent;
+      text-decoration: none;
+
+      &:hover {
+        background: $accent;
+        border-color: $accent;
+        color: #fff;
+      }
+    }
+
+    .post-btn.top {
+      flex: 0 auto;
+    }
+  }
 }
 
 h1 {

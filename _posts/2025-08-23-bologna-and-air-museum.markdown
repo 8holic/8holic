@@ -7,5 +7,6 @@ tags:
   - exchange
 ---
 
-# Overview
-<img src="{{ '/post-photos/2025-08-23-featured.jpg' | relative_url }}" alt="Bologna and Air Museum" class="blog-image">
+# Morning - Saint Peter's Basilica
+For today, I visited the Basilica early in the morning to avoid the crowd. Overall I thought that the Basilica is filled with history. I saw that it is actually used by priest, and I got some holy water blessed(with a donation)
+
