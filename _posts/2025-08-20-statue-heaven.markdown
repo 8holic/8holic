@@ -7,7 +7,7 @@ tags:
   - exchange
 ---
 
-# Overview
+# Florecnce Day 1
 I decided to visit David Statue at the Galleria dell'Accademia di Firenzeh. I arrived early in the morning and there was quite a queue. Thanks to arriving early I was able to witness the magnificant statue and its details, they also showcase a few statues that were partially destroyed and lost to the element. What truely stand out is the statue room, a room full of various statues. I was suprised by the variety of statue and how it is used to capture the moment in history, a little bit like today photograph. there was also an room about instruments that I thought were neat. Some of these instrument are older than Singapore or more accurately almost everything inside is older than my country. My notable observation is that how many things such as instruments have stayed simillar to the modern day version with minute differences, gotta appericate the saying that if it works no point reinventing it.
 
 I also visited a church but I do not remember much about it.

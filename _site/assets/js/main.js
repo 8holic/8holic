@@ -46,4 +46,56 @@ document.addEventListener('DOMContentLoaded', function() {
       button.addEventListener('click', () => applyFilter(button.dataset.tag || 'all'));
     });
   }
+
+  const toc = document.getElementById('toc');
+  const postContent = document.querySelector('.post-content');
+
+  if (toc && postContent) {
+    const headings = Array.from(postContent.querySelectorAll('h1, h2'));
+
+    if (headings.length >= 3) {
+      const usedIds = {};
+      document.querySelectorAll('[id]').forEach((el) => { usedIds[el.id] = true; });
+      const tocList = document.createElement('ul');
+      const tocLinks = [];
+
+      headings.forEach((heading) => {
+        if (!heading.id) {
+          const base = heading.textContent.trim().toLowerCase().replace(/[^\w]+/g, '-').replace(/^-+|-+$/g, '') || 'section';
+          let slug = base;
+          let n = 2;
+          while (usedIds[slug]) { slug = base + '-' + n; n += 1; }
+          heading.id = slug;
+        }
+        usedIds[heading.id] = true;
+
+        const link = document.createElement('a');
+        link.href = '#' + heading.id;
+        link.textContent = heading.textContent;
+
+        const item = document.createElement('li');
+        if (heading.tagName === 'H2') item.className = 'is-sub';
+        item.appendChild(link);
+        tocList.appendChild(item);
+        tocLinks.push({ link: link, heading: heading });
+      });
+
+      toc.appendChild(tocList);
+      toc.hidden = false;
+
+      if ('IntersectionObserver' in window) {
+        const setActive = (id) => {
+          tocLinks.forEach((entry) => {
+            entry.link.classList.toggle('is-active', entry.heading.id === id);
+          });
+        };
+        const spy = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) setActive(entry.target.id);
+          });
+        }, { rootMargin: '-15% 0px -75% 0px' });
+        tocLinks.forEach((entry) => spy.observe(entry.heading));
+      }
+    }
+  }
 });

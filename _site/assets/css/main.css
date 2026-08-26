@@ -103,6 +103,24 @@ table, th, td { border: 1px solid white; }
 
 th, td { padding: 8px; text-align: left; }
 
+.post { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 1.5rem; align-items: start; margin: 0 10%; }
+
+.post > .card { margin: 0; }
+
+.post-toc { grid-column: 2; grid-row: 1 / -1; position: sticky; top: 1rem; max-height: calc(100vh - 2rem); overflow-y: auto; font-size: 0.9rem; }
+.post-toc summary { cursor: pointer; font-weight: bold; color: #FFD1E3; user-select: none; }
+.post-toc ul { list-style: none; padding-left: 0.25rem; margin-top: 0.75rem; }
+.post-toc li { margin: 0.4rem 0; }
+.post-toc li.is-sub { padding-left: 1rem; font-size: 0.85rem; }
+.post-toc a { color: #f0f0f0; text-decoration: none; }
+.post-toc a:hover { color: #A367B1; }
+.post-toc a.is-active { color: #FFD1E3; font-weight: bold; }
+
+.post-content h1, .post-content h2 { scroll-margin-top: 1rem; }
+
+@media (max-width: 768px) { .post { grid-template-columns: 1fr; }
+  .post-toc { grid-column: 1; grid-row: auto; position: static; max-height: none; } }
+@media (max-width: 480px) { .post { margin-left: 4%; margin-right: 4%; } }
 img, iframe, video { max-width: 100%; height: auto; display: block; }
 
 @media (max-width: 768px) { .banner { height: 40vh; }

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Vatican City"
+title: "Rome Day 2"
 location: "Vatican City, Italy"
 tags:
   - travel

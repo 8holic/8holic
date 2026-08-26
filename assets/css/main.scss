@@ -501,6 +501,93 @@ th, td {
 }
 
 // ============================================================
+// TABLE OF CONTENTS
+// ============================================================
+.post {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 280px;
+  gap: 1.5rem;
+  align-items: start;
+  margin: 0 10%;
+}
+
+// cards self-margin by default; the .post grid owns spacing now
+.post > .card {
+  margin: 0;
+}
+
+.post-toc {
+  grid-column: 2;
+  grid-row: 1 / -1;
+  position: sticky;
+  top: 1rem;
+  max-height: calc(100vh - 2rem);
+  overflow-y: auto;
+  font-size: 0.9rem;
+
+  summary {
+    cursor: pointer;
+    font-weight: bold;
+    color: $accent-light;
+    user-select: none;
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 0.25rem;
+    margin-top: 0.75rem;
+  }
+
+  li {
+    margin: 0.4rem 0;
+
+    &.is-sub {
+      padding-left: 1rem;
+      font-size: 0.85rem;
+    }
+  }
+
+  a {
+    color: $text-light;
+    text-decoration: none;
+
+    &:hover {
+      color: $accent;
+    }
+
+    &.is-active {
+      color: $accent-light;
+      font-weight: bold;
+    }
+  }
+}
+
+.post-content h1,
+.post-content h2 {
+  scroll-margin-top: 1rem;
+}
+
+@media (max-width: $breakpoint-md) {
+  .post {
+    grid-template-columns: 1fr;
+  }
+
+  .post-toc {
+    grid-column: 1;
+    grid-row: auto;
+    position: static;
+    max-height: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .post {
+    margin-left: 4%;
+    margin-right: 4%;
+  }
+}
+
+// ============================================================
 // MOBILE‑FRIENDLY OVERRIDES (append to your existing SCSS)
 // ============================================================
 
