@@ -32,7 +32,7 @@ body { font-family: sans-serif; line-height: 1.6; color: #f0f0f0; background: #0
 main { flex: 1; padding: 0; }
 
 .site-footer { text-align: center; padding: 1rem; border-top: 1px solid #5D3587; font-size: 0.9rem; color: #b0b0b0; }
-.site-footer .post-nav { display: flex; gap: 1rem; margin-bottom: 1rem; }
+.site-footer .post-nav { display: flex; gap: 1rem; margin: 0 10% 1rem 10%; }
 .site-footer .post-nav .post-btn { flex: 1; padding: 0.75rem 1rem; text-align: center; border: 2px solid #5D3587; border-radius: 8px; background: #1e1a2f; color: #A367B1; text-decoration: none; }
 .site-footer .post-nav .post-btn:hover { background: #A367B1; border-color: #A367B1; color: #fff; }
 .site-footer .post-nav .post-btn.top { flex: 0 auto; }

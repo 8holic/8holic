@@ -10,7 +10,8 @@ tags:
 
   - Gaming
 
-featured_image_in_post: false
+featured_image_in_post: true
+featured_image_credit: "A visualization of the results."
 
 ---
 
