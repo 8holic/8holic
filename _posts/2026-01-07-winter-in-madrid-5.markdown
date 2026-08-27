@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Singapore"
-location: "Singapore, Singapore"
+location: "Singapore"
 tags:
   - travel
   - exchange
@@ -19,6 +19,8 @@ I believe there is a possibility that this is the truth.
 To be honest I was kinda hacking it for my plan, I google map what I want to visit AT THE HOTEL. In fact I believe I may have spend more time figuring out where to visit rather than resting at the hotel. It is equally likely the poor planning resulted in this. In contrast with Italy or Spain where I already know I want to see the colossum, or I want to know more about the three kingdom and the muslim influence, I am flying blind here. I feel this might have contributed to the fatique as well.
 ## Lack of interest in travelling
 Maybe, just maybe I actually dont like travelling. I buy what people tell me, that travelling give me perspecitve, to give me a understanding of their culture. But maybe I don't care much of the culture. I do not feel this is likely because I think I was engaged WHEN reading. Yet I do not remember anything after leaving. I certainly developed an intrest in the nation, so I feel there is some interest.
+## Transition Anxiety
+I know for the fact after this I am returning to Singapore,and to be honest I am afriad. Not simply of returning but that I will lose the "me" that was formed while in Madrid. Knowing that I will return to Singapore, maybe I fear I will regress to my older self. I know there is much that I have yet not to see.
 
 # Why did I want to travel?
 To go to the start, the reason why I wanted to go on an exchange is because I felt that I am stagnating in Singapore, every day feels the same, as I play video games every weekend and it felt like I am wasting my life away.

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Finland"
-location: "Helsinki,Finland"
+location: "Helsinki, Finland"
 tags:
   - travel
   - exchange

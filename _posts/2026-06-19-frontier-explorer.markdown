@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Settler Frontier, Coding Workshop
-location: 
+location: "Singapore, Singapore"
 tags:
   - youth network
   - project

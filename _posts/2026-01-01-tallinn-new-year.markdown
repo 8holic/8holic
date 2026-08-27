@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "New Year"
-location: "Estonia, Tallin"
+location: "Tallinn, Estonia"
 tags:
   - travel
   - exchange

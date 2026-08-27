@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Riga,Latvia for 2 days"
-location: "Riga,Latvia"
+location: "Riga, Latvia"
 tags:
   - travel
   - exchange
