@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "London Theatre"
+title: "London Day 1"
 location: "London, UK"
 tags:
   - travel
