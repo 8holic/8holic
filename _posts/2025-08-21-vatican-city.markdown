@@ -1,10 +1,11 @@
 ---
 layout: post
 title: "Rome Day 2"
-location: "Vatican City, Italy"
+location: "Singapore, Singapore"
+destination: "Vatican City"
 tags:
-  - travel
-  - exchange
+  - Travel
+featured_image_in_post: false
 ---
 
 # Morning

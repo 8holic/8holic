@@ -1,8 +1,10 @@
 ---
 layout: post
 title: "I played:Sifu(Loop)"
+location: "Singapore, Singapore"
 tags:
   - Gaming
+featured_image_in_post: false
 ---
 
 # Storytelling

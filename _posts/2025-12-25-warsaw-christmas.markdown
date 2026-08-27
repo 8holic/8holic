@@ -1,10 +1,11 @@
 ---
 layout: post
 title: "Christmas"
-location: "Warsaw, Poland"
+location: "Singapore, Singapore"
+destination: "Warsaw, Poland"
 tags:
-  - travel
-  - exchange
+  - Travel
+featured_image_in_post: false
 ---
 
 # Day 1 - CHRISTMAS!

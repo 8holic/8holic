@@ -27,7 +27,17 @@ layout: default
   </div>
 </div>
 
+{% if page.featured_image_credit %}
+<p class="banner-credit">{{ page.featured_image_credit }}</p>
+{% endif %}
+
 <article class="post">
+  {% if page.featured_image_in_post %}
+  <figure class="post-figure">
+    <img src="{{ banner_image | relative_url }}" alt="{{ page.title }}">
+    {% if page.featured_image_credit %}<figcaption>{{ page.featured_image_credit }}</figcaption>{% endif %}
+  </figure>
+  {% endif %}
   {% if page.tags %}
     <div class="post-tags card">
       <strong>Tags:</strong>

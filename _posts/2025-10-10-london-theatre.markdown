@@ -1,10 +1,11 @@
 ---
 layout: post
 title: "London Day 1"
-location: "London, UK"
+location: "Singapore, Singapore"
+destination: "London, United Kingdom"
 tags:
-  - travel
-  - exchange
+  - Travel
+featured_image_in_post: false
 ---
 
 # Midnight

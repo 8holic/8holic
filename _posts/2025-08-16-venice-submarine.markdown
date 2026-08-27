@@ -1,10 +1,11 @@
 ---
 layout: post
 title: "Day 2 Venice"
-location: "Venice, Italy"
+location: "Singapore, Singapore"
+destination: "Venice, Italy"
 tags:
-  - travel
-  - exchange
+  - Travel
+featured_image_in_post: false
 ---
 # Morning
 ## Arsenale di Venezia

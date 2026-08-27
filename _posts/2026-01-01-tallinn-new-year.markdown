@@ -1,10 +1,11 @@
 ---
 layout: post
 title: "New Year"
-location: "Tallinn, Estonia"
+location: "Singapore, Singapore"
+destination: "Tallinn, Estonia"
 tags:
-  - travel
-  - exchange
+  - Travel
+featured_image_in_post: false
 ---
 
 # Day 1

@@ -1,10 +1,10 @@
 ---
 layout: post
 title: "Orientation"
-location: "Madrid, Spain"
+location: "Singapore, Singapore"
 tags:
-  - travel
-  - exchange
+  - URECA
+featured_image_in_post: false
 ---
 
 # Overview

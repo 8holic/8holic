@@ -1,9 +1,10 @@
 ---
 layout: post
 title: "I played:007 First Light"
+location: "Singapore, Singapore"
 tags:
   - Gaming
-  - James Bond
+featured_image_in_post: false
 ---
 
 # 4 Sentence Summary

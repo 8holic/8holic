@@ -1,57 +1,67 @@
 ---
 layout: post
 title: "Osaka, Japan Day 1"
-date: 2025-05-15
-location: "Osaka, Japan"
+location: "Singapore, Singapore"
+destination: "Osaka, Japan"
 tags:
-  - travel
-  - japan
-  - osaka
-  - reflection
+  - Travel
+featured_image_in_post: false
 ---
 
 # Overview
+
 Today is the first day I arrive in Japan. I took the plane in midnight and arrive in the morning. Before heading to my hostel I visited the following location.
 
 # Cup Noodles Museum Osaka Ikeda
 
 ## Intent
+
 As a college student who eat a lot of instant noodles to survive for my college exam, I am very famillar with Japanese branded instant noodle. The Cheesy Currry Chicken is my favorite. So when I was looking around and see a Cup Noodles Museum I decide to visit just to see what is up.
 
 ## Experience
+
 The museum is smaller than expected, as most of the things are in Japanse I did not really understood much of the exhibit. However the making of the instant noodles is worth it.
 
 ## Memory
+
 The Instant Noodle making is the highlight, I get to design my own cup and add my own ingreidents. Additionally I learnt how are instant noodles are prepared. I get to see the lid sealer that melts the lid onto the cup.
 
 ## Insight
+
 For small and niche museums such as these the piority is the interactivity and not the exhibits itself. I should look up such activites in the future before visiting.
 
 # Ikeda Castle Ruins
 
 ## Intent
+
 It happen to be nearby, and I kinda like castle. So I decide to visit it since it is convenient.
 
 ## Experience
+
 There is a park around the castle, at the top floor it leads to an observatory that provide a overview of the more civilian part of the city. The castle has a Stair climbing wheelchair, additionally there are a few small gardens.
 
 ## Memory
+
 The sunset is a nice sight(As seen in the picture above). It become very quiet the instant I enter the garden, having quiet and peace is nice. Additionally thet Stair Climbing Wheelchair atttached to this, made me realize how rare this is in my home country.
 
 ## Insight
+
 Sponatenous trip that is effortless to visit are worth the efforts, no need to plan rigidly for everything. Additionally I realize the gap in infrastrucutre in terms of disability access, and this is something worth advocating.
 
 # Dotonbori 
 
 ## Intent
+
 It is suprising close to the hostel I was staying at so I paid it a visit. I also heard something about the running man.
 
 ## Experience
+
 It is really crowded, and yup the running man is there. I ate some nice food and walk around a bit.
 
 ## Memory
+
 The food is nice, also I saw Spiderman on the bridge.
 
 ## Insight
-I realize that I should probably research more about the famous landmarks, since without any knowledge of the historical significance the running man is just another banner.
 
+I realize that I should probably research more about the famous landmarks, since without any knowledge of the historical significance the running man is just another banner.

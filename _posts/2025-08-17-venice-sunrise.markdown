@@ -1,10 +1,11 @@
 ---
 layout: post
 title: "Day 3 Venice & Day 1 Florence"
-location: "Venice, Italy"
+location: "Singapore, Singapore"
+destination: "Venice, Italy"
 tags:
-  - travel
-  - exchange
+  - Travel
+featured_image_in_post: false
 ---
 
 # Day 3 Morning

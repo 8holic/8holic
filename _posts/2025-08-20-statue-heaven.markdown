@@ -1,10 +1,11 @@
 ---
 layout: post
 title: "Florence Day 4-Rome Day 1"
-location: "Rome, Italy"
+location: "Singapore, Singapore"
+destination: "Florence, Italy"
 tags:
-  - travel
-  - exchange
+  - Travel
+featured_image_in_post: false
 ---
 
 # Morning

@@ -1,8 +1,8 @@
 ---
 layout: post
 title: 
-location: 
+location: "Singapore, Singapore"
 tags:
   - placeholder
+featured_image_in_post: false
 ---
-

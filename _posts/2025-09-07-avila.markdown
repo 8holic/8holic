@@ -1,10 +1,11 @@
 ---
 layout: post
 title: "Avila"
-location: "Avila, Spain"
+location: "Singapore, Singapore"
+destination: "Avila, Spain"
 tags:
-  - travel
-  - exchange
+  - Travel
+featured_image_in_post: false
 ---
 
 # Day Trip
@@ -19,4 +20,3 @@ Walking upon what Avila is known for is both a magical and tiring experience. Mo
 
 ## Mirador entrada Ávila
 Since it is kinda hard to look at Avila walls on them, I took a trip to a nice vantage point, I was worried I wont arrive in time for the return train and it end up being a close call. Seeing Avila from a distance away the walls looks beautiful guarding the city. It is amazing how long it survived
-

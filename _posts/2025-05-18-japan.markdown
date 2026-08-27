@@ -1,26 +1,29 @@
 ---
 layout: post
 title: "Osaka, Japan Day 4"
-date: 2025-05-18
-location: "Wakayama, Japan"
+location: "Singapore, Singapore"
+destination: "Osaka, Japan"
 tags:
-  - travel
-  - japan
-  - wakayama
-  - reflection
+  - Travel
+featured_image_in_post: false
 ---
+
 # Tomogashima Island
 
 ## Intent
+
 As the weather is great, and I am always curious about abandoned places(since they are illegal to visit in Singapore), I decide to pull the trigger for this. I was expecting a hike basically in the wildness
 
 ## Experience
+
 It took 1 hour to get from Osaka to Wakayama,kada Village.At 9am where the ferry is suppose to leave the weather suddendly worsen causing the ferry to halt. However at 1030am all is good so I went ahead. On the island I visited the observatory and it is pretty nice. I also met up with two nice lads and we became acquainted. At the end we missed the initial ferry back so we waited together for an hour for the 4pm ferry.
 
 ## Memory
+
 For a moment I was concern that the trip needs to be cancelled. The intresting things are the world war 2 fort as well as former shophouses in the era. Additionally there was an statue there.
 
 ## Insight
--I learnt from the other two to have a more exposed field of view, and I find it rather meaningful. Paying attention to the rocks for example he can tell that it is recently exposed because the algae growth is lesser compared to others. 
--Additionally talking to other random traveller is a risk worth taking. I am usually rather reserved but it was a really enjoyable experience.
 
+-I learnt from the other two to have a more exposed field of view, and I find it rather meaningful. Paying attention to the rocks for example he can tell that it is recently exposed because the algae growth is lesser compared to others. 
+
+-Additionally talking to other random traveller is a risk worth taking. I am usually rather reserved but it was a really enjoyable experience.

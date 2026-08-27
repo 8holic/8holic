@@ -1,10 +1,11 @@
 ---
 layout: post
 title: "British War Museum"
-location: "London, UK"
+location: "Singapore, Singapore"
+destination: "London, United Kingdom"
 tags:
-  - travel
-  - exchange
+  - Travel
+featured_image_in_post: false
 ---
 
 # Birtish Imperial War Museum and conclusion

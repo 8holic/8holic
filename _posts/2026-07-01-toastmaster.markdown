@@ -3,7 +3,8 @@ layout: post
 title: "Toastmaster NEW TERM"
 location: "Singapore, Singapore"
 tags:
-  - toastmaster
+  - Projects
+featured_image_in_post: false
 ---
 
 After a year of being Club President, it is finally over.
@@ -21,4 +22,3 @@ While in Spain, I continue to hold exco meeting with my club. I am glad to have 
 When I return in January, the first massive issue is that the club home grounds is closed for rennovation. I had to come up with some creative solutions in order to maintain things. The first time we did was zoom meetings, however I made a crucial mistake and delayed the January meeting as there is a lack of people interested. This mistake resulted in the momentum of the club halting, and I had to work hard by talking to people, coming up with intresting themes in order to revive the momentum. 
 
 For several months we will continue online meetings, the limitation of online meetings make engagement challanging.
-

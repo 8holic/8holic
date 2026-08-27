@@ -1,10 +1,11 @@
 ---
 layout: post
 title: "Barcelona Day 3"
-location: "Barcelona, Spain"
+location: "Singapore, Singapore"
+destination: "Barcelona, Spain"
 tags:
-  - travel
-  - exchange
+  - Travel
+featured_image_in_post: false
 ---
 
 # Morning

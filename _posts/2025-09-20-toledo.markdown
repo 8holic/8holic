@@ -1,10 +1,11 @@
 ---
 layout: post
 title: "Toledo"
-location: "Toledo, Spain"
+location: "Singapore, Singapore"
+destination: "Toledo, Spain"
 tags:
-  - travel
-  - exchange
+  - Travel
+featured_image_in_post: false
 ---
 
 # Day Trip

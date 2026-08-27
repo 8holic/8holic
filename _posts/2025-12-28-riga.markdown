@@ -1,10 +1,11 @@
 ---
 layout: post
 title: "Riga,Latvia for 2 days"
-location: "Riga, Latvia"
+location: "Singapore, Singapore"
+destination: "Riga, Latvia"
 tags:
-  - travel
-  - exchange
+  - Travel
+featured_image_in_post: false
 ---
 
 # Overview

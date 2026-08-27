@@ -3,8 +3,8 @@ layout: post
 title: "Singapore"
 location: "Singapore, Singapore"
 tags:
-  - travel
-  - exchange
+  - Travel
+featured_image_in_post: false
 ---
 
 # The end

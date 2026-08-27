@@ -1,10 +1,10 @@
 ---
 layout: post
 title: "The End of the Exchange Reflection"
-location: "Madrid, Spain"
+location: "Singapore, Singapore"
 tags:
-  - travel
-  - exchange
+  - URECA
+featured_image_in_post: false
 ---
 
 # Reflection
@@ -17,7 +17,6 @@ The stories I grew up with in Singapore usually tell us we're the best. I rememb
 A key difference is the teaching style. Carlos III content is more theoretical, and there's almost no handholding. Slides aren't always provided, so I spent a few weeks getting used to copying notes by hand. Professors are more like advisors, and without regular exercises or continuous assessment, it's hard to gauge how I'm doing.
 
 As a result, I did relatively poorly here, even though I worked as hard as I did in Singapore. This taught me that the global student population is much stronger than the narrative back home suggests, and in the grand scheme, Singapore university is pretty middling.
-
 
 # Living by myself
 

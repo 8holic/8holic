@@ -1,10 +1,11 @@
 ---
 layout: post
 title: "Finland"
-location: "Helsinki, Finland"
+location: "Singapore, Singapore"
+destination: "Helsinki, Finland"
 tags:
-  - travel
-  - exchange
+  - Travel
+featured_image_in_post: false
 ---
 
 # Day 1

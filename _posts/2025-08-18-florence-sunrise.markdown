@@ -1,10 +1,11 @@
 ---
 layout: post
 title: "Florence Day 2"
-location: "Florence, Italy"
+location: "Singapore, Singapore"
+destination: "Florence, Italy"
 tags:
-  - travel
-  - exchange
+  - Travel
+featured_image_in_post: false
 ---
 
 # Morning
@@ -17,4 +18,3 @@ At this point I have two choice, turn back to go to my hotel and potentially run
 ## Museo Galileo
 Subsequently I went to Museo Galileo, I saw a lot of planet models. While I didn't understand a lot of what I am seeing, I thought it is fascinating that people in the past are able to explore the universe with these creations. I truely can't think of how I will live without the computer. Through I wonder if Galileo will be able to figure out how a computer works if given one. 
 I definetly remember the top floor through, it is a detailed disection of the human body and the internal organs. I am unsure why this makes me uncomfortable, but in this discomfort I found the beauty on how the human organ works. It also include sexual organs which is something that doesn't exist in Singapore.
-

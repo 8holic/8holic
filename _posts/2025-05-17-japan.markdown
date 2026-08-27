@@ -1,44 +1,55 @@
 ---
 layout: post
 title: "Osaka, Japan Day 3"
-date: 2025-05-17
-location: "Osaka, Japan"
+location: "Singapore, Singapore"
+destination: "Osaka, Japan"
 tags:
-  - travel
-  - japan
-  - osaka
-  - reflection
+  - Travel
+featured_image_in_post: false
 ---
+
 # Overview
+
 Today the plan was to visit the Osaka Aquarium, the boat ride and Umeda Sky. After the previous packed day I decide to go for a lighter day.
 
 # Osaka Aquarium
 
 ## Intent
+
 So the honest reason was that I haven't really visit many Aquariums so I was curious. I also saw it in an anime
 
 ## Experience
+
 The aquarium started with a nice outdoor section,followed by a lot of animals. There are a lot of information avilable for people. I also paid for the feeding area.
 
 ## Memory
+
 The caretakers are very knowledgeble and speak some english. The following are some intresting things I learnt
+
 -The animals do not attack each other when well fed which is how they kept everyone in the same tank.
 
 ## Insight
+
 I learn some intresting things about animal, from this I learnt to give unconventional experience a go. Even through I am not a marine entuhaist I still learnt some intresting facts and understand the animals better.
 
 # Umeda Sky and Car Museum
 
 ## Intent
+
 For Umeda Sky I thought that the skyline would be nice since I have seen the older side I am curious how does the more modern side look.
+
 I happen to stumble across the Car Museum so I payed it a visit
 
 ## Experience
+
 Upon reaching the top I see two side, one side is the river facing side and the other side is mor eurban
+
 The Car Museum is a small but neat museum and features cars from the start of car development to current cars.
 
 ## Memory
+
 For both they aren't a lot of intresting details but the sights is nice.
 
 ## Insight
+
 Sometimes a slow relaxing day is fine, to simply relax and look around.

@@ -1,10 +1,11 @@
 ---
 layout: post
 title: "Segovia"
-location: "Segovia, Spain"
+location: "Singapore, Singapore"
+destination: "Segovia, Spain"
 tags:
-  - travel
-  - exchange
+  - Travel
+featured_image_in_post: false
 ---
 
 # Day Trip
@@ -20,4 +21,3 @@ The standout have to be the artilery school exhibit, and how they learn to opera
 What was more suprising was the Aqueduct, it was just lying around like it belongs. I was truely impressed by the great structure and just now nature it is for people to live their life around it.
 
 After that there isn't a lot to do so I went back to the station and relax. 
-

@@ -1,10 +1,11 @@
 ---
 layout: post
 title: "Arriving at Venice"
-location: "Venice, Italy"
+location: "Singapore, Singapore"
+destination: "Venice, Italy"
 tags:
-  - travel
-  - exchange
+  - Travel
+featured_image_in_post: false
 ---
 
 # Morning
@@ -40,5 +41,3 @@ The amount of "ceiling" art was really stunning and I did not realize the type o
 I arrived at the armoury next and there are a lot of weapons. Usualy crossbows and flintlocks, I also saw a lot of intresting combinations like a crossbow with a wheellock gun, or a dual barrel gun, also a sword with a gun. It is intresting to see how people back then are also experimenting with what is now known as "inefficient designs" to reach the modern era. I believe this is something I can take back as well, in contrast to Singapore painting itself as getting it right the first time where the leaders are infallable.
 
 After a single right turn I suddendly find myself in the prison cells, the jarring nature of the transition is suprising and how close they keep their enemies nearby. I thought the palace was beautiful, for the first half a day in Venice this is a great impression.
-
-
