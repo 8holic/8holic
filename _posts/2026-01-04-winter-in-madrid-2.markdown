@@ -1,11 +1,20 @@
 ---
 layout: post
-title: "Winter in Madrid"
-location: "Madrid, Spain"
+title: "Finland"
+location: "Helsinki,Finland"
 tags:
   - travel
   - exchange
 ---
 
-# Overview
-<img src="{{ '/post-photos/2026-01-04-featured.jpg' | relative_url }}" alt="Winter in Madrid" class="blog-image">
+# Day 1
+On my arrival I went to the art gallery then to Amos Rex. I am sure it is because I am using images to write this, but I remember Amos Rex pushing the bounds of art more. My favorite installation was the one mimicing a night city walk, with the rain droplets. It reminds me of the song of the rain. It is one of those things where a video doesnt do it justice.
+The next segment is that of the reflection classroom,where it makes clever use of reflection to make a person appearing to beo n the other side in a old classroom. I have to wonder what do they wish to express, was it the mundanity of life? Because these are daily sights that I have never stop to see.
+
+# Day 2
+For today I visted the old market hall and had some deer soup. I thought it was pretty nice. The primary focus of today was to take the boat to Suomenlinna, I guess I saw a lot of cool stuff.
+
+# Day 3 Finale
+I went to the old market again, I had the salmon soup this time and it is pretty good. The best food I eaten was the baked potato with deer meat topping. For the final trip I went to the Zoo. I am not sure why, maybe i was bored? It was nice to see the animals, however I felt that something is missing. I boarded the plane and return.
+
+I think the 

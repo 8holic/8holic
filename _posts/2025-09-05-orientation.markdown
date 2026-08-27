@@ -7,7 +7,8 @@ tags:
   - exchange
 ---
 
-# Living in Fuenlabrada
+# Overview
+## Fuenlabrada
 So during the last few days, I was able to get used to things a little. My roommate was a nice fellow, who offers to help. He introduced me to Mercandona, there is a park nearby as well. The park is pretty spacious.
 
 The lack of nearby options also imply I will be cooking, I was able to browse a wide variety of meat. I was most suprised by the bread segment as well as the Jamon segment. It is a shame I can't buy one of those.

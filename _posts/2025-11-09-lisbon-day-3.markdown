@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Lisbon Day 3"
+title: "Lisbon"
 location: "Lisbon, Portugal"
 tags:
   - travel
@@ -8,4 +8,18 @@ tags:
 ---
 
 # Overview
-<img src="{{ '/post-photos/2025-11-09-featured.jpg' | relative_url }}" alt="Lisbon Day 3" class="blog-image">
+I stayed at the Boat Hotels and it is a most unique experience. My boat was the one closest to the entrance, and this is an unique hotel for sure. All the facilities are as expected.
+## A whole lot of nothing
+I went to see the Belem Tower beacuse to be honest I was just checking off the tourist checklist, however it is kinda under consturctions, so I admire it from a distnace. There are some nice statues as well as a peaceful aquarium. To be Honest as well, I did not enjoy a lot of the attractions and barely recall anything about them, the most memorable part can be summarised as.
+
+# Day 2
+## THe Lisnvae Shipyards
+There are two attractions here,one is the old wooden sailboat and the other is the submarine. I think what I learnt here was how that animals are kept alive on board so they do not rot. It is intresting to see the more simple solution taken to the lack of refiguration in the past, which is just keep it alive.
+
+## Statue of Christ the King and Tuna
+This provides a pretty good landmark to walk through everything. The walk is memorable as it brings me along the coastline, once at the top it feels like a glorified skyscraper.
+
+I think there is even a Sardine museum, and I end up buying several cans of Sardine(from the supermarket). It was pretty great to be honest, and the best sovernier that I end up eating. The Sardine from Libson is a lot smaller and more delicious compared to what I had before. The tinned fish is great.
+
+# Conclusion
+I don't believe this is travel fatigue, however I believe this is as a result of trying to visit as much as possible before returning to Singapore. I am unsure why I felt this way, a hypothesis is that I do not think I might return again. This experience taught me that I should do further research into the destinations before visting

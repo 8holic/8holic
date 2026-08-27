@@ -7,11 +7,14 @@ tags:
   - exchange
 ---
 
-# Overview
+# Morning
+## Pantheon
 My experience with Christianity started with Boys Brigade at 13. On top of that Vatican City is one of those unique things that I heard before sparking my interest.
 
 To start the day I visited the Pantheon, it looks like a dome and everything is visible from one spot. I thought the dome is nice, and that the middle has some water. The most facinating thing is how bright the area is via the design. The Crown of Glory artwork is quite unique, through to be honest I am reminded of the blob enemies from Dark Souls 3.
 
+# Afternoon
+## Vatican City
 Now for the highlight which is Vatican City, and oh boy the queue was long. I am glad I got an ticket online before arriving.
 Upon entering I am met with a stairs and a beautiful hall, a diorama of vatican city and another fountain! I saw a giant sphere in the courtyard. I was a little confused why it is here but I think it might be symbolizing the ressurection of christ and how he return after his mortal body is killed.
 

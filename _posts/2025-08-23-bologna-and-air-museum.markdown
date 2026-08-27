@@ -7,10 +7,12 @@ tags:
   - exchange
 ---
 
-# Morning - Saint Peter's Basilica
+# Morning
+## Saint Peter's Basilica
 For today, I visited the Basilica early in the morning to avoid the crowd. Overall I thought that the Basilica is filled with history. I saw that it is actually used by priest, and I got some holy water blessed(with a donation). There are a lot of historial figure that I do not know enough to be impressed by.
 
-# Afternoon - A random reckless hike
+# Afternoon
+## Vigna di Valle
 I decided I am intested in the Aeroporto Militare Luigi Bourlot, so I end up taking the train outside Italy. I am unsure why I was not that concern about robbers and stuff, maybe because I was not carrying much on me. I went all the way to Vigna di Valle, where I alight and walked to the museum. The first thing I thought as I went down is that damn, Lake Bracciano looks amaking that I would not mind dying here. The peaceful clean lake with no civilization nearby tells me what I have been missing that does not exist in my home nation.
 
 The museum itself is enjoyable, I was suprised by how far back it went, from the early gliding machines to modern jets. What was insightful was all the tibits of the pilots and the weird vehicles that don't make it to wikipedia(or even if it did,I will never stumble upon it).

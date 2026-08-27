@@ -6,7 +6,8 @@ tags:
   - travel
   - exchange
 ---
-# Day 2 morning - The naval visit
+# Morning
+## Arsenale di Venezia
 For today when I woke up I went to the Arsenale di Venezia.
 While waiting for it to open I explored the costal area and found another water fountain, there was also the Giardini della Marinaressa as well as some other parks and their infrastructure. Subsequently I went and see the guided tour with the Sommergibile Enrico Dandolo, then to the Museo Storico Navale di Venezia. 
 
@@ -18,12 +19,13 @@ Now talking about the Arsenale di Venezia I can see why it is still an active mi
 ### Museo Storico Navale di Venezia
 The naval museums has a lot of nice decorations, but my suprise is how blunt they are about their failures. I saw this majestic ship, the Roma, a pretty large scale model and the information panel stated that it was sunk by the Germans without a single combat experience. The top floor features korean and chinese ships, which was suprising that how far historical contact went. Clearly I need to brush up on my history.
 
-# Day 2 afternoon - The random visit
+# Afternoon
+## S. Pietro di Castello
 Subsequently I took a boat and drop off at S. Pietro di Castello, a non touristy neighborhood and took in the sights a bit. Then I took another boat and walked around a bit, and found a nice looking building which I visited where it turns out to be the Museo di Storia Naturale Giancarlo Ligabue, before heading for actually good lunch at Bacaro Quebrado.
 
 As it is getting late initally I wanted to visit the Giardini Reali but it isn't open, so I end up going to Correr Museum, as I only have this day left I entered despite being told that part of the museum is already closed due to the time. Then after admiring all the art and statues I went back to my hotel.
 
-## Highlight of the afternoon
+## Highlights
 
 I think walking around the neighborhood helps me appericate that this place is actually rich in history and help me confirm that Venice is not a tourist trap when even non touristy area are simillar. Also I appericate the fountain I found.
 

@@ -7,7 +7,8 @@ tags:
   - exchange
 ---
 
-# Day 2 Morning -Half a day in Milan
+# Morning
+## Milan
 
 Due to the student visa delay, the flight has to be delayed leaving a single day for Milan. In the morning I made a quick trip to Castello Sforzesco. I also traversed the beautiful park and came across the Arco della Pace. While most items aren't open beacuse it is the dead of morning, it looks quite nice and I see people jogging around.
 
@@ -17,21 +18,22 @@ There was a staute of Napolean in the park, since there are no signs I had to go
 
 Subsequently I went to the train station to make my way to Venice.
 
-# Highlight of the morning
+## Highlights
 The Castle,it is one of a kind. In the morning it is really peaceful and the entire courtyard is empty.
 
 The Napolean statue, sitting around and staring at that majestic details.
 
 Overall while I didn't spend much time in Milan, it is an intresting exposure to Italy.
 
-# Day 2 afternoon- Venice
+# Afternoon
+## Venice
 I heard a lot about Venice, both people claiming it is a tourist trap and that it is beautiful. To be honest I am visiting beacuse in the video game Final Fantasy XV there is an location that is inspired by Venice. I recall that Singapore used to teach that the reason for Venice call is due to complacency, but on second thought it seems like Singapore love bashing those who can't defend itself to prop themself up. So I want to see how true this is.
 
 Once I arrive, I think my mind was blown as I see the Chiesa di San Simeon Piccolo across a river.
 
 I got a unlimited boat pass, then I made my way to Hotel Serenissima. I checked out the Plaza and visited Palazzo Ducale. This ledm e to the courtyard, art as well as the armoury ending with the prison. Subsequently I went to a convenience store and got some toothpaste, and went back to drink some Venetian wine.
 
-# Highlights - Palazzo Ducale
+## Palazzo Ducale
 
 The amount of "ceiling" art was really stunning and I did not realize the type of art I am missing until I arive. There was a painting showing the Pope meeting the Doge and it reminds me of how do people back then record historical moments. Compared to the functional asthetics I noticed that the fireplace is nicely decorated, with statues of man appearing to lift it up. No doubt these are important figure engraved in the fireplace.
 
