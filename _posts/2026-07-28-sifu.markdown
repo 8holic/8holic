@@ -1,0 +1,31 @@
+---
+layout: post
+title: "I played:Sifu(Loop)"
+tags:
+  - Gaming
+---
+
+# Storytelling
+The evil pupil and his 5 associate killed your master, who is also your father. So go and kill them. The premise is extremely simple to understand. Which is fine as it isnt the focus anyways. So lets get into the focus which is the gameplay
+
+# Gameplay
+
+## Stage design
+The game has some gogerous design, all 5 locations have a color schemes and themes making them distinct, on top of that all the mooks involved are also dressed differently. Even through the core concepts are the same, the dialogue is able to make everyone feel different, from the slurring among the initial druggies, to the professional bodyguards hunting down the player later. The visuals are outsanding making use of camera angles, such as the replication of the corridor fighting in the first stage, or the second stage with a narration of rain.
+
+Many stages also have shortcuts later on, allowing you to skip past the stage to fight the bosses. I like the dilemna here as it is possible to clear stages using the shortcut to avoid potential death, however it means not being able to access upgrades at certain part of the stage. It ensures that later on it doesnt become skip the entire stage and fight the boss.
+
+## Difficulity 
+Overall I felt that the game difficulity curves relatively well. The game starts off with druggies who comes in group but uses big telegraph attacks, then it moves on to introduce special enemies, finally it combine the special enemies as one. It uses an aging system that acts as the time limit of how many times you can die and generously save the lowest age. This incentives me to try to clear previous stages with less deaths so I can die more in the later stages when the difficulity rises, however this also makes the player better at the game and improving their skills later on.
+
+## Enemy and boss design
+For the game duration I am really happy to say that all the bosses feel distinct. Even if I feel that the bosses difficulity is not that well balanced. In my playthrough, I will rank the bosses difficulity as
+5th Boss>3rd Boss>>4th Boss>>1st Boss>2nd boss
+
+To cover each, the first boss uses relatively basic attacks, with some bladed attack mixed in at phase 2. Whereas the second boss essentially act as a more advanced version of all the mini bosses that the player likely fought in the entire stage. The third stage new enemy type does not feel related to the boss. I think she has some very long attack chains, as well as a mix of lower and upper swipe attacks. Suprising her second phase is easier than the first becaue her attack chain becomes easier to read.
+The fourth boss uses long range attacks however she is relatively fragile, I was able to beat her. 
+
+The fifth boss, in my opinion, strictly enforce a single playstyle that is contary to how the mooks teaches the game. For both the first and third boss, the bladed weapons encourages doding instead since missing a parry means either blocking and taking chip damage, or taking damage. In the regular game group fights, parrying isn't the best because most of the time there is too much shit going on to focus on one enemy. The fifth boss is much easier using parrying compared to everything else.
+
+## Conclusion
+I really enjoyed my time with this game, because it taught me patience and a variety of playstyle. It is a game that truely rewards skills over all else, and everything is in service of the gameplay which I am glad to say feels good to play.

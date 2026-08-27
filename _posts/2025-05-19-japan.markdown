@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Osaka, Japan Day 4"
+title: "Osaka, Japan Day 5"
 date: 2025-05-19
 location: "Nara, Japan"
 tags:
