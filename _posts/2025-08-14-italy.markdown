@@ -1,11 +1,19 @@
 ---
+
 layout: post
+
 title: "Pre Exchange Experience-Day 1"
+
 location: "Singapore, Singapore"
+
 destination: "Milan, Italy"
+
 tags:
+
   - Travel
+
 featured_image_in_post: false
+
 ---
 
 # Morning

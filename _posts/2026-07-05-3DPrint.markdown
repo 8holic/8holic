@@ -1,10 +1,17 @@
 ---
+
 layout: post
+
 title: "I got a 3D Printer!"
+
 location: "Singapore, Singapore"
+
 tags:
+
   - Projects
+
 featured_image_in_post: false
+
 ---
 
 # Background

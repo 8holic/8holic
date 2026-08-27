@@ -1,10 +1,17 @@
 ---
+
 layout: post
+
 title: Settler Frontier, Coding Workshop
+
 location: "Singapore, Singapore"
+
 tags:
-  - Gaming
+
+  - Project
+
 featured_image_in_post: false
+
 ---
 
 This is the poster of the event.

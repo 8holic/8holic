@@ -1,10 +1,17 @@
 ---
+
 layout: post
+
 title: "Reading: Hoshi Ori Yume Mirai - Natuuki Route"
+
 location: "Singapore, Singapore"
+
 tags:
-  - Gaming
+
+  - Gaming R18
+
 featured_image_in_post: false
+
 ---
 
 # Background

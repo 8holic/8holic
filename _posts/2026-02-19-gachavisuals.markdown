@@ -1,10 +1,17 @@
 ---
+
 layout: post
+
 title: "Limbus Company ID Visualization"
+
 location: "Singapore, Singapore"
+
 tags:
+
   - Gaming
+
 featured_image_in_post: false
+
 ---
 
 # Visualization

@@ -1,11 +1,19 @@
 ---
+
 layout: post
+
 title: "Osaka, Japan Day 5"
+
 location: "Singapore, Singapore"
+
 destination: "Osaka, Japan"
+
 tags:
+
   - Travel
+
 featured_image_in_post: false
+
 ---
 
 # Ikoma Sanjo Amusement Park

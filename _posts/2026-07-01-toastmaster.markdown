@@ -1,10 +1,17 @@
 ---
+
 layout: post
+
 title: "Toastmaster NEW TERM"
+
 location: "Singapore, Singapore"
+
 tags:
+
   - Projects
+
 featured_image_in_post: false
+
 ---
 
 After a year of being Club President, it is finally over.

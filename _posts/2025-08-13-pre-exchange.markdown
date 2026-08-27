@@ -1,11 +1,19 @@
 ---
+
 layout: post
+
 title: "Pre Exchange Experience-Prologue"
+
 location: "Singapore, Singapore"
+
 destination: "Milan, Italy"
+
 tags:
+
   - Travel
+
 featured_image_in_post: false
+
 ---
 
 # Pre Exchange Experience - Italy Tourism Day 1

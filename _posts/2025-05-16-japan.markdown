@@ -1,11 +1,19 @@
 ---
+
 layout: post
+
 title: "Osaka, Japan Day 2"
+
 location: "Singapore, Singapore"
+
 destination: "Osaka, Japan"
+
 tags:
+
   - Travel
+
 featured_image_in_post: false
+
 ---
 
 # Overview

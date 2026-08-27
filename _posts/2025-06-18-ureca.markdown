@@ -1,10 +1,17 @@
 ---
+
 layout: post
+
 title: "URECA Project Presentation"
+
 location: "Singapore, Singapore"
+
 tags:
+
   - URECA
+
 featured_image_in_post: false
+
 ---
 
 # Overview

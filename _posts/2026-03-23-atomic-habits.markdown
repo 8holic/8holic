@@ -1,10 +1,17 @@
 ---
+
 layout: post
+
 title: "Reading: Atomic Habits"
+
 location: "Singapore, Singapore"
+
 tags:
+
   - Books
+
 featured_image_in_post: false
+
 ---
 
 ---
