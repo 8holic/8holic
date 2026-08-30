@@ -8,7 +8,9 @@ featured_image_in_post: false
 ---
 
 # Reflection
-As the exchange comes to an end, I've grown used to this room as home. For the past five months, how did I feel? As I wander the streets of Fuenlabrada for the final time, there's a sadness. I notice the fountains at random roundabouts, the grass and greenery. I'll miss that. I think I can summarise what I've taken away.
+As the exchange comes to an end, I've grown used to this room as home. For the past five months, how did I feel? As I wander the streets of Fuenlabrada for the final time, there's a sadness. I notice the fountains at random roundabouts, the grass and greenery. I'll miss that.
+
+# What I will miss about Spain
 
 # Being humbled
 
@@ -45,7 +47,7 @@ So I visited a lot of random places during my time overseas, from random alleywa
 - 2025-10-25: Aranjuez. Visited the castle, saw the peacocks. Things looked nice.
 - 2025-12-06: Seville. Two weeks before final exams. I was extremely nervous the entire trip. Overall, not worth it. I went during a period of anxiety and panic, and it coloured everything.
 - 2025-12-20: Madrid Aviation Museum. After exams. All the parts looked nice, but I lacked the knowledge to truly appreciate what I was seeing.
-- 2025-12-21: Cuenca. The buildings look really old, and it was a nice trip. But again, I lacked the knowledge to truly appreciate what I was seeing.
+- 2025-12-21: Cuenca. The buildings look really old, and it was a nice trip, I really enjoyed the view from high up. I lacked the knowledge to truly appreciate what I was seeing.
 
 So not all of them are a good idea, however I will never have known they are not a good idea if I never tried. I think Seville was the biggest mistake because it was done near exam time, so I was unable to relax despite being physically away.
 

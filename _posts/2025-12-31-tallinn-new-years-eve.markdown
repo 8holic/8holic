@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Holiday Days"
+title: "Tallinn, Estonia"
 location: "Singapore, Singapore"
 destination: "Tallinn, Estonia"
 tags:

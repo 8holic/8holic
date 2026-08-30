@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "New Year"
+title: "Tallinn, Estonia,New Year"
 location: "Singapore, Singapore"
 destination: "Tallinn, Estonia"
 tags:
