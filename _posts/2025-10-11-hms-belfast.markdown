@@ -1,4 +1,5 @@
----
+﻿---
+banner_image: 2025-10-11-featured.jpg
 layout: post
 title: "London Day 2"
 location: "Singapore, Singapore"
@@ -7,6 +8,7 @@ tags:
   - Travel
 featured_image_in_post: false
 ---
+banner_image: 2025-10-11-featured.jpg
 
 # Morning
 ## Tower of London

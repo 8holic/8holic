@@ -29,7 +29,11 @@ permalink: /posts/
     <div class="post-list">
       {% for post in posts %}
         {% assign post_date = post.date | date: "%Y-%m-%d" %}
-        {% assign thumb_path = "/post-photos/" | append: post_date | append: "-featured.jpg" %}
+        {% if post.banner_image %}
+          {% assign thumb_path = "/assets/images/post-photos/" | append: post.banner_image %}
+        {% else %}
+          {% assign thumb_path = "/assets/images/post-photos/" | append: post_date | append: "-featured.jpg" %}
+        {% endif %}
         <article class="post-preview" data-tags="{% for tag in post.tags %}{{ tag | slugify }}{% unless forloop.last %},{% endunless %}{% endfor %}">
           <div class="post-thumbnail">
             <img src="{{ thumb_path | relative_url }}" alt="{{ post.title }}" onerror="this.onerror=null; this.src='{{ '/assets/images/profile.jpg' | relative_url }}'">

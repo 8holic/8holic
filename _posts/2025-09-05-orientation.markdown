@@ -1,4 +1,5 @@
----
+﻿---
+banner_image: 2025-09-05-featured.jpg
 layout: post
 title: "Orientation"
 location: "Singapore, Singapore"
@@ -6,6 +7,7 @@ tags:
   - URECA
 featured_image_in_post: false
 ---
+banner_image: 2025-09-05-featured.jpg
 
 # Overview
 ## Fuenlabrada

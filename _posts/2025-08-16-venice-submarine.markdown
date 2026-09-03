@@ -1,4 +1,5 @@
----
+﻿---
+banner_image: 2025-08-16-featured.jpg
 layout: post
 title: "Day 2 Venice"
 location: "Singapore, Singapore"
@@ -7,6 +8,7 @@ tags:
   - Travel
 featured_image_in_post: false
 ---
+banner_image: 2025-08-16-featured.jpg
 # Morning
 ## Arsenale di Venezia
 For today when I woke up I went to the Arsenale di Venezia.

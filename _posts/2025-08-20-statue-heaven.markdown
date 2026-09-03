@@ -1,4 +1,5 @@
----
+﻿---
+banner_image: 2025-08-20-featured.jpg
 layout: post
 title: "Florence Day 4-Rome Day 1"
 location: "Singapore, Singapore"
@@ -7,6 +8,7 @@ tags:
   - Travel
 featured_image_in_post: false
 ---
+banner_image: 2025-08-20-featured.jpg
 
 # Morning
 ## Galleria dell'Accademia di Firenze

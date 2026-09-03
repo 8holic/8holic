@@ -1,4 +1,5 @@
----
+﻿---
+banner_image: 2025-10-10-featured.jpg
 layout: post
 title: "London Day 1"
 location: "Singapore, Singapore"
@@ -7,6 +8,7 @@ tags:
   - Travel
 featured_image_in_post: false
 ---
+banner_image: 2025-10-10-featured.jpg
 
 # Midnight
 ## The Walk from Standford to Southwark

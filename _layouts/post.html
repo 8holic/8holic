@@ -2,13 +2,19 @@
 layout: default
 ---
 
-{% assign post_date = page.date | date: "%Y-%m-%d" %}
-{% assign featured_image = "/post-photos/" | append: post_date | append: "-featured.jpg" %}
-{% assign banner_image = featured_image %}
+{% if page.collection == "projects" %}
+  {% assign img_dir = "/assets/images/project-photos/" %}
+{% else %}
+  {% assign img_dir = "/assets/images/post-photos/" %}
+{% endif %}
 
-{% if page.featured_image_override %}
-  {% assign featured_image = page.featured_image_override %}
-  {% assign banner_image = featured_image %}
+{% if page.banner_image %}
+  {% assign banner_image = img_dir | append: page.banner_image %}
+{% elsif page.featured_image_override %}
+  {% assign banner_image = page.featured_image_override %}
+{% else %}
+  {% assign post_date = page.date | date: "%Y-%m-%d" %}
+  {% assign banner_image = img_dir | append: post_date | append: "-featured.jpg" %}
 {% endif %}
 
 <div class="banner">
@@ -19,7 +25,11 @@ layout: default
       {% if page.location %}
         <span class="location">📍 {{ page.location }}</span>
       {% endif %}
-      <span class="date">📅 {{ page.date | date: "%B %d, %Y" }}</span>
+      {% if page.start %}
+        <span class="date">📅 {{ page.start | date: "%B %Y" }}{% if page.end %} – {{ page.end | date: "%B %Y" }}{% endif %}</span>
+      {% else %}
+        <span class="date">📅 {{ page.date | date: "%B %d, %Y" }}</span>
+      {% endif %}
       <span class="reading-time">
         📖 {% assign words = content | number_of_words %}{{ words | divided_by: 180 | plus: 1 }} min read
       </span>

@@ -1,4 +1,5 @@
----
+﻿---
+banner_image: 2025-10-12-featured.jpg
 layout: post
 title: "British War Museum"
 location: "Singapore, Singapore"
@@ -7,6 +8,7 @@ tags:
   - Travel
 featured_image_in_post: false
 ---
+banner_image: 2025-10-12-featured.jpg
 
 # Birtish Imperial War Museum and conclusion
 For the last location I visit before returning was the Imperial War Museum, while I did not remember much about it I did recall that the Changi Flag, from my homeland, was here as well. I saw a lot of tanks as well, and the first world war tank really highlighted how it changed the suitation. 

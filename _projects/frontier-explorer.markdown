@@ -4,7 +4,11 @@ layout: post
 
 title: Settler Frontier, Coding Workshop
 
-location: "Singapore, Singapore"
+banner_image: frontier-explorer-featured.jpg
+
+start: 2026-06-19
+
+end: 2026-07-19
 
 tags:
 
@@ -14,18 +18,30 @@ featured_image_in_post: false
 
 ---
 
-This is the poster of the event.
+## Inspiration
 
-The initial motivation for doing the workshop is simply to test the water if more technical workshop can do well in the community. As someone who has gotten interested in software, I have went through a module on computational thinking. After witnessing my classmate solution which involves several hundred primitive statement to get things done, I reazlie that it is not as intutive as I thought
+I wanted to test whether a more technical workshop could work in my community. After taking a module on computational thinking, I saw a classmate solve a problem with several hundred primitive statements — and I realised how unintuitive programming can be when you don't structure your thinking first.
 
-<a href="{{ '/post-photos/frontierexplorer/frontierexplore.html' | relative_url }}" target="_blank">Play Frontier Explorer</a>
+## What I did
 
-The game is designed with programming background in mind, it involves a maze where they have to navigate. I was able to make use of AI to convert my python syntax and logic into javascript, the primary challange is to figure out how to structure the syntax such that it is easier to expand. Overall I made the choice to make it convert into a python script in the back. It is intentionally coded such that it is possible for both semantic error and syntax error to occur, just like real programming.
+I built **Frontier Explorer**, a maze game designed for people with a programming background. Players navigate a maze by writing code, and the game is deliberately coded so both semantic and syntax errors can occur — just like real programming.
 
-Using my experience from modding Stellaris, I decide I do not want to write code in order to add more stages. As a result I make it read a JSON file outside, so I can add stages easier.
+- Used AI to convert my Python syntax and logic into JavaScript; the main challenge was structuring the code so it was easy to expand
+- Built on my experience modding Stellaris: stages are loaded from an external JSON file, so I can add new stages without writing code
+- Instructions are read naturally, then executed through simple `else if` logic
 
-Additioanlly the instructions are read naturally then moved by some relatively else if logic.
+<a href="https://8holic.github.io/8holicminigames/programming%20game/frontierexplore.html" target="_blank">Play Frontier Explorer</a>
 
-I tried my hand at another game, that actually uses Settler Frontier theme accurately which involve the player actually going around and trying to survvie. Unfortuatnely I was unable to finish it on time. You can check it out below.
+I also started a second game that used the Settler Frontier theme more literally — the player actually surviving and exploring the frontier — but I couldn't finish it in time.
 
-<a href="{{ '/post-photos/settlerfrontier/sf.html' | relative_url }}" target="_blank">Play Settler Frontier</a>
+## What I'm proud of
+
+- Turning a hard-to-grasp skill (structured programming) into something hands-on and fun
+- Designing the game so content can be added without touching code (JSON-driven stages)
+- Running a workshop that actually got people to think about how they write code
+
+## What can be further improved
+
+- The second Settler Frontier game went unfinished — I'd scope it tighter or focus on one game next time
+- The instruction parser could handle a wider range of natural-language inputs
+- Better onboarding for absolute beginners, who may still find the code entry point intimidating

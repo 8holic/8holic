@@ -1,4 +1,5 @@
----
+﻿---
+banner_image: 2025-09-07-featured.jpg
 layout: post
 title: "Avila"
 location: "Singapore, Singapore"
@@ -7,6 +8,7 @@ tags:
   - Travel
 featured_image_in_post: false
 ---
+banner_image: 2025-09-07-featured.jpg
 
 # Day Trip
 ## Avila
@@ -18,5 +20,5 @@ To be honest I am not famillar enough to fully take advantage of the event, howe
 ## Avila Castle Walls
 Walking upon what Avila is known for is both a magical and tiring experience. Most of the highlight comes from the scenery from the walls. Seeing the rivers from this vantage point feels special especially as I walk the half crumbling stairs that I almost did not want to leave at the end. I also saw what I thought was Spencer Mansion(I found out later it is probably the Seminary). For the price it is absolutely worth it.
 
-## Mirador entrada Ávila
+## Mirador entrada ﾃ」ila
 Since it is kinda hard to look at Avila walls on them, I took a trip to a nice vantage point, I was worried I wont arrive in time for the return train and it end up being a close call. Seeing Avila from a distance away the walls looks beautiful guarding the city. It is amazing how long it survived

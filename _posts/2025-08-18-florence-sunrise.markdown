@@ -1,4 +1,5 @@
----
+﻿---
+banner_image: 2025-08-18-featured.jpg
 layout: post
 title: "Florence Day 2"
 location: "Singapore, Singapore"
@@ -7,10 +8,11 @@ tags:
   - Travel
 featured_image_in_post: false
 ---
+banner_image: 2025-08-18-featured.jpg
 
 # Morning
 ## Piazzale Michelangelo
-Since I caught the sunrise yesterday I decided I shall try to catch the sunrise today as well. The day started fine enough as I see the train station during twilight. I took a wrong turn around here and ended up in some alleyway and ran into a bunch of young adult. I got shoulder checked hard, then they start to call me. I don’t know about you but if I am getting jumped by a group of 6, I am going to assume they are trying to beat the shit out of me, and I still have an vacation to attend. So I end up running, I think they were chasing me for a few seconds, I continued running a few seconds after arriving at the main road. I still have no idea what that is about, I think it might be a pickpocketing attempt but my friends seems to think it is a mugging attempt.
+Since I caught the sunrise yesterday I decided I shall try to catch the sunrise today as well. The day started fine enough as I see the train station during twilight. I took a wrong turn around here and ended up in some alleyway and ran into a bunch of young adult. I got shoulder checked hard, then they start to call me. I don窶冲 know about you but if I am getting jumped by a group of 6, I am going to assume they are trying to beat the shit out of me, and I still have an vacation to attend. So I end up running, I think they were chasing me for a few seconds, I continued running a few seconds after arriving at the main road. I still have no idea what that is about, I think it might be a pickpocketing attempt but my friends seems to think it is a mugging attempt.
 
 At this point I have two choice, turn back to go to my hotel and potentially run into the same group again, or press on to see the sunrise. Well since life is short and I might not get the chance to return, I press onwards to Piazzale Michelangelo. This time I was able to catch the sunrise with an almost 270 degree view. As I climbed down the vantage point I noticed all the things I missed on my rush up to make it in time, such as the fountain, a tower and a wall. As the place get crowded I headed back to my room to rest.
 

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Limbus Company ID Visualization | 8holic</title>
+  <link rel="stylesheet" href="/8holic/assets/css/main.css">
+</head>
+<body id="top">
+
+  <div class="site-wrapper">
+    <!-- Sidebar (off-canvas) -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <button class="close-sidebar" aria-label="Close menu">&times;</button>
+      </div>
+      <div class="sidebar-content">
+        <div class="profile">
+          <!-- Replace with your own image path -->
+          <img src="/8holic/assets/images/profile.jpg" alt="Profile Picture" class="profile-img">
+          <h2 class="profile-name">Bryan Ang</h2>
+          <p class="profile-bio">Student, tech and travel enthuasiast, and aspiring engineer.</p>
+        </div>
+        <nav class="sidebar-nav">
+          <ul class="nav-list">
+  
+    <li><a href="/8holic/">Home</a></li>
+  
+    <li><a href="/8holic/posts/">Posts</a></li>
+  
+    <li><a href="/8holic/projects/">Projects</a></li>
+  
+    <li><a href="/8holic/tags/">Tags</a></li>
+  
+</ul>
+        </nav>
+      </div>
+    </aside>
+
+    <!-- Main content area -->
+    <div class="main-content">
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+      <main>
+        
+
+
+
+<div class="banner">
+  <img src="/8holic/assets/images/project-photos/gachavisuals-featured.jpg" alt="Posts banner" onerror="this.onerror=null; this.src='/8holic/assets/images/generic-banner.jpg'">
+  <div class="banner-text">
+    <h1>Limbus Company ID Visualization</h1>
+    <div class="banner-meta">
+      
+      
+        <span class="date">📅 February 2026 – March 2026</span>
+      
+      <span class="reading-time">
+        📖 2 min read
+      </span>
+    </div>
+  </div>
+</div>
+
+
+<p class="banner-credit">A visualization of the results.</p>
+
+
+<article class="post">
+  
+    <div class="post-tags card">
+      <strong>Tags:</strong>
+      
+        <a href="/8holic/tags/#project" class="tag">Project</a>
+      
+    </div>
+  
+
+  
+  <figure class="post-figure">
+    <img src="/8holic/assets/images/project-photos/gachavisuals-featured.jpg" alt="Limbus Company ID Visualization">
+    <figcaption>A visualization of the results.</figcaption>
+  </figure>
+  
+
+  <details class="post-toc card" id="toc" hidden>
+    <summary>Contents</summary>
+  </details>
+
+  <div class="post-content card">
+    <h1 id="visualization">Visualization</h1>
+
+<p>&lt;img src=”/8holic/projectfiles/gachavisuals/visualization.png”</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> alt="Visualization"
+
+ class="blog-image"&gt;
+</code></pre></div></div>
+
+<h2 id="inspiration">Inspiration</h2>
+
+<p>I kept hearing people mention stats like a certain character having the longest wait, and I got curious. I decided to look into it myself and put some of the things I learnt last semester to use.</p>
+
+<h2 id="what-i-did">What I did</h2>
+
+<p>I scraped data from the game’s site to build a visualization of every character’s stats.</p>
+
+<ul>
+  <li>Checked <code class="language-plaintext highlighter-rouge">robots.txt</code> first; since it blocks AI agents and some spiders, I used Selenium with a 1-second delay on every request to avoid accidentally DDOS-ing the server</li>
+  <li>Navigation challenges: character IDs increment by 2, so I ran two loops (inner loop for internal IDs, outer loop to switch characters); older IDs had inconsistent formats so I used <code class="language-plaintext highlighter-rouge">either/or</code> XPath fallbacks and fuzzy searching for skills</li>
+  <li>Handled CJK characters — Excel choked on Korean/Japanese/Chinese, so I installed the language pack; grabbed element affiliations from image filenames</li>
+  <li>Cleaned and visualized in Google Data Studio: fixed date-format parsing, worked around the X-axis only accepting metrics, converted character names to numbers for the Y-axis</li>
+  <li>Published the result to the community on Reddit</li>
+</ul>
+
+<h2 id="what-im-proud-of">What I’m proud of</h2>
+
+<ul>
+  <li>Working out creative workarounds for each obstacle (fuzzy matching, filename scraping, metric-based axes)</li>
+  <li>Being deliberate about respecting the site — the polite request delay</li>
+  <li>Actually publishing the work online, which I found intimidating</li>
+</ul>
+
+<h2 id="what-can-be-further-improved">What can be further improved</h2>
+
+<ul>
+  <li>The legend ordering issue went unresolved — sorting was neither numerical nor alphabetical and I couldn’t pin down the cause</li>
+  <li>Data collection relied on scraping; a cleaner API or more standardized source would have been more robust</li>
+</ul>
+
+  </div>
+</article>
+      </main>
+      <footer class="site-footer">
+        
+          <nav class="post-nav">
+            
+              <a class="post-btn prev" href="/8holic/projects/frontier-explorer/">← Previous</a>
+            
+            <a class="post-btn top" href="#top">Top</a>
+            
+              <a class="post-btn next" href="/8holic/projects/ureca/">Next →</a>
+            
+          </nav>
+        
+        <p>&copy; 2026 8holic</p>
+      </footer>
+    </div>
+  </div>
+
+  <script src="/8holic/assets/js/main.js"></script>
+</body>
+</html>

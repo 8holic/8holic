@@ -1,4 +1,5 @@
----
+﻿---
+banner_image: 2025-08-24-featured.jpg
 layout: post
 title: "Day 4 Rome"
 location: "Singapore, Singapore"
@@ -7,6 +8,7 @@ tags:
   - Travel
 featured_image_in_post: false
 ---
+banner_image: 2025-08-24-featured.jpg
 
 # Overview
 ## Rome

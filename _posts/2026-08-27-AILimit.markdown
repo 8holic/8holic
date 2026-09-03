@@ -1,4 +1,5 @@
----
+﻿---
+banner_image: 2026-08-27-featured.jpg
 layout: post
 title: "Playing AI Limit Part 1"
 location: "Singapore, Singapore"
@@ -7,6 +8,7 @@ tags:
 featured_image_in_post: true
 featured_image_credit: "Screenshot from AI Limits."
 ---
+banner_image: 2026-08-27-featured.jpg
 
 # First few hours early thoughts
 So the game is a soulslike, except with cute anime girls. Honestly I was hoping for an game that is easy on the eyes and execute it well. The necros are some biological monsters attacking everyone as well as bandits.

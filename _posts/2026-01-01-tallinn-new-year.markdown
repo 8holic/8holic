@@ -1,4 +1,5 @@
----
+﻿---
+banner_image: 2026-01-01-featured.jpg
 layout: post
 title: "Tallinn, Estonia,New Year"
 location: "Singapore, Singapore"
@@ -7,6 +8,7 @@ tags:
   - Travel
 featured_image_in_post: false
 ---
+banner_image: 2026-01-01-featured.jpg
 
 # Day 1
 Now obviously I didnt expect anything to be open so I got canned food ready, the two area  I visited was firstly was the Nun Tower and Walls for a nice view, after that I visited a Cookie exhibition where they make art using cookies. Finally I head to the Tallinn TV Tower to have a overview of the city, the view was nice ven if it was really cold.

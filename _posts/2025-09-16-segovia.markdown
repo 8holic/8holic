@@ -1,4 +1,5 @@
----
+﻿---
+banner_image: 2025-09-16-featured.jpg
 layout: post
 title: "Segovia"
 location: "Singapore, Singapore"
@@ -7,14 +8,15 @@ tags:
   - Travel
 featured_image_in_post: false
 ---
+banner_image: 2025-09-16-featured.jpg
 
 # Day Trip
 ## Segovia
-In this day trip I went to Segovia due to the promises of beautiful castle and it did not dissapoint. The Alcázar de Segovia looks like a disney castle. 
+In this day trip I went to Segovia due to the promises of beautiful castle and it did not dissapoint. The Alcﾃ｡zar de Segovia looks like a disney castle. 
 
 The first thing I notice is that a bus is needed to get to town, no way around it. I saw a lot of bulls through and I do not feel like contenting with them for field walking privillage.
 
-I saw the Alcázar de Segovia from a distance away and it looks like it is straight out of a fantasy novel. A castle with cones, at a cliffside with trees all around it. Inside the castle also have a nice view, i was able to view the town of Segovia as well as the endless plains of yellow and the Cathedral.
+I saw the Alcﾃ｡zar de Segovia from a distance away and it looks like it is straight out of a fantasy novel. A castle with cones, at a cliffside with trees all around it. Inside the castle also have a nice view, i was able to view the town of Segovia as well as the endless plains of yellow and the Cathedral.
 
 The standout have to be the artilery school exhibit, and how they learn to operate artilery in the past. I also noted that the castle style is much different from what I had seen so far. 
 

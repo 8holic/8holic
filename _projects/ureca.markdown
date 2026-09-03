@@ -4,7 +4,11 @@ layout: post
 
 title: "URECA Project Presentation"
 
-location: "Singapore, Singapore"
+banner_image: ureca-featured.jpg
+
+start: 2024-09-01
+
+end: 2025-06-18
 
 tags:
 
@@ -16,24 +20,24 @@ featured_image_in_post: false
 
 # Overview
 
-Last year I took part in the Undergraduate Research Experience on Campus(URECA) Project. I was tasked with figuring our a way to port an experience to a more consumer friendly version. The photo above was my presentation during the URECA Conference. Overall this was a wonderful 1 year where I learnt a lot. I was supervised by Assoc Professor Benjamin.
+<iframe width="560" height="315" src="https://www.youtube.com/embed/eoS1I-Fhttw" title="URECA Project Presentation" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-I felt that the professor was wonderful, it was mostly unsupervised due to his busy schedule. This gave me a lot of opporunity to mostly figure things out by myself and decide on my course of action, with inputs from him during each presentation. 
+## Inspiration
 
-The things I done well is the following:
+I took part in the Undergraduate Research Experience on Campus (URECA) at NTU, supervised by Assoc Prof Benjamin. I was tasked with figuring out a way to port an experience into a more consumer-friendly version — a one-year research project where I had room to steer the direction myself.
 
--The ability to think creatively to solve issues
+## What I did
 
--The ability to work consistenly on the project throughout the semester
+With the professor mostly unavailable, the project was largely self-directed. I decided my own course of action at each stage, then presented my progress back to him during each review. Beyond the conference presentation above, the final work was also showcased to people in the community centre, bringing the research to a wider audience.
 
--The ability to present my work to the professor
+## What I'm proud of
 
--The conclusion of the project involved it being presented to people in the community center after the above conference, I think it is a good showcase of the work to a wider audiance.
+- Thinking creatively to solve issues rather than waiting for direction
+- Working consistently on the project across the full year
+- Presenting my work to the professor and the public — and the community centre showcase being well received
 
-The things I think I can do better:
+## What can be further improved
 
--Clearer communication or more meaningful communiation to the professor, I am unsure if the update aren't significant enough or he is busy but sometimes I am not sure how to proceed. Usually I can just figure something out, but at the end when it comes to publishing rights I am not sure if I should do it under my account or under the school since the school owns all the project
-
--Preseting a demo, some of my presentation did not work when presenting to the professor and I believe he had some trouble to get it to work properly.
-
-I think that some factors are out of control as I am not very sure about the school proceedings, NTU being a black box does not help either. While I was unable to publish the work, I hope that I have done enough that the Professor will get there eventurally.
+- Clearer, more meaningful communication with my supervisor — I was sometimes unsure how to proceed between updates
+- Presenting a working demo — some of my presentations failed to run when I showed them, which I believe made it harder to evaluate
+- The publishing process felt opaque (school vs. personal account, NTU being a black box) — I couldn't get the work published, though I hope the professor eventually will

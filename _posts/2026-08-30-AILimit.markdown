@@ -1,0 +1,19 @@
+---
+layout: post
+title: "Playing AI Limit Part 3"
+location: "Singapore, Singapore"
+tags:
+  - Gaming
+banner_image: 2026-08-30-featured.jpg
+featured_image_in_post: true
+featured_image_credit: "Screenshot from AI Limits at Spirit Depths."
+---
+
+# Progression: The unlimited respec item, yay
+So I was exploring for more weapons and stuff when I come across the infinite Respec crystal, in contrast to other simillar games thius game has infinite respec which is a dream come true. I felt like more games should just do this or do away with stats all together. Thanks to this I was able to try all sort of weird weapons like a literal road sign, and some of the high stat spells. Thanks to this I was able to explore quite the build variety and improve my damage.
+
+# Hunter of Bladers
+Dying to her the first time gets you lock up in jail,kinda cool. Through the color plaette is rather simillar.
+Death:54
+The most notable thing is this boss has her own sync meter as well making this the first offical duel boss, where she feels like the player character. I suspect that she is the flashback we see earlier, but it was a really challanging and fun fight. 
+She is capable of parrying the player, and her attacks are fast but readable. I suspect that I could have beaten her a lot faster if I dont insist on parrying her as she kills me in 2-3 hits. Compared to other bosses the parrying return isn't as great as well, because if she hits the player or parry the player she regain a god chunk of hey sync bar, I think each parry drops it by 35%, so to bring her down to the first fatal attack it takes 3 or so parry, and she is at 50% sync meter necessating 1-2 parry. There wasn't any point where I felt that I died unfairly, and I was able to defeat her at the end. When she is near death she does start using items to restore her sync, so I find no point in parrying from here on.

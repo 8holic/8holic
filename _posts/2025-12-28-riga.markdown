@@ -1,4 +1,5 @@
----
+﻿---
+banner_image: 2025-12-28-featured.jpg
 layout: post
 title: "Riga,Latvia, 2 days"
 location: "Singapore, Singapore"
@@ -7,6 +8,7 @@ tags:
   - Travel
 featured_image_in_post: false
 ---
+banner_image: 2025-12-28-featured.jpg
 
 # Overview
 So as usual i arrived in the early morning and checked in. I thought the city was beautiful as I walk through the riverside. It was also snowing.

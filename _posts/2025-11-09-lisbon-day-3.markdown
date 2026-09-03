@@ -1,4 +1,5 @@
----
+﻿---
+banner_image: 2025-11-09-featured.jpg
 layout: post
 title: "Lisbon"
 location: "Singapore, Singapore"
@@ -7,6 +8,7 @@ tags:
   - Travel
 featured_image_in_post: false
 ---
+banner_image: 2025-11-09-featured.jpg
 
 # Overview
 I stayed at the Boat Hotels and it is a most unique experience. My boat was the one closest to the entrance, and this is an unique hotel for sure. All the facilities are as expected.

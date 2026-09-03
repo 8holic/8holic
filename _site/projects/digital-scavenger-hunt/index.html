@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Scavenger Hunt | 8holic</title>
+  <link rel="stylesheet" href="/8holic/assets/css/main.css">
+</head>
+<body id="top">
+
+  <div class="site-wrapper">
+    <!-- Sidebar (off-canvas) -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <button class="close-sidebar" aria-label="Close menu">&times;</button>
+      </div>
+      <div class="sidebar-content">
+        <div class="profile">
+          <!-- Replace with your own image path -->
+          <img src="/8holic/assets/images/profile.jpg" alt="Profile Picture" class="profile-img">
+          <h2 class="profile-name">Bryan Ang</h2>
+          <p class="profile-bio">Student, tech and travel enthuasiast, and aspiring engineer.</p>
+        </div>
+        <nav class="sidebar-nav">
+          <ul class="nav-list">
+  
+    <li><a href="/8holic/">Home</a></li>
+  
+    <li><a href="/8holic/posts/">Posts</a></li>
+  
+    <li><a href="/8holic/projects/">Projects</a></li>
+  
+    <li><a href="/8holic/tags/">Tags</a></li>
+  
+</ul>
+        </nav>
+      </div>
+    </aside>
+
+    <!-- Main content area -->
+    <div class="main-content">
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+      <main>
+        
+
+
+
+<div class="banner">
+  <img src="/8holic/assets/images/project-photos/digital-scavenger-hunt.jpeg" alt="Posts banner" onerror="this.onerror=null; this.src='/8holic/assets/images/generic-banner.jpg'">
+  <div class="banner-text">
+    <h1>Digital Scavenger Hunt</h1>
+    <div class="banner-meta">
+      
+      
+        <span class="date">📅 June 2025 – June 2025</span>
+      
+      <span class="reading-time">
+        📖 2 min read
+      </span>
+    </div>
+  </div>
+</div>
+
+
+
+<article class="post">
+  
+    <div class="post-tags card">
+      <strong>Tags:</strong>
+      
+        <a href="/8holic/tags/#project" class="tag">Project</a>
+      
+    </div>
+  
+
+  
+
+  <details class="post-toc card" id="toc" hidden>
+    <summary>Contents</summary>
+  </details>
+
+  <div class="post-content card">
+    <h2 id="inspiration">Inspiration</h2>
+
+<p>The event organisers wanted to spread the crowd across food booths to eliminate the long queues at any one stall. I proposed an optional, web-based activity tracker that adds a hunt layer on top of the event without forcing participation.</p>
+
+<h2 id="what-i-did">What I did</h2>
+
+<p>This was my first application — the project where everything started. I built a check-in and scavenger-hunt web app for Kampung Spirit 2025 with HTML/JS and a Firebase backend, available at <a href="https://github.com/8holic/kampungspirit25">github.com/8holic/kampungspirit25</a>. Around 50 participants used it at the event.</p>
+
+<ul>
+  <li>Participants register and get a digital card, plus a map of where the stations are</li>
+  <li>Session state is kept server-side via a session ID, so progress persists across browsers</li>
+  <li>Check-in on arrival by scanning a QR code</li>
+  <li>Each food booth has a QR code; scanning once records the claim, and a second scan prompts “already got once”</li>
+  <li>Only some booths are hidden “Treasure” booths — scanning reveals whether it’s a treasure or not</li>
+  <li>Rotating treasure codes keep the hunt fresh, so people can’t learn which booths are treasure booths</li>
+  <li>A mini-game at certain booths recognises parts of olden days, records the fastest time and score, and feeds into the prizes</li>
+  <li>The tracker is fully optional — if participants skip it, the event runs exactly as before</li>
+</ul>
+
+<h2 id="what-im-proud-of">What I’m proud of</h2>
+
+<ul>
+  <li>Designing it as a low-barrier, optional layer — no negative impact on the event if unused</li>
+  <li>Rotating treasure codes, a detail that keeps the game fair and replayable</li>
+  <li>Seeking committee approval for a trial run before going ahead</li>
+  <li>Users were impressed by how the app caches progress and keeps the session alive across browsers</li>
+</ul>
+
+<h2 id="what-can-be-further-improved">What can be further improved</h2>
+
+<ul>
+  <li>Group registration. The event is family-oriented, yet the app only registers per person — a common feedback point was that families with multiple members want to register together. This was overlooked and is the top candidate for the next iteration.</li>
+  <li>Responsive UI. The interface is basic and barebones, and lacks proper mobile layout — on phones it scales awkwardly. A mobile-first pass is long overdue.</li>
+</ul>
+
+
+  </div>
+</article>
+      </main>
+      <footer class="site-footer">
+        
+          <nav class="post-nav">
+            
+              <a class="post-btn prev" href="/8holic/projects/3dprint/">← Previous</a>
+            
+            <a class="post-btn top" href="#top">Top</a>
+            
+              <a class="post-btn next" href="/8holic/projects/frontier-explorer/">Next →</a>
+            
+          </nav>
+        
+        <p>&copy; 2026 8holic</p>
+      </footer>
+    </div>
+  </div>
+
+  <script src="/8holic/assets/js/main.js"></script>
+</body>
+</html>
