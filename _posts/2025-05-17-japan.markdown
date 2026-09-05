@@ -16,7 +16,6 @@ tags:
 featured_image_in_post: false
 
 ---
-banner_image: 2025-05-17-featured.jpg
 
 # Overview
 

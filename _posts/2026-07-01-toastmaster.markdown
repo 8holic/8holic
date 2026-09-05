@@ -14,7 +14,6 @@ tags:
 featured_image_in_post: false
 
 ---
-banner_image: 2026-07-01-featured.jpg
 
 After a year of being Club President, it is finally over.
 

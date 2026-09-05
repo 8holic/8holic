@@ -8,7 +8,6 @@ tags:
   - Travel
 featured_image_in_post: false
 ---
-banner_image: 2026-01-04-featured.jpg
 
 # Day 1
 On my arrival I went to the art gallery then to Amos Rex. I am sure it is because I am using images to write this, but I remember Amos Rex pushing the bounds of art more. My favorite installation was the one mimicing a night city walk, with the rain droplets. It reminds me of the song of the rain. It is one of those things where a video doesnt do it justice.

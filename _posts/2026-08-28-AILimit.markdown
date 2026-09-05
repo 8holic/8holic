@@ -8,7 +8,6 @@ tags:
 featured_image_in_post: true
 featured_image_credit: "Screenshot from AI Limits at Hagios Patir."
 ---
-banner_image: 2026-08-28-featured.jpg
 
 # Progression:Finding all the dew I missed
 Usually in these games the healing items upgrades are kinda hard to miss because you know,they are important. I instantly knew something is up when I am trying to clear the next location and my healing item(called life dew) heals me for a pathetic 40% of my health bar.

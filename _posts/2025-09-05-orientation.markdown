@@ -7,7 +7,6 @@ tags:
   - URECA
 featured_image_in_post: false
 ---
-banner_image: 2025-09-05-featured.jpg
 
 # Overview
 ## Fuenlabrada

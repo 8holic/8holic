@@ -8,7 +8,6 @@ tags:
   - Travel
 featured_image_in_post: false
 ---
-banner_image: 2025-08-17-featured.jpg
 
 # Day 3 Morning
 On my last day in this beautiful city I decide to walk around before sunrise. It was surprising bright and I was afraid I missed the sunrise, but I was able to catch the sunrise at the Ponte dell'Accademia. While I did not see the sun, the orange warm hues reflecting on the water turns the canal into a picturesque scene worthy of a painting. I finally saw the Ponte di Rialto without the usual tourist crowd and it felt quite normal. Subsequently I wandered down some narrow corridors taking in the atmosphere, both the looks as well as the smell.I also took my final boat ride and came across Building Bridges (2019) by Lorenzo Quinn, it stirs a certain sense of wonder seeing these art pieces that are placed here for people to find. I walked back to my hotel passing by Piazza San Marco, then I had my breakfast. I finally visited the shops at Ponte di Rialto, nothing really interested me but they certainly look nice.

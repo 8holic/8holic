@@ -7,7 +7,6 @@ tags:
   - Travel
 featured_image_in_post: false
 ---
-banner_image: 2026-01-07-featured.jpg
 
 # The end
 With this it marks the end of my travelling, I think as I return to Singapore I learn a lot of things about myself. On post reflection, I think there is an issue with the final trip, I am unsure what is the cause but I fear that the final traveling was done with loving the idea of what travelling brings instead of what it actually gives me. You might have noticed that a lot of these entries are consolidated in comparsion to the earlier one in Italy where I have more things to write. These are the possible hypothesis I have come up with

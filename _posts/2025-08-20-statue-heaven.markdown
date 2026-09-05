@@ -8,7 +8,6 @@ tags:
   - Travel
 featured_image_in_post: false
 ---
-banner_image: 2025-08-20-featured.jpg
 
 # Morning
 ## Galleria dell'Accademia di Firenze

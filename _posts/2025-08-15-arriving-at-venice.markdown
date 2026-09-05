@@ -8,7 +8,6 @@ tags:
   - Travel
 featured_image_in_post: false
 ---
-banner_image: 2025-08-15-featured.jpg
 
 # Morning
 ## Milan

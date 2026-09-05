@@ -8,7 +8,6 @@ tags:
   - Travel
 featured_image_in_post: false
 ---
-banner_image: 2025-12-25-featured.jpg
 
 # Day 1 - CHRISTMAS!
 I arrived in the morning at Warsaw and the difference was immediate, as I arrived in the morning I expected everything to be closed. So I was a lot more relaxed. For the entire day I walked around admiring the building. To be honest overall it was a nice and relaxing experience, just what I needed after my intense times in the exams.

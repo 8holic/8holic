@@ -7,7 +7,6 @@ tags:
   - URECA
 featured_image_in_post: false
 ---
-banner_image: 2025-12-22-featured.jpg
 
 # Reflection
 As the exchange comes to an end, I've grown used to this room as home. For the past five months, how did I feel? As I wander the streets of Fuenlabrada for the final time, there's a sadness. I notice the fountains at random roundabouts, the grass and greenery. I'll miss that.

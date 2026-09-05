@@ -8,7 +8,6 @@ tags:
   - Travel
 featured_image_in_post: false
 ---
-banner_image: 2025-12-31-featured.jpg
 
 # Day 1
 As my introduction to Tallinn I arrived early in the mornign when it is freezing. I will be staying close to 5 days here because well it is new year. So I took it relatively easy. For this day I only visied the Maritime museum, I really enjoyed the exhibit. One of the exhibits simulate water presure and it help me appericate the cocnept of barotrauma. Another segment involves piloting a boat which I was terribel at. To end the day off I got some KFC and rest in
