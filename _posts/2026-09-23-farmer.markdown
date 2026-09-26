@@ -1,0 +1,10 @@
+---
+layout: post
+title: "Playing The Farmer was Replaced"
+location: "Singapore, Singapore"
+tags:
+  - Gaming
+banner_image: 
+---
+# Coding The Game
+So in this game we are coding a drone to collect stuff.
