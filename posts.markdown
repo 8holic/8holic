@@ -28,16 +28,13 @@ permalink: /posts/
 
     <div class="post-list">
       {% for post in posts %}
-        {% assign post_date = post.date | date: "%Y-%m-%d" %}
-        {% if post.banner_image %}
-          {% assign thumb_path = "/assets/images/post-photos/" | append: post.banner_image %}
-        {% else %}
-          {% assign thumb_path = "/assets/images/post-photos/" | append: post_date | append: "-featured.jpg" %}
-        {% endif %}
-        <article class="post-preview" data-tags="{% for tag in post.tags %}{{ tag | slugify }}{% unless forloop.last %},{% endunless %}{% endfor %}">
-          <div class="post-thumbnail">
-            <img src="{{ thumb_path | relative_url }}" alt="{{ post.title }}" onerror="this.onerror=null; this.src='{{ '/assets/images/profile.jpg' | relative_url }}'">
-          </div>
+        <article class="post-preview{% unless post.banner_image %} no-img{% endunless %}" data-tags="{% for tag in post.tags %}{{ tag | slugify }}{% unless forloop.last %},{% endunless %}{% endfor %}">
+          {% if post.banner_image %}
+            {% assign thumb_path = "/assets/images/post-photos/" | append: post.banner_image %}
+            <div class="post-thumbnail">
+              <img src="{{ thumb_path | relative_url }}" alt="{{ post.title }}">
+            </div>
+          {% endif %}
           <div class="post-info">
             <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
             <p class="post-meta">{{ post.date | date: "%b %d, %Y" }}</p>

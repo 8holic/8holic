@@ -1,17 +1,49 @@
 theme: null
 
+title: "Bryan Ang"
+tagline: "Student & aspiring engineer"
+description: "Student, tech and travel enthusiast, aspiring engineer. Projects, writing, and a bit about me."
+url: "https://8holic.github.io"
+baseurl: "/8holic"
+logo: "/assets/images/profile.jpg"
+
+author:
+  name: "Bryan Ang"
+  role: "Student & aspiring engineer"
+  bio: "Student, tech and travel enthusiast, and aspiring engineer."
+  location: "Singapore"
+  email: "angquandao@gmail.com"
+  phone: "+65 8111 8198"
+  github: "https://github.com/8holic"
+  linkedin: "https://www.linkedin.com/in/bryan-ang-1649a8254/"
+
+social:
+  name: "Bryan Ang"
+  links:
+    - "https://github.com/8holic"
+    - "https://www.linkedin.com/in/bryan-ang-1649a8254/"
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      image: "/assets/images/generic-banner.jpg"
+  - scope:
+      path: ""
+      type: projects
+    values:
+      image: "/assets/images/generic-banner.jpg"
+
 collections:
   posts:
     output: true
     permalink: /posts/:year/:month/:day/:title/
-  vrecords:
-    output: true
-    permalink: /vrecords/:title/
   projects:
     output: true
     permalink: /projects/:title/
-baseurl: "/8holic"
-
-author:
-  name: Bryan Ang
-  bio: Student, tech and travel enthuasiast, and aspiring engineer.

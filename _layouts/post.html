@@ -8,17 +8,19 @@ layout: default
   {% assign img_dir = "/assets/images/post-photos/" %}
 {% endif %}
 
+{% assign has_banner = false %}
 {% if page.banner_image %}
   {% assign banner_image = img_dir | append: page.banner_image %}
+  {% assign has_banner = true %}
 {% elsif page.featured_image_override %}
   {% assign banner_image = page.featured_image_override %}
-{% else %}
-  {% assign post_date = page.date | date: "%Y-%m-%d" %}
-  {% assign banner_image = img_dir | append: post_date | append: "-featured.jpg" %}
+  {% assign has_banner = true %}
 {% endif %}
 
-<div class="banner">
-  <img src="{{ banner_image | relative_url }}" alt="Posts banner" onerror="this.onerror=null; this.src='{{ '/assets/images/generic-banner.jpg' | relative_url }}'">
+<div class="banner banner--post{% unless has_banner %} banner--plain{% endunless %}">
+  {% if has_banner %}
+    <img src="{{ banner_image | relative_url }}" alt="{{ page.title }}" onerror="this.style.display='none';this.parentElement.classList.add('banner--plain');">
+  {% endif %}
   <div class="banner-text">
     <h1>{{ page.title }}</h1>
     <div class="banner-meta">
@@ -43,7 +45,7 @@ layout: default
 
 <article class="post">
   {% if page.tags %}
-    <div class="post-tags card">
+    <div class="post-tags">
       <strong>Tags:</strong>
       {% for tag in page.tags %}
         <a href="{{ '/tags/' | relative_url }}#{{ tag | slugify }}" class="tag">{{ tag }}</a>
@@ -51,18 +53,7 @@ layout: default
     </div>
   {% endif %}
 
-  {% if page.featured_image_in_post %}
-  <figure class="post-figure">
-    <img src="{{ banner_image | relative_url }}" alt="{{ page.title }}">
-    {% if page.featured_image_credit %}<figcaption>{{ page.featured_image_credit }}</figcaption>{% endif %}
-  </figure>
-  {% endif %}
-
-  <details class="post-toc card" id="toc" hidden>
-    <summary>Contents</summary>
-  </details>
-
-  <div class="post-content card">
+  <div class="post-content">
     {{ content }}
   </div>
 </article>

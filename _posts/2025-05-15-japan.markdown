@@ -1,69 +1,361 @@
-﻿---
+---
 banner_image: 2025-05-15-featured.jpg
 layout: post
-title: "Osaka, Japan Day 1"
+title: "Osaka, Japan (May 2025)"
 location: "Singapore, Singapore"
 destination: "Osaka, Japan"
 tags:
-
   - Travel
-featured_image_in_post: false
 ---
 
-# Overview
+# Day 1 — Arrival, Cup Noodles Museum & Dotonbori
 
-Today is the first day I arrive in Japan. I took the plane in midnight and arrive in the morning. Before heading to my hostel I visited the following location.
+<figure class="post-figure"><img src="{{ '/assets/images/post-photos/2025-05-15-featured.jpg' | relative_url }}" alt=""><figcaption>Osaka, Japan</figcaption></figure>
 
-# Cup Noodles Museum Osaka Ikeda
+## Overview
 
-## Intent
+Today is the first day I arrive in Japan. I took the plane at midnight and arrived in the morning. Before heading to my hostel I visited the following location.
 
-As a college student who eat a lot of instant noodles to survive for my college exam, I am very famillar with Japanese branded instant noodle. The Cheesy Currry Chicken is my favorite. So when I was looking around and see a Cup Noodles Museum I decide to visit just to see what is up.
+## Cup Noodles Museum Osaka Ikeda
 
-## Experience
+### Intent
 
-The museum is smaller than expected, as most of the things are in Japanse I did not really understood much of the exhibit. However the making of the instant noodles is worth it.
+As a college student who eats a lot of instant noodles to survive for my college exam, I am very familiar with Japanese branded instant noodles. The Cheesy Curry Chicken is my favorite. So when I was looking around and saw a Cup Noodles Museum I decided to visit just to see what is up.
 
-## Memory
+### Experience
 
-The Instant Noodle making is the highlight, I get to design my own cup and add my own ingreidents. Additionally I learnt how are instant noodles are prepared. I get to see the lid sealer that melts the lid onto the cup.
+The museum is smaller than expected, as most of the things are in Japanese, I did not really understand much of the exhibit. However the making of the instant noodles is worth it.
 
-## Insight
+### Memory
 
-For small and niche museums such as these the piority is the interactivity and not the exhibits itself. I should look up such activites in the future before visiting.
+The Instant Noodle making is the highlight, I get to design my own cup and add my own ingredients. Additionally I learnt how instant noodles are prepared. I get to see the lid sealer that melts the lid onto the cup.
 
-# Ikeda Castle Ruins
+### Insight
 
-## Intent
+For small and niche museums such as these the priority is the interactivity and not the exhibits itself. I should look up such activities in the future before visiting.
 
-It happen to be nearby, and I kinda like castle. So I decide to visit it since it is convenient.
+## Ikeda Castle Ruins
 
-## Experience
+### Intent
 
-There is a park around the castle, at the top floor it leads to an observatory that provide a overview of the more civilian part of the city. The castle has a Stair climbing wheelchair, additionally there are a few small gardens.
+It happened to be nearby, and I kinda like castles. So I decided to visit it since it is convenient.
 
-## Memory
+### Experience
 
-The sunset is a nice sight(As seen in the picture above). It become very quiet the instant I enter the garden, having quiet and peace is nice. Additionally thet Stair Climbing Wheelchair atttached to this, made me realize how rare this is in my home country.
+There is a park around the castle, at the top floor it leads to an observatory that provides an overview of the more civilian part of the city. The castle has a Stair climbing wheelchair, additionally there are a few small gardens.
 
-## Insight
+### Memory
 
-Sponatenous trip that is effortless to visit are worth the efforts, no need to plan rigidly for everything. Additionally I realize the gap in infrastrucutre in terms of disability access, and this is something worth advocating.
+The sunset is a nice sight (as seen in the picture above). It becomes very quiet the instant I enter the garden, having quiet and peace is nice. Additionally the Stair Climbing Wheelchair attached to this, made me realize how rare this is in my home country.
 
-# Dotonbori 
+### Insight
 
-## Intent
+Spontaneous trip that is effortless to visit are worth the efforts, no need to plan rigidly for everything. Additionally I realize the gap in infrastructure in terms of disability access, and this is something worth advocating.
 
-It is suprising close to the hostel I was staying at so I paid it a visit. I also heard something about the running man.
+## Dotonbori 
 
-## Experience
+### Intent
 
-It is really crowded, and yup the running man is there. I ate some nice food and walk around a bit.
+It is surprisingly close to the hostel I was staying at so I paid it a visit. I also heard something about the running man.
 
-## Memory
+### Experience
+
+It is really crowded, and yup the running man is there. I ate some nice food and walked around a bit.
+
+### Memory
 
 The food is nice, also I saw Spiderman on the bridge.
 
-## Insight
+### Insight
 
 I realize that I should probably research more about the famous landmarks, since without any knowledge of the historical significance the running man is just another banner.
+
+# Day 2 — Osaka Castle & World Expo
+
+<figure class="post-figure"><img src="{{ '/assets/images/post-photos/2025-05-16-featured.jpg' | relative_url }}" alt=""><figcaption>Osaka, Japan</figcaption></figure>
+
+## Overview
+
+Today was packed with two priorities, I visited the Osaka Castle as well as the World Expo.
+
+## Osaka Castle
+
+### Intent
+
+I was interested in old stuff, so I expect to see an old castle preserved into the modern era and maybe learn some history about it.
+
+### Experience
+
+The Anime Figurine Museum was a surprise which was actually the first thing I saw. As it was part of my ticket I went in and saw figures across the centuries. After buying some snacks from here, I proceeded to the castle and found that it is now a museum basically. I also took a boat ride around the moat of the castle.
+
+### Memory
+
+Regarding the Anime Figurine figure it was interesting to look at the progression of the figurine across time and how it has changed. Additionally there are dioramas of various famous scenes like Iron Man and the fighter jet as well as Godzilla. 
+
+For the castle it was more modern than expected, the interior feels like any other museum. It is English translated and some things are interesting, such as a particular section on Dutch-Japan friendship where I learnt that the Dutch were one of the few that were trading with Japan during the isolation. 
+
+Finally the boat ride I remember seeing the "demon face" statue, where the guide told us that it is supposed to ward off evil, I thought this was interesting to witness these superstitions.
+
+### Insight
+
+The most important lesson from this is definitely time management, I did not research everything and I missed a boat ride as well as one of the towers due to taking a wrong turn. In the future I will either allocate more time or at least look out for time sensitive parts in a region.
+
+## Japan World Expo 2025
+
+### Intent - Overall
+
+The mainstay of the trip, my professor mentioned this event and showed us a video. Since then I have been kinda curious about this event which started back in 1897, and it seems like a good way to learn much about the world. I booked the night ticket expecting it to be less crowded. I have also received a slot at the Japanese Pavilion via the lottery system. I will be splitting this section sequentially based on my arrival.
+
+### Experience - Malaysia & Singapore Pavilion
+
+The Malaysia building represents a wooden structure and the first part is a market. Afterwards there are some sections on the hope of the nation and their smart city plan.
+
+Singapore building is a giant red dot that certainly stands out, the first floor is full of glass trees and similar things.
+
+### Memory - Malaysia & Singapore Pavilion
+
+Malaysia section most memorable section is the entrance where it is about past culture, everything after that feels like generic big city stuff.
+
+Singapore memorable section is the glass section on the first floor, there was one section using Augmented Reality where we can enter our wishes and hopes.
+
+### Insight - Malaysia & Singapore Pavilion
+
+I learnt not to visit surrounding countries as the information isn't new and while visually it is appealing, the content are mostly of things I already know.
+
+### Experience - Japan Pavilion
+
+The Japan Pavilion actually consists of three sections representing a cyclic cycle for a sustainable future. It was also as I learnt the largest wooden structure at that time. I saw a showcase of how biodegradable plastic breaks down in water exhibit, as well as a comic strip of Doraemon of the Ise Jingu. Finally we reach the center 1/3 of the way through and there is a queue for looking at the Narashino Meteorite and one for touching it, obviously I went and touched it and it felt just like any other rock. Afterwards it is focused on the bio reactor and how they produce energy with algae, ending off with DNA strands like decorations with mirrors making it appear like the DNA strands in a human body.
+
+### Memory - Japan Pavilion
+
+There are a lot of interesting things here, so to summarise
+
+- The Ise Jingu and the ceremonic rebuilding every 20 years to ensure that Shinmei-zukuri technique used is preserved across generations as well as the structure of the building and it clearly seems to be working pretty well.
+
+- A showcase of how much more water does it take to raise an animal compared to algae, the ratio is 50:1. It is hard to imagine how much meat consumption affects the planet.
+
+- The central ring was really relaxing and calming, a good waiting spot for the Narashino Meteorite. Even though the entire day was quite packed this moment was one of calm.
+
+- The bio reactor plant where waste water from the expo is channeled right here and is used to create energy. It took a while to understand but once I realize what it is below my feet it was like a miracle.
+
+### Insight - Japan Pavilion
+
+This was one of the best part of the day, the exhibits are exciting. I learnt to stop and contemplate the various exhibitions and stay longer than a glance. 
+
+### Experience - Conclusion
+
+Initially I had planned to visit other pavilions like China and Spain, however I soon realize that the night ticket means that by the time I have left Japan Pavilion most other Pavilion are starting to close their doors. Some of those that are still open are the Brazil Pavilion as well as Bangladesh. Since we are near the end I went to the top and had an overview of the entire place and watched the final drone show before heading back. The queue back is long but the Japanese trains were efficient.
+
+### Memory - Others
+
+The Brazil pavilion left the most impact due to being a shade of pink with plastic representing trees, where the tree seems to grow and inflate. I sat at one of the chairs and it was a strange experience.
+
+The train back is also very long, I think it took 50 minutes for me to leave via the station.
+
+### Insight - Others
+
+One of the things I learnt is to trust my instincts and explore what I am curious about. Additionally I need to do more research before buying tickets as I did not get to visit as many pavilions as I wanted. Finally I learnt how to tolerate long queues.
+
+# Day 3 — Osaka Aquarium & Umeda Sky
+
+<figure class="post-figure"><img src="{{ '/assets/images/post-photos/2025-05-17-featured.jpg' | relative_url }}" alt=""><figcaption>Osaka, Japan</figcaption></figure>
+
+## Overview
+
+Today the plan was to visit the Osaka Aquarium, the boat ride and Umeda Sky. After the previous packed day I decided to go for a lighter day.
+
+## Osaka Aquarium
+
+### Intent
+
+So the honest reason was that I haven't really visited many aquariums so I was curious. I also saw it in an anime.
+
+### Experience
+
+The aquarium started with a nice outdoor section, followed by a lot of animals. There are a lot of information available for people. I also paid for the feeding area.
+
+### Memory
+
+The caretakers are very knowledgeable and speak some English. The following are some interesting things I learnt.
+
+- The animals do not attack each other when well fed which is how they kept everyone in the same tank.
+
+### Insight
+
+I learnt some interesting things about animals, from this I learnt to give unconventional experience a go. Even though I am not a marine enthusiast I still learnt some interesting facts and understand the animals better.
+
+## Umeda Sky and Car Museum
+
+### Intent
+
+For Umeda Sky I thought that the skyline would be nice since I have seen the older side I am curious how the more modern side looks.
+
+I happened to stumble across the Car Museum so I paid it a visit
+
+### Experience
+
+Upon reaching the top I see two sides, one side is the river facing side and the other side is more urban.
+
+The Car Museum is a small but neat museum and features cars from the start of car development to current cars.
+
+### Memory
+
+For both there aren't a lot of interesting details but the sights are nice.
+
+### Insight
+
+Sometimes a slow relaxing day is fine, to simply relax and look around.
+
+# Day 4 — Tomogashima Island
+
+<figure class="post-figure"><img src="{{ '/assets/images/post-photos/2025-05-18-featured.jpg' | relative_url }}" alt=""><figcaption>Osaka, Japan</figcaption></figure>
+
+## Tomogashima Island
+
+### Intent
+
+As the weather is great, and I am always curious about abandoned places(since they are illegal to visit in Singapore), I decided to pull the trigger for this. I was expecting a hike basically in the wilderness
+
+### Experience
+
+It took 1 hour to get from Osaka to Wakayama, Kada Village. At 9am where the ferry is supposed to leave the weather suddenly worsened causing the ferry to halt. However at 1030am all is good so I went ahead. On the island I visited the observatory and it is pretty nice. I also met up with two nice lads and we became acquainted. At the end we missed the initial ferry back so we waited together for an hour for the 4pm ferry.
+
+### Memory
+
+For a moment I was concerned that the trip needed to be cancelled. The interesting things are the World War 2 fort as well as former shophouses in the era. Additionally there was a statue there.
+
+### Insight
+
+- I learnt from the other two to have a more exposed field of view, and I find it rather meaningful. Paying attention to the rocks for example he can tell that it is recently exposed because the algae growth is lesser compared to others. 
+
+- Additionally talking to other random travellers is a risk worth taking. I am usually rather reserved but it was a really enjoyable experience.
+
+# Day 5 — Ikoma Amusement Park & Nara
+
+<figure class="post-figure"><img src="{{ '/assets/images/post-photos/2025-05-19-featured.jpg' | relative_url }}" alt=""><figcaption>Osaka, Japan</figcaption></figure>
+
+## Ikoma Sanjo Amusement Park
+
+### Intent
+
+An amusement park on the hill was something I was curious about, the main drive is curiosity. 
+
+### Experience
+
+I went up via a train, the amusement park is free to visit. Payment is only for specific rides. I went to the flying plane as well as the "White House". Afterwards I climbed down the hill and walked back to the train.
+
+### Memory
+
+The trains are very cute and have a nice design. The flying plane is great because I was able to see both Nara and Osaka from a high overview. Additionally the White House depicted an interesting version of America, the building is tilted by a few degrees. The founding myth was shown as a bridge, then followed by a steam train. Notably the train noise is clearly a vacuum cleaner. At the end, Lego was used to depict the moon landing.
+
+### Insight
+
+Overall the entire place was really enjoyable despite the low budget vibe. Some of the creative solutions are something to inspire me. In the future I learnt how the budget does not determine the quality.
+
+## Nara, Deer Park
+
+### Intent
+
+The Nara Park is kinda popular and I heard of it before.
+
+### Experience
+
+There are indeed, many deer. I bought some deer biscuit but a single deer forcefully ripped it from my fingers. Additionally I visited the nearby shrines, and sat down on a bench and watched the deer just laze around.
+
+### Memory
+
+The sheer number of deer is certainly something to remember, though being robbed by a deer was not expected. Sitting on the bench was calming and relaxing.
+
+### Insight
+
+I guess I learnt how scary wild animals can be, and also how calming it is to do nothing. I wish to come back to stare at the deer in the future.
+
+# Day 6 — Kyoto
+
+<figure class="post-figure"><img src="{{ '/assets/images/post-photos/2025-05-20-featured.jpg' | relative_url }}" alt=""><figcaption>Osaka, Japan</figcaption></figure>
+
+## Kyoto, Fushimi Inari Shrine
+
+### Intent
+
+To be honest I was trying to avoid the crowd, I thought it would be cool since it would be late at night.
+
+### Experience
+
+I went down the shrine at 12AM basically, the entire place feels calming initially. However around the Tori gates the atmosphere becomes very oppressive, especially as I can hear the wild boars and friends. I did not finish the ascent as planned and I dipped out midway through.
+
+### Memory
+
+Something about the night turns a simple walk into a scary one. I think it is the lack of people or the darkness, however the number of Tori gates make the experience a surreal one.
+
+### Insight
+
+I hope to go again in the morning, though I learnt the importance of pulling out. The entire experience was a unique one but I am unsure if my heart can handle this.
+
+## Kyoto, Railway Museum and Tower
+
+### Intent
+
+I didn't have any real goal in mind so I was just googling for interesting things.
+
+### Experience/Memory
+
+To be honest it is pretty forgettable, the only thing I remembered is that the fog blocked the view. Oh yes and there is a miniature section to drive trains. 
+
+### Insights
+
+Maybe spamming random activities and committing to it isn't the best idea if I clearly don't care about it.
+
+## Kyoto, Gear Play
+
+### Intent
+
+I saw the advertisement as a "wordless" play, which is something I think I can enjoy even without a translator so I went inside.
+
+### Experience
+
+I sat down and we watched a play, the entire play features 5 characters and a set. The production is really high and there are flyers and stuff. I took a few home.
+
+### Memory
+
+This was the highlight of the Kyoto trip surprisingly, the entire play was something that conveyed emotion despite not a single word being spoken. They conveyed the sense of creativity and things quite well, as well as using creative stageplay. The emotions conveyed are really strong, I even bought the stageplay and some shirts. Even if it is all in Japanese so I need to get on with learning the language to read it.
+
+### Insight
+
+It seems I had some misconception on plays on account of only being exposed to my school's terrible plays. In the future I will seek out more theatres to watch and expand my horizon.
+
+## Insight-Overall
+
+I learnt the plan is to plan more time. 1 day in Kyoto is insufficient and one of the main issues I ran into is the fact that I am constrained by time, some attractions and museums are not open that day so I wasn't able to visit.
+
+# Day 7 & 8 — Wakayama Onsen & Reflection
+
+<figure class="post-figure"><img src="{{ '/assets/images/post-photos/2025-05-22-featured.jpg' | relative_url }}" alt=""><figcaption>Osaka, Japan</figcaption></figure>
+
+## Overview
+
+So I realize I do not have much to write here, so I combined both days
+
+## Wakayama
+
+### Intent
+
+Hot Spring are kinda what is popular in Japan, so I went to this hot spring resort. 
+
+### Experience
+
+As I am aware there is no food I bought some stuff before I went. It was an interesting experience as I was given something to wear in the hotel. My room was facing the ocean. I went for the hot spring and they list the composition (in Japanese), soaking inside I can feel like something is on my skin. I went twice, once at night and another in the morning.
+
+In the morning I was at the outdoors section where I can look at the nearby highway. After that I had breakfast which was a spread of random meals. I walked around Kada town a bit before departing.
+
+### Memory
+
+The Hot Spring certainly feels nice, it is a unique experience. It was relatively isolated since I arrive late/early respectively.
+
+### Insight
+
+I need to stay for more days in the future, one day isn't enough unfortunately. 
+
+## Reflection - Overall
+
+All in all it was an enjoyable trip, however the last few days are hampered by poor planning making them less memorable compared to the first few days. I hope to do this again in the future.

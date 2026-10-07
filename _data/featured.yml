@@ -1,0 +1,13 @@
+# Homepage curation.
+#
+# posts   -> ordered list of post slugs. A slug is the post filename with the date
+#            stripped, e.g. 2025-12-22-end-of-exchange-reflection -> end-of-exchange-reflection
+#            The first one becomes the large featured card.
+# projects -> ordered list of project titles to show in the Projects section.
+posts:
+  - end-of-exchange-reflection
+  - atomic-habits
+projects:
+  - "URECA Project Presentation"
+  - "Digital Scavenger Hunt"
+  - "Limbus Company ID Visualization"

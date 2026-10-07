@@ -7,4 +7,8 @@ tags:
 banner_image: 
 ---
 # Coding The Game
-So in this game we are coding a drone to collect stuff.
+So in this game we are coding a drone to collect stuff. The Syntax is very close to python, I thought this might help me practice a bit of coding.
+
+So at the start we only have harvest() which is a function to well harvest, with a 1 by 1 grid. Soon after we get a While=True loop. Where things get interesting is later on the gird expands, and some plants start having requirements.
+
+Without further adu lets look at the first script

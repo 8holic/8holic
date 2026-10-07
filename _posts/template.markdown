@@ -10,6 +10,4 @@ tags:
 
   - placeholder
 
-featured_image_in_post: false
-
 ---

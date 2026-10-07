@@ -2,7 +2,7 @@
 
 layout: post
 
-title: "TechJam Hackaton"
+title: "TechJam Hackathon"
 
 banner_image: 
 
@@ -14,12 +14,10 @@ tags:
 
   - Projects
 
-featured_image_in_post: false
-
 ---
 
 
-<iframe width="560" height="315" src="https://www.youtube.com/watch?v=N2woMCZ5Ue4" title="TechJam" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/N2woMCZ5Ue4" title="TechJam" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ## Inspiration
 

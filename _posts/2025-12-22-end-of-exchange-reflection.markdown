@@ -1,11 +1,10 @@
-﻿---
+---
 banner_image: 2025-12-22-featured.jpg
 layout: post
 title: "The End of the Exchange Reflection"
 location: "Singapore, Singapore"
 tags:
   - URECA
-featured_image_in_post: false
 ---
 
 # Reflection
@@ -53,4 +52,4 @@ So I visited a lot of random places during my time overseas, from random alleywa
 So not all of them are a good idea, however I will never have known they are not a good idea if I never tried. I think Seville was the biggest mistake because it was done near exam time, so I was unable to relax despite being physically away.
 
 # In Conclusion
-There are many things that I will miss about Fuenlabrada, such as 100 Montaditos and the 1 euro meals. Or Mercandona and the supermarket clearly stating the makeup of the various meat. As I return to Singapore(soon) and continue my journey, Madrid have changed me for sure.
+There are many things that I will miss about Fuenlabrada, such as 100 Montaditos and the 1 euro meals. Or Mercadona and the supermarket clearly stating the makeup of the various meat. As I return to Singapore(soon) and continue my journey, Madrid has changed me for sure.

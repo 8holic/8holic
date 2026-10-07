@@ -1,0 +1,39 @@
+- date: "2015"
+  label: "2015"
+  title: "Started volunteering — The Frontier Youth Executive Committee"
+  type: community
+  note: "Joined the youth wing at The Frontier, Pioneer."
+- date: "2017"
+  label: "2017"
+  title: "Grassroots Leader — The Frontier Youth Executive Committee"
+  type: leadership
+- date: "2020-07"
+  label: "Jul 2020"
+  title: "The Frontier YEC renamed The Frontier Youth Network"
+  type: milestone
+  note: "Transitioned on 1 July 2020 under the People's Association Youth Movement."
+- date: "2021"
+  label: "2021"
+  title: "Joined Gek Poh Ville Toastmasters Club"
+  type: community
+- date: "2023"
+  label: "2023"
+  title: "Enrolled in Nanyang Technological University"
+  type: education
+- date: "2024"
+  label: "2024"
+  title: "Vice President (Education) — Gek Poh Ville Toastmasters Club"
+  type: leadership
+- date: "2024-09"
+  label: "Sep 2024 – Jun 2025"
+  title: "URECA Research Project, NTU"
+  type: research
+  note: "A one-year, largely self-directed research project, presented to faculty and the public."
+- date: "2025-08"
+  label: "Aug – Dec 2025"
+  title: "Exchange Semester — Universidad Carlos III de Madrid"
+  type: education
+- date: "2026-08"
+  label: "Aug 2026"
+  title: "Started Final Year Project"
+  type: research

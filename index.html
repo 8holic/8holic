@@ -1,65 +1,139 @@
 ---
 layout: default
-title: Home
-banner_image: /assets/images/home-banner.jpg
-banner_title: Welcome to my personal blog
-banner_subtitle: Personal ramblings and thoughts.
+permalink: /
+description: "Student, tech and travel enthusiast, aspiring engineer. Projects, writing, and a bit about me."
+image: "/assets/images/home-banner-2.jpg"
 ---
-{% include banner.html %}
+{% assign r = site.data.resume %}
+<header class="hero hero-right">
+  <img class="bg" src="{{ '/assets/images/home-banner-2.jpg' | relative_url }}" alt="">
+  <div class="content">
+    <div class="eyebrow">{{ site.author.name }}</div>
+    <h1>{{ r.headline }}</h1>
+    <p class="tag">{{ r.pitch }}</p>
+    <p class="goal">{{ r.goal }}</p>
+    <div class="cta">
+      <a class="btn solid" href="#projects">View my work</a>
+      <a class="btn" href="#contact">Get in touch</a>
+    </div>
+  </div>
+  <div class="scroll-cue">SCROLL ↓</div>
+</header>
 
-<!-- Hero / About section -->
-<section class="hero">
-  <h2>About Me</h2>
-  <p>Hello！</p>
+<section class="about" id="about">
+  <div class="inner about-grid">
+    <div>
+      <div class="eyebrow">About</div>
+      <h2 class="section-title">A bit about me</h2>
+      <p class="section-lead">{{ r.about }}</p>
+    </div>
+    <div class="facts">
+      {% for f in r.facts %}
+        <div class="fact"><div class="k">{{ f.key }}</div><div class="v">{{ f.value }}</div></div>
+      {% endfor %}
+    </div>
+  </div>
 </section>
 
-<!-- Latest post -->
-<section class="recent-posts">
-  <h2>Latest Post</h2>
-  {% assign post = site.posts | sort: 'date' | reverse | first %}
-  {% if post %}
-    {% assign post_date = post.date | date: "%Y-%m-%d" %}
-    {% if post.banner_image %}
-      {% assign thumb_path = "/assets/images/post-photos/" | append: post.banner_image %}
-    {% else %}
-      {% assign thumb_path = "/assets/images/post-photos/" | append: post_date | append: "-featured.jpg" %}
+<section id="projects">
+  <div class="inner">
+    <div class="eyebrow">Projects</div>
+    <h2 class="section-title">Things I've built</h2>
+    <p class="section-lead">Selected work — each one taught me something a tutorial couldn't.</p>
+    <div class="proj-grid">
+      {% for ptitle in site.data.featured.projects %}
+        {% assign project = site.projects | where: "title", ptitle | first %}
+        {% if project %}
+        <article class="proj">
+          {% if project.banner_image %}
+            <div class="thumb"><img src="{{ '/assets/images/project-photos/' | append: project.banner_image | relative_url }}" alt="{{ project.title }}"></div>
+          {% endif %}
+          <div class="body">
+            <div class="yr">{{ project.start | date: "%Y" }}{% if project.end and project.end != project.start %}–{{ project.end | date: "%Y" }}{% endif %}</div>
+            <h3><a href="{{ project.url | relative_url }}">{{ project.title }}</a></h3>
+            <p>{{ project.description | default: project.excerpt | strip_html | truncatewords: 24 }}</p>
+            {% if project.tags %}<div class="tags">{% for tag in project.tags %}<span class="pill">{{ tag }}</span>{% endfor %}</div>{% endif %}
+            <a class="more" href="{{ project.url | relative_url }}">Read more →</a>
+          </div>
+        </article>
+        {% endif %}
+      {% endfor %}
+    </div>
+    <div class="center-cta"><a class="btn" href="{{ '/projects/' | relative_url }}">See all projects →</a></div>
+  </div>
+</section>
+
+<section class="timeline" id="timeline">
+  <div class="inner">
+    <div class="eyebrow">Timeline</div>
+    <h2 class="section-title">The short version</h2>
+    <div class="tl">
+      {% assign tl = site.data.timeline | sort: "date" | reverse %}
+      {% for item in tl %}
+        <div class="item">
+          <div class="dot"></div>
+          <div class="when">{{ item.label | default: item.date }}</div>
+          <h3>{{ item.title }}</h3>
+          {% if item.note %}<p>{{ item.note }}</p>{% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section id="blog">
+  <div class="inner">
+    <div class="eyebrow">Writing</div>
+    <h2 class="section-title">Latest from the blog</h2>
+    <p class="section-lead">Travel, books, games, and the occasional over-think.</p>
+    {% assign featured_slug = site.data.featured.posts | first %}
+    {% assign fp = site.posts | where: "slug", featured_slug | first %}
+    {% if fp %}
+      {% assign fp_date = fp.date | date: "%Y-%m-%d" %}
+      {% if fp.banner_image %}
+        {% assign fp_img = '/assets/images/post-photos/' | append: fp.banner_image %}
+      {% else %}
+        {% assign fp_img = '/assets/images/post-photos/' | append: fp_date | append: '-featured.jpg' %}
+      {% endif %}
+      <article class="featured-post">
+        <div class="thumb"><img src="{{ fp_img | relative_url }}" alt="{{ fp.title }}" onerror="this.src='{{ '/assets/images/generic-banner.jpg' | relative_url }}'"></div>
+        <div class="body">
+          <span class="pill">Featured · {{ fp.tags | first }}</span>
+          <h3><a href="{{ fp.url | relative_url }}">{{ fp.title }}</a></h3>
+          <p>{{ fp.excerpt | strip_html | truncatewords: 28 }}</p>
+          <a class="more" href="{{ fp.url | relative_url }}">Read the post →</a>
+        </div>
+      </article>
     {% endif %}
-    <div class="post-list">
-      <article class="post-preview">
-        <div class="post-thumbnail">
-          <img src="{{ thumb_path | relative_url }}" alt="{{ post.title }}">
-        </div>
-        <div class="post-info">
-          <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-          <p class="post-meta">{{ post.date | date: "%b %d, %Y" }}</p>
-          {% if post.excerpt %}
-            <p>{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
-          {% endif %}
-        </div>
-      </article>
+    <div class="post-grid">
+      {% assign recent = site.posts | sort: 'date' | reverse %}
+      {% assign shown = 0 %}
+      {% for post in recent %}
+        {% if post.slug != featured_slug and shown < 3 %}
+          <article class="post-card{% unless post.banner_image %} no-img{% endunless %}">
+            {% if post.banner_image %}
+              <div class="thumb"><img src="{{ '/assets/images/post-photos/' | append: post.banner_image | relative_url }}" alt="{{ post.title }}" onerror="this.parentElement.remove()"></div>
+            {% endif %}
+            <div class="meta">{{ post.date | date: "%b %Y" }}{% if post.tags.size > 0 %} · {{ post.tags | first }}{% endif %}</div>
+            <h4><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h4>
+          </article>
+          {% assign shown = shown | plus: 1 %}
+        {% endif %}
+      {% endfor %}
     </div>
-  {% else %}
-    <p>No posts yet. Check back soon!</p>
-  {% endif %}
+    <div class="center-cta"><a class="btn" href="{{ '/posts/' | relative_url }}">Read the blog →</a></div>
+  </div>
 </section>
 
-<!-- Latest project -->
-<section class="recent-posts">
-  <h2>Latest Project</h2>
-  {% assign project = site.projects | sort: 'start' | reverse | first %}
-  {% if project %}
-    <div class="post-list">
-      <article class="post-preview">
-        <div class="post-info">
-          <h3><a href="{{ project.url | relative_url }}">{{ project.title }}</a></h3>
-          <p class="post-meta">{{ project.start | date: "%b %Y" }} – {{ project.end | date: "%b %Y" }}</p>
-          {% if project.excerpt %}
-            <p>{{ project.excerpt | strip_html | truncatewords: 30 }}</p>
-          {% endif %}
-        </div>
-      </article>
+<section class="contact" id="contact">
+  <div class="inner">
+    <h2>Let's talk</h2>
+    <p>Open to internship and graduate roles, and happy to chat about anything I've built.</p>
+    <div class="links">
+      <a class="btn" href="mailto:{{ site.author.email }}">Email</a>
+      <a class="btn" href="{{ site.author.github }}">GitHub</a>
+      <a class="btn" href="{{ site.author.linkedin }}">LinkedIn</a>
+      <a class="btn" href="tel:{{ site.author.phone | remove: ' ' }}">{{ site.author.phone }}</a>
     </div>
-  {% else %}
-    <p>No projects yet. Check back soon!</p>
-  {% endif %}
+  </div>
 </section>

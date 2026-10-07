@@ -1,0 +1,13 @@
+headline: "I build things and write about what I learn."
+pitch: "Student, tech & travel enthusiast, aspiring engineer. I like turning vague problems into working prototypes — and documenting the process."
+goal: "Current goal — breaking into software engineering."
+about: "I'm an undergraduate who learns best by building. I've run a self-directed research project, shipped a web app used by ~50 people at a community event, and scraped and visualised game data just because I was curious. Outside of tech, I travel and write to make sense of what I see."
+facts:
+  - key: "Focus"
+    value: "Software & Data"
+  - key: "Based in"
+    value: "Singapore"
+  - key: "Education"
+    value: "NTU"
+  - key: "Exchange"
+    value: "UC3M, Madrid"
