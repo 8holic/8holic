@@ -8,9 +8,9 @@ banner_image:
 ---
 
 # Introduction
-Railgun Warning is the most common sound that will ring in my head after playing this. Ace Combat 8 is the successor to Ace Combat 7
+Railgun Warning is the most common sound that will ring in my head after playing this, replacing the missile warning. As someone who is introduced to the series via ace combat 7 and fell in love with it, getting all achievements for it, I was highly anticipating Ace Combat 8. At of writing this reflection, I have played the game twice, once on Elite and once on Ace, as well as dabbled a little bit in the multiplayer.
 
-# The First Playthrough
+# The First Campaign
 
 Mission 1 to 4 are mostly tutorial missions, they are relatively simple with a generous amount of time, is relatively straightforward in terms of execution and seems to exist to settle the player in. Most enemy attack one at a time, while your escort targets can take a beating before going down. Mission 3 serve as a introduction to the Sotoan air Force, the Lux Lunae and their hierarchy, which we will face for the rest of the game. In terms of difficulty they are not really that remarkable. While Mission 4 is the first mission with ground attacks, and a tunnel the player can fly through and earn the reactions of their wingman.
 
@@ -39,3 +39,36 @@ Mission 29 is the fight against Moon 11, labelled as the greatest ace of the ene
 To end things off, we get mission 30...which is a fight against a random nondescript submarine. I won't lie this is the most boring ending by far, the first few minute is spent shooting at a predictable cruise missile every few seconds or so while the story progresses. Next the submarine finally surfaces and suffer from the same issue where a single bomb annilates most of its defenses and the health gate. I gotta wait for it to dive and surface around 5 times until it actually reveal its weapons. It is a nice send off for sure, through I feel that I will dread playing this.
 
 # The Second Campaign
+
+I will only cover notable changes compared to the original, now we are playing on Ace difficulity that is only unlocked after elite, and we have all the best planes. Firstly Mission 1 to 13 are now completely non factors, the multi weapon carrying unlocked a lot of potential and having the best jets means I get to bring both anti ground and anti air and destroy the mission.
+
+Ironically this make mission 14 even worst, as I have gotten used to flying super maneuverable state of the art fighter jets, so flying this is a struggle. I was also dissapointed to find out there is no hidden shortcuts for a skilled player, so I primary did the exact same thing I did on Elite.
+
+Mission 15 confirms my suspicion that you are not suppose to outrun the jets, even with the fastest planes I cannot catch up to them when they are accelerating. These guys are the only one to keep how hard they are due to being mechanics heavy and relatively durable.
+
+What was unexpected was that Mission 29 is the harder than shadow 22, I suspect that Moon 11 accuracy is greatly boosted, making it very hard to actually dodge it compared to elite which was a non factor. The escort drones also seems better as CWIS and shooting down the player missile. Through it is not as oppressive as shadow 22 as there is only one target compared to 28 where any rando can randomly jump in and attempt to sucker punch me. It feels closer to a duel against a superjet instead of a cutscene.
+
+My worst fears are confirmed as mission 30 is exceptionally boring, and essentially a repeat of the original...
+
+In conclusion, while the game has a lot more missions, with 30 missions in total, I wouldn't say most of them are that memorable. The standout missions would be Missions 5, 8, 19, 28, and 29. The first and second playthroughs are notably different and indicate just how much progression, as well as foresight, can cause player perception to change. Some missions become easier once I am aware of what is going on, such as Mission 15's intended strategy. The one regrettable thing is that there aren't any satisfying destruction missions and that there is a lack of a long tunnel run.
+
+# Weapons and Fighters
+
+Compared to the previous entry, there are no longer hilariously overpowered pulse lasers or a random railgun on an F-15 for some reason, and overall, I felt that the aircraft are better balanced. Most aircraft can carry two weapons, which cuts down on the ammo available for each. I felt that most aircraft are relatively well balanced, and I was unable to find a one-size-fits-all solution. Whereas in the previous game, the SU-57 with pulse lasers was the hammer to every single nail. Most aircraft seem to have one weapon that is considered "good", and everything else is okay. QAAM missiles with guidance can do hilarious things, like making a 180 after missing the enemy, like a zealous ex, or the SASM, which explodes after missing and still kills the enemy. On the ground side, SOD has a hilariously huge range that can actually bomb the entire Megafloat from high enough up, and SFFS nukes everything in a straight line. I am happy to say I was able to clear Mission 15 with the MiG-21 and machine guns only, and use a variety of non-endgame aircraft for my Ace playthrough. I think that speaks to their versatility.
+
+The X-40 Nightmare and FA36 are unlocked after clearing the campaign. The X-40 Nightmare is kinda weak for what they are asking, as its unique selling points are the railgun and the UAV, which act as portable QAAMs that fire lasers at the target. The issue here comes from the fact that they have a truly pathetic ammo count; carrying both means bringing a single-digit amount of special weapons. Let's cover both weapons. The railgun seems to deal a decent amount of damage, but the triple burst hurts it, as it makes it possible for one shot to miss. When dealing with bombers, where all three hits need to connect, this is kinda an issue. Meanwhile, the UAV is hilariously bad. I send them off on a journey, and they fail to kill any fourth-generation fighter.
+
+Meanwhile, the FA36 is the second coming of Christ. It features the SASM and the SFFS, making it by far one of the best fighters by default, as it is capable of dealing with everything. There isn't much to say except that its exceptional weapon loadout, high manoeuvrability, and high speed make it the best for a lot of missions that require firepower for both air and ground targets. I guess it is fine as it is a NG+ unlock essentially, but it is ironic that this craft is the weakest enemy in game, while in the hands of the player it is the best aircraft by far. Ironically this is better than the X-40 super fighters.
+
+# Online mode is the only issue...
+As of writing, I have stopped playing online mode. For context online mode involves 4 different mode, first is a PvE where 2 teams of 4 compete to destory the enemy forces, while the s econd is a PvPvE where the 2 teams also shoot each other. The other 2 only show up occasionally in 30 minute interval, with scramble being a fight against multiple neemy aces, and emergency sortie being a boss fight against a previous series boss.
+
+Now that I have briefly cover all modes, the first issue is the lack of variety of missions. All missions are destruction type rotating only a few maps, where the map is usually cleared within the first 5 minute. Most of them feels extremely predictable, where firstly there is a bunch of enemies, once they are defeated enemy aces will arrive, and finally a final ground reinforcement. After 3 or so runs you have essentially seen all there is to see.
+
+The second issue I felt is that the aircraft upgrades are too powerful, the reason this is bad is that in a PvE gamemode, they will clear the board before you can do anything, while in PvPvE they are going to annilate the opposition. This is worsen by the lack of banded matchmaking, so as someone with a starting jet, I can be matched up with people using high end jets.
+
+While I believe the online mode has potential, at its current state it is really unfun, and I am not going to go through with the grind.
+
+# Conclusion
+
+I feel that the game is more polished than Ace Combat 7 and serves its purpose, the missions in general are great, and the aircraft are relatively well balanced. There are no missions that are not fun, and the variety of tiny details for some missions make them fun. Unfortuatntely the post game planes feel dissapointing, I will attempt to do the machine gun challenge and no damage challenge next, which will help me get a better understanding of the game. Unfortunately the online mode damper the already great game and foundation, but is a ignorable aspect. I greatly enjoy my time here and hope to see future simillar works.
