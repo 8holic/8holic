@@ -2,26 +2,30 @@
 banner_image: 2026-08-27-featured.jpg
 layout: post
 title: "Playing AI Limit Part 1"
+series: ai-limit
+series_part: 1
+series_title: "Playing AI Limit"
+chapter_title: "Early thoughts"
 location: "Singapore, Singapore"
 tags:
   - Gaming
 featured_image_credit: "Screenshot from AI Limits."
 ---
 
-# First few hours early thoughts
+## First few hours early thoughts
 So the game is a soulslike, except with cute anime girls. Honestly I was hoping for a game that is easy on the eyes and executes it well. The necros are some biological monsters attacking everyone as well as bandits.
 For the game itself I have went through a few bosses, the combat is simple to understand and quite easy to learn. There is no stamina management but each attack needs to be committed. Anyone who has played Dark Souls games will find themselves familiar here. While I don't think the game is breaking any new ground or introducing the next revolution to the soulslike genre, it does what already exists well.
 
 The main mechanics introduced are essentially quite similar to stability, it is a bar that goes up if you attack enemies and goes down if you are hit or you use skills. A benefit of this is that it becomes more feasible to spam the "magic" spells, which I was always reluctant to do in most soulslike as I might run out before needing them.
 
-# Story?
+## Story?
 Now the game is explicitly named AI Limits, but so far I haven't found out why it is named as such. Maybe it is a spoiler. But the story is really cryptic so far, to be honest I have no idea what is going on, just like the protagonist who is amnesiac. 
 Of the NPCs I think Feylia was the most memorable simply because of how big her sword was and was taller than her. The others are cryptic just like soul's NPC. 
 
-# Customization!
+## Customization!
 I am glad that they did not go with the gritty serious tone compared to the rest, I was able to put the main character in some funny outfits. The above is a rabbit outfit and it looks ridiculous along with the scythe. Here is to hoping for more funny outfits, I will be switching outfits with every post I put out there.
 
-# Thoughts on the first few locations
+## Thoughts on the first few locations
 
 So I think I went through the starting area, which is mostly sewers, a desert town, sewers and more sewers. When I left off I am at some woods. Now obviously the first few locations aren't exactly expected to be awe inspiring, but I felt they succeed a bit. At the desert town we see the church walls and I am instantly curious what is inside the walls. Inside the walls there are some random floating stuff. Though the main objective is to collect branches that literally nobody knows why they are doing. I think all the bladers (the term used to refer to our character) have found a new hobby in the meantime.
 

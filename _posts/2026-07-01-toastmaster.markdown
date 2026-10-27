@@ -4,6 +4,7 @@ banner_image: 2026-07-01-featured.jpg
 layout: post
 
 title: "Toastmaster NEW TERM"
+format: log
 
 location: "Singapore, Singapore"
 

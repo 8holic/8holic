@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "I played: Sifu (Loop)"
+format: essay
 location: "Singapore, Singapore"
 tags:
   - Gaming

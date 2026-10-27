@@ -2,6 +2,7 @@
 banner_image: 2025-08-15-featured.jpg
 layout: post
 title: "Italy, August 2025"
+format: log
 location: "Singapore, Singapore"
 destination: "Italy"
 tags:

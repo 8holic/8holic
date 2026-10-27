@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Playing The Farmer was Replaced"
+format: log
 location: "Singapore, Singapore"
 tags:
   - Gaming

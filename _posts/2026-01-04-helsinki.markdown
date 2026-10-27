@@ -2,6 +2,7 @@
 banner_image: 2026-01-04-featured.jpg
 layout: post
 title: "Finland"
+format: log
 location: "Singapore, Singapore"
 destination: "Helsinki, Finland"
 tags:

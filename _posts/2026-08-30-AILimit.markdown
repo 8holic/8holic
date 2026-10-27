@@ -1,6 +1,10 @@
 ---
 layout: post
 title: "Playing AI Limit Part 3"
+series: ai-limit
+series_part: 3
+series_title: "Playing AI Limit"
+chapter_title: "The duel boss"
 location: "Singapore, Singapore"
 tags:
   - Gaming
@@ -8,10 +12,10 @@ banner_image: 2026-08-30-featured.jpg
 featured_image_credit: "Screenshot from AI Limits at Spirit Depths."
 ---
 
-# Progression: The unlimited respec item, yay
+## Progression: The unlimited respec item, yay
 So I was exploring for more weapons and stuff when I come across the infinite Respec crystal, in contrast to other similar games this game has infinite respec which is a dream come true. I felt like more games should just do this or do away with stats altogether. Thanks to this I was able to try all sorts of weird weapons like a literal road sign, and some of the high stat spells. Thanks to this I was able to explore quite the build variety and improve my damage.
 
-# Hunter of Bladers
+## Hunter of Bladers
 Dying to her the first time gets you locked up in jail, kinda cool. Though the color palette is rather similar.
 Death:54
 The most notable thing is this boss has her own sync meter as well making this the first official duel boss, where she feels like the player character. I suspect that she is the flashback we see earlier, but it was a really challenging and fun fight. 

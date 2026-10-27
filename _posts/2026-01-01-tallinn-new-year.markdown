@@ -2,6 +2,7 @@
 banner_image: 2026-01-01-featured.jpg
 layout: post
 title: "Tallinn, Estonia, New Year"
+format: log
 location: "Singapore, Singapore"
 destination: "Tallinn, Estonia"
 tags:

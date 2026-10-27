@@ -19,10 +19,19 @@ permalink: /tags/
           <ul>
             {% for post in site.posts %}
               {% if post.tags contains tag %}
-                <li>
-                  <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-                  <span class="post-date">({{ post.date | date: "%b %d, %Y" }})</span>
-                </li>
+                {% unless post.series and post.series_part and post.series_part > 1 %}
+                  {% assign tag_title = post.title %}
+                  {% assign tag_href = post.url %}
+                  {% if post.series %}
+                    {% assign hub = site.pages | where: "series", post.series | first %}
+                    {% assign tag_title = post.series_title | default: hub.title | default: post.title %}
+                    {% assign tag_href = hub.url | default: post.url %}
+                  {% endif %}
+                  <li>
+                    <a href="{{ tag_href | relative_url }}">{{ tag_title }}</a>
+                    <span class="post-date">({{ post.date | date: "%b %d, %Y" }})</span>
+                  </li>
+                {% endunless %}
               {% endif %}
             {% endfor %}
           </ul>

@@ -1,0 +1,94 @@
+---
+layout: default
+---
+
+{% assign parts = site.posts | where: "series", page.series | sort: "series_part" %}
+{% assign series_dates = site.posts | where: "series", page.series | sort: "date" %}
+{% assign total_minutes = 0 %}
+{% for part in parts %}
+  {% assign part_words = part.content | number_of_words %}
+  {% assign part_minutes = part_words | divided_by: 180 | plus: 1 %}
+  {% assign total_minutes = total_minutes | plus: part_minutes %}
+{% endfor %}
+
+{% assign banner_file = page.banner_image | default: parts.first.banner_image %}
+{% assign has_banner = false %}
+{% if banner_file %}
+  {% assign banner_image = "/assets/images/post-photos/" | append: banner_file %}
+  {% assign has_banner = true %}
+{% endif %}
+
+<div class="banner banner--post banner--series{% unless has_banner %} banner--plain{% endunless %}">
+  {% if has_banner %}
+    <img src="{{ banner_image | relative_url }}" alt="{{ page.title }}" onerror="this.style.display='none';this.parentElement.classList.add('banner--plain');">
+  {% endif %}
+  <div class="banner-text">
+    <h1>{{ page.title }}</h1>
+    <div class="banner-meta">
+      {% if series_dates.size > 0 %}
+        {% assign first_month = series_dates.first.date | date: "%b %Y" %}
+        {% assign last_month = series_dates.last.date | date: "%b %Y" %}
+        <span class="date">{% if first_month == last_month %}{{ first_month }}{% else %}{{ first_month }} – {{ last_month }}{% endif %}</span>
+      {% endif %}
+      <span class="reading-time">{{ total_minutes }} min read</span>
+      <span class="chapters">{{ parts.size }} chapters</span>
+      {% if page.series_status %}<span class="status">{{ page.series_status }}</span>{% endif %}
+      {% if page.updated %}<span class="updated">Updated {{ page.updated | date: "%b %d, %Y" }}</span>{% endif %}
+    </div>
+  </div>
+</div>
+
+<article class="post series">
+  <div class="series-context">
+    <a href="{{ '/posts/' | relative_url }}">Blog</a>
+    <span aria-hidden="true">/</span>
+    <span>{{ page.title }}</span>
+    <span class="series-context-meta">· {{ page.format | default: "Log" | capitalize }}</span>
+  </div>
+
+  {% assign series_tags = page.tags | default: parts.first.tags %}
+  {% if series_tags %}
+    <div class="post-tags">
+      <strong>Tags:</strong>
+      {% for tag in series_tags %}
+        <a href="{{ '/tags/' | relative_url }}#{{ tag | slugify }}" class="tag">{{ tag }}</a>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  {% if page.description %}
+    <p class="series-lead">{{ page.description }}</p>
+  {% endif %}
+
+  {% if parts.size > 0 %}
+    <nav class="series-toc" aria-label="Chapters">
+      <h2>Chapters</h2>
+      <ol>
+        {% for part in parts %}
+          {% assign part_words = part.content | number_of_words %}
+          <li>
+            <a href="#part-{{ part.series_part }}">
+              <span class="chapter-title">{{ part.chapter_title | default: part.title }}</span>
+              <span class="chapter-meta">{{ part.date | date: "%b %d" }} · {{ part_words | divided_by: 180 | plus: 1 }} min</span>
+            </a>
+          </li>
+        {% endfor %}
+      </ol>
+    </nav>
+
+    {% for part in parts %}
+      <section class="series-chapter" id="part-{{ part.series_part }}">
+        <header class="series-chapter-head">
+          <p class="eyebrow">Part {{ part.series_part }} of {{ parts.size }} · {{ part.date | date: "%B %d, %Y" }}</p>
+          <h2><a href="{{ part.url | relative_url }}">{{ part.chapter_title | default: part.title }}</a></h2>
+        </header>
+        <div class="series-chapter-body post-content">
+          {{ part.content }}
+        </div>
+        <p class="series-back"><a href="#top">Back to top ↑</a></p>
+      </section>
+    {% endfor %}
+  {% else %}
+    <p class="series-lead">No chapters have been published yet.</p>
+  {% endif %}
+</article>

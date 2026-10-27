@@ -406,7 +406,9 @@ h2 {
   }
 
   .tag-filter-btn,
-  .post-filter-clear {
+  .format-filter-btn,
+  .post-filter-clear,
+  .format-filter-clear {
     border: 1px solid $border-color;
     border-radius: 999px;
     background: transparent;
@@ -423,8 +425,15 @@ h2 {
     }
   }
 
-  .post-filter-clear {
+  .post-filter-clear,
+  .format-filter-clear {
     white-space: nowrap;
+  }
+
+  .post-filter-section + .post-filter-section {
+    margin-top: 1.25rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(93, 53, 135, 0.35);
   }
 
   .post-filter-empty {
@@ -555,6 +564,11 @@ th, td {
 .post-content h1,
 .post-content h2 {
   scroll-margin-top: 1rem;
+}
+
+.post-content h1:first-child,
+.post-content h2:first-child {
+  margin-top: 0;
 }
 
 .post-content iframe {
@@ -897,4 +911,199 @@ section { padding: 5rem clamp(1rem, 5vw, 2.5rem); }
     linear-gradient(160deg, #120c24, #1e1436 60%, #120c24);
 
   &::before { display: none; }
+}
+// ============================================================
+// SERIES
+// ============================================================
+.banner--series .banner-meta > span + span::before {
+  content: "·";
+  margin-right: 0.5rem;
+  opacity: 0.6;
+}
+
+.series-lead {
+  color: $text-muted;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.series-toc {
+  border: 1px solid rgba(93, 53, 135, 0.5);
+  border-radius: var(--radius);
+  background: var(--surface);
+  padding: 1.2rem 1.4rem;
+
+  h2 {
+    margin: 0 0 0.8rem;
+    font-size: 1.1rem;
+    color: var(--accent-light);
+    border-bottom: none;
+  }
+
+  ol {
+    margin: 0;
+    padding-left: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+
+  li {
+    color: $text-muted;
+  }
+
+  a {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    color: $text-light;
+    text-decoration: none;
+
+    &:hover {
+      color: var(--accent);
+    }
+  }
+
+  .chapter-meta {
+    color: $text-muted;
+    font-size: 0.8rem;
+    white-space: nowrap;
+  }
+}
+
+.series-chapter {
+  border-top: 1px solid rgba(93, 53, 135, 0.5);
+  padding-top: 2rem;
+
+  &:first-of-type {
+    border-top: none;
+    padding-top: 0;
+  }
+}
+
+.series-chapter-head {
+  margin-bottom: 1.2rem;
+
+  .eyebrow {
+    color: var(--accent);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.35rem;
+  }
+
+  h2 {
+    margin: 0;
+    font-size: 1.7rem;
+    line-height: 1.25;
+
+    a {
+      color: $text-light;
+      text-decoration: none;
+
+      &:hover {
+        color: var(--accent);
+      }
+    }
+  }
+}
+
+.series-chapter-body {
+  h1 {
+    font-size: 1.4rem;
+    border-bottom: none;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+    margin-top: 2rem;
+  }
+
+  h2:first-child {
+    margin-top: 0;
+  }
+}
+
+.series-back {
+  text-align: right;
+  font-size: 0.85rem;
+  margin-top: 1rem;
+
+  a {
+    color: $text-muted;
+    text-decoration: none;
+
+    &:hover {
+      color: var(--accent-light);
+    }
+  }
+}
+
+.series-context {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 0.75rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(93, 53, 135, 0.5);
+  border-radius: var(--radius);
+  background: var(--surface);
+  font-size: 0.85rem;
+  color: $text-muted;
+
+  a {
+    color: var(--accent);
+    text-decoration: none;
+
+    &:hover {
+      color: var(--accent-light);
+    }
+  }
+
+  .series-full-link {
+    margin-left: auto;
+    font-weight: 600;
+  }
+}
+
+.series-pager {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  margin: 0;
+
+  .btn {
+    font-size: 0.85rem;
+  }
+}
+
+.post-preview.series-preview .post-meta,
+.post-card.series-preview .meta {
+  color: var(--accent);
+}
+
+.post-kicker {
+  color: var(--accent);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.2rem;
+}
+
+@media (max-width: 600px) {
+  .series-toc a {
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .series-toc .chapter-meta {
+    white-space: normal;
+  }
+
+  .series-context .series-full-link {
+    margin-left: 0;
+  }
 }

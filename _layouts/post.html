@@ -17,6 +17,17 @@ layout: default
   {% assign has_banner = true %}
 {% endif %}
 
+{% if page.series %}
+  {% assign series_parts = site.posts | where: "series", page.series | sort: "series_part" %}
+  {% assign series_hub = site.pages | where: "series", page.series | first %}
+  {% assign series_format = series_hub.format | default: "Log" %}
+  {% assign series_hub_url = "/series/" | append: page.series | append: "/" %}
+  {% assign series_index = 0 %}
+  {% for part in series_parts %}
+    {% if part.url == page.url %}{% assign series_index = forloop.index0 %}{% endif %}
+  {% endfor %}
+{% endif %}
+
 <div class="banner banner--post{% unless has_banner %} banner--plain{% endunless %}">
   {% if has_banner %}
     <img src="{{ banner_image | relative_url }}" alt="{{ page.title }}" onerror="this.style.display='none';this.parentElement.classList.add('banner--plain');">
@@ -35,6 +46,9 @@ layout: default
       <span class="reading-time">
         📖 {% assign words = content | number_of_words %}{{ words | divided_by: 180 | plus: 1 }} min read
       </span>
+      {% unless page.collection == "projects" or page.series %}
+        <span class="format">{{ page.format | default: "Log" | capitalize }}</span>
+      {% endunless %}
     </div>
   </div>
 </div>
@@ -44,6 +58,16 @@ layout: default
 {% endif %}
 
 <article class="post">
+  {% if page.series %}
+    <div class="series-context">
+      <a href="{{ '/posts/' | relative_url }}">Blog</a>
+      <span aria-hidden="true">/</span>
+      <a href="{{ series_hub_url | relative_url }}">{{ page.series_title | default: page.title }}</a>
+      <span class="series-context-meta">· Part {{ page.series_part }} of {{ series_parts.size }} · {{ series_format | capitalize }}</span>
+      <a class="series-full-link" href="{{ series_hub_url | relative_url }}">Read the full essay →</a>
+    </div>
+  {% endif %}
+
   {% if page.tags %}
     <div class="post-tags">
       <strong>Tags:</strong>
@@ -56,4 +80,18 @@ layout: default
   <div class="post-content">
     {{ content }}
   </div>
+
+  {% if page.series %}
+    <nav class="series-pager" aria-label="Series navigation">
+      {% if series_index > 0 %}
+        {% assign prev_index = series_index | minus: 1 %}
+        <a class="btn" href="{{ series_parts[prev_index].url | relative_url }}">← {{ series_parts[prev_index].chapter_title | default: series_parts[prev_index].title }}</a>
+      {% endif %}
+      <a class="btn solid" href="{{ series_hub_url | relative_url }}">Full essay</a>
+      {% assign next_index = series_index | plus: 1 %}
+      {% if next_index < series_parts.size %}
+        <a class="btn" href="{{ series_parts[next_index].url | relative_url }}">{{ series_parts[next_index].chapter_title | default: series_parts[next_index].title }} →</a>
+      {% endif %}
+    </nav>
+  {% endif %}
 </article>

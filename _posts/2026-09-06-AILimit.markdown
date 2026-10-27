@@ -1,6 +1,10 @@
 ---
 layout: post
-title: "Playing AI Limit Part 5(DLC)"
+title: "Playing AI Limit Part 5: DLC"
+series: ai-limit
+series_part: 5
+series_title: "Playing AI Limit"
+chapter_title: "The DLC"
 location: "Singapore, Singapore"
 tags:
   - Gaming
@@ -8,7 +12,7 @@ banner_image: 2026-09-06.jpg
 
 ---
 
-# DLC roguelite 
+## DLC roguelite
 So I cleared a good part of the DLC up to the second time up to Eirene boss fight. I was extremely surprised we have a roguelite mode in well a soulslike, but I guess Elden Ring also did it. 
 
 How it works is that there is an initial linear stage, selected randomly between two different layouts. The enemies are usually the same with the exception of a few rooms that have 2 choices. After this segment, there are a few maps of pseudo open world where the player can choose the order to tackle the enemies. Each zone has a symbol showing the specific rewards they give.

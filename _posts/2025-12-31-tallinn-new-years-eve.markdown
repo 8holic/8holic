@@ -2,6 +2,7 @@
 banner_image: 2025-12-31-featured.jpg
 layout: post
 title: "Tallinn, Estonia"
+format: log
 location: "Singapore, Singapore"
 destination: "Tallinn, Estonia"
 tags:

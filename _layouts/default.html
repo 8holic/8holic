@@ -33,13 +33,15 @@
   </main>
 
   <footer class="site-footer">
-    {% if page.previous or page.next %}
-      <nav class="post-nav">
-        {% if page.previous %}<a class="btn" href="{{ page.previous.url | relative_url }}">← {{ page.previous.title | truncate: 24 }}</a>{% endif %}
-        <a class="btn" href="#top">Top</a>
-        {% if page.next %}<a class="btn" href="{{ page.next.url | relative_url }}">{{ page.next.title | truncate: 24 }} →</a>{% endif %}
-      </nav>
-    {% endif %}
+    {% unless page.series %}
+      {% if page.previous or page.next %}
+        <nav class="post-nav">
+          {% if page.previous %}<a class="btn" href="{{ page.previous.url | relative_url }}">← {{ page.previous.title | truncate: 24 }}</a>{% endif %}
+          <a class="btn" href="#top">Top</a>
+          {% if page.next %}<a class="btn" href="{{ page.next.url | relative_url }}">{{ page.next.title | truncate: 24 }} →</a>{% endif %}
+        </nav>
+      {% endif %}
+    {% endunless %}
     <div class="footer-contact">
       <a href="mailto:{{ site.author.email }}">Email</a>
       <a href="{{ site.author.github }}">GitHub</a>

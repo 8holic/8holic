@@ -2,6 +2,7 @@
 banner_image: 2025-11-09-featured.jpg
 layout: post
 title: "Lisbon"
+format: log
 location: "Singapore, Singapore"
 destination: "Lisbon, Portugal"
 tags:

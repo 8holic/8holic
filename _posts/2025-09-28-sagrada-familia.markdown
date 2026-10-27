@@ -2,6 +2,7 @@
 banner_image: 2025-09-28-featured.jpg
 layout: post
 title: "Barcelona Day 3"
+format: log
 location: "Singapore, Singapore"
 destination: "Barcelona, Spain"
 tags:

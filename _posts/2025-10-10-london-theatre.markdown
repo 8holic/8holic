@@ -2,6 +2,7 @@
 banner_image: 2025-10-10-featured.jpg
 layout: post
 title: "London Day 1"
+format: log
 location: "Singapore, Singapore"
 destination: "London, United Kingdom"
 tags:

@@ -3,6 +3,10 @@
 layout: post
 
 title: "Reading: Hoshi Ori Yume Mirai - Common Route"
+series: hoshi-ori
+series_part: 1
+series_title: "Reading: Hoshi Ori Yume Mirai"
+chapter_title: "Common Route"
 
 location: "Singapore, Singapore"
 
@@ -13,11 +17,11 @@ tags:
 
 ---
 
-# Background
+## Background
 
 It has dawned on me that I have forgotten the common route that connects all the paths, so I thought I should cover it first.
 
-# General Thoughts 
+## General Thoughts
 
 I will first talk about the first half which is introducing everyone, and the second half which is used to establish the story.
 
@@ -51,10 +55,10 @@ My biggest issue is that the choices do not feel like they matter. Early on Shin
 
 The group scenes however are great, and the conversation at the end paints a good picture of what to expect from each girl when pursuing them. All the silly games they play do help in creating the atmosphere.
 
-# Summary for the common route
+## Summary for the common route
 
 I like the establishment of all the characters, as well as the story. I will appreciate if the game is not in fear that I will miss their brilliant writing.
 
-[Sora Route]({% post_url 2026-06-12-hoshiori %})
+[Sora Route]({{ site.baseurl }}{% post_url 2026-06-12-hoshiori %})
 
-[Natsuki Route]({% post_url 2026-06-25-hoshiori %})
+[Natsuki Route]({{ site.baseurl }}{% post_url 2026-06-25-hoshiori %})

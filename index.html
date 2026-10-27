@@ -90,18 +90,28 @@ image: "/assets/images/home-banner-2.jpg"
     {% assign fp = site.posts | where: "slug", featured_slug | first %}
     {% if fp %}
       {% assign fp_date = fp.date | date: "%Y-%m-%d" %}
+      {% assign fp_href = fp.url %}
+      {% assign fp_title = fp.title %}
+      {% assign fp_format = fp.format | default: "Log" | capitalize %}
+      {% if fp.series %}
+        {% assign featured_series = fp.series %}
+        {% assign fp_hub = site.pages | where: "series", fp.series | first %}
+        {% assign fp_href = fp_hub.url | default: fp.url %}
+        {% assign fp_title = fp.series_title | default: fp_hub.title | default: fp.title %}
+        {% assign fp_format = fp_hub.format | default: "Log" | capitalize %}
+      {% endif %}
       {% if fp.banner_image %}
         {% assign fp_img = '/assets/images/post-photos/' | append: fp.banner_image %}
       {% else %}
         {% assign fp_img = '/assets/images/post-photos/' | append: fp_date | append: '-featured.jpg' %}
       {% endif %}
       <article class="featured-post">
-        <div class="thumb"><img src="{{ fp_img | relative_url }}" alt="{{ fp.title }}" onerror="this.src='{{ '/assets/images/generic-banner.jpg' | relative_url }}'"></div>
+        <div class="thumb"><img src="{{ fp_img | relative_url }}" alt="{{ fp_title }}" onerror="this.src='{{ '/assets/images/generic-banner.jpg' | relative_url }}'"></div>
         <div class="body">
-          <span class="pill">Featured · {{ fp.tags | first }}</span>
-          <h3><a href="{{ fp.url | relative_url }}">{{ fp.title }}</a></h3>
+          <span class="pill">Featured · {{ fp_format }} · {{ fp.tags | first }}</span>
+          <h3><a href="{{ fp_href | relative_url }}">{{ fp_title }}</a></h3>
           <p>{{ fp.excerpt | strip_html | truncatewords: 28 }}</p>
-          <a class="more" href="{{ fp.url | relative_url }}">Read the post →</a>
+          <a class="more" href="{{ fp_href | relative_url }}">Read the post →</a>
         </div>
       </article>
     {% endif %}
@@ -109,13 +119,36 @@ image: "/assets/images/home-banner-2.jpg"
       {% assign recent = site.posts | sort: 'date' | reverse %}
       {% assign shown = 0 %}
       {% for post in recent %}
-        {% if post.slug != featured_slug and shown < 3 %}
-          <article class="post-card{% unless post.banner_image %} no-img{% endunless %}">
-            {% if post.banner_image %}
-              <div class="thumb"><img src="{{ '/assets/images/post-photos/' | append: post.banner_image | relative_url }}" alt="{{ post.title }}" onerror="this.parentElement.remove()"></div>
+        {% if post.series and featured_series and post.series == featured_series %}
+          {% comment %}This series is already featured above.{% endcomment %}
+        {% elsif post.series and post.series_part and post.series_part > 1 %}
+          {% comment %}Chapters are shown on their series page.{% endcomment %}
+        {% elsif post.slug != featured_slug and shown < 3 %}
+          {% assign card_title = post.title %}
+          {% assign card_href = post.url %}
+          {% assign card_banner = post.banner_image %}
+          {% assign card_date = post.date | date: "%b %Y" %}
+          {% assign card_format = post.format | default: "Log" | capitalize %}
+          {% assign card_meta = card_format | append: " · " | append: card_date %}
+          {% assign primary_tag = post.tags | first %}
+          {% if post.series %}
+            {% assign hub = site.pages | where: "series", post.series | first %}
+            {% assign series_parts = site.posts | where: "series", post.series %}
+            {% assign card_title = post.series_title | default: hub.title | default: post.title %}
+            {% assign card_href = hub.url | default: post.url %}
+            {% assign card_format = hub.format | default: "Log" | capitalize %}
+            {% assign card_meta = card_format | append: " · " | append: series_parts.size | append: " chapters" %}
+            {% if primary_tag %}{% assign card_meta = card_meta | append: " · " | append: primary_tag %}{% endif %}
+            {% if hub.series_status %}{% assign card_meta = card_meta | append: " · " | append: hub.series_status %}{% endif %}
+          {% elsif primary_tag %}
+            {% assign card_meta = card_meta | append: " · " | append: primary_tag %}
+          {% endif %}
+          <article class="post-card{% unless card_banner %} no-img{% endunless %}{% if post.series %} series-preview{% endif %}">
+            {% if card_banner %}
+              <div class="thumb"><img src="{{ '/assets/images/post-photos/' | append: card_banner | relative_url }}" alt="{{ card_title }}" onerror="this.parentElement.remove()"></div>
             {% endif %}
-            <div class="meta">{{ post.date | date: "%b %Y" }}{% if post.tags.size > 0 %} · {{ post.tags | first }}{% endif %}</div>
-            <h4><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h4>
+            <div class="meta">{{ card_meta }}</div>
+            <h4><a href="{{ card_href | relative_url }}">{{ card_title }}</a></h4>
           </article>
           {% assign shown = shown | plus: 1 %}
         {% endif %}

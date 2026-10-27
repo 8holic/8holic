@@ -3,6 +3,7 @@
 layout: post
 
 title: "Reading: Atomic Habits"
+format: essay
 
 location: "Singapore, Singapore"
 

@@ -2,6 +2,7 @@
 banner_image: 2025-10-12-featured.jpg
 layout: post
 title: "British War Museum"
+format: log
 location: "Singapore, Singapore"
 destination: "London, United Kingdom"
 tags:

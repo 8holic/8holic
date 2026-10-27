@@ -2,6 +2,7 @@
 banner_image: 2025-12-22-featured.jpg
 layout: post
 title: "The End of the Exchange Reflection"
+format: essay
 location: "Singapore, Singapore"
 tags:
   - URECA

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Ace Combat 8: Detailed Thoughts"
+format: essay
 location: "Singapore, Singapore"
 tags:
   - Gaming

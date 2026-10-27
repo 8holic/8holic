@@ -2,6 +2,7 @@
 banner_image: 2025-09-16-featured.jpg
 layout: post
 title: "Segovia"
+format: log
 location: "Singapore, Singapore"
 destination: "Segovia, Spain"
 tags:
