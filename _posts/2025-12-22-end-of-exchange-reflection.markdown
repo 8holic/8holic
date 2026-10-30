@@ -5,7 +5,7 @@ title: "The End of the Exchange Reflection"
 format: essay
 location: "Singapore, Singapore"
 tags:
-  - URECA
+  - Travel
 ---
 
 # Reflection

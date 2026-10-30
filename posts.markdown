@@ -39,45 +39,41 @@ permalink: /posts/
     </div>
 
     <div class="post-list">
-      {% assign series_hubs = site.pages | where: "layout", "series" | sort: "updated" | reverse %}
-      {% for hub in series_hubs %}
-        {% assign series_parts = site.posts | where: "series", hub.series | sort: "series_part" %}
-        {% assign series_dates = site.posts | where: "series", hub.series | sort: "date" %}
-        {% assign series_minutes = 0 %}
-        {% for series_part in series_parts %}
-          {% assign part_words = series_part.content | number_of_words %}
-          {% assign part_minutes = part_words | divided_by: 180 | plus: 1 %}
-          {% assign series_minutes = series_minutes | plus: part_minutes %}
-        {% endfor %}
-        {% assign first_month = series_dates.first.date | date: "%b %Y" %}
-        {% assign last_month = series_dates.last.date | date: "%b %Y" %}
-        {% assign card_meta = series_parts.size | append: " chapters · " | append: first_month %}
-        {% if first_month != last_month %}
-          {% assign card_meta = card_meta | append: " – " | append: last_month %}
-        {% endif %}
-        {% assign card_meta = card_meta | append: " · ~" | append: series_minutes | append: " min total" %}
-        {% if hub.series_status %}
-          {% assign card_meta = card_meta | append: " · " | append: hub.series_status %}
-        {% endif %}
-        <article class="post-preview series-preview{% unless hub.image %} no-img{% endunless %}" data-tags="{% for tag in hub.tags %}{{ tag | slugify }}{% unless forloop.last %},{% endunless %}{% endfor %}" data-format="{{ hub.format | default: 'Log' | slugify }}">
-          {% if hub.image %}
-            <div class="post-thumbnail">
-              <img src="{{ hub.image | relative_url }}" alt="{{ hub.title }}">
-            </div>
-          {% endif %}
-          <div class="post-info">
-            <p class="post-kicker">Series · {{ hub.format | default: "Log" | capitalize }}</p>
-            <h3><a href="{{ hub.url | relative_url }}">{{ hub.title }}</a></h3>
-            <p class="post-meta">{{ card_meta }}</p>
-            {% if hub.description %}
-              <p>{{ hub.description | strip_html | truncatewords: 30 }}</p>
-            {% endif %}
-          </div>
-        </article>
-      {% endfor %}
-
       {% for post in posts %}
-        {% unless post.series %}
+        {% if post.series %}
+          {% assign earliest = site.posts | where: "series", post.series | sort: "date" | first %}
+          {% if post.url == earliest.url %}
+            {% assign hub = site.pages | where: "series", post.series | first %}
+            {% assign series_parts = site.posts | where: "series", post.series | sort: "series_part" %}
+            {% assign series_minutes = 0 %}
+            {% for series_part in series_parts %}
+              {% assign part_words = series_part.content | number_of_words %}
+              {% assign part_minutes = part_words | divided_by: 180 | plus: 1 %}
+              {% assign series_minutes = series_minutes | plus: part_minutes %}
+            {% endfor %}
+            {% assign series_date = post.date | date: "%b %d, %Y" %}
+            {% assign card_meta = series_parts.size | append: " chapters · " | append: series_date %}
+            {% assign card_meta = card_meta | append: " · ~" | append: series_minutes | append: " min total" %}
+            {% if hub.series_status %}
+              {% assign card_meta = card_meta | append: " · " | append: hub.series_status %}
+            {% endif %}
+            <article class="post-preview series-preview{% unless hub.image %} no-img{% endunless %}" data-tags="{% for tag in hub.tags %}{{ tag | slugify }}{% unless forloop.last %},{% endunless %}{% endfor %}" data-format="{{ hub.format | default: 'Log' | slugify }}">
+              {% if hub.image %}
+                <div class="post-thumbnail">
+                  <img src="{{ hub.image | relative_url }}" alt="{{ hub.title }}">
+                </div>
+              {% endif %}
+              <div class="post-info">
+                <p class="post-kicker">Series · {{ hub.format | default: "Log" | capitalize }}</p>
+                <h3><a href="{{ hub.url | relative_url }}">{{ hub.title }}</a></h3>
+                <p class="post-meta">{{ card_meta }}</p>
+                {% if hub.description %}
+                  <p>{{ hub.description | strip_html | truncatewords: 30 }}</p>
+                {% endif %}
+              </div>
+            </article>
+          {% endif %}
+        {% else %}
           <article class="post-preview{% unless post.banner_image %} no-img{% endunless %}" data-tags="{% for tag in post.tags %}{{ tag | slugify }}{% unless forloop.last %},{% endunless %}{% endfor %}" data-format="{{ post.format | default: 'Log' | slugify }}">
             {% if post.banner_image %}
               {% assign thumb_path = "/assets/images/post-photos/" | append: post.banner_image %}
@@ -93,7 +89,7 @@ permalink: /posts/
               {% endif %}
             </div>
           </article>
-        {% endunless %}
+        {% endif %}
       {% endfor %}
     </div>
     <p class="post-filter-empty" hidden>No posts match those filters.</p>

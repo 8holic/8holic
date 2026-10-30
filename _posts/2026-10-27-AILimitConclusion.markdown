@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "AI Limit: Detailed Thoughts and my struggle to play NG_+"
+title: "AI Limit: Detailed Thoughts and my struggle to play NG+"
 format: essay
 location: "Singapore, Singapore"
 tags:

@@ -1107,3 +1107,79 @@ section { padding: 5rem clamp(1rem, 5vw, 2.5rem); }
     margin-left: 0;
   }
 }
+
+// ============================================================
+// CODE BLOCKS & SYNTAX HIGHLIGHTING (Rouge / kramdown)
+// ============================================================
+.post-content {
+  pre {
+    margin: 1.25rem 0;
+    padding: 1rem 1.1rem;
+    background: #14101f;
+    border: 1px solid $border-color;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    -webkit-overflow-scrolling: touch;
+
+    code {
+      padding: 0;
+      background: none;
+      border: none;
+      color: #e8e3f2;
+      font-size: inherit;
+      white-space: pre;
+    }
+  }
+
+  code {
+    padding: 0.1em 0.35em;
+    background: rgba($accent, 0.15);
+    border: 1px solid rgba($accent, 0.25);
+    border-radius: 4px;
+    color: $accent-light;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 0.85em;
+  }
+
+  // Wrapper Rouge emits around fenced code blocks
+  .highlight {
+    margin: 1.25rem 0;
+    background: #14101f;
+    border: 1px solid $border-color;
+    border-radius: 8px;
+    overflow: hidden;
+
+    pre {
+      margin: 0;
+      border: none;
+      border-radius: 0;
+      background: transparent;
+    }
+
+    // Add {: .solution } after a fenced block to flag it as a submitted answer
+    &.solution {
+      border-left: 4px solid $accent-light;
+    }
+  }
+}
+
+// Rouge token palette
+.highlight {
+  .c, .c1, .cm, .cs, .cp, .ch { color: #7d7396; font-style: italic; }
+  .k, .kc, .kd, .kn, .kp, .kr, .kt { color: #d18be0; }
+  .s, .sa, .sb, .sc, .sd, .se, .sh, .si, .sr, .ss, .sx,
+  .s1, .s2, .dl { color: #9edc9a; }
+  .m, .mb, .mf, .mh, .mi, .mo, .mx, .il { color: #ffc19e; }
+  .nf, .fm { color: #8fb8ff; }
+  .nc, .nd, .ne, .nn { color: #ffd479; }
+  .nb, .bp { color: #9ad7e0; }
+  .o, .ow { color: #ff9ec4; }
+  .p { color: #cfc9dd; }
+  .n, .na, .ni, .nl, .nt, .nv, .nx, .py { color: #e8e3f2; }
+  .gd { color: #ff9ec4; }
+  .gi { color: #9edc9a; }
+  .gh, .gu { color: #9ad7e0; }
+  .err { color: #ff6b6b; }
+}

@@ -5,7 +5,7 @@ title: "Orientation"
 format: log
 location: "Singapore, Singapore"
 tags:
-  - URECA
+  - Travel
 ---
 
 # Overview
