@@ -1,0 +1,50 @@
+---
+layout: post
+title: "PSN4"
+format: log
+location: "Singapore, Singapore"
+tags:
+  - YouthNetwork
+---
+
+# A "Pumpkin Samurai" Game
+You can have a go at the game before reading the blog.
+URL to the game:https://8holic.github.io/YN_FruitNinja/
+
+# Motivation
+As part of the theme, Old School Horror, I was told to support the event with the 3D Printer as well as the engagement. When designing this I knew from experience that there are some criteria to this. 
+
+For the previous year, we did a quiz about the Youth Network via google forms, while we see a modest success we realize that it is not really engaging and the audience get frustrated  easily and ask us for the answer. The Second issue is that since answering the quiz ensures a prize, we actually ran out of 3D Prints before the end of the event for both days.
+
+Henceforth when asked to "figure out an engagement", we end up with several issues. The first is that since there are a lot of participants, we anticipate that there will not be enough 3D Printed gifts for everyone. The second is that because I was changing prints for quantity as the event gets closer, we end up with a variety of 3D Prints.
+
+# Design Choices
+I decided on a fruit ninja inspired game because of its release date being close to 10 years ago, fitting the whole old school theme. Some of the more impactful elements such as "blood" from the things that are sliced makes it feel more impactful. There are quite aa few adjustment that is made for the balance. Some of the fundamental decisions will be the usage of a Pumpkin for +6, a Candy for +12 and a Skull for -9 points.
+In the original Fruit Ninja there is a focus on a combo, which I decide not to use because I realize that it is signficantly more difficult to track users fingers. Especially as we are making use of a Kiosk screen,which is giant in comparsion. I anticipate that childrens might use both fingers to cut through the screen, so I decide to use a multiplier instead, the multiplier increases if they keep cutting pumpkins,while it drops by one if someone hits a skull.
+While the original Fruit Ninja uses a bomb to cut short the game, due to the fact that this is a booth that requires queueing, I decided not to do that instead. Instead slicing the bones produce a terrifying scream(RIP to my throat and whomever that heard it) and drops the multiplier.
+Finally I was deliberating using a Python script compared to a webpage, I ultimately went with a webpage as I was informed that there are two devices that need to run the game, and it will be more troublesome to run two python script for two screen at the same time compared to having each of them open up a browser.
+
+# Iteration 1
+Iteration 1 is a prototype that shows that it can be done, it features the full game, a 50 division bar that increase the multpiler, as well as a gradually esclating game. The spawn will start at 1 per wave at the first 10 second, then 3 per wave for the next 30 second and 5 per wave. At the end of the game, they will get a score and a scoreboard for them to submit to.
+The first thing I noticed is that using true random makes the game unfun to play. Initally I coded the bones to spawn at a chance of 0.18, and to max out at 5 items thrown in the air. However I soon realize that sometimes via pure luck the game just throws 5 bones leaving the player with nothing to do but to wait.
+This approach also gives the user their score and a prompt to submit a leaderboard, however looking at acrades I notice that people do not really care about the scoreboard and it just delays the queue. This approach also means that the in charge of the booth needs to look at the score and decide the prize. As the volunteer managing the booth is usually younger than the participants, I was really concerned about the possibility that the participants will dispute with the score.
+So with these in mind, I worked on iteration two. From here on ?kiosk is used for iteration 2 onwards.
+# Iteration 2
+Iteration 2 adjust the odds such that there is a cap of 2 skulls at any time, so the player always have something to do. From my testing this gives me less downtime as I decide and try to determine a high score. The final approach now also let the device show thw prize they receive. Essentially there is a hidden score amount where if they get below this score, the chance of a prize is 0, but above the threshold, there is a 50% chance for common prizes, 30% chance for rare prizes, 18% chance for epic prizes and 2% chance from unique prizes.
+With Iteration 2, I have something presentable but when I showed it to my friends I notice that some people don't know how to play the game. There is also the issue of the top bar not being very exciting due to how slow it raises,finally in terms of the prize systems I realize that a hardcoded threshold might not be the best as the developer, I can consistently score above 1500 which I am unsure if the paraticipants are able to.
+With 1 week left ,I work on Iterataion 3
+# Iteration 3
+I had hopes that this is the final iteration , it make use of firebase to manipulate the odds and the threshold so I can update the score without commiting new code during the event. From this point onwards most of the things left are minor polishes, for example using 10 divisions of bars that seems to overlap instead of 50 divisions so it actually go up, adding color to the prizes to generate excitement, and creating a ?kiosk2 version that works with cookies only, in case something happen to the database.
+Now that we have dealt with a lot of concerns, we arrive at the event day
+# Event Day Observation 
+The game is now as demonstrated in the above link, instead of tapping they now start the game by slicing the first pumpkin, and they slice their prizes as well whcih stay for a few seconds before a tap brings them back. Some blade trails were added to make the slice seems more powerful, and the ratio and scale of the items are adjusted such that it works on the kiosk.
+## What happened on the day itself
+Reporting the raw statistics first, we see roughly 207 games within 4 hours from 5.30pm to 9.30pm and the final game ends at 9.44pm, with a 65% win rate. Additionally the booth was very active, and the queue for the booth was never depleted. I was managing all the games booth in general so I didn't have the time to helicopter over my game, but the queue suggest I was doing something right.
+Observations also suggest that the prize system of different rarity seems to have less impact than expected as we kinda forget to announce it is randomized. There was a concern of kids throwing tantrums over not winning anything due to a low score, however this was not observed during the event itself. It seems that among the younger kids they seems to understand the rarity system better and there is some buzz whenever someone wins an Epic Prize.
+In terms of live intervention, the score threshold was adjusted from 750 to 1000 and finally 1250 based on the feedback of the volunteer manning the booth, 1250 was the sweet spot where most are able to do well, in fact the win rate was a lot lower than I anticipated compared the commotion observed at the booth.. The rarity was also adjusted as well, if people keep getting common the chances for common is greatly reduced, it is observed that this has the intended impact as people peek over to see what their peers get.
+Overall I am very happy with how the booth turn out, it is a great success and the most popular game by far. Now to cover the issues we faced...
+## Issues observed
+While I anticipate people using two fingers to essentially use two blades, a significantly large portion of people are using all 10 fingers to slash the fruits, which is not an optimal strategy as it leave little room to dodge the bones. However the audio feedback and the visual feedback of the pumpkin being sliced in ha lf seems to be sufficiently to keep people engaged. The reason this is an issue is because it ends up lagging the game, which is not optimal. Thankfully the bnowser never crashed, but this needs to be taken in consideration in the future.
+The second is more on the information front, but we should have informed the users of the potential rarity. I observed that the participants don't exactly know how good is "rare" or other rarity of prizes if they arent exposed to it beforehand. I overheard the crowd speculating as well about if the prize is randomized and what are the possible tiers. While there is no need to disclouse the odds to them(By the last hour of the carnival, common odds is at 2% compared to rare at 58%, Epic at 35% and Unique at 5%), knowing the rarity they can make assumptions based on the words instead of guessing.
+# Conclusion
+Overall I believe this project was a success, we will be able to reuse this game for future event by editing the graphics, however I will need to polish up on the lag issues as well as the odds disclosure to build up hype among the crowd.
