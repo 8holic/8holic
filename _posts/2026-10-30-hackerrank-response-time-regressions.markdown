@@ -3,6 +3,7 @@ layout: post
 title: "HackerRank: Counting Response-Time Regressions"
 format: log
 location: "Singapore, Singapore"
+featured_image_override: "/assets/images/2026-10-30-hackerrank-banner.svg"
 tags:
   - HackerRank
 ---

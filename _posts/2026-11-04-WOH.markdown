@@ -1,0 +1,72 @@
+---
+layout: post
+title: "World of Horror: Figuring out Ghost Combat"
+format: log
+location: "Singapore, Singapore"
+tags:
+  - WorldOfHorror
+---
+
+# Back in the World of Horror
+World of Horror is a roguelite game inspired by H.P. Lovecraft and Junji Ito. Where the player needs to attempt to go through mysteries. One segment of combat is ghost combat, where the player must perform a ritual consisting of 5 actions, a mix of clap or bows. Now obviously the player will want to guess the sequence as soon as possible as the ghost will still be damaging the player. Additionally the sequence is the same for the entire playthrouh, so there is great incentive to figure out early against weaker ghost that maybe deal 1 damage than scrambling to figure this out against a ghost that deal 4 damage. I decided to write this to figure out for myself what exactly is the best solution and why it works.
+
+For our purpose, claps will be defined as 0 and bows as 1
+
+# Case 1: 5 Correct/0 Correct
+We will start with 00000 just to find out how much is in each sequence, this is the easy part. Now the difficult part is what do I do with this information. Obviously the best case is that the answer is 00000, then we just solve the mystery. The second best case is that we got none correct, since that will means the answer is 11111. However what if it is anything inbetween.
+
+# Case 1: 4 Correct/1 Correct
+In this case we know that there is only 1 Clap or Bow respectively and we need to determine its location. For the purpose of this discussion I will exclusively discuss 1 Clap since the other view is the same. There are 5 possibilities left in this case.
+
+## Why Linear Search is bad
+Instinctively how I did it was to rotate the position, 10000, then 01000 and so on. This will solve the mystery, but the worst cause of 00001 means that we would have taken 6 turns to solve this.
+## The Underlining logic
+A potential approach is to increase the number of bows we insert, since we know for a fact there is only 1 clap, this allows us to quickly determine how many is correct. If we use 11000 and we get the information that there is 3 correct, we know for a fact that the bow must be located among one of the 0, hastening the search. However if we get that 4 is correct,then bow is among the first two.
+We can expand this and do 11100 as well. If we use 11100, we get two outcome
+## 3 Correct
+This will suggest the Bow is among the first three, whereas we will need to guess one by one. At max 3 more guesses will be needed to solve the problem. This gives us a worst case of 5 turns
+## 2 Correct
+This suggests that the Bow is NOT among the first 3, so it is among the last 2. At max 2 more guesses will be needed to solve the problem. The Worst Case in this suitation will be 4 turns.
+
+Now obviously this is slower if the answer is actually 10000, but it avoids the dreaded 6 turns worst case solve if we match one by one.
+
+# Case 2: 2/3 Correct
+Now this is the most complicated version, since this leave the most possibilities on the board at 10 possibilities. The underlining logic is the same, just swapping Bow and Clap. For our purpose we will talk about 2 correct, so 2 claps and 3 bows.
+
+In order to determine the location of the 2 claps, we can attempt to start inserting them inside the sequence. It will be great if we can reuse the previous sequences so there is less things to memorize. So lets try 11100. Since we know for a fact that there are 2 claps and 3 bows, this are the cases we can expect.
+## 1 Correct
+The information this tells us is that the Bow is located among one of the first three spots, as well as that the clap is not located at the back. This is actually close to the best possible case. After this we know the solution must be as following:
+XXX11, where X is what we do not know. Now we have 2 clap and 1 bow to slot in. Where at this point the best logic is probably brute force.
+
+I initially decided to attempt to see if a shortcut can be used, since we know there must be two clap. However the fact we must put in the bow means that there is no way to make a null slot, so if we attempt 00111, and the correct sequence is actually 01011, we will get that there is 3 correct. However this does not tell the player which one is correct, due to this ambiguity, trying out aLL possible remaining combination 00111,01011,10011 is the best case in a 5 turn solve.
+## 3 Correct
+This is the case I struggle to understand. However, we know at this point there is 2 claps and 3 bows.
+We can discount the possibility that the 3 bows are in the correct location because this will necessate that the last 2 are claps, which will lead to solving the case. It is also impossible for all 3 bows to be at the wrong location, since we have determined there is at least 3 bows. Thus it must be true that 2 bows are in the first 3 position and that 1 clap is in the incorrect position. 
+The next step will be determining where are the two clap. The important thing here is that because it is binary, flipping one number tell us more than it would otherwise. At this point lets map out all possibility
+
+FIrst 3 sequence: 011|101|110
+Last 2 sequence: 10|01
+
+This leave us with 6 combinations essentially. We are at 3 steps here and we ideally want to ensure that the next search is as discrete as possible. I thought about it alot but end up brute forcing it.
+01110,10110,11010 and 01101,10101,11001 are the remaining possible answer.
+
+Since we already know the discrete possiblity, which one we choose does not actually matter. LEts say I try 01110, if we get 3 correct, the only remaining possible candidate are 10110 and 11010. In any case if we get 3 correct, 10110 11010 01101 are the possiblity
+### 1 Correct
+If we get 1 correct, 10101,11001 are what is left. 
+
+In teh case of 1 correct, the worst possible solve is 5 turns as we need to guess each of the two possiblity
+
+### 3 Correct
+Now this is an issue since we have 10110,11010 and 01101 left. As we can see, 3 correct does not establish if the claps are in the correct position, or if the bows are in the correct location. However we note that out of the remaining, two of them have a simillar clap position. Henceforth the best possible guess in this case will be either 11010 or 10110. If we guess 10110 and we get 3 correct ,we know for a fact that 11010 is correct. While if we get 1 correct we know for a fact that 01101 MUST be correct
+
+In the best case suitation we can solve a ghost fight in 5 turns using some math.
+
+# Conclusion
+Via the power of math and probabiltiy, we are able to achieve better than random guessing for this ghost combat. It is not very initutive to resolve through, and feels a little out of the way compared to other techniques.
+
+
+
+
+
+
+

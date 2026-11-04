@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-label="A code editor torn in half, with HackerRank log text">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a0a1a"/>
+      <stop offset="0.55" stop-color="#1a1430"/>
+      <stop offset="1" stop-color="#2a1a3f"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.62" cy="0.42" r="0.55">
+      <stop offset="0" stop-color="#00ea64" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#00ea64" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="panelL" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#241c3d"/>
+      <stop offset="1" stop-color="#171128"/>
+    </linearGradient>
+    <linearGradient id="panelR" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2a2046"/>
+      <stop offset="1" stop-color="#191231"/>
+    </linearGradient>
+    <linearGradient id="tear" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffd1e3"/>
+      <stop offset="0.5" stop-color="#a367b1"/>
+      <stop offset="1" stop-color="#00ea64"/>
+    </linearGradient>
+    <pattern id="dots" width="40" height="40" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.4" fill="#ffffff" fill-opacity="0.05"/>
+    </pattern>
+    <filter id="blur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="10"/>
+    </filter>
+    <clipPath id="leftClip">
+      <path d="M400 230 H770 L735 290 L765 350 L725 410 L758 470 L722 530 L752 590 L718 670 H400 Q360 670 360 630 V270 Q360 230 400 230 Z"/>
+    </clipPath>
+    <clipPath id="rightClip">
+      <path d="M875 210 L905 270 L875 330 L908 390 L878 450 L912 510 L882 570 L915 650 H1180 Q1220 650 1220 610 V250 Q1220 210 1180 210 Z"/>
+    </clipPath>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <rect width="1600" height="900" fill="url(#dots)"/>
+  <rect width="1600" height="900" fill="url(#glow)"/>
+
+  <text x="80" y="112" font-family="'Segoe UI', Arial, sans-serif" font-size="26" font-weight="600" letter-spacing="8" fill="#00ea64" fill-opacity="0.9">HACKERRANK &#183; LOG 01</text>
+  <text x="82" y="152" font-family="'Segoe UI', Arial, sans-serif" font-size="20" letter-spacing="2" fill="#cfc9dd" fill-opacity="0.75">picking up the pieces after the interview</text>
+
+  <!-- torn editor: left half -->
+  <g>
+    <path d="M400 230 H770 L735 290 L765 350 L725 410 L758 470 L722 530 L752 590 L718 670 H400 Q360 670 360 630 V270 Q360 230 400 230 Z" fill="url(#panelL)" stroke="#5d3587" stroke-width="2"/>
+    <g clip-path="url(#leftClip)">
+      <rect x="410" y="300" width="200" height="14" rx="7" fill="#a367b1" fill-opacity="0.85"/>
+      <rect x="410" y="338" width="290" height="14" rx="7" fill="#d18be0" fill-opacity="0.8"/>
+      <rect x="410" y="376" width="150" height="14" rx="7" fill="#00ea64" fill-opacity="0.55"/>
+      <rect x="410" y="414" width="250" height="14" rx="7" fill="#a367b1"/>
+      <rect x="410" y="452" width="180" height="14" rx="7" fill="#ffd1e3" fill-opacity="0.6"/>
+      <rect x="410" y="490" width="300" height="14" rx="7" fill="#a367b1"/>
+      <rect x="410" y="528" width="120" height="14" rx="7" fill="#d18be0"/>
+      <rect x="410" y="566" width="230" height="14" rx="7" fill="#a367b1"/>
+      <rect x="410" y="604" width="170" height="14" rx="7" fill="#00ea64" fill-opacity="0.5"/>
+    </g>
+  </g>
+
+  <!-- torn editor: right half -->
+  <g>
+    <path d="M875 210 L905 270 L875 330 L908 390 L878 450 L912 510 L882 570 L915 650 H1180 Q1220 650 1220 610 V250 Q1220 210 1180 210 Z" fill="url(#panelR)" stroke="#5d3587" stroke-width="2"/>
+    <g clip-path="url(#rightClip)">
+      <text x="1040" y="505" text-anchor="middle" font-family="Consolas, 'Courier New', monospace" font-size="190" font-weight="700" fill="#00ea64" fill-opacity="0.8">&lt;/&gt;</text>
+      <rect x="930" y="590" width="210" height="12" rx="6" fill="#a367b1" fill-opacity="0.6"/>
+    </g>
+  </g>
+
+  <!-- the tear -->
+  <path d="M780 220 L745 285 L772 345 L735 405 L768 465 L732 525 L762 585 L728 665" fill="none" stroke="#a367b1" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" opacity="0.5" filter="url(#blur)"/>
+  <path d="M780 220 L745 285 L772 345 L735 405 L768 465 L732 525 L762 585 L728 665" fill="none" stroke="url(#tear)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- debris -->
+  <g fill="#ffd1e3">
+    <rect x="800" y="300" width="10" height="10" transform="rotate(28 805 305)" opacity="0.8"/>
+    <rect x="742" y="430" width="8" height="8" transform="rotate(-18 746 434)" opacity="0.7"/>
+    <rect x="792" y="540" width="12" height="12" transform="rotate(40 798 546)" opacity="0.75"/>
+    <rect x="708" y="600" width="7" height="7" transform="rotate(12 711 603)" opacity="0.6"/>
+  </g>
+  <g fill="#00ea64">
+    <circle cx="820" cy="250" r="3" opacity="0.9"/>
+    <circle cx="700" cy="380" r="2.5" opacity="0.8"/>
+    <circle cx="835" cy="620" r="3" opacity="0.85"/>
+  </g>
+</svg>
