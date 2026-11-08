@@ -25,7 +25,6 @@ document.addEventListener('DOMContentLoaded', function () {
         const matches = (activeTag === 'all' || cardTags.includes(activeTag))
           && (activeFormat === 'all' || cardFormat === activeFormat);
         card.hidden = !matches;
-        card.classList.toggle('is-hidden', !matches);
         if (matches) visibleCount += 1;
       });
       if (emptyState) emptyState.hidden = visibleCount !== 0;
@@ -45,13 +44,4 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
   }
-
-  // ---- Series chapter anchor isolation ----
-  document.querySelectorAll('.series-chapter').forEach((chapter) => {
-    const body = chapter.querySelector('.series-chapter-body');
-    if (!body) return;
-    body.querySelectorAll('[id]').forEach((element) => {
-      element.id = `${chapter.id}-${element.id}`;
-    });
-  });
 });

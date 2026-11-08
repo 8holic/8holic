@@ -40,56 +40,21 @@ permalink: /posts/
 
     <div class="post-list">
       {% for post in posts %}
-        {% if post.series %}
-          {% assign earliest = site.posts | where: "series", post.series | sort: "date" | first %}
-          {% if post.url == earliest.url %}
-            {% assign hub = site.pages | where: "series", post.series | first %}
-            {% assign series_parts = site.posts | where: "series", post.series | sort: "series_part" %}
-            {% assign series_minutes = 0 %}
-            {% for series_part in series_parts %}
-              {% assign part_words = series_part.content | number_of_words %}
-              {% assign part_minutes = part_words | divided_by: 180 | plus: 1 %}
-              {% assign series_minutes = series_minutes | plus: part_minutes %}
-            {% endfor %}
-            {% assign series_date = post.date | date: "%b %d, %Y" %}
-            {% assign card_meta = series_parts.size | append: " chapters · " | append: series_date %}
-            {% assign card_meta = card_meta | append: " · ~" | append: series_minutes | append: " min total" %}
-            {% if hub.series_status %}
-              {% assign card_meta = card_meta | append: " · " | append: hub.series_status %}
-            {% endif %}
-            <article class="post-preview series-preview{% unless hub.image %} no-img{% endunless %}" data-tags="{% for tag in hub.tags %}{{ tag | slugify }}{% unless forloop.last %},{% endunless %}{% endfor %}" data-format="{{ hub.format | default: 'Log' | slugify }}">
-              {% if hub.image %}
-                <div class="post-thumbnail">
-                  <img src="{{ hub.image | relative_url }}" alt="{{ hub.title }}">
-                </div>
-              {% endif %}
-              <div class="post-info">
-                <p class="post-kicker">Series · {{ hub.format | default: "Log" | capitalize }}</p>
-                <h3><a href="{{ hub.url | relative_url }}">{{ hub.title }}</a></h3>
-                <p class="post-meta">{{ card_meta }}</p>
-                {% if hub.description %}
-                  <p>{{ hub.description | strip_html | truncatewords: 30 }}</p>
-                {% endif %}
-              </div>
-            </article>
-          {% endif %}
-        {% else %}
-          <article class="post-preview{% unless post.banner_image %} no-img{% endunless %}" data-tags="{% for tag in post.tags %}{{ tag | slugify }}{% unless forloop.last %},{% endunless %}{% endfor %}" data-format="{{ post.format | default: 'Log' | slugify }}">
-            {% if post.banner_image %}
-              {% assign thumb_path = "/assets/images/post-photos/" | append: post.banner_image %}
-              <div class="post-thumbnail">
-                <img src="{{ thumb_path | relative_url }}" alt="{{ post.title }}">
-              </div>
-            {% endif %}
-            <div class="post-info">
-              <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-              <p class="post-meta">{{ post.format | default: "Log" | capitalize }} · {{ post.date | date: "%b %d, %Y" }}</p>
-              {% if post.excerpt %}
-                <p>{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
-              {% endif %}
+        <article class="post-preview{% unless post.banner_image %} no-img{% endunless %}" data-tags="{% for tag in post.tags %}{{ tag | slugify }}{% unless forloop.last %},{% endunless %}{% endfor %}" data-format="{{ post.format | default: 'Log' | slugify }}">
+          {% if post.banner_image %}
+            {% assign thumb_path = "/assets/images/post-photos/" | append: post.banner_image %}
+            <div class="post-thumbnail">
+              <img src="{{ thumb_path | relative_url }}" alt="{{ post.title }}">
             </div>
-          </article>
-        {% endif %}
+          {% endif %}
+          <div class="post-info">
+            <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+            <p class="post-meta">{{ post.format | default: "Log" | capitalize }} · {{ post.date | date: "%b %d, %Y" }}</p>
+            {% if post.excerpt %}
+              <p>{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
+            {% endif %}
+          </div>
+        </article>
       {% endfor %}
     </div>
     <p class="post-filter-empty" hidden>No posts match those filters.</p>

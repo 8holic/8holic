@@ -2,11 +2,9 @@
 
 layout: post
 
-title: "Reading: Hoshi Ori Yume Mirai - Common Route"
-series: hoshi-ori
-series_part: 1
-series_title: "Reading: Hoshi Ori Yume Mirai"
-chapter_title: "Common Route"
+title: "Reading: Hoshi Ori Yume Mirai"
+
+format: log
 
 location: "Singapore, Singapore"
 
@@ -17,9 +15,7 @@ tags:
 
 ---
 
-## Background
-
-It has dawned on me that I have forgotten the common route that connects all the paths, so I thought I should cover it first.
+# Common Route
 
 ## General Thoughts
 
@@ -59,6 +55,50 @@ The group scenes however are great, and the conversation at the end paints a goo
 
 I like the establishment of all the characters, as well as the story. I will appreciate if the game is not in fear that I will miss their brilliant writing.
 
-[Sora Route]({{ site.baseurl }}{% post_url 2026-06-12-hoshiori %})
+# Sora Route
 
-[Natsuki Route]({{ site.baseurl }}{% post_url 2026-06-25-hoshiori %})
+## General Thoughts - School Arc
+
+So in this route we are basically stuck with Sora and assisting with the astrology club, who become talkative when it is about the stars. Notably Sora does demonstrate some interesting knowledge about astrology and the associated mythology. There are some light drama and issues they faced which are solved almost immediately, however the brief moments of setback are realistic and truly feel like life and death for that age.
+
+The love confession and realization has quite a bit of build up, from when our protagonist realizes his feelings, to learning more about her then finally confessing at a chance. Notably the protagonist does not actually get a reply immediately and has to wait for her response. They continue per normal until she responds in the affirmative. The group of friends meanwhile play a supporting role offsetting Sora's shy nature, and continue to play a role through the festival contribution.
+
+The next part can be broken down into two segments, but generally they face some problems and overcome them. The best way to describe it is that everyone works hard and it eventually worked out. It felt like they really cared for each other. Notably I was actually surprised at the third setback (since it has been so drama light). The finale felt like a suitable conclusion as we see their hard work pay off and Sora's dream is realized.
+
+## General Thoughts - After Story
+
+Whereas the school arc mainly focuses on realizing Sora's dream, there is a notable swap here where the protagonist takes center stage as he opens his own firm with Sora and best boss Azuma supporting him. Sora at this point has already mostly accomplished her goals in astrology which the protagonist gets to witness, the protagonist meanwhile faces some struggles maintaining his work life. My favorite scene is when the protagonist faints from overwork, and immediately continue trying to work again until Sora proposes to him. Where the terms of her proposal show she is willing to give up her own dream just to support him, causing the protagonist to realize how he has screwed up and take action to correct. Eventually he was able to fulfill his own dreams, and then he finally marries Sora and gaze at the stars together. The post credit scene confirms that Sora's dream is well and alive after the marriage as he and the other friends arrive to support Sora.
+
+## General Thoughts - The Sex Scene
+
+She has around 10 scenes I believe, and most of the scenes felt extremely similar. Basically I think the plot relevant ones are probably exactly 2. The first is used to show her more assertive side, and the second is used to show how she is willing to accept his fetishes as a part of him. Some of them do depict her as being more careful, however the usage of condom dies after the first raw experience so I am not sure if the above was intended.
+
+## General Thoughts - Overall
+
+This is a strong introduction to the novel, I like that it is relatively low stakes and used to further the characters. It has a strong element of mutually supportive relationship, and it helps that Sora is really cute throughout the route.
+
+# Natsuki Route
+
+## Background
+
+The reason I decide to attempt to romance her is simply because she is the most prominent of all the love interests in Ousaka-san's path. From aiding in the love confession to showing up in the after story.
+
+## General Thoughts - School Arc
+
+Segawa-san School Arc difference is that she basically dragged the protagonist along and they eventually developed feelings. Her primary theme is photography. Her route is devoid of any major conflict and basically sees the protagonist keeping up with her as she takes photos for the club. Notably what the astrology and nature club end up doing both end up changing to make her a major player.
+
+The love confession felt kinda abrupt. After spending enough time with each other, they realize they like one another. Or at least the protagonist seems to think so, however his obliviousness doesn't exactly convince me so. It does make use of photography that I find was neat, and is a very Segawa way of confessing.
+
+Its primary focus is on her obsession with photography and the various things they did. The ending felt a little abrupt as they went to the festival and it ends... just like that I am a little sad that the group trip they were talking about just didn't happen. It might be better if that was never mentioned since I was expecting, you know, that group trip to be the climax of the story.
+
+## General Thoughts - After Story
+
+Natsuki (From here on) After Story places a heavy focus on the post marriage life, with a heavy emphasis on the ideal post marriage life. It is a very fluffy read and seems to cover the honeymoon period. The ending fits Natsuki Hino quite well and is photography relevant. They have their rituals, the people around them treating them after the marriage, and how they perform the chores and cook together when they are living as a couple. The story ends with the actual ceremony for the marriage conducted by the school.
+
+## General Thoughts - The Sex Scene
+
+She has around 9 scenes I believe, and somehow all of them are plot relevant as for a lack of better words showing them fucking raw with zero damn about the world leading to their shotgun marriage is perhaps the most realistic part about fucking like rabbits. Even if they discover they have no child it is highly believable. The most plot relevant one is when they are both late due to fucking deep at night. The rest is passable by explaining how they can believe in the pregnancy.
+
+## General Thoughts - Overall
+
+Segawa route is rather unique due to her airheadedness, and unique personality. It is a fluffy story that somehow doesn't stick in my mind. I am optimistic that she might not be my type.

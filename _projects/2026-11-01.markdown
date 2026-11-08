@@ -1,9 +1,9 @@
 ---
 layout: post
 title: "PSN4"
-format: log
-location: "Singapore, Singapore"
+start: 2026-11-01
 tags:
+  - Project
   - YouthNetwork
 ---
 

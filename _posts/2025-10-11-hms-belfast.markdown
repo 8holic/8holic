@@ -20,3 +20,8 @@ Other things on board a ship that I was not expecting was a workshop for shipwri
 
 ## Operation Mincemeat Musical
 Now this is the final theatre show I went to, and it is much more worth the ticket funds. To start I was constantly surprised by the changes in the stage. The show is funny and I was constantly kept on my toes. As a musical comedy, I felt it did both well. I like that among with telling us of British intelligence, they took the time to remember Glyndwr Michael, which is the corpse that was used in the operation. It was a really enjoyable dramatization of the real life Operation Mincemeat, and a celebration of British Intelligence.
+
+
+# British Imperial War Museum and conclusion
+For the last location I visit before returning was the Imperial War Museum, while I did not remember much about it I did recall that the Changi Flag, from my homeland, was here as well. I saw a lot of tanks as well, and the first world war tank really highlighted how it changed the situation. 
+

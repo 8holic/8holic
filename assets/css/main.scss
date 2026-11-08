@@ -3,20 +3,8 @@
 // ============================================================
 // VARIABLES
 // ============================================================
-$sidebar-width: 280px;
+// Media-query breakpoints must stay as Sass vars (CSS vars can't be used here).
 $breakpoint-md: 768px;
-
-// New color palette (your provided colors)
-$bg-dark: #0a0a1a;          // very dark base (fallback)
-$card-bg: #1e1a2f;          // dark purple-gray for cards
-$sidebar-bg: #392467;       // very dark purple from palette
-$sidebar-text: #f0e6ff;
-$sidebar-hover: #5D3587;    // medium purple
-$accent: #A367B1;           // lighter purple for links, borders
-$accent-light: #FFD1E3;     // pink for special highlights
-$text-light: #f0f0f0;
-$text-muted: #b0b0b0;
-$border-color: #5D3587;
 
 // ============================================================
 // BASE STYLES
@@ -32,141 +20,13 @@ html {
 }
 
 body {
-  font-family: sans-serif;
   line-height: 1.6;
-  color: $text-light;
-  background: $bg-dark;
+  color: var(--text);
+  background: var(--bg);
 }
 
-.site-wrapper {
-  position: relative;
-  overflow-x: hidden;
-}
-
-// ============================================================
-// SIDEBAR
-// ============================================================
-.sidebar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: $sidebar-width;
-  height: 100%;
-  background: $sidebar-bg;
-  color: $sidebar-text;
-  transform: translateX(-100%);
-  transition: transform 0.3s ease;
-  z-index: 1000;
-  overflow-y: auto;
-
-  &.open {
-    transform: translateX(0);
-  }
-
-  .sidebar-header {
-    display: flex;
-    justify-content: flex-end;
-    padding: 1rem;
-  }
-
-  .close-sidebar {
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    color: $sidebar-text;
-    cursor: pointer;
-    &:hover {
-      color: $accent-light;
-    }
-  }
-
-  .sidebar-content {
-    padding: 1rem;
-  }
-
-  .profile {
-    text-align: center;
-    margin-bottom: 2rem;
-
-    .profile-img {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 1rem;
-      border: 3px solid $accent;
-    }
-
-    .profile-name {
-      font-size: 1.2rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .profile-bio {
-      font-size: 0.85rem;
-      opacity: 0.8;
-    }
-  }
-
-  .sidebar-nav {
-    ul {
-      list-style: none;
-      padding: 0;
-      li {
-        margin: 1rem 0;
-        a {
-          display: block;
-          padding: 0.5rem;
-          color: $sidebar-text;
-          text-decoration: none;
-          transition: background 0.2s;
-          &:hover {
-            background: $sidebar-hover;
-            border-radius: 4px;
-            color: $accent-light;
-          }
-        }
-      }
-    }
-  }
-}
-
-// ============================================================
-// MAIN CONTENT & LAYOUT
-// ============================================================
-.main-content {
-  transition: margin-left 0.3s ease;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-.sidebar.open + .main-content {
-  margin-left: $sidebar-width;
-}
-
-@media (max-width: $breakpoint-md) {
-  .sidebar.open + .main-content {
-    margin-left: 0;
-  }
-}
-
-.menu-toggle {
-  position: fixed;
-  top: 1rem;
-  left: 1rem;
-  background: rgba(57, 36, 103, 0.9);  // dark purple with transparency
-  border: none;
-  font-size: 2rem;
-  cursor: pointer;
-  z-index: 1001;
-  padding: 0.25rem 0.5rem;
-  border-radius: 4px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
-  color: $accent-light;
-  &:hover {
-    color: $accent;
-  }
+[hidden] {
+  display: none !important;
 }
 
 main {
@@ -177,46 +37,18 @@ main {
 .site-footer {
   text-align: center;
   padding: 1rem;
-  border-top: 1px solid $border-color;
+  border-top: 1px solid var(--border);
   font-size: 0.9rem;
-  color: $text-muted;
-
-  .post-nav {
-    display: flex;
-    gap: 1rem;
-    margin: 0 10% 1rem 10%;
-
-    .post-btn {
-      flex: 1;
-      padding: 0.75rem 1rem;
-      text-align: center;
-      border: 2px solid $border-color;
-      border-radius: 8px;
-      background: $card-bg;
-      color: $accent;
-      text-decoration: none;
-
-      &:hover {
-        background: $accent;
-        border-color: $accent;
-        color: #fff;
-      }
-    }
-
-    .post-btn.top {
-      flex: 0 auto;
-    }
-  }
+  color: var(--muted);
 }
 
 h1 {
-  border-bottom: 2px solid #ffffff; /* black underline */
+  border-bottom: 2px solid #ffffff; /* white underline */
   padding-bottom: 0;        /* space between text and underline */
   margin-bottom: 1em;            /* space after the header */
 }
 
 h2 {
-
   padding-bottom: 0;        /* space between text and underline */
   margin-bottom: 1em;            /* space after the header */
   margin-top: 1em;
@@ -293,7 +125,7 @@ h2 {
   margin: 0 10% 1.5rem 10%;
   font-size: 0.85rem;
   font-style: italic;
-  color: $text-muted;
+  color: var(--muted);
   text-align: center;
 }
 
@@ -309,22 +141,9 @@ h2 {
     margin-top: 0.5rem;
     font-size: 0.85rem;
     font-style: italic;
-    color: $text-muted;
+    color: var(--muted);
     text-align: center;
   }
-}
-
-// ============================================================
-// HERO SECTION (home page)
-// ============================================================
-.hero {
-  border: 2px solid $border-color;
-  border-radius: 8px;
-  padding: 2rem;
-  margin: 0 10% 2rem 10%; 
-  text-align: left;
-  background: $card-bg;
-  color: $text-light;
 }
 
 // ============================================================
@@ -337,7 +156,7 @@ h2 {
   h2 {
     font-size: 2rem;
     margin-bottom: 1.5rem;
-    color: $accent-light;
+    color: var(--accent-light);
   }
 
   .post-list {
@@ -347,11 +166,29 @@ h2 {
   }
 
   .post-preview {
-    border: 2px solid $border-color;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    border: 2px solid var(--border);
     border-radius: 8px;
     padding: 1.5rem;
-    background: $card-bg;
+    background: var(--surface);
     transition: box-shadow 0.2s ease;
+
+    .post-thumbnail {
+      flex-shrink: 0;
+      width: 100px;
+      img {
+        width: 100%;
+        height: auto;
+        border-radius: 4px;
+        object-fit: cover;
+      }
+    }
+
+    .post-info {
+      flex: 1;
+    }
 
     &:hover {
       box-shadow: 0 2px 8px rgba(0,0,0,0.3);
@@ -360,25 +197,21 @@ h2 {
     h3 {
       margin-bottom: 0.5rem;
       a {
-        color: $text-light;
+        color: var(--text);
         text-decoration: none;
         &:hover {
-          color: $accent;
+          color: var(--accent);
         }
       }
     }
     .post-meta {
       font-size: 0.85rem;
-      color: $text-muted;
+      color: var(--muted);
       margin-bottom: 0.5rem;
     }
     p {
-      color: $text-light;
+      color: var(--text);
     }
-  }
-
-  .post-preview.is-hidden {
-    display: none !important;
   }
 
   .post-filter {
@@ -409,19 +242,19 @@ h2 {
   .format-filter-btn,
   .post-filter-clear,
   .format-filter-clear {
-    border: 1px solid $border-color;
+    border: 1px solid var(--border);
     border-radius: 999px;
     background: transparent;
-    color: $text-light;
+    color: var(--text);
     cursor: pointer;
     padding: 0.45rem 0.9rem;
     transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 
     &:hover,
     &.is-active {
-      background: $accent;
-      border-color: $accent;
-      color: $bg-dark;
+      background: var(--accent);
+      border-color: var(--accent);
+      color: var(--bg);
     }
   }
 
@@ -433,22 +266,22 @@ h2 {
   .post-filter-section + .post-filter-section {
     margin-top: 1.25rem;
     padding-top: 1.25rem;
-    border-top: 1px solid rgba(93, 53, 135, 0.35);
+    border-top: 1px solid rgba(var(--border-rgb), 0.35);
   }
 
   .post-filter-empty {
     margin-top: 1rem;
-    color: $text-muted;
+    color: var(--muted);
   }
 
   a[href*="/blog/"] {
     display: inline-block;
     margin-top: 1rem;
-    color: $accent;
+    color: var(--accent);
     text-decoration: none;
     &:hover {
       text-decoration: underline;
-      color: $accent-light;
+      color: var(--accent-light);
     }
   }
 }
@@ -457,65 +290,11 @@ h2 {
 // CARDS & POST PREVIEWS
 // ============================================================
 .card {
-  border: 2px solid $border-color;
+  border: 2px solid var(--border);
   border-radius: 8px;
-  background: $card-bg;
+  background: var(--surface);
   padding: 1.5rem;
   margin: 0 10% 1.5rem 10%;
-}
-
-.post-featured-image {
-  padding: 0;
-  overflow: hidden;
-
-  img {
-    display: block;
-    width: 100%;
-    height: auto;
-  }
-}
-
-.sf-embed-wrap {
-  margin: 0 10% 1.5rem 10%;
-}
-
-.sf-embed {
-  display: block;
-  width: 100%;
-  min-height: 1200px;
-  border: 0;
-  background: #fff;
-}
-
-.post-preview {
-  display: flex;
-  gap: 1rem;
-  align-items: flex-start;
-
-  .post-thumbnail {
-    flex-shrink: 0;
-    width: 100px;
-    img {
-      width: 100%;
-      height: auto;
-      border-radius: 4px;
-      object-fit: cover;
-    }
-  }
-
-  .post-info {
-    flex: 1;
-  }
-}
-
-// ============================================================
-// LINKS INSIDE MAIN CONTENT
-// ============================================================
-.main-content a {
-  color: $accent;
-  &:hover {
-    color: $accent-light;
-  }
 }
 
 
@@ -548,16 +327,16 @@ th, td {
 
 .post-tags {
   font-size: 0.85rem;
-  color: $text-muted;
+  color: var(--muted);
 }
 
 .post-tags .tag {
   display: inline-block;
-  border: 1px solid $border-color;
+  border: 1px solid var(--border);
   border-radius: 999px;
   padding: 0.15rem 0.65rem;
   font-size: 0.8rem;
-  color: $accent-light;
+  color: var(--accent-light);
   margin-left: 0.35rem;
 }
 
@@ -606,6 +385,9 @@ img, iframe, video {
   .banner-text p {
     font-size: 0.95rem;
   }
+  body {
+    font-size: 0.95rem;
+  }
 }
 
 // Even smaller phones (480px)
@@ -619,20 +401,12 @@ img, iframe, video {
   .banner-text p {
     font-size: 0.85rem;
   }
-}
-
-// 3. Hero & cards – use less side margin on very small screens
-@media (max-width: 480px) {
   .hero,
   .card {
     margin-left: 4%;
     margin-right: 4%;
     padding: 1rem;
   }
-}
-
-// 4. Recent posts – stack thumbnail on top of text on phones
-@media (max-width: 480px) {
   .post-preview {
     flex-direction: column;
     align-items: stretch;   // let thumbnail fill width
@@ -643,16 +417,6 @@ img, iframe, video {
   }
 }
 
-// 5. Embedded iframes – prevent insane height on mobile
-.sf-embed {
-  min-height: 300px;        // override the 1200px default
-}
-@media (max-width: $breakpoint-md) {
-  .sf-embed {
-    min-height: 250px;
-  }
-}
-
 // 6. Tables – allow horizontal scroll on narrow screens
 table {
   display: block;
@@ -660,27 +424,16 @@ table {
   white-space: nowrap;
 }
 
-// 7. Touch target – make sure close button is finger‑friendly
-.close-sidebar {
-  min-width: 44px;
-  min-height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-// 8. Optional – slightly larger font for body on mobile
-@media (max-width: $breakpoint-md) {
-  body {
-    font-size: 0.95rem;    // keep readability
-  }
-}
-
 // ============================================================
 // REDESIGN (homepage + shared navigation)
 // ============================================================
 :root {
+  --bg: #0a0a1a;
+  --text: #f0f0f0;
+  --border: #5D3587;
   --accent: #B579C6;
+  --accent-rgb: 181, 121, 198;
+  --border-rgb: 93, 53, 135;
   --accent-2: #5D3587;
   --accent-light: #FFD1E3;
   --surface: #1e1a2f;
@@ -704,7 +457,7 @@ main a:hover { color: var(--accent-light); }
   display: flex; align-items: center; justify-content: space-between;
   gap: 1rem; padding: 0.85rem clamp(1rem, 4vw, 2.5rem);
   background: rgba(10, 10, 26, 0.82); backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(93, 53, 135, 0.4);
+  border-bottom: 1px solid rgba(var(--border-rgb), 0.4);
 
   .brand { font-weight: 700; letter-spacing: 0.5px; color: #f0f0f0; text-decoration: none; }
   .brand span { color: var(--accent); }
@@ -784,14 +537,14 @@ section { padding: 5rem clamp(1rem, 5vw, 2.5rem); }
 .about { background: var(--surface-2); }
 .about-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 2.5rem; align-items: start; }
 .facts { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; }
-.fact { background: var(--surface); border: 1px solid rgba(93,53,135,0.5); border-radius: var(--radius); padding: 0.9rem 1rem; }
+.fact { background: var(--surface); border: 1px solid rgba(var(--border-rgb), 0.5); border-radius: var(--radius); padding: 0.9rem 1rem; }
 .fact .k { color: var(--muted); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; }
 .fact .v { font-weight: 600; margin-top: 0.15rem; }
 
 // ---- Projects ----
 .proj-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2.2rem; }
 .proj {
-  background: var(--surface); border: 1px solid rgba(93,53,135,0.5); border-radius: var(--radius);
+  background: var(--surface); border: 1px solid rgba(var(--border-rgb), 0.5); border-radius: var(--radius);
   overflow: hidden; display: flex; flex-direction: column; transition: 0.25s;
 
   &:hover { transform: translateY(-4px); border-color: var(--accent); box-shadow: 0 12px 30px rgba(0,0,0,0.45); }
@@ -824,7 +577,7 @@ section { padding: 5rem clamp(1rem, 5vw, 2.5rem); }
 // ---- Blog ----
 .featured-post {
   display: grid; grid-template-columns: 1.1fr 1fr; background: var(--surface);
-  border: 1px solid rgba(93,53,135,0.5); border-radius: var(--radius); overflow: hidden; margin-top: 2.2rem;
+  border: 1px solid rgba(var(--border-rgb), 0.5); border-radius: var(--radius); overflow: hidden; margin-top: 2.2rem;
 
   .thumb { min-height: 280px; }
   .thumb img { width: 100%; height: 100%; object-fit: cover; }
@@ -837,7 +590,7 @@ section { padding: 5rem clamp(1rem, 5vw, 2.5rem); }
 }
 .post-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; margin-top: 1.5rem; }
 .post-card {
-  background: var(--surface); border: 1px solid rgba(93,53,135,0.5); border-radius: var(--radius);
+  background: var(--surface); border: 1px solid rgba(var(--border-rgb), 0.5); border-radius: var(--radius);
   padding: 1.2rem; transition: 0.2s; display: flex; flex-direction: column;
 
   &:hover { border-color: var(--accent); }
@@ -907,207 +660,11 @@ section { padding: 5rem clamp(1rem, 5vw, 2.5rem); }
 .banner--plain {
   background:
     radial-gradient(60% 130% at 12% 0%, rgba(163, 103, 177, 0.28), transparent 60%),
-    radial-gradient(55% 100% at 95% 100%, rgba(93, 53, 135, 0.5), transparent 60%),
+    radial-gradient(55% 100% at 95% 100%, rgba(var(--border-rgb), 0.5), transparent 60%),
     linear-gradient(160deg, #120c24, #1e1436 60%, #120c24);
 
   &::before { display: none; }
 }
-// ============================================================
-// SERIES
-// ============================================================
-.banner--series .banner-meta > span + span::before {
-  content: "·";
-  margin-right: 0.5rem;
-  opacity: 0.6;
-}
-
-.series-lead {
-  color: $text-muted;
-  font-size: 1.05rem;
-  line-height: 1.7;
-}
-
-.series-toc {
-  border: 1px solid rgba(93, 53, 135, 0.5);
-  border-radius: var(--radius);
-  background: var(--surface);
-  padding: 1.2rem 1.4rem;
-
-  h2 {
-    margin: 0 0 0.8rem;
-    font-size: 1.1rem;
-    color: var(--accent-light);
-    border-bottom: none;
-  }
-
-  ol {
-    margin: 0;
-    padding-left: 1.2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.55rem;
-  }
-
-  li {
-    color: $text-muted;
-  }
-
-  a {
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-    color: $text-light;
-    text-decoration: none;
-
-    &:hover {
-      color: var(--accent);
-    }
-  }
-
-  .chapter-meta {
-    color: $text-muted;
-    font-size: 0.8rem;
-    white-space: nowrap;
-  }
-}
-
-.series-chapter {
-  border-top: 1px solid rgba(93, 53, 135, 0.5);
-  padding-top: 2rem;
-
-  &:first-of-type {
-    border-top: none;
-    padding-top: 0;
-  }
-}
-
-.series-chapter-head {
-  margin-bottom: 1.2rem;
-
-  .eyebrow {
-    color: var(--accent);
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin-bottom: 0.35rem;
-  }
-
-  h2 {
-    margin: 0;
-    font-size: 1.7rem;
-    line-height: 1.25;
-
-    a {
-      color: $text-light;
-      text-decoration: none;
-
-      &:hover {
-        color: var(--accent);
-      }
-    }
-  }
-}
-
-.series-chapter-body {
-  h1 {
-    font-size: 1.4rem;
-    border-bottom: none;
-  }
-
-  h2 {
-    font-size: 1.3rem;
-    margin-top: 2rem;
-  }
-
-  h2:first-child {
-    margin-top: 0;
-  }
-}
-
-.series-back {
-  text-align: right;
-  font-size: 0.85rem;
-  margin-top: 1rem;
-
-  a {
-    color: $text-muted;
-    text-decoration: none;
-
-    &:hover {
-      color: var(--accent-light);
-    }
-  }
-}
-
-.series-context {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.4rem 0.75rem;
-  padding: 0.75rem 1rem;
-  border: 1px solid rgba(93, 53, 135, 0.5);
-  border-radius: var(--radius);
-  background: var(--surface);
-  font-size: 0.85rem;
-  color: $text-muted;
-
-  a {
-    color: var(--accent);
-    text-decoration: none;
-
-    &:hover {
-      color: var(--accent-light);
-    }
-  }
-
-  .series-full-link {
-    margin-left: auto;
-    font-weight: 600;
-  }
-}
-
-.series-pager {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  justify-content: center;
-  margin: 0;
-
-  .btn {
-    font-size: 0.85rem;
-  }
-}
-
-.post-preview.series-preview .post-meta,
-.post-card.series-preview .meta {
-  color: var(--accent);
-}
-
-.post-kicker {
-  color: var(--accent);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin-bottom: 0.2rem;
-}
-
-@media (max-width: 600px) {
-  .series-toc a {
-    flex-direction: column;
-    gap: 0.15rem;
-  }
-
-  .series-toc .chapter-meta {
-    white-space: normal;
-  }
-
-  .series-context .series-full-link {
-    margin-left: 0;
-  }
-}
-
 // ============================================================
 // CODE BLOCKS & SYNTAX HIGHLIGHTING (Rouge / kramdown)
 // ============================================================
@@ -1116,7 +673,7 @@ section { padding: 5rem clamp(1rem, 5vw, 2.5rem); }
     margin: 1.25rem 0;
     padding: 1rem 1.1rem;
     background: #14101f;
-    border: 1px solid $border-color;
+    border: 1px solid var(--border);
     border-radius: 8px;
     overflow-x: auto;
     font-size: 0.85rem;
@@ -1135,10 +692,10 @@ section { padding: 5rem clamp(1rem, 5vw, 2.5rem); }
 
   code {
     padding: 0.1em 0.35em;
-    background: rgba($accent, 0.15);
-    border: 1px solid rgba($accent, 0.25);
+    background: rgba(var(--accent-rgb), 0.15);
+    border: 1px solid rgba(var(--accent-rgb), 0.25);
     border-radius: 4px;
-    color: $accent-light;
+    color: var(--accent-light);
     font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
     font-size: 0.85em;
   }
@@ -1147,7 +704,7 @@ section { padding: 5rem clamp(1rem, 5vw, 2.5rem); }
   .highlight {
     margin: 1.25rem 0;
     background: #14101f;
-    border: 1px solid $border-color;
+    border: 1px solid var(--border);
     border-radius: 8px;
     overflow: hidden;
 
@@ -1160,7 +717,7 @@ section { padding: 5rem clamp(1rem, 5vw, 2.5rem); }
 
     // Add {: .solution } after a fenced block to flag it as a submitted answer
     &.solution {
-      border-left: 4px solid $accent-light;
+      border-left: 4px solid var(--accent-light);
     }
   }
 }
