@@ -2,14 +2,13 @@
 layout: default
 ---
 
-{% if page.collection == "projects" %}
+{% assign img_dir = "/assets/images/post-photos/" %}
+{% if page.maintag == "Project" %}
   {% assign img_dir = "/assets/images/project-photos/" %}
-{% else %}
-  {% assign img_dir = "/assets/images/post-photos/" %}
 {% endif %}
 
 {% assign has_banner = false %}
-{% if page.banner_image %}
+{% if page.banner_image and page.banner_image != "" %}
   {% assign banner_image = img_dir | append: page.banner_image %}
   {% assign has_banner = true %}
 {% elsif page.featured_image_override %}
@@ -24,20 +23,16 @@ layout: default
   <div class="banner-text">
     <h1>{{ page.title }}</h1>
     <div class="banner-meta">
-      {% if page.location %}
-        <span class="location">📍 {{ page.location }}</span>
-      {% endif %}
-      {% if page.start %}
-        <span class="date">📅 {{ page.start | date: "%B %Y" }}{% if page.end %} – {{ page.end | date: "%B %Y" }}{% endif %}</span>
+      {% if page.collection == "articles" %}
+        {% assign p_start = page.start | date: "%B %Y" %}
+        {% assign p_end = page.end | date: "%B %Y" %}
+        <span class="date">📅 {{ p_start }}{% if p_end != p_start %} – {{ p_end }}{% endif %}</span>
+        <span class="reading-time">
+          📖 {% assign words = content | number_of_words %}{{ words | divided_by: 180 | plus: 1 }} min read
+        </span>
       {% else %}
         <span class="date">📅 {{ page.date | date: "%B %d, %Y" }}</span>
       {% endif %}
-      <span class="reading-time">
-        📖 {% assign words = content | number_of_words %}{{ words | divided_by: 180 | plus: 1 }} min read
-      </span>
-      {% unless page.collection == "projects" %}
-        <span class="format">{{ page.format | default: "Log" | capitalize }}</span>
-      {% endunless %}
     </div>
   </div>
 </div>

@@ -1,9 +1,8 @@
 ---
 banner_image: 2025-12-25-featured.jpg
 layout: post
+maintag: Travel
 title: "Christmas"
-format: log
-location: "Singapore, Singapore"
 destination: "Warsaw, Poland"
 tags:
   - Travel

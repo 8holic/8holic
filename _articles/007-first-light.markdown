@@ -1,8 +1,10 @@
 ---
 layout: post
+maintag: Essay
+start: 2026-07-28
+end: 2026-07-29
+date: 2026-07-28
 title: "I played: 007 First Light"
-format: essay
-location: "Singapore, Singapore"
 tags:
   - Gaming
 ---

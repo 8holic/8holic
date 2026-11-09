@@ -1,8 +1,7 @@
 ---
 layout: post
+maintag: Travel
 title: "Toledo"
-format: log
-location: "Singapore, Singapore"
 destination: "Toledo, Spain"
 tags:
   - Travel

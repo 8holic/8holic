@@ -1,9 +1,8 @@
 ---
 banner_image: 2025-05-15-featured.jpg
 layout: post
+maintag: Travel
 title: "Osaka, Japan (May 2025)"
-format: log
-location: "Singapore, Singapore"
 destination: "Osaka, Japan"
 tags:
   - Travel

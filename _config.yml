@@ -36,7 +36,7 @@ defaults:
       image: "/assets/images/generic-banner.jpg"
   - scope:
       path: ""
-      type: projects
+      type: articles
     values:
       image: "/assets/images/generic-banner.jpg"
 
@@ -44,6 +44,6 @@ collections:
   posts:
     output: true
     permalink: /posts/:year/:month/:day/:title/
-  projects:
+  articles:
     output: true
-    permalink: /projects/:title/
+    permalink: /articles/:title/

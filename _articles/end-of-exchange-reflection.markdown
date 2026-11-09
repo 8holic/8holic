@@ -1,9 +1,11 @@
 ---
 banner_image: 2025-12-22-featured.jpg
 layout: post
+maintag: Essay
+start: 2025-12-22
+end: 2025-12-23
+date: 2025-12-22
 title: "The End of the Exchange Reflection"
-format: essay
-location: "Singapore, Singapore"
 tags:
   - Travel
 ---

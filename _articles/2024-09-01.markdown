@@ -1,6 +1,7 @@
 ---
 
 layout: post
+maintag: Project
 
 title: "URECA Project Presentation"
 

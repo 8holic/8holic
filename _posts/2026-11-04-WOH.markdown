@@ -1,8 +1,7 @@
 ---
 layout: post
+maintag: Gaming
 title: "World of Horror: Figuring out Ghost Combat"
-format: log
-location: "Singapore, Singapore"
 tags:
   - WorldOfHorror
 ---

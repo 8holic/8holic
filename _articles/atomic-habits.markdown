@@ -1,11 +1,12 @@
 ---
 
 layout: post
+maintag: Essay
+start: 2026-03-23
+end: 2026-03-24
+date: 2026-03-23
 
 title: "Reading: Atomic Habits"
-format: essay
-
-location: "Singapore, Singapore"
 
 tags:
 

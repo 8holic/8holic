@@ -1,14 +1,11 @@
 ---
 
 layout: post
+maintag: Tech
 
 title: "I got a 3D Printer!"
 
-banner_image: 3dprint-featured.jpg
-
-start: 2026-07-05
-
-end: 2026-08-05
+featured_image_override: /assets/images/project-photos/3dprint-featured.jpg
 
 tags:
 

@@ -1,9 +1,8 @@
 ---
 banner_image: 2025-10-11-featured.jpg
 layout: post
+maintag: Travel
 title: "London Day 2"
-format: log
-location: "Singapore, Singapore"
 destination: "London, United Kingdom"
 tags:
   - Travel

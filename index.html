@@ -13,7 +13,7 @@ image: "/assets/images/home-banner-2.jpg"
     <p class="tag">{{ r.pitch }}</p>
     <p class="goal">{{ r.goal }}</p>
     <div class="cta">
-      <a class="btn solid" href="#projects">View my work</a>
+      <a class="btn solid" href="#articles">View my work</a>
       <a class="btn" href="#contact">Get in touch</a>
     </div>
   </div>
@@ -35,31 +35,36 @@ image: "/assets/images/home-banner-2.jpg"
   </div>
 </section>
 
-<section id="projects">
+<section id="articles">
   <div class="inner">
-    <div class="eyebrow">Projects</div>
-    <h2 class="section-title">Things I've built</h2>
-    <p class="section-lead">Selected work — each one taught me something a tutorial couldn't.</p>
-    <div class="proj-grid">
-      {% for ptitle in site.data.featured.projects %}
-        {% assign project = site.projects | where: "title", ptitle | first %}
-        {% if project %}
-        <article class="proj">
-          {% if project.banner_image %}
-            <div class="thumb"><img src="{{ '/assets/images/project-photos/' | append: project.banner_image | relative_url }}" alt="{{ project.title }}"></div>
-          {% endif %}
-          <div class="body">
-            <div class="yr">{{ project.start | date: "%Y" }}{% if project.end and project.end != project.start %}–{{ project.end | date: "%Y" }}{% endif %}</div>
-            <h3><a href="{{ project.url | relative_url }}">{{ project.title }}</a></h3>
-            <p>{{ project.description | default: project.excerpt | strip_html | truncatewords: 24 }}</p>
-            {% if project.tags %}<div class="tags">{% for tag in project.tags %}<span class="pill">{{ tag }}</span>{% endfor %}</div>{% endif %}
-            <a class="more" href="{{ project.url | relative_url }}">Read more →</a>
+    <div class="eyebrow">Articles</div>
+    <h2 class="section-title">Things I've written</h2>
+    <p class="section-lead">Essays and project write-ups.</p>
+    {% assign articles = site.articles | sort: 'end' | reverse %}
+    <div class="post-grid">
+      {% for article in articles limit: 3 %}
+        {% assign adir = '/assets/images/post-photos/' %}
+        {% if article.maintag == 'Project' %}{% assign adir = '/assets/images/project-photos/' %}{% endif %}
+        {% assign has_thumb = false %}
+        {% if article.banner_image and article.banner_image != "" %}{% assign has_thumb = true %}{% endif %}
+        {% assign a_start = article.start | date: "%b %Y" %}
+        {% assign a_end = article.end | date: "%b %Y" %}
+        <article class="post-card card-mt mt-{{ article.maintag | slugify }}">
+          <div class="thumb{% unless has_thumb %} post-icon{% endunless %}">
+            {% if has_thumb %}
+              <img src="{{ adir | append: article.banner_image | relative_url }}" alt="{{ article.title }}" onerror="this.parentElement.classList.add('post-icon');this.remove()">
+            {% else %}
+              {% assign icon_slug = article.maintag | slugify %}
+              <img src="{{ '/assets/images/icons/' | append: icon_slug | append: '.svg' | relative_url }}" alt="">
+            {% endif %}
           </div>
+          {% assign words = article.content | number_of_words %}
+          <div class="meta">{{ article.maintag }} · {{ a_start }}{% if a_end != a_start %} – {{ a_end }}{% endif %} · {{ words | divided_by: 180 | plus: 1 }} min</div>
+          <h4><a href="{{ article.url | relative_url }}">{{ article.title }}</a></h4>
         </article>
-        {% endif %}
       {% endfor %}
     </div>
-    <div class="center-cta"><a class="btn" href="{{ '/projects/' | relative_url }}">See all projects →</a></div>
+    <div class="center-cta"><a class="btn" href="{{ '/articles/' | relative_url }}">Read all articles →</a></div>
   </div>
 </section>
 
@@ -78,58 +83,6 @@ image: "/assets/images/home-banner-2.jpg"
         </div>
       {% endfor %}
     </div>
-  </div>
-</section>
-
-<section id="blog">
-  <div class="inner">
-    <div class="eyebrow">Writing</div>
-    <h2 class="section-title">Latest from the blog</h2>
-    <p class="section-lead">Travel, books, games, and the occasional over-think.</p>
-    {% assign featured_slug = site.data.featured.posts | first %}
-    {% assign fp = site.posts | where: "slug", featured_slug | first %}
-    {% if fp %}
-      {% assign fp_date = fp.date | date: "%Y-%m-%d" %}
-      {% assign fp_href = fp.url %}
-      {% assign fp_title = fp.title %}
-      {% assign fp_format = fp.format | default: "Log" | capitalize %}
-      {% if fp.banner_image %}
-        {% assign fp_img = '/assets/images/post-photos/' | append: fp.banner_image %}
-      {% else %}
-        {% assign fp_img = '/assets/images/post-photos/' | append: fp_date | append: '-featured.jpg' %}
-      {% endif %}
-      <article class="featured-post">
-        <div class="thumb"><img src="{{ fp_img | relative_url }}" alt="{{ fp_title }}" onerror="this.src='{{ '/assets/images/generic-banner.jpg' | relative_url }}'"></div>
-        <div class="body">
-          <span class="pill">Featured · {{ fp_format }} · {{ fp.tags | first }}</span>
-          <h3><a href="{{ fp_href | relative_url }}">{{ fp_title }}</a></h3>
-          <p>{{ fp.excerpt | strip_html | truncatewords: 28 }}</p>
-          <a class="more" href="{{ fp_href | relative_url }}">Read the post →</a>
-        </div>
-      </article>
-    {% endif %}
-    <div class="post-grid">
-      {% assign recent = site.posts | sort: 'date' | reverse %}
-      {% assign shown = 0 %}
-      {% for post in recent %}
-        {% if post.slug != featured_slug and shown < 3 %}
-          {% assign card_date = post.date | date: "%b %Y" %}
-          {% assign card_format = post.format | default: "Log" | capitalize %}
-          {% assign card_meta = card_format | append: " · " | append: card_date %}
-          {% assign primary_tag = post.tags | first %}
-          {% if primary_tag %}{% assign card_meta = card_meta | append: " · " | append: primary_tag %}{% endif %}
-          <article class="post-card{% unless post.banner_image %} no-img{% endunless %}">
-            {% if post.banner_image %}
-              <div class="thumb"><img src="{{ '/assets/images/post-photos/' | append: post.banner_image | relative_url }}" alt="{{ post.title }}" onerror="this.parentElement.remove()"></div>
-            {% endif %}
-            <div class="meta">{{ card_meta }}</div>
-            <h4><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h4>
-          </article>
-          {% assign shown = shown | plus: 1 %}
-        {% endif %}
-      {% endfor %}
-    </div>
-    <div class="center-cta"><a class="btn" href="{{ '/posts/' | relative_url }}">Read the blog →</a></div>
   </div>
 </section>
 

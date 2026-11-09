@@ -1,9 +1,8 @@
 ---
 banner_image: 2025-11-09-featured.jpg
 layout: post
+maintag: Travel
 title: "Lisbon"
-format: log
-location: "Singapore, Singapore"
 destination: "Lisbon, Portugal"
 tags:
   - Travel

@@ -1,8 +1,10 @@
 ---
 layout: post
+maintag: Essay
+start: 2026-10-20
+end: 2026-10-21
+date: 2026-10-20
 title: "Ace Combat 8: Detailed Thoughts"
-format: essay
-location: "Singapore, Singapore"
 tags:
   - Gaming
 banner_image: 

@@ -9,39 +9,45 @@ document.addEventListener('DOMContentLoaded', function () {
     drawer.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => drawer.classList.remove('open')));
   }
 
-  // ---- Post filters (posts listing) ----
+  // ---- Listing filters + title search ----
   const tagButtons = document.querySelectorAll('.tag-filter-btn, .post-filter-clear');
-  const formatButtons = document.querySelectorAll('.format-filter-btn, .format-filter-clear');
-  const postCards = document.querySelectorAll('.post-preview[data-tags]');
+  const searchInput = document.querySelector('.title-search');
+  const list = searchInput
+    ? document.querySelector(searchInput.dataset.target)
+    : document.querySelector('.post-list');
   const emptyState = document.querySelector('.post-filter-empty');
-  if (postCards.length && (tagButtons.length || formatButtons.length)) {
+
+  if (list) {
+    const cards = Array.from(list.querySelectorAll('.post-preview'));
     let activeTag = 'all';
-    let activeFormat = 'all';
-    const applyFilters = () => {
+    let query = '';
+
+    const apply = () => {
       let visibleCount = 0;
-      postCards.forEach((card) => {
+      cards.forEach((card) => {
         const cardTags = (card.dataset.tags || '').split(',').map((v) => v.trim()).filter(Boolean);
-        const cardFormat = card.dataset.format || 'log';
-        const matches = (activeTag === 'all' || cardTags.includes(activeTag))
-          && (activeFormat === 'all' || cardFormat === activeFormat);
-        card.hidden = !matches;
-        if (matches) visibleCount += 1;
+        const matchesTag = activeTag === 'all' || cardTags.includes(activeTag);
+        const matchesSearch = !query || (card.dataset.title || '').includes(query);
+        const show = matchesTag && matchesSearch;
+        card.hidden = !show;
+        if (show) visibleCount += 1;
       });
       if (emptyState) emptyState.hidden = visibleCount !== 0;
       tagButtons.forEach((b) => b.classList.toggle('is-active', (b.dataset.tag || 'all') === activeTag));
-      formatButtons.forEach((b) => b.classList.toggle('is-active', (b.dataset.format || 'all') === activeFormat));
     };
+
     tagButtons.forEach((button) => {
       button.addEventListener('click', () => {
         activeTag = button.dataset.tag || 'all';
-        applyFilters();
+        apply();
       });
     });
-    formatButtons.forEach((button) => {
-      button.addEventListener('click', () => {
-        activeFormat = button.dataset.format || 'all';
-        applyFilters();
+
+    if (searchInput) {
+      searchInput.addEventListener('input', () => {
+        query = searchInput.value.trim().toLowerCase();
+        apply();
       });
-    });
+    }
   }
 });

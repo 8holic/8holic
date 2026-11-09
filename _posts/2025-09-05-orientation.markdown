@@ -1,9 +1,8 @@
 ---
 banner_image: 2025-09-05-featured.jpg
 layout: post
+maintag: Travel
 title: "Orientation"
-format: log
-location: "Singapore, Singapore"
 tags:
   - Travel
 ---

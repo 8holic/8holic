@@ -1,12 +1,9 @@
 ---
 
 layout: post
+maintag: Gaming
 
 title: "Reading: Hoshi Ori Yume Mirai"
-
-format: log
-
-location: "Singapore, Singapore"
 
 tags:
 

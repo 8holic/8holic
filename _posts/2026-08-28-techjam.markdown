@@ -1,14 +1,9 @@
 ---
 
 layout: post
+maintag: Tech
 
 title: "TechJam Hackathon"
-
-banner_image: 
-
-start: 2026-08-28
-
-end: 2026-08-31
 
 tags:
 

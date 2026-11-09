@@ -1,5 +1,6 @@
 ---
 layout: post
+maintag: Project
 
 title: Digital Scavenger Hunt
 

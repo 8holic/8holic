@@ -1,9 +1,8 @@
 ---
 banner_image: 2025-09-27-featured.jpg
 layout: post
+maintag: Travel
 title: "Barcelona Day 2?"
-format: log
-location: "Singapore, Singapore"
 destination: "Barcelona, Spain"
 tags:
   - Travel

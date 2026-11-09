@@ -2,10 +2,9 @@
 
 layout: post
 
-title: 
-format: log
+maintag: Travel
 
-location: "Singapore, Singapore"
+title: 
 
 tags:
 

@@ -1,8 +1,10 @@
 ---
 layout: post
+maintag: Essay
+start: 2026-08-20
+end: 2026-08-21
+date: 2026-08-20
 title: "I played: Sifu (Loop)"
-format: essay
-location: "Singapore, Singapore"
 tags:
   - Gaming
 ---

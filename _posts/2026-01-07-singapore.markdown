@@ -1,9 +1,8 @@
 ---
 banner_image: 2026-01-07-featured.jpg
 layout: post
+maintag: Travel
 title: "Singapore"
-format: log
-location: "Singapore, Singapore"
 tags:
   - Travel
 ---
