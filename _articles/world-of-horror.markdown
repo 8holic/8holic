@@ -1,7 +1,10 @@
 ---
 layout: post
-maintag: Gaming
+maintag: Essay
 title: "World of Horror: Figuring out Ghost Combat"
+start: 2026-11-04
+end: 2026-11-05
+date: 2026-11-04
 tags:
   - WorldOfHorror
 ---
