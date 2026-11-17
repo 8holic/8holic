@@ -40,6 +40,10 @@ permalink: /posts/
         {% endif %}
         {% assign post_words = post.content | number_of_words %}
         {% assign post_preview = post.content | strip_html | strip | truncate: 400 %}
+        {% assign is_video = false %}
+        {% if post.content contains '<iframe' or post.content contains 'youtube.com' or post.content contains 'youtu.be' %}
+          {% assign is_video = true %}
+        {% endif %}
         <article class="post-preview feed-item mt-{{ icon_slug }}" data-title="{{ post.title | downcase | escape }}" data-tags="{% for tag in post.tags %}{{ tag | slugify }}{% unless forloop.last %},{% endunless %}{% endfor %}">
           <div class="feed-head">
             <div class="feed-avatar">
@@ -57,9 +61,13 @@ permalink: /posts/
             <div class="feed-image"><img src="{{ thumb | relative_url }}" alt="{{ post.title }}"></div>
           {% endif %}
           <h3 class="feed-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-          <div class="feed-body feed-preview"><p>{{ post_preview }}</p></div>
-          {% if post_words <= 700 %}
-            <div class="feed-body post-content feed-full" hidden>{{ post.content }}</div>
+          {% if is_video %}
+            <div class="feed-body post-content">{{ post.content }}</div>
+          {% else %}
+            <div class="feed-body feed-preview"><p>{{ post_preview }}</p></div>
+            {% if post_words <= 700 %}
+              <div class="feed-body post-content feed-full" hidden>{{ post.content }}</div>
+            {% endif %}
           {% endif %}
           <div class="feed-actions">
             {% if post.tags %}
@@ -67,11 +75,13 @@ permalink: /posts/
                 <a href="{{ '/tags/' | relative_url }}#{{ tag | slugify }}" class="tag">{{ tag }}</a>
               {% endfor %}
             {% endif %}
-            {% if post_words > 700 %}
-              <a class="feed-more" href="{{ post.url | relative_url }}">Read more →</a>
-            {% else %}
-              <button type="button" class="feed-more feed-toggle" aria-expanded="false">Read more →</button>
-            {% endif %}
+            {% unless is_video %}
+              {% if post_words > 700 %}
+                <a class="feed-more" href="{{ post.url | relative_url }}">Read more →</a>
+              {% else %}
+                <button type="button" class="feed-more feed-toggle" aria-expanded="false">Read more →</button>
+              {% endif %}
+            {% endunless %}
           </div>
         </article>
       {% endfor %}

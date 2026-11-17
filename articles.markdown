@@ -9,7 +9,7 @@ permalink: /articles/
 {% include banner.html listing=true %}
 
 <section class="recent-posts">
-  {% assign articles = site.articles | sort: 'end' | reverse %}
+  {% assign articles = site.articles | sort: 'date' | reverse %}
   <input type="search" class="title-search" data-target="#article-list" placeholder="Search article titles…" aria-label="Search articles by title">
   {% if articles.size > 0 %}
     <div class="post-list" id="article-list">
@@ -18,8 +18,6 @@ permalink: /articles/
         {% if article.maintag == 'Project' %}{% assign adir = '/assets/images/project-photos/' %}{% endif %}
         {% assign has_thumb = false %}
         {% if article.banner_image and article.banner_image != "" %}{% assign has_thumb = true %}{% endif %}
-        {% assign a_start = article.start | date: "%b %Y" %}
-        {% assign a_end = article.end | date: "%b %Y" %}
         <article class="post-preview card-mt mt-{{ article.maintag | slugify }}" data-title="{{ article.title | downcase | escape }}">
           <div class="post-thumbnail{% unless has_thumb %} post-icon{% endunless %}">
             {% if has_thumb %}
@@ -31,8 +29,10 @@ permalink: /articles/
           </div>
           <div class="post-info">
             {% assign words = article.content | number_of_words %}
+            {% assign art_start = article.startdate | date: "%b %d, %Y" %}
+            {% assign art_end = article.date | date: "%b %d, %Y" %}
             <h3><a href="{{ article.url | relative_url }}">{{ article.title }}</a></h3>
-            <p class="post-meta">{{ article.maintag }} · {{ a_start }}{% if a_end != a_start %} – {{ a_end }}{% endif %} · {{ words | divided_by: 180 | plus: 1 }} min read</p>
+            <p class="post-meta">{{ article.maintag }} · {{ art_start }}{% if art_end != art_start %} – {{ art_end }}{% endif %} · {{ words | divided_by: 180 | plus: 1 }} min read</p>
             {% if article.tags %}<div class="tags">{% for tag in article.tags %}<span class="pill">{{ tag }}</span>{% endfor %}</div>{% endif %}
             {% assign art_excerpt = article.excerpt | strip_html | strip %}
             {% if art_excerpt != "" %}<p>{{ art_excerpt | truncatewords: 30 }}</p>{% endif %}

@@ -1,20 +1,12 @@
 ---
-
 layout: post
 maintag: Project
-
+startdate: 2026-06-19
+date: 2026-07-19
 title: Settler Frontier, Coding Workshop
-
 banner_image: frontier-explorer-featured.jpg
-
-start: 2026-06-19
-
-end: 2026-07-19
-
 tags:
-
   - Project
-
 ---
 
 ## Inspiration

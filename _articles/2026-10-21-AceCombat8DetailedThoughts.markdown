@@ -1,9 +1,8 @@
 ---
 layout: post
 maintag: Essay
-start: 2026-10-20
-end: 2026-10-21
-date: 2026-10-20
+startdate: 2026-10-20
+date: 2026-10-21
 title: "Ace Combat 8: Detailed Thoughts"
 tags:
   - Gaming

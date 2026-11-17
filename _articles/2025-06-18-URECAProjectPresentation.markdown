@@ -1,20 +1,12 @@
 ---
-
 layout: post
 maintag: Project
-
+startdate: 2024-09-01
+date: 2025-06-18
 title: "URECA Project Presentation"
-
 banner_image: ureca-featured.jpg
-
-start: 2024-09-01
-
-end: 2025-06-18
-
 tags:
-
   - URECA
-
 ---
 
 # Overview

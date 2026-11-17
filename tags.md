@@ -22,7 +22,7 @@ permalink: /tags/
               {% if item.tags contains tag %}
                 <li>
                   <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
-                  <span class="post-date">({{ item.start | default: item.date | date: "%b %d, %Y" }})</span>
+                  <span class="post-date">({{ item.date | date: "%b %d, %Y" }})</span>
                 </li>
               {% endif %}
             {% endfor %}

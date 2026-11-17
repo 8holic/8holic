@@ -1,18 +1,12 @@
 ---
 layout: post
 maintag: Project
-
+startdate: 2025-06-09
+date: 2025-06-29
 title: Digital Scavenger Hunt
-
 banner_image: digital-scavenger-hunt.jpeg
-
-start: 2025-06-09
-
-end: 2025-06-29
-
 tags:
   - Project
-
 ---
 
 ## Inspiration

@@ -39,15 +39,13 @@ image: "/assets/images/home-banner-2.jpg"
     <div class="eyebrow">Articles</div>
     <h2 class="section-title">Things I've written</h2>
     <p class="section-lead">Essays and project write-ups.</p>
-    {% assign articles = site.articles | sort: 'end' | reverse %}
+    {% assign articles = site.articles | sort: 'date' | reverse %}
     <div class="post-grid">
       {% for article in articles limit: 3 %}
         {% assign adir = '/assets/images/post-photos/' %}
         {% if article.maintag == 'Project' %}{% assign adir = '/assets/images/project-photos/' %}{% endif %}
         {% assign has_thumb = false %}
         {% if article.banner_image and article.banner_image != "" %}{% assign has_thumb = true %}{% endif %}
-        {% assign a_start = article.start | date: "%b %Y" %}
-        {% assign a_end = article.end | date: "%b %Y" %}
         <article class="post-card card-mt mt-{{ article.maintag | slugify }}">
           <div class="thumb{% unless has_thumb %} post-icon{% endunless %}">
             {% if has_thumb %}
@@ -58,6 +56,8 @@ image: "/assets/images/home-banner-2.jpg"
             {% endif %}
           </div>
           {% assign words = article.content | number_of_words %}
+          {% assign a_start = article.startdate | date: "%b %d, %Y" %}
+          {% assign a_end = article.date | date: "%b %d, %Y" %}
           <div class="meta">{{ article.maintag }} · {{ a_start }}{% if a_end != a_start %} – {{ a_end }}{% endif %} · {{ words | divided_by: 180 | plus: 1 }} min</div>
           <h4><a href="{{ article.url | relative_url }}">{{ article.title }}</a></h4>
         </article>

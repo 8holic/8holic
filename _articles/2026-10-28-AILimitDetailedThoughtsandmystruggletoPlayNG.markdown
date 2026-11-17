@@ -1,9 +1,8 @@
 ---
 layout: post
 maintag: Essay
-start: 2026-10-27
-end: 2026-10-28
-date: 2026-10-27
+startdate: 2026-10-27
+date: 2026-10-28
 title: "AI Limit: Detailed Thoughts and my struggle to play NG+"
 tags:
   - Gaming

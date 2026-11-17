@@ -1,21 +1,13 @@
 ---
-
 layout: post
 maintag: Project
-
+startdate: 2026-02-19
+date: 2026-03-05
 title: "Limbus Company ID Visualization"
-
 banner_image: gachavisuals-featured.jpg
-
-start: 2026-02-19
-
-end: 2026-03-05
-
 tags:
-
   - Project
 featured_image_credit: "A visualization of the results."
-
 ---
 
 # Visualization

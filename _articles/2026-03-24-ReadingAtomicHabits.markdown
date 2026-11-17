@@ -1,17 +1,11 @@
 ---
-
 layout: post
 maintag: Essay
-start: 2026-03-23
-end: 2026-03-24
-date: 2026-03-23
-
+startdate: 2026-03-23
+date: 2026-03-24
 title: "Reading: Atomic Habits"
-
 tags:
-
   - Books
-
 ---
 
 ---

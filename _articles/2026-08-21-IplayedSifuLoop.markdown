@@ -1,9 +1,8 @@
 ---
 layout: post
 maintag: Essay
-start: 2026-08-20
-end: 2026-08-21
-date: 2026-08-20
+startdate: 2026-08-20
+date: 2026-08-21
 title: "I played: Sifu (Loop)"
 tags:
   - Gaming
