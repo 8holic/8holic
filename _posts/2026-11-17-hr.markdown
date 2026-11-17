@@ -9,7 +9,7 @@ tags:
 I happen to have some time and I am kinda getting bored with gaming, so I decided to try out some questions.
 
 Question 1 was about finding min and max value of an array by summing 4/5 numbers
-'''
+'''python
 def miniMaxSum(arr):
     total=0
     max_val=min_val=arr[0]
@@ -26,7 +26,7 @@ The assumption this solution makes is that the array size is always 5
 The next question is on time conversion from AM/PM to military time
 When Input: 12:00:10AM
 
-'''
+'''python
 def timeConversion(s):
     time='00:00:00'
     if s[-2:] =='AM':
