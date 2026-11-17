@@ -9,7 +9,7 @@ tags:
 I happen to have some time and I am kinda getting bored with gaming, so I decided to try out some questions.
 
 Question 1 was about finding min and max value of an array by summing 4/5 numbers
-'''python
+```python
 def miniMaxSum(arr):
     total=0
     max_val=min_val=arr[0]
@@ -20,7 +20,7 @@ def miniMaxSum(arr):
         elif num<min_val:
             min_val=num
     print(total-max_val,total-min_val)
-'''
+```
 The assumption this solution makes is that the array size is always 5
 
 The next question is on time conversion from AM/PM to military time
@@ -39,11 +39,11 @@ def timeConversion(s):
             return s[0:8]
         else:
             return str(int(s[0:2])+12)+s[2:8]
-'''
+```
 I took a lot longer for this one, had to google on how to retrieve strings.
 
 For the final problem
-'''
+```Python
 def breakingRecords(scores):
     intmax=scores[0]
     intmin=scores[0]
@@ -57,5 +57,5 @@ def breakingRecords(scores):
             minval+=1
             intmin=x
     return maxval,minval
-'''
+```
 Now this is one I spent an embarrassing amount of time on because I screw up the indentation, so it is returning after the first loop. It confused me for a while and I even thought I am parsing the input incorrectly.
