@@ -1,0 +1,82 @@
+---
+layout: post
+maintag: Tech
+title: "HackerRank Question Solving 2"
+tags:
+  - Gaming
+---
+
+SO this was a slightly more challenging question which is why I decided to give it its own article instead
+
+The stated task is to write a program that creates or splits Camel Case variable, method and class names. I have to be honest I have no idea what they are talking about, and I felt that this was a really good reading exercise. I had to google a bit to figure out what exactly is STDIN and STDOUT, which was a little embarrassing when I learn it is input() and print(). 
+After reading the task, I see it as a case that can be solved wit ha few IF statements, and the initial psuedocode I thought off is essentially
+```
+IF S
+    IF M
+    IF C
+    IF V
+ELIF C
+    IF M
+    IF C
+    IF V
+```
+Which I speculate will probably work, I realize mid coding that actually most of the operators for S is extremely close to each other, and since by definition a method cannot have whitespace we will never have to worry about '()' at the end. So the new code looks like this.
+```
+IF S
+    DO STUFF
+ELIF C
+    IF M
+    IF C
+    IF V
+```
+This is slightly better as we save a few lines of code, but then I find myself copy and pasting code from the IF V segment to IF C, so I start looking to see if I can combine them together. What I ended up with is individual cases that share the overall structure and only make certain changes based on the status and if it is C and M, where C is upper while M have a () at the end instead.
+```
+IF S
+    DO STUFF
+ELIF C
+    IF V
+        IF M
+        IF C
+```
+While doing this, one of the issue I ran into was how to combine. Since as part of combining,if we find a whitespace we dont want the whitespace, however since  we are running a for X in Y loop we can't really skip without changing another loop.
+
+The end result I end up coming up with will be to declare a variable n, where if it detect a whitespace, it will set this variable to 1 instead. While for the next loop it will check for n value before reaching the default result. This solve two issues at once, firstly will be how to skip adding the current character, and the next is how to tell the script to uppercase.
+
+Anyways the below is the end result I cobbled together.
+
+```Python
+def CamelCase(x):
+    result=""
+    operation=x[0:1]
+    current=x[2:3]
+    word=x[4:len(x)]
+    word=word.replace(word[0],word[0].lower())
+    if operation=='S':
+        for y in word:
+            if y.isupper():
+                result+=" "+y.lower()
+            elif y=='(' or y==')':
+                break
+            else:
+                result+=y
+    else:
+        if current=='C':
+            word=word.replace(word[0],word[0].upper())
+        n=0
+        for y in word:
+            if n==1:
+                n=0
+                result+=y.upper()
+            elif y==' ':
+                n+=1
+            else:
+                result+=y
+        if current=='M':
+            result+='()'
+            
+    return result
+                        
+if __name__ == '__main__':
+    for line in sys.stdin:
+        print(CamelCase(line.strip()))
+```
