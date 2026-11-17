@@ -50,4 +50,19 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     }
   }
+
+  // ---- Expand short feed posts ----
+  document.querySelectorAll('.feed-toggle').forEach((button) => {
+    button.addEventListener('click', () => {
+      const item = button.closest('.feed-item');
+      const preview = item ? item.querySelector('.feed-preview') : null;
+      const full = item ? item.querySelector('.feed-full') : null;
+      if (!full) return;
+      const opening = full.hidden;
+      full.hidden = !opening;
+      if (preview) preview.hidden = opening;
+      button.textContent = opening ? 'Show less' : 'Read more →';
+      button.setAttribute('aria-expanded', String(opening));
+    });
+  });
 });

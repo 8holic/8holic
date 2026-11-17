@@ -1000,3 +1000,11 @@ section { padding: 5rem clamp(1rem, 5vw, 2.5rem); }
     color: var(--accent-light);
   }
 }
+
+button.feed-more {
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+}
