@@ -38,7 +38,7 @@ permalink: /posts/
         {% elsif post.banner_image and post.banner_image != "" %}
           {% assign thumb = '/assets/images/post-photos/' | append: post.banner_image %}
         {% endif %}
-        {% assign post_words = post.content | number_of_words %}
+        {% assign post_chars = post.content | strip_html | strip | size %}
         <article class="post-preview feed-item mt-{{ icon_slug }}" data-title="{{ post.title | downcase | escape }}" data-tags="{% for tag in post.tags %}{{ tag | slugify }}{% unless forloop.last %},{% endunless %}{% endfor %}">
           <div class="feed-head">
             <div class="feed-avatar">
@@ -55,7 +55,7 @@ permalink: /posts/
           {% if thumb != "" %}
             <div class="feed-image"><img src="{{ thumb | relative_url }}" alt="{{ post.title }}"></div>
           {% endif %}
-          {% if post_words > 700 %}
+          {% if post_chars > 400 %}
             <h3 class="feed-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
             <div class="feed-body">
               {% assign post_excerpt = post.content | strip_html | strip %}
@@ -70,7 +70,7 @@ permalink: /posts/
                 <a href="{{ '/tags/' | relative_url }}#{{ tag | slugify }}" class="tag">{{ tag }}</a>
               {% endfor %}
             {% endif %}
-            {% if post_words > 700 %}
+            {% if post_chars > 400 %}
               <a class="feed-more" href="{{ post.url | relative_url }}">Read more →</a>
             {% endif %}
           </div>

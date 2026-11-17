@@ -1,6 +1,6 @@
 ---
 layout: post
-maintag: Tech
+maintag: Gaming
 title: "Surviving World of Horrors and knowledge"
 tags:
   - Gaming

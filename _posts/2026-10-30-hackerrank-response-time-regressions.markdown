@@ -2,7 +2,6 @@
 layout: post
 maintag: Tech
 title: "HackerRank: Counting Response-Time Regressions"
-featured_image_override: "/assets/images/2026-10-30-hackerrank-banner.svg"
 tags:
   - HackerRank
 ---
