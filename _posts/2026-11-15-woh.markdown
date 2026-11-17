@@ -1,0 +1,12 @@
+---
+layout: post
+maintag: Tech
+title: "Surviving World of Horrors and knowledge"
+tags:
+  - Gaming
+---
+
+# Background
+So with the new steam update adding new achievements, I decided to reset my game progress. I recall the game was relatively difficult and challenging, as it is a eldrich horror mystery game. I also recall that a lot of the events were harmful and sometimes unwinnable, which was why I was so suprised when I manage to win my first game on the hardest difficult, without a lot of the benefits that comes from unlocks. I played a few more game and look into why is this the case.
+# Knowledge over mechanics
+One of the things I notice is that because I play the game before, I was able to stack the game in my favor just by balancing the mysteries and events. In my case, 4/5 of the mystery I chose does not end in a mandatory fight, and the 1 fight that ends with a boss fight is actually the only one that almost end the run. I think this is an intresting form of game design, where everything challenging is due to the lack of knowledge. It also suits the game theme well, the game is about the fear of the unknown, so it is only fitting that once you know everything the difficulty becomes much easier.
