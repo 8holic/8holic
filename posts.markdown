@@ -29,31 +29,49 @@ permalink: /posts/
       </div>
     </div>
 
-    <div class="post-list" id="post-list">
+    <div class="post-list feed" id="post-list">
       {% for post in posts %}
+        {% assign icon_slug = post.maintag | slugify %}
         {% assign thumb = "" %}
         {% if post.featured_image_override %}
           {% assign thumb = post.featured_image_override %}
         {% elsif post.banner_image and post.banner_image != "" %}
           {% assign thumb = '/assets/images/post-photos/' | append: post.banner_image %}
         {% endif %}
-        {% assign has_thumb = false %}
-        {% if thumb != "" %}{% assign has_thumb = true %}{% endif %}
-        <article class="post-preview card-mt mt-{{ post.maintag | slugify }}" data-title="{{ post.title | downcase | escape }}" data-tags="{% for tag in post.tags %}{{ tag | slugify }}{% unless forloop.last %},{% endunless %}{% endfor %}">
-          <div class="post-thumbnail{% unless has_thumb %} post-icon{% endunless %}">
-            {% if has_thumb %}
-              <img src="{{ thumb | relative_url }}" alt="{{ post.title }}">
-            {% else %}
-              {% assign icon_slug = post.maintag | slugify %}
-              <img src="{{ '/assets/images/icons/' | append: icon_slug | append: '.svg' | relative_url }}" alt="">
-            {% endif %}
+        {% assign post_words = post.content | number_of_words %}
+        <article class="post-preview feed-item mt-{{ icon_slug }}" data-title="{{ post.title | downcase | escape }}" data-tags="{% for tag in post.tags %}{{ tag | slugify }}{% unless forloop.last %},{% endunless %}{% endfor %}">
+          <div class="feed-head">
+            <div class="feed-avatar">
+              <img src="{{ '/assets/images/profile.jpg' | relative_url }}" alt="{{ site.author.name }}">
+            </div>
+            <div class="feed-head-text">
+              <span class="feed-name">{{ site.author.name }}</span>
+              <div class="feed-sub">
+                <a class="feed-time" href="{{ post.url | relative_url }}">{{ post.date | date: "%b %d, %Y" }}</a>
+                <span class="feed-mood">{{ post.maintag }}</span>
+              </div>
+            </div>
           </div>
-          <div class="post-info">
-            <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-            <p class="post-meta">{{ post.date | date: "%b %d, %Y" }}</p>
-            {% assign post_excerpt = post.excerpt | strip_html | strip %}
-            {% if post_excerpt != "" %}
-              <p>{{ post_excerpt | truncatewords: 30 }}</p>
+          {% if thumb != "" %}
+            <div class="feed-image"><img src="{{ thumb | relative_url }}" alt="{{ post.title }}"></div>
+          {% endif %}
+          {% if post_words > 700 %}
+            <h3 class="feed-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+            <div class="feed-body">
+              {% assign post_excerpt = post.content | strip_html | strip %}
+              {% if post_excerpt != "" %}<p>{{ post_excerpt | truncatewords: 40 }}</p>{% endif %}
+            </div>
+          {% else %}
+            <div class="feed-body post-content">{{ post.content }}</div>
+          {% endif %}
+          <div class="feed-actions">
+            {% if post.tags %}
+              {% for tag in post.tags %}
+                <a href="{{ '/tags/' | relative_url }}#{{ tag | slugify }}" class="tag">{{ tag }}</a>
+              {% endfor %}
+            {% endif %}
+            {% if post_words > 700 %}
+              <a class="feed-more" href="{{ post.url | relative_url }}">Read more →</a>
             {% endif %}
           </div>
         </article>
